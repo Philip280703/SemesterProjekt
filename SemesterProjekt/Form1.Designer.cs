@@ -35,7 +35,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.International_EDC_PoulErikBech_2019_Payoff_ENG;
-            pictureBox1.Location = new Point(8, 24);
+            pictureBox1.Location = new Point(8, 56);
             pictureBox1.Margin = new Padding(2, 2, 2, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(760, 254);
