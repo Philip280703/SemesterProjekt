@@ -35,19 +35,22 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.International_EDC_PoulErikBech_2019_Payoff_ENG;
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(8, 56);
+            pictureBox1.Margin = new Padding(2, 2, 2, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(943, 359);
+            pictureBox1.Size = new Size(760, 254);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(967, 482);
+            ClientSize = new Size(774, 386);
             Controls.Add(pictureBox1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
