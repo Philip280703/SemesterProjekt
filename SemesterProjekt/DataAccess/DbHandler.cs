@@ -210,7 +210,7 @@ namespace SemesterProjekt.DataAccess
 
 
         // Sold Bolig, mark as not avaliable
-        internal bool SoldBoligMethod(Bolig bolig, int BoligId)
+        internal bool MarkBoligAsSold(Bolig bolig, int BoligId)
         {
 
             // sql selection of the given table
