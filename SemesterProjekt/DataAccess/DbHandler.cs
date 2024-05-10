@@ -18,6 +18,8 @@ namespace SemesterProjekt.DataAccess
         }
 
 
+        // -------------------------------- Bolig -------------------------------------------------------------
+
         // Create new Bolig
         internal bool CreateBolig(Bolig bolig)
         {
@@ -295,8 +297,158 @@ namespace SemesterProjekt.DataAccess
 
 
 
+        // -------------------- Sælgere ---------------------------------------------------
+
+        // Create new Sælger
+        internal bool CreateSaelger(Saelger Saelger)
+        {
+            int NextSId = FindMaxSId();
+            string NextSIdString = NextSId.ToString();
+
+            string Command = "Insert Saelger (SId, SFname, SLname, SBoligId, SEmail, STlfNr)" +
+                " values (@SId, @SFname, @SLname, @SBoligId, @SEmail, @STlfNr)";
+
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            SqlCommand cmd = new SqlCommand(Command, conn);
+
+            cmd.Parameters.AddWithValue("@SId", NextSIdString);
+            cmd.Parameters.AddWithValue("@SFname", "SFname");
+            cmd.Parameters.AddWithValue("@SLname", "SLname");
+            cmd.Parameters.AddWithValue("@SBoligId", "SBoligId");
+            cmd.Parameters.AddWithValue("@SEmail", "SEmail");
+            cmd.Parameters.AddWithValue("@STlfNr", "STlfNr");
+
+            int Rows = 0;
+            try
+            {
+                conn.Open();
+                Rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            if (Rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
 
 
+
+        // Get list of Sælgere
+        internal List<Saelger> GetAllSaelger()
+        {
+            // create list, ready for input
+            List<Saelger> SaelgerList = new List<Saelger>();
+
+            // sql selection of the given table
+            string command = "Select * from Saelger";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                // save connection in variable - to handle commands
+                SqlCommand cmd = new SqlCommand(command, conn);
+
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    int SId = (int)reader["SId"];
+                    string SFname = (string)reader["SFname"];
+                    string SLname = (string)reader["SLname"];
+                    int SBoligId = (int)reader["SBoligId"];
+                    string SEmail = (string)reader["SEmail"];
+                    int STlfNr = (int)reader["STlfNr"];
+
+                    Saelger saelger = new Saelger
+                    {
+                        SId = SId,
+                        SFname = SFname,
+                        SLname = SLname,
+                        SBoligId = SBoligId,
+                        SEmail = SEmail,
+                        STlfNr = STlfNr
+                    };
+                    SaelgerList.Add(saelger);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return SaelgerList;
+        }
+
+
+
+        // Read/Get one Sælger
+        internal Saelger GetSingleSaelger(int SId)
+        {
+            Saelger SingleSaelger = new Saelger();
+            // sql selection of the given table
+            string command = "Select * from Saelger where SId = @SId";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@Sid", SId);
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    SingleSaelger = new Saelger
+                        {
+                        SId = (int)reader["SId"],
+                        SFname = (string)reader["SFname"],
+                        SLname = (string)reader["SLname"],
+                        SBoligId = (int)reader["SBoligId"],
+                        SEmail = (string)reader["SEmail"],
+                        STlfNr = (int)reader["STlfNr"] };
+                
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return SingleSaelger;
+        }
+
+
+
+
+        // --------------------------- Ekstra Features -------------------------------------
 
         // find max id, function for Create method
         internal int FindMaxBoligId()
@@ -329,6 +481,38 @@ namespace SemesterProjekt.DataAccess
             int MaxBoligId = bolig.BoligId;
 
             return MaxBoligId;
+        }
+
+        internal int FindMaxSId()
+        {
+            Saelger saelger = new Saelger();
+            string command = "Select max(SId) as id from Saelger";
+            using SqlConnection connection = new SqlConnection(ConnectionString);
+
+            SqlCommand cmd = new SqlCommand(command, connection);
+
+            try
+            {
+                connection.Open();
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    saelger = new Saelger { SId = reader.GetInt32("id") };
+                    saelger.SId = reader.GetInt32("id") + 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            int MaxSId = saelger.SId;
+
+            return MaxSId;
         }
     }
 }
