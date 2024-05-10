@@ -61,7 +61,7 @@ namespace SemesterProjekt.Models
         }
         public int Kvadratmeter { get; set; }
         public int KvmPris { get; set; }
-        public int BoligType { get; set; }
+        public string BoligType { get; set; }
         public bool Aktiv {  get; set; }
 
         int salgspris;
