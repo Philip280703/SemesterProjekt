@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SemesterProjekt.Models
 {
-    internal class Bolig
+    internal class BoligMaeglerSaelger
     {
         private int boligId;
         public int BoligId
@@ -35,7 +35,7 @@ namespace SemesterProjekt.Models
             }
             set
             {
-                if (value < 1000 || value > 10000 )
+                if (value < 1000 || value > 10000)
                 {
                     throw new Exception("Postalcode is out of range");
                 }
@@ -62,7 +62,7 @@ namespace SemesterProjekt.Models
         public int Kvadratmeter { get; set; }
         public int KvmPris { get; set; }
         public string BoligType { get; set; }
-        public bool Aktiv {  get; set; }
+        public bool Aktiv { get; set; }
 
         int salgspris;
         public int SalgsPris
@@ -82,5 +82,19 @@ namespace SemesterProjekt.Models
         }
         public DateTime SalgsDato { get; set; }
         public int MaeglerId { get; set; }
+
+        public int MId { get; set; }
+        public string MFname { get; set; }
+        public string MLname { get; set; }
+        public bool MAktiv { get; set; }
+        public string MEmail { get; set; }
+        public int MTlfNr { get; set; }
+
+        public int SId { get; set; }
+        public string SFname { get; set; }
+        public string SLname { get; set; }
+        public int SBoligId { get; set; }
+        public string SEmail { get; set; }
+        public int STlfNr { get; set; }
     }
 }

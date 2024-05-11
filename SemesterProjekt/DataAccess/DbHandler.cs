@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -402,7 +403,7 @@ namespace SemesterProjekt.DataAccess
 
 
         // Read/Get one Sælger
-        internal bool GetSingleSaelger(int SId)
+        internal Saelger GetSingleSaelger(int SId)
         {
             Saelger SingleSaelger = new Saelger();
             // sql selection of the given table
@@ -528,6 +529,193 @@ namespace SemesterProjekt.DataAccess
                 return true;
             }
         }
+
+
+
+        // ------------------------- CSV Files ----------------------------------------------------------------------------
+
+        // Boliger til salg, export to CSV
+        internal List<Bolig> GetCSVAllBoligActive()
+        {
+            // create list, ready for input
+            List<Bolig> BoligList = new List<Bolig>();
+            string path = "C:\\csv\\EDC-BoligerTilSalg.csv";
+
+            // sql selection of the given table
+            string command = "Select * from Bolig where aktiv = 1";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                // save connection in variable - to handle commands
+                SqlCommand cmd = new SqlCommand(command, conn);
+
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    int BoligId = (int)reader["BoligId"];
+                    string Adresse = (string)reader["Adresse"];
+                    int PostNr = (int)reader["PostNr"];
+                    int UdbudsPris = (int)reader["Udbudspris"];
+                    int Kvadratmeter = (int)reader["Kvadratmeter"];
+                    int KvmPris = (int)reader["KvmPris"];
+                    string BoligType = (string)reader["BoligType"];
+                    bool Aktiv = (bool)reader["Aktiv"];
+                    int MaeglerId = (int)reader["MaeglerId"];
+
+                    Bolig bolig = new Bolig
+                    {
+                        BoligId = BoligId,
+                        Adresse = Adresse,
+                        PostNr = PostNr,
+                        UdbudsPris = UdbudsPris,
+                        Kvadratmeter = Kvadratmeter,
+                        KvmPris = KvmPris,
+                        BoligType = BoligType,
+                        Aktiv = Aktiv,
+                        MaeglerId = MaeglerId
+                    };
+                    BoligList.Add(bolig);
+                }
+               
+               
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;MaeglerId");
+
+                foreach (Bolig bolig in BoligList)
+                {
+                    writer.WriteLine($"{bolig.BoligId};{bolig.Adresse};{bolig.PostNr};{bolig.UdbudsPris};{bolig.Kvadratmeter};{bolig.KvmPris};{bolig.BoligType};{bolig.Aktiv};{bolig.MaeglerId}");
+                }
+            }
+
+            return BoligList;
+           
+        }
+
+
+
+        // Boliger fra bestemt område, med mægler og sælger info til CSV
+        internal List<BoligMaeglerSaelger> GetCSVEverything()
+        {
+            // create list, ready for input
+            List<BoligMaeglerSaelger> List = new List<BoligMaeglerSaelger>();
+            string path = "C:\\csv\\EDC-OverviewList.csv";
+
+            // sql selection of the given table
+            string command = "Select * from Bolig, Ejendomsmaegler, Saelger where MaeglerId = MId and BoligId = SBoligId";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                // save connection in variable - to handle commands
+                SqlCommand cmd = new SqlCommand(command, conn);
+
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    int BoligId = (int)reader["BoligId"];
+                    string Adresse = (string)reader["Adresse"];
+                    int PostNr = (int)reader["PostNr"];
+                    int UdbudsPris = (int)reader["Udbudspris"];
+                    int Kvadratmeter = (int)reader["Kvadratmeter"];
+                    int KvmPris = (int)reader["KvmPris"];
+                    string BoligType = (string)reader["BoligType"];
+                    bool Aktiv = (bool)reader["Aktiv"];
+                    int SalgsPris = (int)reader["SalgsPris"];
+                    DateTime SalgsDato = (DateTime)reader["SalgsDato"];
+                    int MaeglerId = (int)reader["MaeglerId"];
+
+                    int MId = (int)reader["MId"];
+                    string MFname = (string)reader["MFname"];
+                    string MLname = (string)reader["MLname"];
+                    bool MAktiv = (bool)reader["MAktiv"];
+                    string MEmail = (string)reader["MEmail"];
+                    int MTlfNr = (int)reader["MTlfNr"];
+
+                    int SId = (int)reader["SId"];
+                    string SFname = (string)reader["SFname"];
+                    string SLname = (string)reader["SLname"];
+                    int SBoligId = (int)reader["SBoligId"];
+                    string SEmail = (string)reader["SEmail"];
+                    int STlfNr = (int)reader["STlfNr"];
+
+                    BoligMaeglerSaelger boligMm = new BoligMaeglerSaelger
+                    {
+                        BoligId = BoligId,
+                        Adresse = Adresse,
+                        PostNr = PostNr,
+                        UdbudsPris = UdbudsPris,
+                        Kvadratmeter = Kvadratmeter,
+                        KvmPris = KvmPris,
+                        BoligType = BoligType,
+                        Aktiv = Aktiv,
+                        SalgsPris = SalgsPris,
+                        SalgsDato = SalgsDato,
+                        MaeglerId = MaeglerId,
+
+                        MId = MId,
+                        MFname = MFname,
+                        MLname = MLname,
+                        MAktiv = MAktiv,
+                        MEmail = MEmail,
+                        MTlfNr = MTlfNr,
+
+                        SId = SId,
+                        SFname = SFname,
+                        SLname = SLname,
+                        SBoligId = SBoligId,
+                        SEmail = SEmail,
+                        STlfNr = STlfNr
+                    };
+                    List.Add(boligMm);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine("Bolig;-;-;-;-;-;-;-;-;-;-;EjendomsMægler;-;-;-;-;-;Sælger;-;-;-;-;-;");
+                writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;SalgsPris;SalgsDato;MaeglerId;Mægler ID;Fornavn;Efternavn;Aktiv;Email;Tlf;ID;Fornavn;Efternavn;BoligId;Email;Tlf");
+
+                foreach (BoligMaeglerSaelger Item in List)
+                {
+                    writer.WriteLine($"{Item.BoligId};{Item.Adresse};{Item.PostNr};{Item.UdbudsPris};{Item.Kvadratmeter};{Item.KvmPris};{Item.BoligType};{Item.Aktiv};{Item.SalgsPris};{Item.SalgsDato};{Item.MaeglerId};" +
+                        $"{Item.MId};{Item.MFname};{Item.MLname};{Item.MAktiv};{Item.MEmail};{Item.MTlfNr};{Item.SId};{Item.SFname};{Item.SLname};{Item.SBoligId};{Item.SEmail};{Item.STlfNr};");
+                }
+            }
+
+            return List;
+
+        }
+
+
+
 
 
 

@@ -1,3 +1,5 @@
+using SemesterProjekt.DataAccess;
+
 namespace SemesterProjekt
 {
     public partial class Form1 : Form
@@ -5,6 +7,14 @@ namespace SemesterProjekt
         public Form1()
         {
             InitializeComponent();
+            
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DbHandler db = new DbHandler();
+            db.GetCSVEverything();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

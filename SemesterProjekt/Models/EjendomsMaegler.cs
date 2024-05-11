@@ -13,6 +13,6 @@ namespace SemesterProjekt.Models
         public string MLname { get; set; }
         public bool MAktiv { get; set; }
         public string MEmail { get; set; }
-        public string MTlfNr { get; set; }
+        public int MTlfNr { get; set; }
     }
 }
