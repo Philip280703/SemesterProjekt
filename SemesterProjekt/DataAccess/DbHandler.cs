@@ -608,17 +608,19 @@ namespace SemesterProjekt.DataAccess
 
 
 
-        // Boliger fra bestemt område, med mægler og sælger info til CSV
-        internal List<BoligMaeglerSaelger> GetCSVEverything()
+        // Boliger fra bestemt Postnummer, med mægler og sælger info til CSV
+        internal List<BoligMaeglerSaelger> GetCSVEverything(int PostNr)
         {
             // create list, ready for input
             List<BoligMaeglerSaelger> List = new List<BoligMaeglerSaelger>();
             string path = "C:\\csv\\EDC-OverviewList.csv";
 
             // sql selection of the given table
-            string command = "Select * from Bolig, Ejendomsmaegler, Saelger where MaeglerId = MId and BoligId = SBoligId";
+            string command = "Select * from Bolig, Ejendomsmaegler, Saelger where MaeglerId = MId and BoligId = SBoligId and PostNr = (@PostNr)";
             // using sqlconnection
             using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            
 
             try
             {
@@ -627,13 +629,15 @@ namespace SemesterProjekt.DataAccess
                 // save connection in variable - to handle commands
                 SqlCommand cmd = new SqlCommand(command, conn);
 
+                cmd.Parameters.AddWithValue("@PostNr", PostNr);
+
                 using SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
 
                     int BoligId = (int)reader["BoligId"];
                     string Adresse = (string)reader["Adresse"];
-                    int PostNr = (int)reader["PostNr"];
+                    int postNr = PostNr;
                     int UdbudsPris = (int)reader["Udbudspris"];
                     int Kvadratmeter = (int)reader["Kvadratmeter"];
                     int KvmPris = (int)reader["KvmPris"];
@@ -661,7 +665,7 @@ namespace SemesterProjekt.DataAccess
                     {
                         BoligId = BoligId,
                         Adresse = Adresse,
-                        PostNr = PostNr,
+                        PostNr = postNr,
                         UdbudsPris = UdbudsPris,
                         Kvadratmeter = Kvadratmeter,
                         KvmPris = KvmPris,
