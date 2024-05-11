@@ -402,7 +402,7 @@ namespace SemesterProjekt.DataAccess
 
 
         // Read/Get one Sælger
-        internal Saelger GetSingleSaelger(int SId)
+        internal bool GetSingleSaelger(int SId)
         {
             Saelger SingleSaelger = new Saelger();
             // sql selection of the given table
@@ -445,6 +445,89 @@ namespace SemesterProjekt.DataAccess
             return SingleSaelger;
         }
 
+
+
+        // Update Sælger 
+        internal bool UpdateSaelger(Saelger saelger, int SId)
+        {
+
+            // sql selection of the given table
+            string command = "UPDATE saelger SET STlfNr = (@STlfNr) WHERE SId = (@SId)";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@SId", SId);
+            cmd.Parameters.AddWithValue("@STlfNr", saelger.STlfNr);
+
+
+
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+
+        // delete Sælger
+        internal bool HardDeleteSaelgerFromDB(int SId)
+        {
+
+            // sql selection of the given table
+            string command = "Delete from Saelger where SId = (@SId)";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@SId", SId);
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
 
 
