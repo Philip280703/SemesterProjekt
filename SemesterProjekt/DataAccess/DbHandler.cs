@@ -653,6 +653,7 @@ namespace SemesterProjekt.DataAccess
                     bool MAktiv = (bool)reader["MAktiv"];
                     string MEmail = (string)reader["MEmail"];
                     int MTlfNr = (int)reader["MTlfNr"];
+                    int Afdeling = (int)reader["Afdeling"];
 
                     int SId = (int)reader["SId"];
                     string SFname = (string)reader["SFname"];
@@ -681,6 +682,7 @@ namespace SemesterProjekt.DataAccess
                         MAktiv = MAktiv,
                         MEmail = MEmail,
                         MTlfNr = MTlfNr,
+                        Afdeling = Afdeling,
 
                         SId = SId,
                         SFname = SFname,
@@ -704,13 +706,13 @@ namespace SemesterProjekt.DataAccess
             }
             using (StreamWriter writer = new StreamWriter(path))
             {
-                writer.WriteLine("Bolig;-;-;-;-;-;-;-;-;-;-;EjendomsMægler;-;-;-;-;-;Sælger;-;-;-;-;-;");
-                writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;SalgsPris;SalgsDato;MaeglerId;Mægler ID;Fornavn;Efternavn;Aktiv;Email;Tlf;ID;Fornavn;Efternavn;BoligId;Email;Tlf");
+                writer.WriteLine("Bolig;-;-;-;-;-;-;-;-;-;-;EjendomsMægler;-;-;-;-;-;-;Sælger;-;-;-;-;-;");
+                writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;SalgsPris;SalgsDato;MaeglerId;Mægler ID;Fornavn;Efternavn;Aktiv;Email;Tlf;Afdeling;ID;Fornavn;Efternavn;BoligId;Email;Tlf");
 
                 foreach (BoligMaeglerSaelger Item in List)
                 {
                     writer.WriteLine($"{Item.BoligId};{Item.Adresse};{Item.PostNr};{Item.UdbudsPris};{Item.Kvadratmeter};{Item.KvmPris};{Item.BoligType};{Item.Aktiv};{Item.SalgsPris};{Item.SalgsDato};{Item.MaeglerId};" +
-                        $"{Item.MId};{Item.MFname};{Item.MLname};{Item.MAktiv};{Item.MEmail};{Item.MTlfNr};{Item.SId};{Item.SFname};{Item.SLname};{Item.SBoligId};{Item.SEmail};{Item.STlfNr};");
+                        $"{Item.MId};{Item.MFname};{Item.MLname};{Item.MAktiv};{Item.MEmail};{Item.MTlfNr};{Item.Afdeling};{Item.SId};{Item.SFname};{Item.SLname};{Item.SBoligId};{Item.SEmail};{Item.STlfNr};");
                 }
             }
 

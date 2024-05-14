@@ -14,5 +14,6 @@ namespace SemesterProjekt.Models
         public bool MAktiv { get; set; }
         public string MEmail { get; set; }
         public int MTlfNr { get; set; }
+        public int Afdeling {  get; set; }
     }
 }
