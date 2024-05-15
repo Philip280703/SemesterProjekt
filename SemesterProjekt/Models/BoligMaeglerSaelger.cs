@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace SemesterProjekt.Models
             {
                 if (value <= 0 || value > 100001)
                 {
-                    throw new Exception("BoligId is out of range");
+                    throw new ArgumentException("BoligId is out of range");
                 }
                 boligId = value;
             }
@@ -37,7 +38,7 @@ namespace SemesterProjekt.Models
             {
                 if (value < 1000 || value > 10000)
                 {
-                    throw new Exception("Postalcode is out of range");
+                    throw new ArgumentException("Postalcode is out of range");
                 }
                 postnr = value;
             }
@@ -54,12 +55,26 @@ namespace SemesterProjekt.Models
             {
                 if (value < 0 || value > 1000000001)
                 {
-                    throw new Exception("Price is out of range");
+                    throw new ArgumentException("Price is out of range");
                 }
                 udbudspris = value;
             }
         }
-        public int Kvadratmeter { get; set; }
+        int kvadratmeter;
+        public int Kvadratmeter
+        {
+            get
+            {
+                return kvadratmeter;
+            }
+            set
+            {
+                if (value < 30 || value > 1000)
+                {
+                    throw new ArgumentException("Square meter is out of range");
+                }
+            }
+        }
         public int KvmPris { get; set; }
         public string BoligType { get; set; }
         public bool Aktiv { get; set; }
@@ -75,27 +90,221 @@ namespace SemesterProjekt.Models
             {
                 if (value < 0 || value > 1000000001)
                 {
-                    throw new Exception("Price is out of range");
+                    throw new ArgumentException("Price is out of range");
                 }
                 salgspris = value;
             }
         }
-        public DateTime SalgsDato { get; set; }
-        public int MaeglerId { get; set; }
 
-        public int MId { get; set; }
-        public string MFname { get; set; }
-        public string MLname { get; set; }
+        DateTime date;
+        public DateTime SalgsDato
+        {
+            get { return date; }
+            set
+            {
+                if (value < new DateTime(01 - 01 - 1850) || value > new DateTime(01 - 01 - 2050))
+                {
+                    throw new ArgumentException("Date is out of range");
+                }
+                date = value;
+            }
+        }
+  
+        int maeglerid;
+        public int MaeglerId
+        {
+            get
+            {
+                return maeglerid;
+            }
+            set
+            {
+                if (value < 0 || value > 10000)
+                {
+                    throw new ArgumentException("ID is out of range");
+                }
+                maeglerid = value;
+            }
+        }
+
+        int mid;
+        public int MId
+        {
+            get
+            {
+                return mid;
+            }
+            set
+            {
+                if (value < 0 || value > 10000)
+                {
+                    throw new ArgumentException("ID is out of range");
+                }
+                mid = value;
+            }
+        }
+
+        string mfname;
+        public string MFname 
+        {
+            get
+            {
+                return mfname;
+            }
+            set
+            {
+                if (value.Length < 2 || value.Length > 25)
+                {
+                    throw new ArgumentException("Firstname is out of range");
+                }
+                mfname = value;
+            }
+        }
+
+        string mlname;
+        public string MLname
+        {
+            get 
+            { 
+                return mlname;
+            }
+            set 
+            { 
+                if(value.Length < 2 || value.Length < 25)
+                {
+                    throw new ArgumentException("Lastname is out of range");
+                }
+                mlname = value;
+            }
+        }
         public bool MAktiv { get; set; }
-        public string MEmail { get; set; }
-        public int MTlfNr { get; set; }
+
+
+        string memail;
+        public string MEmail
+        {
+            get { return memail; }
+            set
+            {
+                if (value.Length < 5 || !value.Contains("@") || !value.Contains("."))
+                {
+                    throw new ArgumentException("Email is not valid");
+                }
+                memail = value;
+            }
+        }
+
+
+        int mtlfnr;
+        public int MTlfNr
+        {
+            get { return mtlfnr; }
+            set
+            {
+                if (value < 7 || value >= 10)
+                {
+                    throw new ArgumentException("Phonenumber is out of range");
+                }
+                mtlfnr = value;
+            }
+        }
         public int Afdeling {  get; set; }
 
-        public int SId { get; set; }
-        public string SFname { get; set; }
-        public string SLname { get; set; }
-        public int SBoligId { get; set; }
-        public string SEmail { get; set; }
-        public int STlfNr { get; set; }
+        
+        int sid;
+        public int SId
+        {
+            get
+            {
+                return sid;
+            }
+            set
+            {
+                if (value < 0 || value > 10000)
+                {
+                    throw new ArgumentException("ID is out of range");
+                }
+                sid = value;
+            }
+        }
+
+        string sfname;
+        public string SFname
+        {
+            get
+            {
+                return sfname;
+            }
+            set
+            {
+                if (value.Length < 2 || value.Length > 25)
+                {
+                    throw new ArgumentException("Firstname is out of range");
+                }
+                sfname = value;
+            }
+        }
+
+        string slname;
+        public string SLname
+        {
+            get
+            {
+                return slname;
+            }
+            set
+            {
+                if (value.Length < 2 || value.Length < 25)
+                {
+                    throw new ArgumentException("Lastname is out of range");
+                }
+                slname = value;
+            }
+        }
+        
+        int sboligid;
+        public int SBoligId
+        {
+            get
+            {
+                return sboligid;
+            }
+            set
+            {
+                if (value < 0 || value > 10000)
+                {
+                    throw new ArgumentException("ID is out of range");
+                }
+                sboligid = value;
+            }
+        }
+        
+        string semail;
+        public string SEmail
+        {
+            get { return semail; }
+            set
+            {
+                if (value.Length < 5 || !value.Contains("@") || !value.Contains("."))
+                {
+                    throw new ArgumentException("Email is not valid");
+                }
+                semail = value;
+            }
+        }
+
+        int stlfnr;
+        public int STlfNr
+        {
+            get { return stlfnr; }
+            set
+            {
+                if (value < 7 || value >= 10)
+                {
+                    throw new ArgumentException("Phonenumber is out of range");
+                }
+                stlfnr = value;
+            }
+        }
     }
 }

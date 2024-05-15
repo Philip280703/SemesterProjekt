@@ -59,7 +59,23 @@ namespace SemesterProjekt.Models
                 udbudspris = value;
             }
         }
-        public int Kvadratmeter { get; set; }
+        int kvadratmeter;
+        public int Kvadratmeter
+        {
+            get
+            {
+                return kvadratmeter;
+            }
+            set
+            {
+                if (value < 30 || value > 1000)
+                {
+                    throw new Exception("Square meter is out of range");
+                }
+                kvadratmeter = value;
+            }
+        }
+
         public int KvmPris { get; set; }
         public string BoligType { get; set; }
         public bool Aktiv {  get; set; }
@@ -80,7 +96,21 @@ namespace SemesterProjekt.Models
                 salgspris = value;
             }
         }
-        public DateTime SalgsDato { get; set; }
+  
+
+        DateTime date;
+        public DateTime SalgsDato
+        {
+            get { return date; }
+            set
+            {
+                if (value < new DateTime (01 - 01 - 1850) || value > new DateTime ( 01 - 01 - 2050))
+                {
+                    throw new Exception("Date is out of range");
+                }
+                date = value;
+            }
+        }
         public int MaeglerId { get; set; }
     }
 }
