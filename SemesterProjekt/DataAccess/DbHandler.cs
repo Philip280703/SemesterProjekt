@@ -35,8 +35,6 @@ namespace SemesterProjekt.DataAccess
             SqlCommand cmd = new SqlCommand(Command, conn);
 
 
-
-
             cmd.Parameters.AddWithValue("@BoligId", NextBoligIdString);
             cmd.Parameters.AddWithValue("@Adresse", "Adresse");
             cmd.Parameters.AddWithValue("@PostNr", "PostNr");
@@ -108,6 +106,8 @@ namespace SemesterProjekt.DataAccess
                     int SalgsPris = (int)reader["SalgsPris"];
                     DateTime SalgsDato = (DateTime)reader["SalgsDato"];
                     int MaeglerId = (int)reader["MaeglerId"];
+
+                    // Calculate squaremeterprice. If the listing is active then calc by UdbudsPris, else calc by Salgspris
                     int KvmPris;
                     if (Aktiv == true) 
                     {
@@ -169,6 +169,8 @@ namespace SemesterProjekt.DataAccess
                     int SalgsPris = (int)reader["SalgsPris"];
                     DateTime SalgsDato = (DateTime)reader["SalgsDato"];
                     int MaeglerId = (int)reader["MaeglerId"];
+
+                    // Calculate squaremeterprice. If the listing is active then calc by UdbudsPris, else calc by Salgspris
                     int KvmPris;
                     if (Aktiv == true)
                     {
@@ -271,6 +273,7 @@ namespace SemesterProjekt.DataAccess
             cmd.Parameters.AddWithValue("@Salgspris", bolig.SalgsPris);
             cmd.Parameters.AddWithValue("@SalgsDato", bolig.SalgsDato);
 
+            // Method sets bool of active status aswell as a salesprice, salesdate and updates on the boligid that is given
 
 
             int rows = 0;
@@ -582,6 +585,8 @@ namespace SemesterProjekt.DataAccess
         {
             // create list, ready for input
             List<Bolig> BoligList = new List<Bolig>();
+
+            // The file is saved to this path. that means that you have to have a folder on your C: disk that is called "csv"
             string path = "C:\\csv\\EDC-BoligerTilSalg.csv";
 
             // sql selection of the given table
@@ -636,6 +641,8 @@ namespace SemesterProjekt.DataAccess
             {
                 conn.Close();
             }
+            // streamwriter takes the list and exports it to all kinds of files.
+            // this is a list that is printed in a file that is seperated by ; and exported to csv, so that the ouput has its own field in an file in excel
             using (StreamWriter writer = new StreamWriter(path))
             {
                 writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;MaeglerId");
@@ -657,6 +664,8 @@ namespace SemesterProjekt.DataAccess
         {
             // create list, ready for input
             List<BoligMaeglerSaelger> List = new List<BoligMaeglerSaelger>();
+
+            // The path for where the file is stored, it overides each time you run it. Need to have a foulder called "csv" on your C: drive
             string path = "C:\\csv\\EDC-OverviewList.csv";
 
             // sql selection of the given table
@@ -759,6 +768,9 @@ namespace SemesterProjekt.DataAccess
             {
                 conn.Close();
             }
+
+            // streamwriter takes the list and exports it to all kinds of files.
+            // this is a list that is printed in a file that is seperated by ; and exported to csv, so that the ouput has its own field in an file in excel
             using (StreamWriter writer = new StreamWriter(path))
             {
                 writer.WriteLine("Bolig;-;-;-;-;-;-;-;-;-;-;EjendomsMægler;-;-;-;-;-;-;Sælger;-;-;-;-;-;");
