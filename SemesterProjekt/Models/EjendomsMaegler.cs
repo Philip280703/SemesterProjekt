@@ -85,6 +85,18 @@ namespace SemesterProjekt.Models
                 }
             }
         }
-        public int Afdeling {  get; set; }
+        int afdeling;
+        public int Afdeling
+        {
+            get { return afdeling; }
+            set
+            {
+                if (value < 0 || value >= 20)
+                {
+                    throw new ArgumentException("Afdeling number is not between 0 and 20");
+                }
+                afdeling = value;
+            }
+        }
     }
 }

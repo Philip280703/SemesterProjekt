@@ -34,6 +34,9 @@ namespace SemesterProjekt.DataAccess
 
             SqlCommand cmd = new SqlCommand(Command, conn);
 
+
+
+
             cmd.Parameters.AddWithValue("@BoligId", NextBoligIdString);
             cmd.Parameters.AddWithValue("@Adresse", "Adresse");
             cmd.Parameters.AddWithValue("@PostNr", "PostNr");
@@ -777,7 +780,7 @@ namespace SemesterProjekt.DataAccess
 
 
 
-        // --------------------------- Ekstra Features -------------------------------------
+        // --------------------------- MaxId -------------------------------------
 
         // find max id, function for Create method
         internal int FindMaxBoligId()

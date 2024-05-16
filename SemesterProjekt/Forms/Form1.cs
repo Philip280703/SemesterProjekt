@@ -15,7 +15,7 @@ namespace SemesterProjekt
         private void button1_Click(object sender, EventArgs e)
         {
             DbHandler db = new DbHandler();
-            db.GetSingleBolig(5);
+            db.GetAllBolig();
         }
     }
 }

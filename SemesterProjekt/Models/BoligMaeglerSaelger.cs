@@ -53,7 +53,7 @@ namespace SemesterProjekt.Models
             }
             set
             {
-                if (value < 0 || value > 1000000001)
+                if (value < 0 || value > 100000000)
                 {
                     throw new ArgumentException("Price is out of range");
                 }
@@ -75,9 +75,38 @@ namespace SemesterProjekt.Models
                 }
             }
         }
-      
-        public int KvmPris { get; set; }
-        public string BoligType { get; set; }
+
+        int kvmpris;
+        public int KvmPris
+        {
+            get { return kvmpris; }
+            set
+            {
+                if (value < 1000 || value > 250000)
+                {
+                    throw new ArgumentException();
+                }
+                kvmpris = value;
+            }
+        }
+
+        string boligtype;
+        public string BoligType
+        {
+            get { return boligtype; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    if (value != "Villa" || value != "Rækkehus" || value != "Andelsbolig" || value != "Lejlighed")
+                    {
+                        throw new ArgumentException("BoligType is either empty or not af value: Villa, Rækkehus, Andelsbolig or Lejlighed");
+                    }
+                    boligtype = value;
+                }
+
+            }
+        }
         public bool Aktiv { get; set; }
 
         int salgspris;
@@ -89,7 +118,7 @@ namespace SemesterProjekt.Models
             }
             set
             {
-                if (value < 0 || value > 1000000001)
+                if (value < 0 || value > 100000000)
                 {
                     throw new ArgumentException("Price is out of range");
                 }
@@ -209,7 +238,19 @@ namespace SemesterProjekt.Models
                 mtlfnr = value;
             }
         }
-        public int Afdeling {  get; set; }
+        int afdeling;
+        public int Afdeling 
+        {
+            get { return afdeling; }
+            set
+            {
+                if (value < 0 || value >= 20)
+                {
+                    throw new ArgumentException("Afdeling number is not between 0 and 20");
+                }
+                afdeling = value;
+            }
+        }
 
         
         int sid;

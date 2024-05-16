@@ -19,7 +19,7 @@ namespace SemesterProjekt.Models
             {
                 if (value <= 0 || value > 100001)
                 {
-                    throw new Exception("BoligId is out of range");
+                    throw new ArgumentException("BoligId is out of range");
                 }
                 boligId = value;
             }
@@ -37,7 +37,7 @@ namespace SemesterProjekt.Models
             {
                 if (value < 1000 || value > 10000 )
                 {
-                    throw new Exception("Postalcode is out of range");
+                    throw new ArgumentException("Postalcode is out of range");
                 }
                 postnr = value;
             }
@@ -54,7 +54,7 @@ namespace SemesterProjekt.Models
             {
                 if (value < 0 || value > 1000000001)
                 {
-                    throw new Exception("Price is out of range");
+                    throw new ArgumentException("Price is out of range");
                 }
                 udbudspris = value;
             }
@@ -70,14 +70,44 @@ namespace SemesterProjekt.Models
             {
                 if (value < 30 || value > 1000)
                 {
-                    throw new Exception("Square meter is out of range");
+                    throw new ArgumentException("Square meter is out of range");
                 }
                 kvadratmeter = value;
             }
         }
 
-        public int KvmPris { get; set; }
-        public string BoligType { get; set; }
+        int kvmpris;
+        public int KvmPris 
+        {  
+            get { return kvmpris;}
+            set
+            {
+                if (value < 1000 || value > 250000)
+                {
+                    throw new ArgumentException();
+                }
+                kvmpris = value;
+            }
+        }
+
+        string boligtype;
+        public string BoligType 
+        { 
+            get { return boligtype; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    if (value != "Villa" || value != "Rækkehus" || value != "Andelsbolig" || value != "Lejlighed")
+                    {
+                        throw new ArgumentException("BoligType is either empty or not af value: Villa, Rækkehus, Andelsbolig or Lejlighed");
+                    }
+                    boligtype = value;
+                }
+
+            }
+        }
+
         public bool Aktiv {  get; set; }
 
         int salgspris;
@@ -91,7 +121,7 @@ namespace SemesterProjekt.Models
             {
                 if (value < 0 || value > 1000000001)
                 {
-                    throw new Exception("Price is out of range");
+                    throw new ArgumentException("Price is out of range");
                 }
                 salgspris = value;
             }
@@ -106,11 +136,23 @@ namespace SemesterProjekt.Models
             {
                 if (value <  new DateTime(1850,01,01) || value > new DateTime(2050,01,01))
                 {
-                    throw new Exception("Date1 is out of range");
+                    throw new ArgumentException("Date1 is out of range");
                 }
                 date = value;
             }
         }
-        public int MaeglerId { get; set; }
+        int maeglerid;
+        public int MaeglerId 
+        {
+            get { return maeglerid; }
+            set
+            {
+                if ((value < 0) || (value > 1000))
+                {
+                    throw new ArgumentException("MaeglerId is out of range");
+                }
+                maeglerid = value;
+            }
+        }
     }
 }
