@@ -104,9 +104,9 @@ namespace SemesterProjekt.Models
             get { return date; }
             set
             {
-                if (value < new DateTime (01 - 01 - 1850) || value > new DateTime ( 01 - 01 - 2050))
+                if (value <  new DateTime(1850,01,01) || value > new DateTime(2050,01,01))
                 {
-                    throw new Exception("Date is out of range");
+                    throw new Exception("Date1 is out of range");
                 }
                 date = value;
             }

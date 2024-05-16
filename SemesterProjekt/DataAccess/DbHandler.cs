@@ -27,10 +27,8 @@ namespace SemesterProjekt.DataAccess
             int NextBoligId = FindMaxBoligId();
             string NextBoligIdString = NextBoligId.ToString();
 
-            int CalcKvmPris = bolig.UdbudsPris / bolig.Kvadratmeter;
-
-            string Command = "Insert Bolig (BoligId, Adresse, PostNr, UdbudsPris, Kvadratmeter, KvmPris, BoligType, Aktiv, SalgsPris, SalgsDato, MaeglerId)" +
-                " values (@BoligId, @Adresse, @PostNr, @UdbudsPris, @Kvadratmeter, @KvmPris, @BoligType, @Aktiv, @SalgsPris, @SalgsDato, @MaeglerId)";
+            string Command = "Insert Bolig (BoligId, Adresse, PostNr, UdbudsPris, Kvadratmeter, BoligType, Aktiv, SalgsPris, SalgsDato, MaeglerId)" +
+                " values (@BoligId, @Adresse, @PostNr, @UdbudsPris, @Kvadratmeter, @BoligType, @Aktiv, @SalgsPris, @SalgsDato, @MaeglerId)";
 
             using SqlConnection conn = new SqlConnection(ConnectionString);
 
@@ -41,7 +39,6 @@ namespace SemesterProjekt.DataAccess
             cmd.Parameters.AddWithValue("@PostNr", "PostNr");
             cmd.Parameters.AddWithValue("@UdbudsPris", "UdbudsPris");
             cmd.Parameters.AddWithValue("@Kvadratmeter", "Kvadratmeter");
-            cmd.Parameters.AddWithValue("@KvmPris", CalcKvmPris);
             cmd.Parameters.AddWithValue("@BoligType", "BoligType");
             cmd.Parameters.AddWithValue("@Aktiv", "Aktiv");
             cmd.Parameters.AddWithValue("@SalgsPris", "SalgsPris");
@@ -102,12 +99,23 @@ namespace SemesterProjekt.DataAccess
                     int PostNr = (int)reader["PostNr"];
                     int UdbudsPris = (int)reader["Udbudspris"];
                     int Kvadratmeter = (int)reader["Kvadratmeter"];
-                    int KvmPris = (int)reader["KvmPris"];
+                   
                     string BoligType = (string)reader["BoligType"];
                     bool Aktiv = (bool)reader["Aktiv"];
                     int SalgsPris = (int)reader["SalgsPris"];
                     DateTime SalgsDato = (DateTime)reader["SalgsDato"];
                     int MaeglerId = (int)reader["MaeglerId"];
+                    int KvmPris;
+                    if (Aktiv == true) 
+                    {
+                        int activeCalc = UdbudsPris / Kvadratmeter;
+                        KvmPris = activeCalc;
+                    }
+                    else
+                    {
+                        int soldCalc = SalgsPris / Kvadratmeter;
+                        KvmPris = soldCalc;
+                    }
 
                     Bolig bolig = new Bolig { BoligId = BoligId, Adresse = Adresse, PostNr = PostNr, UdbudsPris = UdbudsPris, Kvadratmeter = Kvadratmeter, 
                         KvmPris = KvmPris, BoligType = BoligType, Aktiv = Aktiv, SalgsPris = SalgsPris, SalgsDato = SalgsDato, MaeglerId = MaeglerId };
@@ -147,9 +155,41 @@ namespace SemesterProjekt.DataAccess
                 using SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    SingleBolig = new Bolig { BoligId = (int)reader["BoligId"], Adresse = (string)reader["Title"], PostNr = (int)reader["PostNr"], UdbudsPris = (int)reader["Udbudspris"], 
-                        Kvadratmeter = (int)reader["Kvadratmeter"], KvmPris = (int)reader["KvmPris"], BoligType = (string)reader["BoligType"], Aktiv = (bool)reader["Aktiv"], 
-                        SalgsPris = (int)reader["SalgsPris"], SalgsDato = (DateTime)reader["SalgsDato"], MaeglerId = (int)reader["MaeglerId"] };
+                    int boligId = BoligId;
+                    string Adresse = (string)reader["Adresse"];
+                    int PostNr = (int)reader["PostNr"];
+                    int UdbudsPris = (int)reader["Udbudspris"];
+                    int Kvadratmeter = (int)reader["Kvadratmeter"];
+
+                    string BoligType = (string)reader["BoligType"];
+                    bool Aktiv = (bool)reader["Aktiv"];
+                    int SalgsPris = (int)reader["SalgsPris"];
+                    DateTime SalgsDato = (DateTime)reader["SalgsDato"];
+                    int MaeglerId = (int)reader["MaeglerId"];
+                    int KvmPris;
+                    if (Aktiv == true)
+                    {
+                        int activeCalc = UdbudsPris / Kvadratmeter;
+                        KvmPris = activeCalc;
+                    }
+                    else
+                    {
+                        int soldCalc = SalgsPris / Kvadratmeter;
+                        KvmPris = soldCalc;
+                    }
+                    SingleBolig = new Bolig {
+                        BoligId = boligId,
+                        Adresse = Adresse,
+                        PostNr = PostNr,
+                        UdbudsPris = UdbudsPris,
+                        Kvadratmeter = Kvadratmeter,
+                        KvmPris = KvmPris,
+                        BoligType = BoligType,
+                        Aktiv = Aktiv,
+                        SalgsPris = SalgsPris,
+                        SalgsDato = SalgsDato,
+                        MaeglerId = MaeglerId
+                    };
                 }
 
             }
@@ -562,10 +602,11 @@ namespace SemesterProjekt.DataAccess
                     int PostNr = (int)reader["PostNr"];
                     int UdbudsPris = (int)reader["Udbudspris"];
                     int Kvadratmeter = (int)reader["Kvadratmeter"];
-                    int KvmPris = (int)reader["KvmPris"];
                     string BoligType = (string)reader["BoligType"];
                     bool Aktiv = (bool)reader["Aktiv"];
                     int MaeglerId = (int)reader["MaeglerId"];
+                    int KvmPris = UdbudsPris / Kvadratmeter;
+                   
 
                     Bolig bolig = new Bolig
                     {
@@ -640,12 +681,23 @@ namespace SemesterProjekt.DataAccess
                     int postNr = PostNr;
                     int UdbudsPris = (int)reader["Udbudspris"];
                     int Kvadratmeter = (int)reader["Kvadratmeter"];
-                    int KvmPris = (int)reader["KvmPris"];
+                    
                     string BoligType = (string)reader["BoligType"];
                     bool Aktiv = (bool)reader["Aktiv"];
                     int SalgsPris = (int)reader["SalgsPris"];
                     DateTime SalgsDato = (DateTime)reader["SalgsDato"];
                     int MaeglerId = (int)reader["MaeglerId"];
+                    int KvmPris;
+                    if (Aktiv == true)
+                    {
+                        int activeCalc = UdbudsPris / Kvadratmeter;
+                        KvmPris = activeCalc;
+                    }
+                    else
+                    {
+                        int soldCalc = SalgsPris / Kvadratmeter;
+                        KvmPris = soldCalc;
+                    }
 
                     int MId = (int)reader["MId"];
                     string MFname = (string)reader["MFname"];
