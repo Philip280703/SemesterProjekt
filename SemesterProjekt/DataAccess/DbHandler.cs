@@ -578,6 +578,481 @@ namespace SemesterProjekt.DataAccess
 
 
 
+
+
+        // -------------------- Ejendomsmæglere ---------------------------------------------------
+
+        // Create new ejendomsmægler
+        internal bool CreateMaegler(Saelger Saelger)
+        {
+            int NextMId = FindMaxMId();
+            string NextMIdString = NextMId.ToString();
+
+            string Command = "Insert Saelger (MId, MFname, MLname, MAktiv, MEmail, MTlfNr, Afdeling)" +
+                " values (@MId, @MFname, @MLname, @MAktiv, @MEmail, @MTlfNr, @Afdeling)";
+
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            SqlCommand cmd = new SqlCommand(Command, conn);
+
+            cmd.Parameters.AddWithValue("@MId", NextMIdString);
+            cmd.Parameters.AddWithValue("@MFname", "MFname");
+            cmd.Parameters.AddWithValue("@MLname", "MLname");
+            cmd.Parameters.AddWithValue("@MAktiv", "MAktiv");
+            cmd.Parameters.AddWithValue("@MEmail", "MEmail");
+            cmd.Parameters.AddWithValue("@MTlfNr", "MTlfNr");
+            cmd.Parameters.AddWithValue("@Afdeling", "Afdeling");
+
+            int Rows = 0;
+            try
+            {
+                conn.Open();
+                Rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            if (Rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+
+        // Get list of Ejendomsmæglere
+        internal List<EjendomsMaegler> GetAllEjendomsMaegler()
+        {
+            // create list, ready for input
+            List<EjendomsMaegler> EjendomsMaeglerList = new List<EjendomsMaegler>();
+
+            // sql selection of the given table
+            string command = "Select * from EjendomsMaegler";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                // save connection in variable - to handle commands
+                SqlCommand cmd = new SqlCommand(command, conn);
+
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    int MId = (int)reader["MId"];
+                    string MFname = (string)reader["MFname"];
+                    string MLname = (string)reader["MLname"];
+                    bool MAktiv = (bool)reader["MAktiv"];
+                    string MEmail = (string)reader["MEmail"];
+                    int MTlfNr = (int)reader["MTlfNr"];
+                    int Afdeling = (int)reader["Afdeling"];
+
+                    EjendomsMaegler maegler = new EjendomsMaegler
+                    {
+                        MId = MId,
+                        MFname = MFname,
+                        MLname = MLname,
+                        MAktiv = MAktiv,
+                        MEmail = MEmail,
+                        MTlfNr = MTlfNr,
+                        Afdeling = Afdeling,
+                    };
+                    EjendomsMaeglerList.Add(maegler);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return EjendomsMaeglerList;
+        }
+
+
+        // Read/Get one Ejedomsmægler
+        internal EjendomsMaegler GetSingleEjendomsMaegler(int MId)
+        {
+            EjendomsMaegler SingleEjendomsMaegler = new EjendomsMaegler();
+            // sql selection of the given table
+            string command = "Select * from EjendomsMaegler where MId = @MId";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@Mid", MId);
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    SingleEjendomsMaegler = new EjendomsMaegler()
+                    {
+                        MId = (int)reader["MId"],
+                        MFname = (string)reader["MFname"],
+                        MLname = (string)reader["MLname"],
+                        MAktiv = (bool)reader["MAktiv"],
+                        MEmail = (string)reader["MEmail"],
+                        MTlfNr = (int)reader["MTlfNr"],
+                        Afdeling = (int)reader["Afdeling"]
+                    };
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return SingleEjendomsMaegler;
+        }
+
+
+        // Update Ejendomsmægler 
+        internal bool UpdateEjendomsMaegler(EjendomsMaegler ejendomsMaegler, int MId)
+        {
+
+            // sql selection of the given table
+            string command = "UPDATE EjendomsMaegler SET Afdeling = (@Afdeling) WHERE MId = (@MId)";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@MId", MId);
+            cmd.Parameters.AddWithValue("@Afdeling", ejendomsMaegler.Afdeling);
+
+
+
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        // delete Ejendomsmægler
+        internal bool HardDeleteEjendomsMaeglerFromDB(int MId)
+        {
+
+            // sql selection of the given table
+            string command = "Delete from EjendomsMaegler where MId = (@MId)";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@MId", MId);
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+
+        // -------------------- Kunder ---------------------------------------------------
+
+        // Create new Kunde
+        internal bool CreateKunde(Kunde kunde)
+        {
+            int NextKId = FindMaxKId();
+            string NextKIdString = NextKId.ToString();
+
+            string Command = "Insert Saelger (KId, KFname, KLname, KBoligId, KEmail, KTlfNr)" +
+                " values (@KId, @KFname, @KLname, @KBoligId, @KEmail, @KTlfNr)";
+
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            SqlCommand cmd = new SqlCommand(Command, conn);
+
+            cmd.Parameters.AddWithValue("@KId", NextKIdString);
+            cmd.Parameters.AddWithValue("@KFname", "KFname");
+            cmd.Parameters.AddWithValue("@KLname", "KLname");
+            cmd.Parameters.AddWithValue("@KBoligId", "KBoligId");
+            cmd.Parameters.AddWithValue("@KEmail", "KEmail");
+            cmd.Parameters.AddWithValue("@KTlfNr", "KTlfNr");
+
+            int Rows = 0;
+            try
+            {
+                conn.Open();
+                Rows = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            if (Rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+
+
+        // Get list of kunder
+        internal List<Kunde> GetAllKunder()
+        {
+            // create list, ready for input
+            List<Kunde> kundeList = new List<Kunde>();
+
+            // sql selection of the given table
+            string command = "Select * from Kunde";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                // save connection in variable - to handle commands
+                SqlCommand cmd = new SqlCommand(command, conn);
+
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    int KId = (int)reader["KId"];
+                    string KFname = (string)reader["KFname"];
+                    string KLname = (string)reader["KLname"];
+                    int KBoligId = (int)reader["KBoligId"];
+                    string KEmail = (string)reader["KEmail"];
+                    int KTlfNr = (int)reader["KTlfNr"];
+
+                    Kunde kunde = new Kunde()
+                    {
+                        KId = KId,
+                        KFname = KFname,
+                        KLname = KLname,
+                        KBoligId = KBoligId,
+                        KEmail = KEmail,
+                        KTlfNr = KTlfNr
+                    };
+                    kundeList.Add(kunde);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return kundeList;
+        }
+
+
+
+        // Read/Get one Kunde
+        internal Kunde GetSingleKunde(int KId)
+        {
+            Kunde SingleKunde = new Kunde();
+            // sql selection of the given table
+            string command = "Select * from Kunde where KId = @KId";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@Kid", KId);
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    SingleKunde = new Kunde
+                    {
+                        KId = (int)reader["KId"],
+                        KFname = (string)reader["KFname"],
+                        KLname = (string)reader["KLname"],
+                        KBoligId = (int)reader["KBoligId"],
+                        KEmail = (string)reader["KEmail"],
+                        KTlfNr = (int)reader["KTlfNr"]
+                    };
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return SingleKunde;
+        }
+
+
+
+        // Update Kunde ved salg 
+        internal bool UpdateKunde(Kunde kunde, int KId)
+        {
+
+            // sql selection of the given table
+            string command = "UPDATE Kunde SET KBoligId = (@KBoligId) WHERE KId = (@KId)";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@Kd", KId);
+            cmd.Parameters.AddWithValue("@KBoligId", kunde.KBoligId);
+
+
+
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+
+        // delete Kunde
+        internal bool HardDeleteKundeFromDB(int KId)
+        {
+
+            // sql selection of the given table
+            string command = "Delete from Kunde where KId = (@KId)";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@KId", KId);
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+
+
+
+
         // ------------------------- CSV Files ----------------------------------------------------------------------------
 
         // Boliger til salg, export to CSV
@@ -858,5 +1333,72 @@ namespace SemesterProjekt.DataAccess
 
             return MaxSId;
         }
+
+        internal int FindMaxMId()
+        {
+            EjendomsMaegler ejendomsmaegler = new EjendomsMaegler();
+            string command = "Select max(MId) as id from EjendomsMaegler";
+            using SqlConnection connection = new SqlConnection(ConnectionString);
+
+            SqlCommand cmd = new SqlCommand(command, connection);
+
+            try
+            {
+                connection.Open();
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ejendomsmaegler = new EjendomsMaegler { MId = reader.GetInt32("id") };
+                    ejendomsmaegler.MId = reader.GetInt32("id") + 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            int MaxMId = ejendomsmaegler.MId;
+
+            return MaxMId;
+        }
+
+        internal int FindMaxKId()
+        {
+            Kunde kunde = new Kunde();
+            string command = "Select max(KId) as id from Kunde";
+            using SqlConnection connection = new SqlConnection(ConnectionString);
+
+            SqlCommand cmd = new SqlCommand(command, connection);
+
+            try
+            {
+                connection.Open();
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    kunde = new Kunde { KId = reader.GetInt32("id") };
+                    kunde.KId = reader.GetInt32("id") + 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            int MaxKId = kunde.KId;
+
+            return MaxKId;
+        }
+
+
+
     }
 }
