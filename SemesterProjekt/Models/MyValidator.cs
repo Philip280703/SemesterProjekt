@@ -47,7 +47,7 @@ namespace SemesterProjekt.Models
 
         public bool ValidatePhonenumber (int Phonenumber)
         {
-            if (Phonenumber < 7 || Phonenumber >= 10)
+            if (Phonenumber < 10000000 || Phonenumber > 99999999)
             {
                 return false;
             }
@@ -118,13 +118,13 @@ namespace SemesterProjekt.Models
         }
         public bool ValidateHouseType( string HouseType)
         {
-            if (!HouseType.Contains( "Villa") || !HouseType.Contains("Rækkehus") || !HouseType.Contains("Andelsbolig") || !HouseType.Contains("Lejlighed"))
+            if (HouseType == "Villa" || HouseType == "Rækkehus" || HouseType == "Andelsbolig" || HouseType == "Lejlighed")
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
         public bool ValidateSalesDate( DateTime SalesDate)

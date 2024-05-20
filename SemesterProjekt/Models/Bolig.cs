@@ -90,8 +90,23 @@ namespace SemesterProjekt.Models
             }
         }
 
-        public string BoligType { get; set; }
-       
+        string boligtype;
+        public string BoligType
+        {
+            get { return boligtype; }
+            set
+            {
+                if (boligtype == "Villa" || boligtype == "Rækkehus" || boligtype == "Andelsbolig" || boligtype == "Lejlighed")
+                {
+                    boligtype = value;
+                }
+                else
+                {
+                    throw new ArgumentException("BoligType is none of the four options");
+                }
+            }
+        }
+
 
         public bool Aktiv {  get; set; }
 
