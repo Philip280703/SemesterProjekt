@@ -19,6 +19,7 @@ namespace SemesterProjekt.Forms
             InitializeComponent();
             db = new DbHandler();
             dataGridView1.DataSource = db.GetAllBolig();
+            
         }
     }
 }
