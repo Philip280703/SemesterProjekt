@@ -90,18 +90,8 @@ namespace SemesterProjekt.Models
             }
         }
 
-        string boligtype;
-        public string BoligType 
-        { 
-            get { return boligtype; }
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-
-                }
-            }
-        }
+        public string BoligType { get; set; }
+       
 
         public bool Aktiv {  get; set; }
 
