@@ -28,33 +28,200 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
+            panel2 = new Panel();
+            comboBox3 = new ComboBox();
+            comboBox2 = new ComboBox();
+            comboBox1 = new ComboBox();
+            textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
+            label1 = new Label();
+            label2 = new Label();
+            textBox2 = new TextBox();
+            label3 = new Label();
+            textBox3 = new TextBox();
+            label4 = new Label();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(693, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(278, 552);
+            panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(comboBox3);
+            panel2.Controls.Add(comboBox2);
+            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(dataGridView1);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(693, 552);
+            panel2.TabIndex = 2;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "Pris", "0 - 999999", "1000000 - 1999999", "2000000 - 2999999", "3000000 - 3999999", "4000000 - 4999999" });
+            comboBox3.Location = new Point(592, 65);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(95, 23);
+            comboBox3.TabIndex = 4;
+            comboBox3.Text = "Pris";
+            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "PostNr", "1000 - 1999", "2000 - 2999", "3000 - 3999", "4000 - 4999", "5000 - 5999", "6000 - 6999", "7000 - 7999", "8000 - 8999", "9000 - 9999" });
+            comboBox2.Location = new Point(498, 65);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(88, 23);
+            comboBox2.TabIndex = 3;
+            comboBox2.Text = "PostNr";
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "BoligType", "Villa", "Lejlighed", "Rækkehus", "Andelsbolig" });
+            comboBox1.Location = new Point(390, 65);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(102, 23);
+            comboBox1.TabIndex = 2;
+            comboBox1.Text = "BoligType";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(12, 65);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Adresse";
+            textBox1.Size = new Size(372, 23);
+            textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = SystemColors.Control;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(79, 181);
+            dataGridView1.Location = new Point(12, 94);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(693, 350);
+            dataGridView1.Size = new Size(675, 446);
             dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(278, 67);
+            label1.TabIndex = 0;
+            label1.Text = "Mægler";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(6, 67);
+            label2.Name = "label2";
+            label2.Size = new Size(44, 19);
+            label2.TabIndex = 1;
+            label2.Text = "Navn";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(6, 89);
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(269, 23);
+            textBox2.TabIndex = 2;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(6, 115);
+            label3.Name = "label3";
+            label3.Size = new Size(47, 19);
+            label3.TabIndex = 3;
+            label3.Text = "Tlf Nr";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(6, 137);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(269, 23);
+            textBox3.TabIndex = 4;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(6, 163);
+            label4.Name = "label4";
+            label4.Size = new Size(45, 19);
+            label4.TabIndex = 5;
+            label4.Text = "Email";
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(891, 543);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(971, 552);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form2";
             Text = "Form2";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
+        private Panel panel1;
+        private Panel panel2;
         private DataGridView dataGridView1;
+        private TextBox textBox1;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private TrackBar trackBar1;
+        private ComboBox comboBox3;
+        private Label label3;
+        private TextBox textBox2;
+        private Label label2;
+        private Label label1;
+        private Label label4;
+        private TextBox textBox3;
     }
 }
