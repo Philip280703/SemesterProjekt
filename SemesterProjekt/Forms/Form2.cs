@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SemesterProjekt.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace SemesterProjekt.Forms
 {
     public partial class Form2 : Form
     {
+        DbHandler db;
         public Form2()
         {
             InitializeComponent();
+            db = new DbHandler();
+            dataGridView1.DataSource = db.GetAllBolig();
         }
     }
 }
