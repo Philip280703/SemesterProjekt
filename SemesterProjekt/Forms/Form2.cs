@@ -21,7 +21,9 @@ namespace SemesterProjekt.Forms
             InitializeComponent();
             db = new DbHandler();
             dataGridView1.DataSource = db.GetAllBolig();
-            
+            this.dataGridView1.Columns["UdbudsPris"].DefaultCellStyle.Format = "N0";
+            this.dataGridView1.Columns["SalgsPris"].DefaultCellStyle.Format = "N0";
+            this.dataGridView1.Columns["KvmPris"].DefaultCellStyle.Format = "N0";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
