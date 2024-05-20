@@ -96,15 +96,10 @@ namespace SemesterProjekt.Models
             get { return boligtype; }
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value))
                 {
-                    if (value != "Villa" || value != "Rækkehus" || value != "Andelsbolig" || value != "Lejlighed")
-                    {
-                        throw new ArgumentException("BoligType is either empty or not af value: Villa, Rækkehus, Andelsbolig or Lejlighed");
-                    }
-                    boligtype = value;
-                }
 
+                }
             }
         }
 
