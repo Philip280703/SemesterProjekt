@@ -137,6 +137,81 @@ namespace SemesterProjekt.DataAccess
             return BoligList;
         }
 
+        internal List<Bolig> Searchbar(string txt)
+        {
+            // create list, ready for input
+            List<Bolig> BoligList = new List<Bolig>();
+
+            // sql selection of the given table
+            string command = $"Select * from Bolig where Adresse Like '%{txt}%'";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                // save connection in variable - to handle commands
+                SqlCommand cmd = new SqlCommand(command, conn);
+
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    int BoligId = (int)reader["BoligId"];
+                    string Adresse = (string)reader["Adresse"];
+                    int PostNr = (int)reader["PostNr"];
+                    int UdbudsPris = (int)reader["Udbudspris"];
+                    int Kvadratmeter = (int)reader["Kvadratmeter"];
+
+                    string BoligType = (string)reader["BoligType"];
+                    bool Aktiv = (bool)reader["Aktiv"];
+                    int SalgsPris = (int)reader["SalgsPris"];
+                    DateTime SalgsDato = (DateTime)reader["SalgsDato"];
+                    int MaeglerId = (int)reader["MaeglerId"];
+
+                    // Calculate squaremeterprice. If the listing is active then calc by UdbudsPris, else calc by Salgspris
+                    int KvmPris;
+                    if (Aktiv == true)
+                    {
+                        int activeCalc = UdbudsPris / Kvadratmeter;
+                        KvmPris = activeCalc;
+                    }
+                    else
+                    {
+                        int soldCalc = SalgsPris / Kvadratmeter;
+                        KvmPris = soldCalc;
+                    }
+
+                    Bolig bolig = new Bolig
+                    {
+                        BoligId = BoligId,
+                        Adresse = Adresse,
+                        PostNr = PostNr,
+                        UdbudsPris = UdbudsPris,
+                        Kvadratmeter = Kvadratmeter,
+                        KvmPris = KvmPris,
+                        BoligType = BoligType,
+                        Aktiv = Aktiv,
+                        SalgsPris = SalgsPris,
+                        SalgsDato = SalgsDato,
+                        MaeglerId = MaeglerId
+                    };
+                    BoligList.Add(bolig);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return BoligList;
+        }
+
 
 
         // Read/Get one Bolig

@@ -6,6 +6,7 @@ namespace SemesterProjekt
 {
     public partial class Form1 : Form
     {
+        Form bf;
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace SemesterProjekt
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
 
             //Åbner Form inde i panelet i form1// 
-            Form2 bf = new Form2();
+            bf = new Form2();
             bf.TopLevel = false;
             bf.FormBorderStyle = FormBorderStyle.None;
             bf.Dock = DockStyle.Fill;
@@ -51,6 +52,7 @@ namespace SemesterProjekt
 
             ButtonM.BackColor = Color.FromArgb(35, 31, 80);
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
+            bf.Hide();
         }
 
         private void ButtonK_Click(object sender, EventArgs e)
@@ -67,6 +69,7 @@ namespace SemesterProjekt
 
             ButtonM.BackColor = Color.FromArgb(35, 31, 80);
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
+            bf.Hide();
         }
 
         private void ButtonM_Click(object sender, EventArgs e)
@@ -83,6 +86,7 @@ namespace SemesterProjekt
 
             ButtonM.BackColor = Color.FromArgb(229, 159, 0);
             ButtonM.ForeColor = Color.FromArgb(35, 31, 80);
+            bf.Hide();
         }
     }
 }

@@ -67,7 +67,7 @@
             NavPnl.Dock = DockStyle.Left;
             NavPnl.Location = new Point(0, 0);
             NavPnl.Name = "NavPnl";
-            NavPnl.Size = new Size(200, 654);
+            NavPnl.Size = new Size(200, 691);
             NavPnl.TabIndex = 0;
             // 
             // ButtonM
@@ -212,7 +212,7 @@
             HeaderPnl.Dock = DockStyle.Top;
             HeaderPnl.Location = new Point(200, 0);
             HeaderPnl.Name = "HeaderPnl";
-            HeaderPnl.Size = new Size(892, 100);
+            HeaderPnl.Size = new Size(987, 100);
             HeaderPnl.TabIndex = 1;
             // 
             // label1
@@ -232,14 +232,14 @@
             ScreenPnl.Dock = DockStyle.Fill;
             ScreenPnl.Location = new Point(200, 100);
             ScreenPnl.Name = "ScreenPnl";
-            ScreenPnl.Size = new Size(892, 554);
+            ScreenPnl.Size = new Size(987, 591);
             ScreenPnl.TabIndex = 2;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1092, 654);
+            ClientSize = new Size(1187, 691);
             Controls.Add(ScreenPnl);
             Controls.Add(HeaderPnl);
             Controls.Add(NavPnl);
