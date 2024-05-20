@@ -52,7 +52,7 @@ namespace SemesterProjekt.Models
             }
             set
             {
-                if (value.Length < 2 || value.Length < 25)
+                if (value.Length < 2 || value.Length > 25)
                 {
                     throw new ArgumentException("Lastname is out of range");
                 }
@@ -98,7 +98,7 @@ namespace SemesterProjekt.Models
             get { return stlfnr; }
             set
             {
-                if (value < 7 || value >= 10)
+                if (value < 10000000 || value > 99999999)
                 {
                     throw new ArgumentException("Phonenumber is out of range");
                 }

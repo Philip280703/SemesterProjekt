@@ -84,22 +84,26 @@ namespace SemesterProjekt.Forms
 
         }
 
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            // Henter info omkring ejendomsmægler som er koblet til bolig
             DbHandler db = new DbHandler();
             int row = e.RowIndex;
             DataGridViewRow data = dataGridView1.Rows[row];            
-            int maegleId = (int)data.Cells["MaeglerId"].Value;
+            int maeglerId = (int)data.Cells["MaeglerId"].Value;
             string Adressse = (string)data.Cells["Adresse"].Value;
-            EjendomsMaegler em = db.GetSingleEjendomsMaegler(maegleId);
+            EjendomsMaegler em = db.GetSingleEjendomsMaegler(maeglerId);
             textBox2.Text = em.MFname + " " + em.MLname;
             textBox3.Text = "" + em.MTlfNr;
             textBox4.Text = em.MEmail;
+
+            // Henter info omkring Sælger som er tilkoblet Bolig
+            int BoligId = (int)data.Cells["BoligId"].Value;
+            Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligId);
+            textBox7.Text = sa.SFname + " " + sa.SLname;
+            textBox6.Text = "" + sa.STlfNr;
+            textBox5.Text = sa.SEmail;
         }
     }
 }

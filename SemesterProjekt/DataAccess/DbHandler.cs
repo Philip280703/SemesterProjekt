@@ -567,6 +567,51 @@ namespace SemesterProjekt.DataAccess
             return SingleSaelger;
         }
 
+        // Henter sælger baseret på bolig id
+        internal Saelger GetSingleSaelgerBasedOfBoligId(int SBoligId)
+        {
+            Saelger SingleSaelger = new Saelger();
+            // sql selection of the given table
+            string command = "Select * from Saelger where SBoligId = @SId";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@Sid", SBoligId);
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    SingleSaelger = new Saelger
+                    {
+                        SId = (int)reader["SId"],
+                        SFname = (string)reader["SFname"],
+                        SLname = (string)reader["SLname"],
+                        SBoligId = (int)reader["SBoligId"],
+                        SEmail = (string)reader["SEmail"],
+                        STlfNr = (int)reader["STlfNr"]
+                    };
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return SingleSaelger;
+        }
+
 
 
         // Update Sælger 
