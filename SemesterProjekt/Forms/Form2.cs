@@ -82,5 +82,18 @@ namespace SemesterProjekt.Forms
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DbHandler db = new DbHandler();
+            int row = e.RowIndex;
+            DataGridViewRow data = dataGridView1.Rows[row];            
+            int maegleId = (int)data.Cells["MaeglerId"].Value;
+            string Adressse = (string)data.Cells["Adresse"].Value;
+            EjendomsMaegler em = db.GetSingleEjendomsMaegler(maegleId);
+            textBox2.Text = em.MFname + " " + em.MLname;
+            textBox3.Text = "" + em.MTlfNr;
+            textBox4.Text = em.MEmail;
+        }
     }
 }

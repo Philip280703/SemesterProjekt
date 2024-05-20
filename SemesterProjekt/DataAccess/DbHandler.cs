@@ -15,7 +15,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultP"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultM"].ToString();
         }
 
 
@@ -1471,9 +1471,6 @@ namespace SemesterProjekt.DataAccess
             int MaxKId = kunde.KId;
 
             return MaxKId;
-        }
-
-
-
+        }  
     }
 }

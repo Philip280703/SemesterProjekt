@@ -29,18 +29,27 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button1 = new Button();
+            textBox5 = new TextBox();
+            label6 = new Label();
+            textBox6 = new TextBox();
+            label7 = new Label();
+            textBox7 = new TextBox();
+            label8 = new Label();
+            label5 = new Label();
+            textBox4 = new TextBox();
+            label4 = new Label();
+            textBox3 = new TextBox();
+            label3 = new Label();
+            textBox2 = new TextBox();
+            label2 = new Label();
+            label1 = new Label();
             panel2 = new Panel();
             comboBox3 = new ComboBox();
             comboBox2 = new ComboBox();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
-            label1 = new Label();
-            label2 = new Label();
-            textBox2 = new TextBox();
-            label3 = new Label();
-            textBox3 = new TextBox();
-            label4 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -49,6 +58,15 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(textBox5);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(textBox6);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(textBox7);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(textBox4);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(textBox3);
             panel1.Controls.Add(label3);
@@ -60,6 +78,171 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(278, 552);
             panel1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ControlDark;
+            button1.Dock = DockStyle.Bottom;
+            button1.FlatAppearance.BorderSize = 2;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(0, 495);
+            button1.Name = "button1";
+            button1.Size = new Size(278, 57);
+            button1.TabIndex = 14;
+            button1.Text = "Videre";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // textBox5
+            // 
+            textBox5.Anchor = AnchorStyles.Top;
+            textBox5.Location = new Point(6, 426);
+            textBox5.Name = "textBox5";
+            textBox5.ReadOnly = true;
+            textBox5.Size = new Size(260, 23);
+            textBox5.TabIndex = 13;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(6, 404);
+            label6.Name = "label6";
+            label6.Size = new Size(45, 19);
+            label6.TabIndex = 12;
+            label6.Text = "Email";
+            // 
+            // textBox6
+            // 
+            textBox6.Anchor = AnchorStyles.Top;
+            textBox6.Location = new Point(6, 378);
+            textBox6.Name = "textBox6";
+            textBox6.ReadOnly = true;
+            textBox6.Size = new Size(260, 23);
+            textBox6.TabIndex = 11;
+            // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.Top;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(6, 356);
+            label7.Name = "label7";
+            label7.Size = new Size(47, 19);
+            label7.TabIndex = 10;
+            label7.Text = "Tlf Nr";
+            // 
+            // textBox7
+            // 
+            textBox7.Anchor = AnchorStyles.Top;
+            textBox7.Location = new Point(6, 330);
+            textBox7.Name = "textBox7";
+            textBox7.ReadOnly = true;
+            textBox7.Size = new Size(260, 23);
+            textBox7.TabIndex = 9;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Top;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(6, 308);
+            label8.Name = "label8";
+            label8.Size = new Size(44, 19);
+            label8.TabIndex = 8;
+            label8.Text = "Navn";
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top;
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(0, 227);
+            label5.Name = "label5";
+            label5.Size = new Size(278, 67);
+            label5.TabIndex = 7;
+            label5.Text = "Sælger";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // textBox4
+            // 
+            textBox4.Anchor = AnchorStyles.Top;
+            textBox4.Location = new Point(6, 185);
+            textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
+            textBox4.Size = new Size(260, 23);
+            textBox4.TabIndex = 6;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top;
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(6, 163);
+            label4.Name = "label4";
+            label4.Size = new Size(45, 19);
+            label4.TabIndex = 5;
+            label4.Text = "Email";
+            // 
+            // textBox3
+            // 
+            textBox3.Anchor = AnchorStyles.Top;
+            textBox3.Location = new Point(6, 137);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(260, 23);
+            textBox3.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(6, 115);
+            label3.Name = "label3";
+            label3.Size = new Size(47, 19);
+            label3.TabIndex = 3;
+            label3.Text = "Tlf Nr";
+            // 
+            // textBox2
+            // 
+            textBox2.Anchor = AnchorStyles.Top;
+            textBox2.Location = new Point(6, 89);
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(260, 23);
+            textBox2.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(6, 67);
+            label2.Name = "label2";
+            label2.Size = new Size(44, 19);
+            label2.TabIndex = 1;
+            label2.Text = "Navn";
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(278, 67);
+            label1.TabIndex = 0;
+            label1.Text = "Mægler";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -121,73 +304,12 @@
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 94);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(675, 446);
             dataGridView1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.Dock = DockStyle.Top;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(278, 67);
-            label1.TabIndex = 0;
-            label1.Text = "Mægler";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(6, 67);
-            label2.Name = "label2";
-            label2.Size = new Size(44, 19);
-            label2.TabIndex = 1;
-            label2.Text = "Navn";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(6, 89);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(269, 23);
-            textBox2.TabIndex = 2;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(6, 115);
-            label3.Name = "label3";
-            label3.Size = new Size(47, 19);
-            label3.TabIndex = 3;
-            label3.Text = "Tlf Nr";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(6, 137);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(269, 23);
-            textBox3.TabIndex = 4;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(6, 163);
-            label4.Name = "label4";
-            label4.Size = new Size(45, 19);
-            label4.TabIndex = 5;
-            label4.Text = "Email";
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Form2
             // 
@@ -220,8 +342,17 @@
         private Label label3;
         private TextBox textBox2;
         private Label label2;
-        private Label label1;
         private Label label4;
         private TextBox textBox3;
+        private Label label5;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private Label label6;
+        private TextBox textBox6;
+        private Label label7;
+        private TextBox textBox7;
+        private Label label8;
+        private Label label1;
+        private Button button1;
     }
 }
