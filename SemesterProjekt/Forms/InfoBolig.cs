@@ -132,6 +132,10 @@ namespace SemesterProjekt.Forms
             aib.Show();
         }
 
-       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UpdateBoligForm updateBolig = new UpdateBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
+            updateBolig.Show(); 
+        }
     }
 }

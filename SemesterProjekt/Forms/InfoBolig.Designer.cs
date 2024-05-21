@@ -50,6 +50,7 @@
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
+            button2 = new Button();
             panel1.SuspendLayout();
             ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -58,6 +59,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox5);
             panel1.Controls.Add(label6);
@@ -93,7 +95,7 @@
             button1.Name = "button1";
             button1.Size = new Size(318, 76);
             button1.TabIndex = 14;
-            button1.Text = "Videre";
+            button1.Text = "Sælg Bolig";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -329,6 +331,23 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
             // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlDark;
+            button2.Dock = DockStyle.Bottom;
+            button2.FlatAppearance.BorderSize = 2;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(0, 584);
+            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(318, 76);
+            button2.TabIndex = 15;
+            button2.Text = "Opdater Udbudspris";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // InfoBolig
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -371,5 +390,6 @@
         private Label label8;
         private Label label1;
         private Button button1;
+        private Button button2;
     }
 }
