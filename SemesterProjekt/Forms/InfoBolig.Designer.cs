@@ -1,6 +1,6 @@
 ﻿namespace SemesterProjekt.Forms
 {
-    partial class Form2
+    partial class InfoBolig
     {
         /// <summary>
         /// Required designer variable.
@@ -44,14 +44,14 @@
             textBox2 = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            panel2 = new Panel();
+            ScreenPnl = new Panel();
             comboBox3 = new ComboBox();
             comboBox2 = new ComboBox();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -93,6 +93,7 @@
             button1.TabIndex = 14;
             button1.Text = "Videre";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // textBox5
             // 
@@ -244,18 +245,18 @@
             label1.Text = "Mægler";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel2
+            // ScreenPnl
             // 
-            panel2.Controls.Add(comboBox3);
-            panel2.Controls.Add(comboBox2);
-            panel2.Controls.Add(comboBox1);
-            panel2.Controls.Add(textBox1);
-            panel2.Controls.Add(dataGridView1);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(693, 552);
-            panel2.TabIndex = 2;
+            ScreenPnl.Controls.Add(comboBox3);
+            ScreenPnl.Controls.Add(comboBox2);
+            ScreenPnl.Controls.Add(comboBox1);
+            ScreenPnl.Controls.Add(textBox1);
+            ScreenPnl.Controls.Add(dataGridView1);
+            ScreenPnl.Dock = DockStyle.Fill;
+            ScreenPnl.Location = new Point(0, 0);
+            ScreenPnl.Name = "ScreenPnl";
+            ScreenPnl.Size = new Size(693, 552);
+            ScreenPnl.TabIndex = 2;
             // 
             // comboBox3
             // 
@@ -307,24 +308,25 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 94);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(675, 446);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // Form2
+            // InfoBolig
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(971, 552);
-            Controls.Add(panel2);
+            Controls.Add(ScreenPnl);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "Form2";
+            Name = "InfoBolig";
             Text = "Form2";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            ScreenPnl.ResumeLayout(false);
+            ScreenPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -332,7 +334,7 @@
         #endregion
 
         private Panel panel1;
-        private Panel panel2;
+        private Panel ScreenPnl;
         private DataGridView dataGridView1;
         private TextBox textBox1;
         private ComboBox comboBox1;

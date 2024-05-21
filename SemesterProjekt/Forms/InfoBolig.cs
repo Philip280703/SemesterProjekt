@@ -13,10 +13,14 @@ using System.Windows.Forms;
 
 namespace SemesterProjekt.Forms
 {
-    public partial class Form2 : Form
+    public partial class InfoBolig : Form
     {
         DbHandler db;
-        public Form2()
+        AdvanceInfoBolig aib;
+        Homepage hp;
+        InfoBolig ib;
+
+        public InfoBolig()
         {
             InitializeComponent();
             db = new DbHandler();
@@ -90,7 +94,7 @@ namespace SemesterProjekt.Forms
             // Henter info omkring ejendomsmægler som er koblet til bolig
             DbHandler db = new DbHandler();
             int row = e.RowIndex;
-            DataGridViewRow data = dataGridView1.Rows[row];            
+            DataGridViewRow data = dataGridView1.Rows[row];
             int maeglerId = (int)data.Cells["MaeglerId"].Value;
             string Adressse = (string)data.Cells["Adresse"].Value;
             EjendomsMaegler em = db.GetSingleEjendomsMaegler(maeglerId);
@@ -104,6 +108,14 @@ namespace SemesterProjekt.Forms
             textBox7.Text = sa.SFname + " " + sa.SLname;
             textBox6.Text = "" + sa.STlfNr;
             textBox5.Text = sa.SEmail;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            button1
+
+            
+           
         }
     }
 }

@@ -4,10 +4,10 @@ using SemesterProjekt.Models;
 
 namespace SemesterProjekt
 {
-    public partial class Form1 : Form
+    public partial class Homepage : Form
     {
         Form bf;
-        public Form1()
+        public Homepage()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace SemesterProjekt
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
 
             //Åbner Form inde i panelet i form1// 
-            bf = new Form2();
+            bf = new InfoBolig();
             bf.TopLevel = false;
             bf.FormBorderStyle = FormBorderStyle.None;
             bf.Dock = DockStyle.Fill;
