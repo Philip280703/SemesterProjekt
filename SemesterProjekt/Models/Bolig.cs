@@ -89,6 +89,7 @@ namespace SemesterProjekt.Models
                 kvmpris = value;
             }
         }
+ 
 
         string boligtype;
         public string BoligType
@@ -96,13 +97,14 @@ namespace SemesterProjekt.Models
             get { return boligtype; }
             set
             {
-                if (boligtype == "Villa" || boligtype == "Rækkehus" || boligtype == "Andelsbolig" || boligtype == "Lejlighed")
+                if (value != "Villa" && value != "Rækkehus" && value != "Andelsbolig" && value != "Lejlighed")
                 {
-                    boligtype = value;
+                    throw new ArgumentException("BoligType is none of the four options");               
                 }
                 else
                 {
-                    throw new ArgumentException("BoligType is none of the four options");
+                    boligtype = value;
+
                 }
             }
         }
