@@ -88,9 +88,8 @@ namespace SemesterProjekt.Forms
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
             // Henter info omkring ejendomsmægler som er koblet til bolig
             DbHandler db = new DbHandler();
             int row = e.RowIndex;
@@ -115,5 +114,7 @@ namespace SemesterProjekt.Forms
             AdvanceInfoBolig aib = new AdvanceInfoBolig();
             aib.Show();
         }
+
+       
     }
 }
