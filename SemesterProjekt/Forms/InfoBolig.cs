@@ -96,7 +96,7 @@ namespace SemesterProjekt.Forms
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
             //int MæglerId;
@@ -139,5 +139,7 @@ namespace SemesterProjekt.Forms
             AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
             aib.Show();
         }
+
+       
     }
 }
