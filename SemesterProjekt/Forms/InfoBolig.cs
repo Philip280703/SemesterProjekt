@@ -146,13 +146,18 @@ namespace SemesterProjekt.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            NewBoligForm newBoligForm = new NewBoligForm();
-            newBoligForm.Show();
+            
         }
 
         private void Refreshbutton_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = db.GetAllBolig();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            NewBoligForm newBoligForm = new NewBoligForm();
+            newBoligForm.Show();
         }
     }
 }
