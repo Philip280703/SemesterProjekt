@@ -27,11 +27,13 @@ namespace SemesterProjekt.Forms
         string BoligType;
         bool Aktiv;
         int MæglerId;
+        int row;
 
         public InfoBolig()
         {
             InitializeComponent();
             db = new DbHandler();
+            aib = new AdvanceInfoBolig();
             dataGridView1.DataSource = db.GetAllBolig();
 
             // Formaterer de columns med de givende titler med formatet "N0"
@@ -39,6 +41,11 @@ namespace SemesterProjekt.Forms
             this.dataGridView1.Columns["UdbudsPris"].DefaultCellStyle.Format = "N0";
             this.dataGridView1.Columns["SalgsPris"].DefaultCellStyle.Format = "N0";
             this.dataGridView1.Columns["KvmPris"].DefaultCellStyle.Format = "N0";
+        }
+
+        public void RefreshDataGrid()
+        {
+            dataGridView1.DataSource = db.GetAllBolig();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -102,7 +109,7 @@ namespace SemesterProjekt.Forms
 
             // Henter info omkring ejendomsmægler som er koblet til bolig
             DbHandler db = new DbHandler();
-            int row = e.RowIndex;
+            row = e.RowIndex;
             DataGridViewRow data = dataGridView1.Rows[row];
             MæglerId = (int)data.Cells["MaeglerId"].Value;
             Adresse = (string)data.Cells["Adresse"].Value;
@@ -132,6 +139,5 @@ namespace SemesterProjekt.Forms
             aib.Show();
         }
 
-       
     }
 }

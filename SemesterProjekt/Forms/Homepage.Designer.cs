@@ -235,7 +235,7 @@
             ScreenPnl.Size = new Size(987, 591);
             ScreenPnl.TabIndex = 2;
             // 
-            // Form1
+            // Homepage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -244,8 +244,9 @@
             Controls.Add(HeaderPnl);
             Controls.Add(NavPnl);
             Margin = new Padding(2);
-            Name = "Form1";
+            Name = "Homepage";
             Text = "Form1";
+            WindowState = FormWindowState.Maximized;
             NavPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

@@ -13,6 +13,8 @@ namespace SemesterProjekt.Forms
 {
     public partial class AdvanceInfoBolig : Form
     {
+        InfoBolig ib; 
+
         public AdvanceInfoBolig()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace SemesterProjekt.Forms
             MaglerIdTextbox.Text = "" + MæglerId;
         }
 
+
         private void TilbageButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -47,6 +50,7 @@ namespace SemesterProjekt.Forms
             bool aktiv = false;
             db.MarkBoligAsSold( new Models.Bolig { Aktiv = aktiv, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text)  }, boligiid);
             MessageBox.Show("Bolig er nu solgt!");
+            InfoBolig ib = new InfoBolig();
             this.Hide();
         }
     }
