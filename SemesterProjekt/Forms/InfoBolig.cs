@@ -19,6 +19,14 @@ namespace SemesterProjekt.Forms
         AdvanceInfoBolig aib;
         Homepage hp;
         InfoBolig ib;
+        int BoligIid;
+        string Adresse;
+        int PostNr;
+        int Udbudspris;
+        int Kvadratmeter;
+        string BoligType;
+        bool Aktiv;
+        int MæglerId;
 
         public InfoBolig()
         {
@@ -91,13 +99,29 @@ namespace SemesterProjekt.Forms
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            //int MæglerId;
+            //int BoligIid;
+            //string Adresse;
+            //int PostNr;
+            //int Udbudspris;
+            //int Kvadratmeter;
+            //string BoligType;
+            //bool Aktiv;
+
             // Henter info omkring ejendomsmægler som er koblet til bolig
             DbHandler db = new DbHandler();
             int row = e.RowIndex;
             DataGridViewRow data = dataGridView1.Rows[row];
-            int maeglerId = (int)data.Cells["MaeglerId"].Value;
-            string Adressse = (string)data.Cells["Adresse"].Value;
-            EjendomsMaegler em = db.GetSingleEjendomsMaegler(maeglerId);
+            MæglerId = (int)data.Cells["MaeglerId"].Value;
+            Adresse = (string)data.Cells["Adresse"].Value;
+            BoligIid = (int)data.Cells["BoligId"].Value;
+            PostNr = (int)data.Cells["PostNr"].Value;
+            Udbudspris = (int)data.Cells["UdbudsPris"].Value;
+            Kvadratmeter = (int)data.Cells["Kvadratmeter"].Value;
+            BoligType = (string)data.Cells["BoligType"].Value;
+            Aktiv = (bool)data.Cells["Aktiv"].Value;
+
+            EjendomsMaegler em = db.GetSingleEjendomsMaegler(MæglerId);
             textBox2.Text = em.MFname + " " + em.MLname;
             textBox3.Text = "" + em.MTlfNr;
             textBox4.Text = em.MEmail;
@@ -112,7 +136,7 @@ namespace SemesterProjekt.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdvanceInfoBolig aib = new AdvanceInfoBolig();
+            AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
             aib.Show();
         }
     }
