@@ -21,7 +21,7 @@ namespace SemesterProjekt.Forms
         public AdvanceInfoBolig(int MæglerId, string Adresse, int BoligId, int PostNr, int Udbudspris, int Kvadratmeter, string BoligType, bool aktiv)
         {
             InitializeComponent();
-            BoligIdTextBox.Text = "" + MæglerId;
+            BoligIdTextBox.Text = "" + BoligId;
             AdresseTextbox.Text = Adresse;
             PostNrTextbox.Text = "" + PostNr;
             UdbudsprisTextbox.Text = "" + Udbudspris;
