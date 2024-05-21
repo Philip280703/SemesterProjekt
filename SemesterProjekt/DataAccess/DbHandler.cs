@@ -15,7 +15,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultM"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultP"].ToString();
         }
 
 
@@ -344,7 +344,7 @@ namespace SemesterProjekt.DataAccess
             SqlCommand cmd = new SqlCommand(command, conn);
 
             cmd.Parameters.AddWithValue("@BoligId", BoligId);
-            cmd.Parameters.AddWithValue("@UdbudsPris", bolig.UdbudsPris);
+            cmd.Parameters.AddWithValue("@Aktiv", bolig.Aktiv);
             cmd.Parameters.AddWithValue("@Salgspris", bolig.SalgsPris);
             cmd.Parameters.AddWithValue("@SalgsDato", bolig.SalgsDato);
 
