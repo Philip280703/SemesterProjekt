@@ -99,14 +99,6 @@ namespace SemesterProjekt.Forms
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            //int MæglerId;
-            //int BoligIid;
-            //string Adresse;
-            //int PostNr;
-            //int Udbudspris;
-            //int Kvadratmeter;
-            //string BoligType;
-            //bool Aktiv;
 
             // Henter info omkring ejendomsmægler som er koblet til bolig
             DbHandler db = new DbHandler();

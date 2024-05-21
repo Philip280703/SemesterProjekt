@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SemesterProjekt.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,14 @@ namespace SemesterProjekt.Forms
         private void TilbageButton_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void SælgBolig_Click(object sender, EventArgs e)
+        {
+            DbHandler db = new DbHandler();
+            int boligiid = int.Parse(BoligIdTextBox.Text);
+            DateTime Salgsdatoen = Salgsdato.Value;
+            db.MarkBoligAsSold( new Models.Bolig { Aktiv = false, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text)  }, boligiid);
         }
     }
 }
