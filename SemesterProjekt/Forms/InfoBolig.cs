@@ -112,10 +112,8 @@ namespace SemesterProjekt.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            button1
-
-            
-           
+            AdvanceInfoBolig aib = new AdvanceInfoBolig();
+            aib.Show();
         }
     }
 }
