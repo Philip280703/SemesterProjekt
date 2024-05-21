@@ -12,7 +12,6 @@ namespace SemesterProjekt
         public Homepage()
         {
             InitializeComponent();
-            bf = new InfoBolig();
         }
 
         private void ButtonB_Click(object sender, EventArgs e)
@@ -32,6 +31,7 @@ namespace SemesterProjekt
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
 
             //Åbner Form inde i panelet i form1// 
+            bf = new InfoBolig();
             bf.TopLevel = false;
             bf.FormBorderStyle = FormBorderStyle.None;
             bf.Dock = DockStyle.Fill;

@@ -1,6 +1,7 @@
 ﻿using SemesterProjekt.DataAccess;
 using SemesterProjekt.Models;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,12 +29,14 @@ namespace SemesterProjekt.Forms
         bool Aktiv;
         int MæglerId;
         int row;
+        Panel scrnpnl;
 
         public InfoBolig()
         {
             InitializeComponent();
             db = new DbHandler();
             aib = new AdvanceInfoBolig();
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = db.GetAllBolig();
 
             // Formaterer de columns med de givende titler med formatet "N0"
@@ -43,10 +46,6 @@ namespace SemesterProjekt.Forms
             this.dataGridView1.Columns["KvmPris"].DefaultCellStyle.Format = "N0";
         }
 
-        public void RefreshDataGrid()
-        {
-            dataGridView1.DataSource = db.GetAllBolig();
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -142,7 +141,12 @@ namespace SemesterProjekt.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             UpdateBoligForm updateBolig = new UpdateBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-            updateBolig.Show(); 
+            updateBolig.Show();
+        }
+
+        private void Refreshbutton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = db.GetAllBolig();
         }
     }
 }
