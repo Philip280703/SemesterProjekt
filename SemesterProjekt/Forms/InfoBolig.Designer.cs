@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button2 = new Button();
             button1 = new Button();
             textBox5 = new TextBox();
             label6 = new Label();
@@ -50,7 +51,7 @@
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
-            button2 = new Button();
+            button3 = new Button();
             panel1.SuspendLayout();
             ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -59,6 +60,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox5);
@@ -81,6 +83,23 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(318, 736);
             panel1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlDark;
+            button2.Dock = DockStyle.Bottom;
+            button2.FlatAppearance.BorderSize = 2;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(0, 584);
+            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(318, 76);
+            button2.TabIndex = 15;
+            button2.Text = "Opdater Udbudspris";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -331,22 +350,22 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
             // 
-            // button2
+            // button3
             // 
-            button2.BackColor = SystemColors.ControlDark;
-            button2.Dock = DockStyle.Bottom;
-            button2.FlatAppearance.BorderSize = 2;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(0, 584);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(318, 76);
-            button2.TabIndex = 15;
-            button2.Text = "Opdater Udbudspris";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            button3.BackColor = SystemColors.ControlDark;
+            button3.Dock = DockStyle.Bottom;
+            button3.FlatAppearance.BorderSize = 2;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(0, 508);
+            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Name = "button3";
+            button3.Size = new Size(318, 76);
+            button3.TabIndex = 16;
+            button3.Text = "Ny Bolig ";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // InfoBolig
             // 
@@ -391,5 +410,6 @@
         private Label label1;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }

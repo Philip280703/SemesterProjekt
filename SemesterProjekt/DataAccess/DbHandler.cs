@@ -24,27 +24,29 @@ namespace SemesterProjekt.DataAccess
         // Create new Bolig
         internal bool CreateBolig(Bolig bolig)
         {
-            int NextBoligId = FindMaxBoligId();
-            string NextBoligIdString = NextBoligId.ToString();
+            //int NextBoligId = FindMaxBoligId();
+            //string NextBoligIdString = NextBoligId.ToString();
 
-            string Command = "Insert Bolig (BoligId, Adresse, PostNr, UdbudsPris, Kvadratmeter, BoligType, Aktiv, SalgsPris, SalgsDato, MaeglerId)" +
-                " values (@BoligId, @Adresse, @PostNr, @UdbudsPris, @Kvadratmeter, @BoligType, @Aktiv, @SalgsPris, @SalgsDato, @MaeglerId)";
+            string Command = "Insert Bolig ( Adresse, PostNr, UdbudsPris, Kvadratmeter, BoligType, Aktiv, SalgsPris, SalgsDato, MaeglerId)" +
+                " values ( @Adresse, @PostNr, @UdbudsPris, @Kvadratmeter, @BoligType, @Aktiv, @SalgsPris, @SalgsDato, @MaeglerId)";
 
             using SqlConnection conn = new SqlConnection(ConnectionString);
 
             SqlCommand cmd = new SqlCommand(Command, conn);
+            bool aktiv = true;
+            int salgspris = 0;
+            DateTime dateTime = new DateTime(2000, 01, 01);
 
-
-            cmd.Parameters.AddWithValue("@BoligId", NextBoligIdString);
-            cmd.Parameters.AddWithValue("@Adresse", "Adresse");
-            cmd.Parameters.AddWithValue("@PostNr", "PostNr");
-            cmd.Parameters.AddWithValue("@UdbudsPris", "UdbudsPris");
-            cmd.Parameters.AddWithValue("@Kvadratmeter", "Kvadratmeter");
-            cmd.Parameters.AddWithValue("@BoligType", "BoligType");
-            cmd.Parameters.AddWithValue("@Aktiv", "Aktiv");
-            cmd.Parameters.AddWithValue("@SalgsPris", "SalgsPris");
-            cmd.Parameters.AddWithValue("@SalgsDato", "SalgsDato");
-            cmd.Parameters.AddWithValue("@MaeglerId", "MaeglerId");
+          //  cmd.Parameters.AddWithValue("@BoligId", NextBoligIdString);
+            cmd.Parameters.AddWithValue("@Adresse", bolig.Adresse);
+            cmd.Parameters.AddWithValue("@PostNr", bolig.PostNr);
+            cmd.Parameters.AddWithValue("@UdbudsPris", bolig.UdbudsPris);
+            cmd.Parameters.AddWithValue("@Kvadratmeter", bolig.Kvadratmeter);
+            cmd.Parameters.AddWithValue("@BoligType", bolig.BoligType);
+            cmd.Parameters.AddWithValue("@Aktiv", aktiv);
+            cmd.Parameters.AddWithValue("@SalgsPris", salgspris);
+            cmd.Parameters.AddWithValue("@SalgsDato", dateTime);
+            cmd.Parameters.AddWithValue("@MaeglerId", bolig.MaeglerId);
 
             int Rows = 0;
             try
@@ -424,22 +426,20 @@ namespace SemesterProjekt.DataAccess
         // Create new Sælger
         internal bool CreateSaelger(Saelger Saelger)
         {
-            int NextSId = FindMaxSId();
-            string NextSIdString = NextSId.ToString();
 
-            string Command = "Insert Saelger (SId, SFname, SLname, SBoligId, SEmail, STlfNr)" +
-                " values (@SId, @SFname, @SLname, @SBoligId, @SEmail, @STlfNr)";
+            string Command = "Insert Saelger (SFname, SLname, SBoligId, SEmail, STlfNr)" +
+                " values (@SFname, @SLname, @SBoligId, @SEmail, @STlfNr)";
 
             using SqlConnection conn = new SqlConnection(ConnectionString);
 
             SqlCommand cmd = new SqlCommand(Command, conn);
+            int newBoligId = FindMaxBoligId();
 
-            cmd.Parameters.AddWithValue("@SId", NextSIdString);
-            cmd.Parameters.AddWithValue("@SFname", "SFname");
-            cmd.Parameters.AddWithValue("@SLname", "SLname");
-            cmd.Parameters.AddWithValue("@SBoligId", "SBoligId");
-            cmd.Parameters.AddWithValue("@SEmail", "SEmail");
-            cmd.Parameters.AddWithValue("@STlfNr", "STlfNr");
+            cmd.Parameters.AddWithValue("@SFname", Saelger.SFname);
+            cmd.Parameters.AddWithValue("@SLname", Saelger.SLname);
+            cmd.Parameters.AddWithValue("@SBoligId", newBoligId);
+            cmd.Parameters.AddWithValue("@SEmail", Saelger.SEmail);
+            cmd.Parameters.AddWithValue("@STlfNr", Saelger.STlfNr);
 
             int Rows = 0;
             try
@@ -1405,7 +1405,7 @@ namespace SemesterProjekt.DataAccess
                 while (reader.Read())
                 {
                     bolig = new Bolig { BoligId = reader.GetInt32("id") };
-                    bolig.BoligId = reader.GetInt32("id") + 1;
+                    bolig.BoligId = reader.GetInt32("id");
                 }
 
             }

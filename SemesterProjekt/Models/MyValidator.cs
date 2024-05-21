@@ -60,9 +60,9 @@ namespace SemesterProjekt.Models
 
         // Bolig validation
 
-        public bool ValidateAdDress(string Address)
+        public bool ValidateAdDress(string Adresse)
         {
-            if (Address.Length < 5 || Address.Length > 35)
+            if (Adresse.Length < 5 || Adresse.Length > 35)
             {
                 return false;
             }
