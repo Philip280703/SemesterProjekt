@@ -84,14 +84,32 @@ namespace SemesterProjekt.Models
             {
                 if (value < 1000 || value > 250000)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("KvadratmeterPris is out of rangeee");
                 }
                 kvmpris = value;
             }
         }
 
-       
-        public string BoligType { get; set; }
+
+        string boligtype;
+        public string BoligType
+        {
+            get { return boligtype; }
+            set
+            {
+                if (value != "Villa" && value != "Rækkehus" && value != "Andelsbolig" && value != "Lejlighed")
+                {
+                    throw new ArgumentException("BoligType is none of the four options");
+                }
+                else
+                {
+                    boligtype = value;
+
+                }
+            }
+        }
+
+
         public bool Aktiv { get; set; }
 
         int salgspris;
@@ -117,7 +135,7 @@ namespace SemesterProjekt.Models
             get { return date; }
             set
             {
-                if (value < new DateTime(1850, 01, 01) || value > new DateTime(2050, 01, 01))
+                if (value < new DateTime(1850, 01, 01) || value > DateTime.Now)
                 {
                     throw new ArgumentException("Date is out of range");
                 }
@@ -216,7 +234,7 @@ namespace SemesterProjekt.Models
             get { return mtlfnr; }
             set
             {
-                if (value < 7 || value >= 10)
+                if (value < 10000000 || value >= 99999999)
                 {
                     throw new ArgumentException("Phonenumber is out of range");
                 }
@@ -326,7 +344,7 @@ namespace SemesterProjekt.Models
             get { return stlfnr; }
             set
             {
-                if (value < 7 || value >= 10)
+                if (value < 10000000 || value >= 99999999)
                 {
                     throw new ArgumentException("Phonenumber is out of range");
                 }

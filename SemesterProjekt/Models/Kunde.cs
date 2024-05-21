@@ -93,7 +93,7 @@ namespace SemesterProjekt.Models
             get { return ktlfnr; }
             set
             {
-                if (value < 7 || value >= 10)
+                if (value < 10000000 || value >= 99999999)
                 {
                     throw new ArgumentException("Phonenumber is out of range");
                 }
