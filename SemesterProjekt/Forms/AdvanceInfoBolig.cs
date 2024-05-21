@@ -43,7 +43,8 @@ namespace SemesterProjekt.Forms
             DbHandler db = new DbHandler();
             int boligiid = int.Parse(BoligIdTextBox.Text);
             DateTime Salgsdatoen = Salgsdato.Value;
-            db.MarkBoligAsSold( new Models.Bolig { Aktiv = false, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text)  }, boligiid);
+            bool aktiv = false;
+            db.MarkBoligAsSold( new Models.Bolig { Aktiv = aktiv, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text)  }, boligiid);
         }
     }
 }
