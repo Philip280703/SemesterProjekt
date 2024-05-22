@@ -33,13 +33,25 @@ namespace SemesterProjekt.Forms
             PostNrTextbox.Text = "" + PostNr;
             UdbudsprisTextbox.Text = "" + Udbudspris;
             KvadratmeterTextbox.Text = "" + Kvadratmeter;
-            double kvmpris = Udbudspris / Kvadratmeter;
-            KvmPrisTextBox.Text = "" + kvmpris;
+
+            try
+            {
+                double kvmpris = Udbudspris / Kvadratmeter;
+                KvmPrisTextBox.Text = "" + kvmpris;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+
             BoligTypeTextbox.Text = BoligType;
             AktivTextbox.Text = "" + aktiv;
             MaglerIdTextbox.Text = "" + MæglerId;
             db = new DbHandler();
             DGVKunder.DataSource = db.GetAllKunder();
+
+            
         }
 
 

@@ -22,8 +22,17 @@ namespace SemesterProjekt.Forms
             PostNrTextbox.Text = "" + PostNr;
             UdbudsprisTextbox.Text = "" + Udbudspris;
             KvadratmeterTextbox.Text = "" + Kvadratmeter;
-            double kvmpris = Udbudspris / Kvadratmeter;
-            KvmPrisTextBox.Text = "" + kvmpris;
+            try
+            {
+                double kvmpris = Udbudspris / Kvadratmeter;
+                KvmPrisTextBox.Text = "" + kvmpris;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            
             BoligTypeTextbox.Text = BoligType;
             AktivTextbox.Text = "" + aktiv;
             MaglerIdTextbox.Text = "" + MæglerId;
@@ -32,8 +41,7 @@ namespace SemesterProjekt.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            InfoBolig ib = new InfoBolig();
-            ib.Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -88,10 +88,14 @@ namespace SemesterProjekt.Forms
             }
             else
             {
-                int num1 = int.Parse(combobox.Split("-")[0]);
-                int num2 = int.Parse(combobox.Split("-")[1]);
+                // Philip - har ændret comboboxen med postnumre til at ikke længere være en range, men specefikke postnr ------------------------
+                // int num1 = int.Parse(combobox.Split("-")[0]);
+                // int num2 = int.Parse(combobox.Split("-")[1]);
+                // DGVBolig.DataSource = filter.Where(b => b.PostNr >= num1 && b.PostNr <= num2).ToList();
+
                 List<Bolig> filter = db.GetAllBolig();
-                DGVBolig.DataSource = filter.Where(b => b.PostNr >= num1 && b.PostNr <= num2).ToList();
+              
+               DGVBolig.DataSource = filter.Where(b => b.PostNr == int.Parse(comboBoxPostNr.Text)).ToList();
             }
             int gns = AveragePrice();
             textBoxGns.Text = gns.ToString();
@@ -178,13 +182,27 @@ namespace SemesterProjekt.Forms
         private void buttonSaelgBolig_Click(object sender, EventArgs e)
         {
             AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-            aib.Show();
+            try
+            {
+                aib.Show();
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
         }
 
         private void buttonOpdaterBolig_Click(object sender, EventArgs e)
         {
             UpdateBoligForm updateBolig = new UpdateBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-            updateBolig.Show();
+
+            try
+            {
+                updateBolig.Show();
+            }
+            catch (Exception ex) { }
+           
         }
 
         private void Refreshbutton_Click(object sender, EventArgs e)

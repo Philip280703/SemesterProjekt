@@ -382,7 +382,7 @@
             // comboBoxPostNr
             // 
             comboBoxPostNr.FormattingEnabled = true;
-            comboBoxPostNr.Items.AddRange(new object[] { "PostNr", "1000 - 1999", "2000 - 2999", "3000 - 3999", "4000 - 4999", "5000 - 5999", "6000 - 6999", "7000 - 7999", "8000 - 8999", "9000 - 9999" });
+            comboBoxPostNr.Items.AddRange(new object[] { "PostNr", "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "7400", "8000", "9000" });
             comboBoxPostNr.Location = new Point(569, 15);
             comboBoxPostNr.Margin = new Padding(3, 4, 3, 4);
             comboBoxPostNr.Name = "comboBoxPostNr";
