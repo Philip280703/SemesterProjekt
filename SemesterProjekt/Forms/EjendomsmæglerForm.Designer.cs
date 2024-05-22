@@ -40,19 +40,24 @@
             Lbl_Sælger = new Label();
             Refreshbutton = new Button();
             ScreenPnl = new Panel();
+            Lbl_Tilknyttede_Boliger_Inaktive = new Label();
+            Lbl_Mæglere_Tilknyttede_Aktive = new Label();
+            Lbl_Dgv_Mægler = new Label();
+            Dgv_Inaktive_Boliger = new DataGridView();
             Dgv_Mægler = new DataGridView();
-            Dgv_Boliger = new DataGridView();
-            TxtBox_Mægler_Email = new TextBox();
-            Lbl_Mægler_Email = new Label();
-            TxtBox_Mægler_TlfNr = new TextBox();
-            Lbl_Mægler_TlfNr = new Label();
-            Lbl_Mægler_Navn = new Label();
-            Lbl_Mægler = new Label();
+            Dgv_Aktive_Boliger = new DataGridView();
+            TxtBox_Køber_Email = new TextBox();
+            Lbl_Køber_Email = new Label();
+            TxtBox_Køber_TlfNr = new TextBox();
+            Lbl_Køber_TlfNr = new Label();
+            Lbl_Køber_Navn = new Label();
+            Lbl_Køber = new Label();
             panel1 = new Panel();
-            TxtBox_Mægler_Navn = new TextBox();
+            TxtBox_Køber_Navn = new TextBox();
             ScreenPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Dgv_Inaktive_Boliger).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Dgv_Mægler).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Dgv_Boliger).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Dgv_Aktive_Boliger).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -107,7 +112,7 @@
             // TxtBox_Sælger_Email
             // 
             TxtBox_Sælger_Email.Anchor = AnchorStyles.Top;
-            TxtBox_Sælger_Email.Location = new Point(7, 568);
+            TxtBox_Sælger_Email.Location = new Point(8, 528);
             TxtBox_Sælger_Email.Margin = new Padding(3, 4, 3, 4);
             TxtBox_Sælger_Email.Name = "TxtBox_Sælger_Email";
             TxtBox_Sælger_Email.ReadOnly = true;
@@ -120,7 +125,7 @@
             Lbl_Sælger_Email.AutoSize = true;
             Lbl_Sælger_Email.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             Lbl_Sælger_Email.ForeColor = Color.White;
-            Lbl_Sælger_Email.Location = new Point(7, 539);
+            Lbl_Sælger_Email.Location = new Point(8, 499);
             Lbl_Sælger_Email.Name = "Lbl_Sælger_Email";
             Lbl_Sælger_Email.Size = new Size(54, 23);
             Lbl_Sælger_Email.TabIndex = 12;
@@ -129,7 +134,7 @@
             // TxtBox_Sælger_TlfNr
             // 
             TxtBox_Sælger_TlfNr.Anchor = AnchorStyles.Top;
-            TxtBox_Sælger_TlfNr.Location = new Point(7, 504);
+            TxtBox_Sælger_TlfNr.Location = new Point(8, 464);
             TxtBox_Sælger_TlfNr.Margin = new Padding(3, 4, 3, 4);
             TxtBox_Sælger_TlfNr.Name = "TxtBox_Sælger_TlfNr";
             TxtBox_Sælger_TlfNr.ReadOnly = true;
@@ -142,7 +147,7 @@
             Lbl_Sælger_TlfNr.AutoSize = true;
             Lbl_Sælger_TlfNr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             Lbl_Sælger_TlfNr.ForeColor = Color.White;
-            Lbl_Sælger_TlfNr.Location = new Point(7, 475);
+            Lbl_Sælger_TlfNr.Location = new Point(8, 435);
             Lbl_Sælger_TlfNr.Name = "Lbl_Sælger_TlfNr";
             Lbl_Sælger_TlfNr.Size = new Size(57, 23);
             Lbl_Sælger_TlfNr.TabIndex = 10;
@@ -151,7 +156,7 @@
             // TxtBox_Sælger_Navn
             // 
             TxtBox_Sælger_Navn.Anchor = AnchorStyles.Top;
-            TxtBox_Sælger_Navn.Location = new Point(7, 440);
+            TxtBox_Sælger_Navn.Location = new Point(8, 400);
             TxtBox_Sælger_Navn.Margin = new Padding(3, 4, 3, 4);
             TxtBox_Sælger_Navn.Name = "TxtBox_Sælger_Navn";
             TxtBox_Sælger_Navn.ReadOnly = true;
@@ -164,7 +169,7 @@
             Lbl_Sælger_Navn.AutoSize = true;
             Lbl_Sælger_Navn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             Lbl_Sælger_Navn.ForeColor = Color.White;
-            Lbl_Sælger_Navn.Location = new Point(7, 411);
+            Lbl_Sælger_Navn.Location = new Point(8, 371);
             Lbl_Sælger_Navn.Name = "Lbl_Sælger_Navn";
             Lbl_Sælger_Navn.Size = new Size(51, 23);
             Lbl_Sælger_Navn.TabIndex = 8;
@@ -175,7 +180,7 @@
             Lbl_Sælger.Anchor = AnchorStyles.Top;
             Lbl_Sælger.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             Lbl_Sælger.ForeColor = Color.White;
-            Lbl_Sælger.Location = new Point(0, 303);
+            Lbl_Sælger.Location = new Point(0, 280);
             Lbl_Sælger.Name = "Lbl_Sælger";
             Lbl_Sælger.Size = new Size(318, 89);
             Lbl_Sælger.TabIndex = 7;
@@ -195,8 +200,12 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(Lbl_Tilknyttede_Boliger_Inaktive);
+            ScreenPnl.Controls.Add(Lbl_Mæglere_Tilknyttede_Aktive);
+            ScreenPnl.Controls.Add(Lbl_Dgv_Mægler);
+            ScreenPnl.Controls.Add(Dgv_Inaktive_Boliger);
             ScreenPnl.Controls.Add(Dgv_Mægler);
-            ScreenPnl.Controls.Add(Dgv_Boliger);
+            ScreenPnl.Controls.Add(Dgv_Aktive_Boliger);
             ScreenPnl.Controls.Add(Refreshbutton);
             ScreenPnl.Dock = DockStyle.Fill;
             ScreenPnl.Location = new Point(0, 0);
@@ -205,12 +214,58 @@
             ScreenPnl.Size = new Size(977, 891);
             ScreenPnl.TabIndex = 4;
             // 
+            // Lbl_Tilknyttede_Boliger_Inaktive
+            // 
+            Lbl_Tilknyttede_Boliger_Inaktive.AutoSize = true;
+            Lbl_Tilknyttede_Boliger_Inaktive.Location = new Point(16, 544);
+            Lbl_Tilknyttede_Boliger_Inaktive.Name = "Lbl_Tilknyttede_Boliger_Inaktive";
+            Lbl_Tilknyttede_Boliger_Inaktive.Size = new Size(199, 20);
+            Lbl_Tilknyttede_Boliger_Inaktive.TabIndex = 10;
+            Lbl_Tilknyttede_Boliger_Inaktive.Text = "Tilknyttede boliger (inaktive)";
+            // 
+            // Lbl_Mæglere_Tilknyttede_Aktive
+            // 
+            Lbl_Mæglere_Tilknyttede_Aktive.AutoSize = true;
+            Lbl_Mæglere_Tilknyttede_Aktive.Location = new Point(16, 208);
+            Lbl_Mæglere_Tilknyttede_Aktive.Name = "Lbl_Mæglere_Tilknyttede_Aktive";
+            Lbl_Mæglere_Tilknyttede_Aktive.Size = new Size(187, 20);
+            Lbl_Mæglere_Tilknyttede_Aktive.TabIndex = 9;
+            Lbl_Mæglere_Tilknyttede_Aktive.Text = "Tilknyttede boliger (aktive)";
+            // 
+            // Lbl_Dgv_Mægler
+            // 
+            Lbl_Dgv_Mægler.AutoSize = true;
+            Lbl_Dgv_Mægler.Location = new Point(16, 8);
+            Lbl_Dgv_Mægler.Name = "Lbl_Dgv_Mægler";
+            Lbl_Dgv_Mægler.Size = new Size(133, 20);
+            Lbl_Dgv_Mægler.TabIndex = 8;
+            Lbl_Dgv_Mægler.Text = "Ejendomsmæglere";
+            // 
+            // Dgv_Inaktive_Boliger
+            // 
+            Dgv_Inaktive_Boliger.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Dgv_Inaktive_Boliger.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Dgv_Inaktive_Boliger.BackgroundColor = SystemColors.Control;
+            Dgv_Inaktive_Boliger.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Dgv_Inaktive_Boliger.Location = new Point(16, 568);
+            Dgv_Inaktive_Boliger.Margin = new Padding(3, 4, 3, 4);
+            Dgv_Inaktive_Boliger.Name = "Dgv_Inaktive_Boliger";
+            Dgv_Inaktive_Boliger.ReadOnly = true;
+            Dgv_Inaktive_Boliger.RowHeadersWidth = 51;
+            Dgv_Inaktive_Boliger.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Dgv_Inaktive_Boliger.Size = new Size(948, 312);
+            Dgv_Inaktive_Boliger.TabIndex = 7;
+            // 
             // Dgv_Mægler
             // 
+            Dgv_Mægler.AllowUserToAddRows = false;
+            Dgv_Mægler.AllowUserToDeleteRows = false;
+            Dgv_Mægler.AllowUserToResizeColumns = false;
+            Dgv_Mægler.AllowUserToResizeRows = false;
             Dgv_Mægler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Dgv_Mægler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Dgv_Mægler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Dgv_Mægler.Location = new Point(16, 104);
+            Dgv_Mægler.Location = new Point(16, 32);
             Dgv_Mægler.Name = "Dgv_Mægler";
             Dgv_Mægler.ReadOnly = true;
             Dgv_Mægler.RowHeadersWidth = 51;
@@ -219,88 +274,89 @@
             Dgv_Mægler.TabIndex = 6;
             Dgv_Mægler.CellClick += Dgv_Mægler_CellClick;
             // 
-            // Dgv_Boliger
+            // Dgv_Aktive_Boliger
             // 
-            Dgv_Boliger.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Dgv_Boliger.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Dgv_Boliger.BackgroundColor = SystemColors.Control;
-            Dgv_Boliger.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Dgv_Boliger.Location = new Point(16, 264);
-            Dgv_Boliger.Margin = new Padding(3, 4, 3, 4);
-            Dgv_Boliger.Name = "Dgv_Boliger";
-            Dgv_Boliger.ReadOnly = true;
-            Dgv_Boliger.RowHeadersWidth = 51;
-            Dgv_Boliger.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            Dgv_Boliger.Size = new Size(948, 605);
-            Dgv_Boliger.TabIndex = 5;
+            Dgv_Aktive_Boliger.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Dgv_Aktive_Boliger.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Dgv_Aktive_Boliger.BackgroundColor = SystemColors.Control;
+            Dgv_Aktive_Boliger.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Dgv_Aktive_Boliger.Location = new Point(16, 232);
+            Dgv_Aktive_Boliger.Margin = new Padding(3, 4, 3, 4);
+            Dgv_Aktive_Boliger.Name = "Dgv_Aktive_Boliger";
+            Dgv_Aktive_Boliger.ReadOnly = true;
+            Dgv_Aktive_Boliger.RowHeadersWidth = 51;
+            Dgv_Aktive_Boliger.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Dgv_Aktive_Boliger.Size = new Size(948, 288);
+            Dgv_Aktive_Boliger.TabIndex = 5;
+            Dgv_Aktive_Boliger.CellClick += Dgv_Aktive_Boliger_CellClick;
             // 
-            // TxtBox_Mægler_Email
+            // TxtBox_Køber_Email
             // 
-            TxtBox_Mægler_Email.Anchor = AnchorStyles.Top;
-            TxtBox_Mægler_Email.Location = new Point(7, 247);
-            TxtBox_Mægler_Email.Margin = new Padding(3, 4, 3, 4);
-            TxtBox_Mægler_Email.Name = "TxtBox_Mægler_Email";
-            TxtBox_Mægler_Email.ReadOnly = true;
-            TxtBox_Mægler_Email.Size = new Size(297, 27);
-            TxtBox_Mægler_Email.TabIndex = 6;
+            TxtBox_Køber_Email.Anchor = AnchorStyles.Top;
+            TxtBox_Køber_Email.Location = new Point(7, 247);
+            TxtBox_Køber_Email.Margin = new Padding(3, 4, 3, 4);
+            TxtBox_Køber_Email.Name = "TxtBox_Køber_Email";
+            TxtBox_Køber_Email.ReadOnly = true;
+            TxtBox_Køber_Email.Size = new Size(297, 27);
+            TxtBox_Køber_Email.TabIndex = 6;
             // 
-            // Lbl_Mægler_Email
+            // Lbl_Køber_Email
             // 
-            Lbl_Mægler_Email.Anchor = AnchorStyles.Top;
-            Lbl_Mægler_Email.AutoSize = true;
-            Lbl_Mægler_Email.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Lbl_Mægler_Email.ForeColor = Color.White;
-            Lbl_Mægler_Email.Location = new Point(7, 217);
-            Lbl_Mægler_Email.Name = "Lbl_Mægler_Email";
-            Lbl_Mægler_Email.Size = new Size(54, 23);
-            Lbl_Mægler_Email.TabIndex = 5;
-            Lbl_Mægler_Email.Text = "Email";
+            Lbl_Køber_Email.Anchor = AnchorStyles.Top;
+            Lbl_Køber_Email.AutoSize = true;
+            Lbl_Køber_Email.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_Køber_Email.ForeColor = Color.White;
+            Lbl_Køber_Email.Location = new Point(7, 217);
+            Lbl_Køber_Email.Name = "Lbl_Køber_Email";
+            Lbl_Køber_Email.Size = new Size(54, 23);
+            Lbl_Køber_Email.TabIndex = 5;
+            Lbl_Køber_Email.Text = "Email";
             // 
-            // TxtBox_Mægler_TlfNr
+            // TxtBox_Køber_TlfNr
             // 
-            TxtBox_Mægler_TlfNr.Anchor = AnchorStyles.Top;
-            TxtBox_Mægler_TlfNr.Location = new Point(7, 183);
-            TxtBox_Mægler_TlfNr.Margin = new Padding(3, 4, 3, 4);
-            TxtBox_Mægler_TlfNr.Name = "TxtBox_Mægler_TlfNr";
-            TxtBox_Mægler_TlfNr.ReadOnly = true;
-            TxtBox_Mægler_TlfNr.Size = new Size(297, 27);
-            TxtBox_Mægler_TlfNr.TabIndex = 4;
+            TxtBox_Køber_TlfNr.Anchor = AnchorStyles.Top;
+            TxtBox_Køber_TlfNr.Location = new Point(7, 183);
+            TxtBox_Køber_TlfNr.Margin = new Padding(3, 4, 3, 4);
+            TxtBox_Køber_TlfNr.Name = "TxtBox_Køber_TlfNr";
+            TxtBox_Køber_TlfNr.ReadOnly = true;
+            TxtBox_Køber_TlfNr.Size = new Size(297, 27);
+            TxtBox_Køber_TlfNr.TabIndex = 4;
             // 
-            // Lbl_Mægler_TlfNr
+            // Lbl_Køber_TlfNr
             // 
-            Lbl_Mægler_TlfNr.Anchor = AnchorStyles.Top;
-            Lbl_Mægler_TlfNr.AutoSize = true;
-            Lbl_Mægler_TlfNr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Lbl_Mægler_TlfNr.ForeColor = Color.White;
-            Lbl_Mægler_TlfNr.Location = new Point(7, 153);
-            Lbl_Mægler_TlfNr.Name = "Lbl_Mægler_TlfNr";
-            Lbl_Mægler_TlfNr.Size = new Size(57, 23);
-            Lbl_Mægler_TlfNr.TabIndex = 3;
-            Lbl_Mægler_TlfNr.Text = "Tlf Nr";
+            Lbl_Køber_TlfNr.Anchor = AnchorStyles.Top;
+            Lbl_Køber_TlfNr.AutoSize = true;
+            Lbl_Køber_TlfNr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_Køber_TlfNr.ForeColor = Color.White;
+            Lbl_Køber_TlfNr.Location = new Point(7, 153);
+            Lbl_Køber_TlfNr.Name = "Lbl_Køber_TlfNr";
+            Lbl_Køber_TlfNr.Size = new Size(57, 23);
+            Lbl_Køber_TlfNr.TabIndex = 3;
+            Lbl_Køber_TlfNr.Text = "Tlf Nr";
             // 
-            // Lbl_Mægler_Navn
+            // Lbl_Køber_Navn
             // 
-            Lbl_Mægler_Navn.Anchor = AnchorStyles.Top;
-            Lbl_Mægler_Navn.AutoSize = true;
-            Lbl_Mægler_Navn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            Lbl_Mægler_Navn.ForeColor = Color.White;
-            Lbl_Mægler_Navn.Location = new Point(7, 89);
-            Lbl_Mægler_Navn.Name = "Lbl_Mægler_Navn";
-            Lbl_Mægler_Navn.Size = new Size(51, 23);
-            Lbl_Mægler_Navn.TabIndex = 1;
-            Lbl_Mægler_Navn.Text = "Navn";
+            Lbl_Køber_Navn.Anchor = AnchorStyles.Top;
+            Lbl_Køber_Navn.AutoSize = true;
+            Lbl_Køber_Navn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_Køber_Navn.ForeColor = Color.White;
+            Lbl_Køber_Navn.Location = new Point(7, 89);
+            Lbl_Køber_Navn.Name = "Lbl_Køber_Navn";
+            Lbl_Køber_Navn.Size = new Size(51, 23);
+            Lbl_Køber_Navn.TabIndex = 1;
+            Lbl_Køber_Navn.Text = "Navn";
             // 
-            // Lbl_Mægler
+            // Lbl_Køber
             // 
-            Lbl_Mægler.Anchor = AnchorStyles.Top;
-            Lbl_Mægler.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            Lbl_Mægler.ForeColor = Color.White;
-            Lbl_Mægler.Location = new Point(0, 0);
-            Lbl_Mægler.Name = "Lbl_Mægler";
-            Lbl_Mægler.Size = new Size(318, 89);
-            Lbl_Mægler.TabIndex = 0;
-            Lbl_Mægler.Text = "Mægler";
-            Lbl_Mægler.TextAlign = ContentAlignment.MiddleCenter;
+            Lbl_Køber.Anchor = AnchorStyles.Top;
+            Lbl_Køber.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Lbl_Køber.ForeColor = Color.White;
+            Lbl_Køber.Location = new Point(0, 0);
+            Lbl_Køber.Name = "Lbl_Køber";
+            Lbl_Køber.Size = new Size(318, 89);
+            Lbl_Køber.TabIndex = 0;
+            Lbl_Køber.Text = "Køber";
+            Lbl_Køber.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -315,13 +371,13 @@
             panel1.Controls.Add(TxtBox_Sælger_Navn);
             panel1.Controls.Add(Lbl_Sælger_Navn);
             panel1.Controls.Add(Lbl_Sælger);
-            panel1.Controls.Add(TxtBox_Mægler_Email);
-            panel1.Controls.Add(Lbl_Mægler_Email);
-            panel1.Controls.Add(TxtBox_Mægler_TlfNr);
-            panel1.Controls.Add(Lbl_Mægler_TlfNr);
-            panel1.Controls.Add(TxtBox_Mægler_Navn);
-            panel1.Controls.Add(Lbl_Mægler_Navn);
-            panel1.Controls.Add(Lbl_Mægler);
+            panel1.Controls.Add(TxtBox_Køber_Email);
+            panel1.Controls.Add(Lbl_Køber_Email);
+            panel1.Controls.Add(TxtBox_Køber_TlfNr);
+            panel1.Controls.Add(Lbl_Køber_TlfNr);
+            panel1.Controls.Add(TxtBox_Køber_Navn);
+            panel1.Controls.Add(Lbl_Køber_Navn);
+            panel1.Controls.Add(Lbl_Køber);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(977, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
@@ -329,15 +385,15 @@
             panel1.Size = new Size(318, 891);
             panel1.TabIndex = 3;
             // 
-            // TxtBox_Mægler_Navn
+            // TxtBox_Køber_Navn
             // 
-            TxtBox_Mægler_Navn.Anchor = AnchorStyles.Top;
-            TxtBox_Mægler_Navn.Location = new Point(7, 119);
-            TxtBox_Mægler_Navn.Margin = new Padding(3, 4, 3, 4);
-            TxtBox_Mægler_Navn.Name = "TxtBox_Mægler_Navn";
-            TxtBox_Mægler_Navn.ReadOnly = true;
-            TxtBox_Mægler_Navn.Size = new Size(297, 27);
-            TxtBox_Mægler_Navn.TabIndex = 2;
+            TxtBox_Køber_Navn.Anchor = AnchorStyles.Top;
+            TxtBox_Køber_Navn.Location = new Point(7, 119);
+            TxtBox_Køber_Navn.Margin = new Padding(3, 4, 3, 4);
+            TxtBox_Køber_Navn.Name = "TxtBox_Køber_Navn";
+            TxtBox_Køber_Navn.ReadOnly = true;
+            TxtBox_Køber_Navn.Size = new Size(297, 27);
+            TxtBox_Køber_Navn.TabIndex = 2;
             // 
             // EjendomsmæglerForm
             // 
@@ -350,8 +406,10 @@
             Name = "EjendomsmæglerForm";
             Text = "EjendomsmæglerForm";
             ScreenPnl.ResumeLayout(false);
+            ScreenPnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Dgv_Inaktive_Boliger).EndInit();
             ((System.ComponentModel.ISupportInitialize)Dgv_Mægler).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Dgv_Boliger).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Dgv_Aktive_Boliger).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -370,15 +428,19 @@
         private Label Lbl_Sælger;
         private Button Refreshbutton;
         private Panel ScreenPnl;
-        private TextBox TxtBox_Mægler_Email;
-        private Label Lbl_Mægler_Email;
-        private TextBox TxtBox_Mægler_TlfNr;
-        private Label Lbl_Mægler_TlfNr;
-        private Label Lbl_Mægler_Navn;
-        private Label Lbl_Mægler;
+        private TextBox TxtBox_Køber_Email;
+        private Label Lbl_Køber_Email;
+        private TextBox TxtBox_Køber_TlfNr;
+        private Label Lbl_Køber_TlfNr;
+        private Label Lbl_Køber_Navn;
+        private Label Lbl_Køber;
         private Panel panel1;
-        private TextBox TxtBox_Mægler_Navn;
-        private DataGridView Dgv_Boliger;
+        private TextBox TxtBox_Køber_Navn;
+        private DataGridView Dgv_Aktive_Boliger;
         private DataGridView Dgv_Mægler;
+        private Label Lbl_Tilknyttede_Boliger_Inaktive;
+        private Label Lbl_Mæglere_Tilknyttede_Aktive;
+        private Label Lbl_Dgv_Mægler;
+        private DataGridView Dgv_Inaktive_Boliger;
     }
 }

@@ -37,7 +37,6 @@ namespace SemesterProjekt.Forms
             db = new DbHandler();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = db.GetAllBolig();
-            aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
 
@@ -117,7 +116,6 @@ namespace SemesterProjekt.Forms
             row = e.RowIndex;
             try
             {
-            DataGridViewRow data = dataGridView1.Rows[row];
             DataGridViewRow data = DGVBolig.Rows[row];
             MæglerId = (int)data.Cells["MaeglerId"].Value;
             Adresse = (string)data.Cells["Adresse"].Value;
