@@ -1135,13 +1135,13 @@ namespace SemesterProjekt.DataAccess
         {
 
             // sql selection of the given table
-            string command = "UPDATE Kunde SET KBoligId = (@KBoligId) WHERE KId = (@KId)";
+            string command = "UPDATE Kunde SET KBoligId = @KBoligId WHERE KId = @KId";
             // using sqlconnection
             using SqlConnection conn = new SqlConnection(ConnectionString);
             // save connection in variable - to handle commands
             SqlCommand cmd = new SqlCommand(command, conn);
 
-            cmd.Parameters.AddWithValue("@Kd", kunde.KId);
+            cmd.Parameters.AddWithValue("@KId", KId);
             cmd.Parameters.AddWithValue("@KBoligId", kunde.KBoligId);
 
 
