@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SemesterProjekt.Forms
 {
@@ -28,12 +29,14 @@ namespace SemesterProjekt.Forms
         int Afdeling;
 
         //Variabler der skal gemmes (Sælger)
-        int SId;
-        string SFname;
-        string SLname;
-        int SBoligId;
-        string SEmail;
-        int STlfNr;
+        int BoligIid;
+        string Adresse;
+        int PostNr;
+        int Udbudspris;
+        int Kvadratmeter;
+        string BoligType;
+        bool Aktiv;
+
 
 
 
@@ -49,6 +52,7 @@ namespace SemesterProjekt.Forms
         {
             db = new DbHandler();
             row = e.RowIndex;
+
             try
             {
                 DataGridViewRow data = Dgv_Mægler.Rows[row];
@@ -77,26 +81,58 @@ namespace SemesterProjekt.Forms
 
         private void Dgv_Aktive_Boliger_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            db = new DbHandler(); 
+            db = new DbHandler();
             row = e.RowIndex;
+
             try
             {
                 DataGridViewRow Data = Dgv_Aktive_Boliger.Rows[row];
-                SId = (int)Data.Cells["SId"].Value;
-                SFname = (string)Data.Cells["SFname"].Value;
-                SLname = (string)Data.Cells["SLname"].Value;
-                SBoligId = (int)Data.Cells["SBoligId"].Value;
-                SEmail = (string)Data.Cells["SEmail"].Value;
-                STlfNr = (int)Data.Cells["STlfNr"].Value;
+                MæglerId = (int)Data.Cells["MaeglerId"].Value;
+                Adresse = (string)Data.Cells["Adresse"].Value;
+                BoligIid = (int)Data.Cells["BoligId"].Value;
+                PostNr = (int)Data.Cells["PostNr"].Value;
+                Udbudspris = (int)Data.Cells["UdbudsPris"].Value;
+                Kvadratmeter = (int)Data.Cells["Kvadratmeter"].Value;
+                BoligType = (string)Data.Cells["BoligType"].Value;
+                Aktiv = (bool)Data.Cells["Aktiv"].Value;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            TxtBox_Sælger_Navn.Text = SFname + " " + SLname;
-            TxtBox_Sælger_Email.Text = SEmail;
-            TxtBox_Sælger_TlfNr.Text = "" + STlfNr; 
+            Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligIid);
+            TxtBox_Sælger_Navn.Text = sa.SFname + " " + sa.SLname;
+            TxtBox_Sælger_Email.Text = sa.SEmail;
+            TxtBox_Sælger_TlfNr.Text = "" + sa.STlfNr;
+        }
+
+        private void Dgv_Inaktive_Boliger_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            db = new DbHandler();
+            row = e.RowIndex;
+
+            try
+            {
+                DataGridViewRow Data = Dgv_Inaktive_Boliger.Rows[row];
+                MæglerId = (int)Data.Cells["MaeglerId"].Value;
+                Adresse = (string)Data.Cells["Adresse"].Value;
+                BoligIid = (int)Data.Cells["BoligId"].Value;
+                PostNr = (int)Data.Cells["PostNr"].Value;
+                Udbudspris = (int)Data.Cells["UdbudsPris"].Value;
+                Kvadratmeter = (int)Data.Cells["Kvadratmeter"].Value;
+                BoligType = (string)Data.Cells["BoligType"].Value;
+                Aktiv = (bool)Data.Cells["Aktiv"].Value;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligIid);
+            TxtBox_Sælger_Navn.Text = sa.SFname + " " + sa.SLname;
+            TxtBox_Sælger_Email.Text = sa.SEmail;
+            TxtBox_Sælger_TlfNr.Text = "" + sa.STlfNr;
         }
     }
 }

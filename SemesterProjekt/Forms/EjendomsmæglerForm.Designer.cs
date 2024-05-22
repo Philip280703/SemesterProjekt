@@ -255,6 +255,7 @@
             Dgv_Inaktive_Boliger.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             Dgv_Inaktive_Boliger.Size = new Size(948, 312);
             Dgv_Inaktive_Boliger.TabIndex = 7;
+            Dgv_Inaktive_Boliger.CellClick += Dgv_Inaktive_Boliger_CellClick;
             // 
             // Dgv_Mægler
             // 
