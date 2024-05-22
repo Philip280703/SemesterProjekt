@@ -132,6 +132,11 @@ namespace SemesterProjekt.Forms
             TxtBox_Sælger_Navn.Text = sa.SFname + " " + sa.SLname;
             TxtBox_Sælger_Email.Text = sa.SEmail;
             TxtBox_Sælger_TlfNr.Text = "" + sa.STlfNr;
+
+            Kunde ku = db.GetSingleKundeBasedOfBoligId(BoligIid);
+            TxtBox_Køber_Email.Text = ku.KEmail;
+            TxtBox_Køber_Navn.Text = ku.KFname + " " + ku.KLname;
+            TxtBox_Køber_TlfNr.Text = "" + ku.KTlfNr;
         }
 
         private void EjendomsmæglerForm_Load(object sender, EventArgs e)

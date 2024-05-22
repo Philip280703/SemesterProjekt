@@ -15,7 +15,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultP"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultMR"].ToString();
         }
 
 
@@ -1084,6 +1084,50 @@ namespace SemesterProjekt.DataAccess
             return SingleKunde;
         }
 
+        // Read/Get one Kunde baseret på bolig idet som kobles til 
+        internal Kunde GetSingleKundeBasedOfBoligId(int KBoligId)
+        {
+            Kunde SingleKunde = new Kunde();
+            // sql selection of the given table
+            string command = "Select * from Kunde where KBoligId = @KBoligId";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@KBoligId", KBoligId);
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    SingleKunde = new Kunde
+                    {
+                        KId = (int)reader["KId"],
+                        KFname = (string)reader["KFname"],
+                        KLname = (string)reader["KLname"],
+                        KBoligId = (int)reader["KBoligId"],
+                        KEmail = (string)reader["KEmail"],
+                        KTlfNr = (int)reader["KTlfNr"]
+                    };
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+
+            return SingleKunde;
+        }
 
 
         // Update Kunde ved salg 
