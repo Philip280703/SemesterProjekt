@@ -15,10 +15,14 @@ namespace SemesterProjekt.Forms
     {
         InfoBolig ib;
         Panel panel;
+        DbHandler db;
+        int row;
+        int KId;
 
         public AdvanceInfoBolig()
         {
             InitializeComponent();
+
         }
 
         public AdvanceInfoBolig(int MæglerId, string Adresse, int BoligId, int PostNr, int Udbudspris, int Kvadratmeter, string BoligType, bool aktiv)
@@ -34,6 +38,8 @@ namespace SemesterProjekt.Forms
             BoligTypeTextbox.Text = BoligType;
             AktivTextbox.Text = "" + aktiv;
             MaglerIdTextbox.Text = "" + MæglerId;
+            db = new DbHandler();
+            DGVKunder.DataSource = db.GetAllKunder();
         }
 
 
@@ -42,59 +48,33 @@ namespace SemesterProjekt.Forms
             this.Hide();
         }
 
+        private void DGVKunder_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            row = e.RowIndex;
+            try
+            {
+                DataGridViewRow data = DGVKunder.Rows[row];
+
+                KId = (int)data.Cells["Kid"].Value;
+                textBoxKundeId.Text = KId.ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         private void SælgBolig_Click(object sender, EventArgs e)
         {
             DbHandler db = new DbHandler();
             int boligiid = int.Parse(BoligIdTextBox.Text);
             DateTime Salgsdatoen = Salgsdato.Value;
-            db.MarkBoligAsSold( new Models.Bolig { Aktiv = false, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text)  }, boligiid);
+            db.MarkBoligAsSold(new Models.Bolig { Aktiv = false, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text) }, boligiid);
+           
+
+            db.UpdateKunde(new Models.Kunde { KBoligId = boligiid }, KId);
             MessageBox.Show("Bolig er nu solgt!");
             this.Hide();
         }
 
-        private void txtbox_BoligId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_Adresse(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_PostNr_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_Udbudspris_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_Kvadratmeter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtboxKvmPris_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_BoligType_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_Aktiv_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_maelgerId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

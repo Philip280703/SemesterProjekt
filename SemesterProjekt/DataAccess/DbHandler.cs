@@ -15,7 +15,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultMR"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultP"].ToString();
         }
 
 
@@ -1097,7 +1097,7 @@ namespace SemesterProjekt.DataAccess
             // save connection in variable - to handle commands
             SqlCommand cmd = new SqlCommand(command, conn);
 
-            cmd.Parameters.AddWithValue("@Kd", KId);
+            cmd.Parameters.AddWithValue("@Kd", kunde.KId);
             cmd.Parameters.AddWithValue("@KBoligId", kunde.KBoligId);
 
 
