@@ -47,17 +47,19 @@
             label2 = new Label();
             label1 = new Label();
             ScreenPnl = new Panel();
+            lblGnsKvm = new Label();
+            textBoxGns = new TextBox();
             Sletbolig_button = new Button();
             Aktiv_checkbox = new CheckBox();
             Refreshbutton = new Button();
-            comboBox3 = new ComboBox();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
-            dataGridView1 = new DataGridView();
+            comboBoxPris = new ComboBox();
+            comboBoxPostNr = new ComboBox();
+            ComboBoxBoligtype = new ComboBox();
+            txtSearchbar = new TextBox();
+            DGVBolig = new DataGridView();
             panel1.SuspendLayout();
             ScreenPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DGVBolig).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -102,7 +104,7 @@
             button4.TabIndex = 16;
             button4.Text = "Ny Bolig";
             button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click_1;
+            button4.Click += buttonNyBolig_Click;
             // 
             // button2
             // 
@@ -119,7 +121,7 @@
             button2.TabIndex = 15;
             button2.Text = "Opdater Udbudspris";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            button2.Click += buttonOpdaterBolig_Click;
             // 
             // button1
             // 
@@ -136,7 +138,7 @@
             button1.TabIndex = 14;
             button1.Text = "Sælg Bolig";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            button1.Click += buttonSaelgBolig_Click;
             // 
             // textBox5
             // 
@@ -296,14 +298,16 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(lblGnsKvm);
+            ScreenPnl.Controls.Add(textBoxGns);
             ScreenPnl.Controls.Add(Sletbolig_button);
             ScreenPnl.Controls.Add(Aktiv_checkbox);
             ScreenPnl.Controls.Add(Refreshbutton);
-            ScreenPnl.Controls.Add(comboBox3);
-            ScreenPnl.Controls.Add(comboBox2);
-            ScreenPnl.Controls.Add(comboBox1);
-            ScreenPnl.Controls.Add(textBox1);
-            ScreenPnl.Controls.Add(dataGridView1);
+            ScreenPnl.Controls.Add(comboBoxPris);
+            ScreenPnl.Controls.Add(comboBoxPostNr);
+            ScreenPnl.Controls.Add(ComboBoxBoligtype);
+            ScreenPnl.Controls.Add(txtSearchbar);
+            ScreenPnl.Controls.Add(DGVBolig);
             ScreenPnl.Dock = DockStyle.Fill;
             ScreenPnl.Location = new Point(0, 0);
             ScreenPnl.Margin = new Padding(3, 4, 3, 4);
@@ -311,9 +315,28 @@
             ScreenPnl.Size = new Size(1029, 891);
             ScreenPnl.TabIndex = 2;
             // 
+            // lblGnsKvm
+            // 
+            lblGnsKvm.AutoSize = true;
+            lblGnsKvm.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblGnsKvm.Location = new Point(544, 808);
+            lblGnsKvm.Name = "lblGnsKvm";
+            lblGnsKvm.Size = new Size(270, 31);
+            lblGnsKvm.TabIndex = 19;
+            lblGnsKvm.Text = "Gennemsnitlig KvmPris:";
+            // 
+            // textBoxGns
+            // 
+            textBoxGns.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBoxGns.Location = new Point(820, 805);
+            textBoxGns.Name = "textBoxGns";
+            textBoxGns.ReadOnly = true;
+            textBoxGns.Size = new Size(178, 38);
+            textBoxGns.TabIndex = 18;
+            // 
             // Sletbolig_button
             // 
-            Sletbolig_button.Location = new Point(14, 833);
+            Sletbolig_button.Location = new Point(14, 826);
             Sletbolig_button.Name = "Sletbolig_button";
             Sletbolig_button.Size = new Size(99, 34);
             Sletbolig_button.TabIndex = 17;
@@ -344,67 +367,67 @@
             Refreshbutton.UseVisualStyleBackColor = true;
             Refreshbutton.Click += Refreshbutton_Click;
             // 
-            // comboBox3
+            // comboBoxPris
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Pris", "0 - 999999", "1000000 - 1999999", "2000000 - 2999999", "3000000 - 3999999", "4000000 - 4999999" });
-            comboBox3.Location = new Point(677, 15);
-            comboBox3.Margin = new Padding(3, 4, 3, 4);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(108, 28);
-            comboBox3.TabIndex = 4;
-            comboBox3.Text = "Pris";
-            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
+            comboBoxPris.FormattingEnabled = true;
+            comboBoxPris.Items.AddRange(new object[] { "Pris", "0 - 999999", "1000000 - 1999999", "2000000 - 2999999", "3000000 - 3999999", "4000000 - 4999999" });
+            comboBoxPris.Location = new Point(677, 15);
+            comboBoxPris.Margin = new Padding(3, 4, 3, 4);
+            comboBoxPris.Name = "comboBoxPris";
+            comboBoxPris.Size = new Size(108, 28);
+            comboBoxPris.TabIndex = 4;
+            comboBoxPris.Text = "Pris";
+            comboBoxPris.SelectedIndexChanged += comboBoxPris_SelectedIndexChanged;
             // 
-            // comboBox2
+            // comboBoxPostNr
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "PostNr", "1000 - 1999", "2000 - 2999", "3000 - 3999", "4000 - 4999", "5000 - 5999", "6000 - 6999", "7000 - 7999", "8000 - 8999", "9000 - 9999" });
-            comboBox2.Location = new Point(569, 15);
-            comboBox2.Margin = new Padding(3, 4, 3, 4);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(100, 28);
-            comboBox2.TabIndex = 3;
-            comboBox2.Text = "PostNr";
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            comboBoxPostNr.FormattingEnabled = true;
+            comboBoxPostNr.Items.AddRange(new object[] { "PostNr", "1000 - 1999", "2000 - 2999", "3000 - 3999", "4000 - 4999", "5000 - 5999", "6000 - 6999", "7000 - 7999", "8000 - 8999", "9000 - 9999" });
+            comboBoxPostNr.Location = new Point(569, 15);
+            comboBoxPostNr.Margin = new Padding(3, 4, 3, 4);
+            comboBoxPostNr.Name = "comboBoxPostNr";
+            comboBoxPostNr.Size = new Size(100, 28);
+            comboBoxPostNr.TabIndex = 3;
+            comboBoxPostNr.Text = "PostNr";
+            comboBoxPostNr.SelectedIndexChanged += comboBoxPostNr_SelectedIndexChanged;
             // 
-            // comboBox1
+            // ComboBoxBoligtype
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "BoligType", "Villa", "Lejlighed", "Rækkehus", "Andelsbolig" });
-            comboBox1.Location = new Point(446, 15);
-            comboBox1.Margin = new Padding(3, 4, 3, 4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(116, 28);
-            comboBox1.TabIndex = 2;
-            comboBox1.Text = "BoligType";
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            ComboBoxBoligtype.FormattingEnabled = true;
+            ComboBoxBoligtype.Items.AddRange(new object[] { "BoligType", "Villa", "Lejlighed", "Rækkehus", "Andelsbolig" });
+            ComboBoxBoligtype.Location = new Point(446, 15);
+            ComboBoxBoligtype.Margin = new Padding(3, 4, 3, 4);
+            ComboBoxBoligtype.Name = "ComboBoxBoligtype";
+            ComboBoxBoligtype.Size = new Size(116, 28);
+            ComboBoxBoligtype.TabIndex = 2;
+            ComboBoxBoligtype.Text = "BoligType";
+            ComboBoxBoligtype.SelectedIndexChanged += comboBoxBoligType_SelectedIndexChanged;
             // 
-            // textBox1
+            // txtSearchbar
             // 
-            textBox1.Location = new Point(14, 15);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Adresse";
-            textBox1.Size = new Size(425, 27);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtSearchbar.Location = new Point(14, 15);
+            txtSearchbar.Margin = new Padding(3, 4, 3, 4);
+            txtSearchbar.Name = "txtSearchbar";
+            txtSearchbar.PlaceholderText = "Adresse";
+            txtSearchbar.Size = new Size(425, 27);
+            txtSearchbar.TabIndex = 1;
+            txtSearchbar.TextChanged += txtSearchbar_TextChanged;
             // 
-            // dataGridView1
+            // DGVBolig
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 55);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1008, 749);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
+            DGVBolig.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DGVBolig.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVBolig.BackgroundColor = SystemColors.Control;
+            DGVBolig.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVBolig.Location = new Point(14, 55);
+            DGVBolig.Margin = new Padding(3, 4, 3, 4);
+            DGVBolig.Name = "DGVBolig";
+            DGVBolig.ReadOnly = true;
+            DGVBolig.RowHeadersWidth = 51;
+            DGVBolig.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGVBolig.Size = new Size(1008, 749);
+            DGVBolig.TabIndex = 0;
+            DGVBolig.CellMouseClick += dataGridViewBolig_CellMouseClick;
             // 
             // InfoBolig
             // 
@@ -419,7 +442,7 @@
             panel1.PerformLayout();
             ScreenPnl.ResumeLayout(false);
             ScreenPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DGVBolig).EndInit();
             ResumeLayout(false);
         }
 
@@ -427,12 +450,12 @@
 
         private Panel panel1;
         private Panel ScreenPnl;
-        private DataGridView dataGridView1;
-        private TextBox textBox1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
+        private DataGridView DGVBolig;
+        private TextBox txtSearchbar;
+        private ComboBox ComboBoxBoligtype;
+        private ComboBox comboBoxPostNr;
         private TrackBar trackBar1;
-        private ComboBox comboBox3;
+        private ComboBox comboBoxPris;
         private Label label3;
         private TextBox textBox2;
         private Label label2;
@@ -454,5 +477,7 @@
         private Button button4;
         private CheckBox Aktiv_checkbox;
         private Button Sletbolig_button;
+        private TextBox textBoxGns;
+        private Label lblGnsKvm;
     }
 }

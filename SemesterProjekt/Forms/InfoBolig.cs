@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,80 +37,84 @@ namespace SemesterProjekt.Forms
             InitializeComponent();
             db = new DbHandler();
             aib = new AdvanceInfoBolig();
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = db.GetAllBolig();
+            DGVBolig.DataSource = null;
+            DGVBolig.DataSource = db.GetAllBolig();
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
-            this.dataGridView1.Columns["UdbudsPris"].DefaultCellStyle.Format = "N0";
-            this.dataGridView1.Columns["SalgsPris"].DefaultCellStyle.Format = "N0";
-            this.dataGridView1.Columns["KvmPris"].DefaultCellStyle.Format = "N0";
+            this.DGVBolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "N0";
+            this.DGVBolig.Columns["SalgsPris"].DefaultCellStyle.Format = "N0";
+            this.DGVBolig.Columns["KvmPris"].DefaultCellStyle.Format = "N0";
+
+            int gns = AveragePrice();
+            textBoxGns.Text = gns.ToString();
         }
 
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtSearchbar_TextChanged(object sender, EventArgs e)
         {
-            List<Bolig> filter = db.Searchbar(textBox1.Text);
-            dataGridView1.DataSource = filter;
+            List<Bolig> filter = db.Searchbar(txtSearchbar.Text);
+            DGVBolig.DataSource = filter;
+            int gns = AveragePrice();
+            textBoxGns.Text = gns.ToString();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxBoligType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string combobox = comboBox1.Text;
+            string combobox = ComboBoxBoligtype.Text;
             if (combobox == "BoligType")
             {
-                dataGridView1.DataSource = db.GetAllBolig();
+                DGVBolig.DataSource = db.GetAllBolig();
             }
             else
             {
                 List<Bolig> filter = db.GetAllBolig();
-                dataGridView1.DataSource = filter.Where(b => b.BoligType == combobox).ToList();
+                DGVBolig.DataSource = filter.Where(b => b.BoligType == combobox).ToList();
             }
+            int gns = AveragePrice();
+            textBoxGns.Text = gns.ToString();
         }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPostNr_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string combobox = comboBox2.Text;
+            string combobox = comboBoxPostNr.Text;
             if (combobox == "PostNr")
             {
-                dataGridView1.DataSource = db.GetAllBolig();
+                DGVBolig.DataSource = db.GetAllBolig();
             }
             else
             {
                 int num1 = int.Parse(combobox.Split("-")[0]);
                 int num2 = int.Parse(combobox.Split("-")[1]);
                 List<Bolig> filter = db.GetAllBolig();
-                dataGridView1.DataSource = filter.Where(b => b.PostNr >= num1 && b.PostNr <= num2).ToList();
+                DGVBolig.DataSource = filter.Where(b => b.PostNr >= num1 && b.PostNr <= num2).ToList();
             }
-
-
+            int gns = AveragePrice();
+            textBoxGns.Text = gns.ToString();
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPris_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string combobox = comboBox3.Text;
+            string combobox = comboBoxPris.Text;
             if (combobox == "Pris")
             {
-                dataGridView1.DataSource = db.GetAllBolig();
+                DGVBolig.DataSource = db.GetAllBolig();
             }
             else
             {
                 int num1 = int.Parse(combobox.Split("-")[0]);
                 int num2 = int.Parse(combobox.Split("-")[1]);
                 List<Bolig> filter = db.GetAllBolig();
-                dataGridView1.DataSource = filter.Where(b => b.UdbudsPris >= num1 && b.UdbudsPris <= num2).ToList();
+                DGVBolig.DataSource = filter.Where(b => b.UdbudsPris >= num1 && b.UdbudsPris <= num2).ToList();
             }
-
+            int gns = AveragePrice();
+            textBoxGns.Text = gns.ToString();
         }
 
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dataGridViewBolig_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
-
             // Henter info omkring ejendomsmægler som er koblet til bolig
             DbHandler db = new DbHandler();
             row = e.RowIndex;
-            DataGridViewRow data = dataGridView1.Rows[row];
+            DataGridViewRow data = DGVBolig.Rows[row];
             MæglerId = (int)data.Cells["MaeglerId"].Value;
             Adresse = (string)data.Cells["Adresse"].Value;
             BoligIid = (int)data.Cells["BoligId"].Value;
@@ -132,33 +137,43 @@ namespace SemesterProjekt.Forms
             textBox5.Text = sa.SEmail;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private int AveragePrice()
+        {
+            // Beregn gennemsnit
+            int sum = 0;
+            for (int i = 0; i < DGVBolig.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(DGVBolig.Rows[i].Cells[5].Value);
+            }
+            int countRow = DGVBolig.Rows.Count;
+            int gns = sum / countRow;
+            return gns;
+
+        }
+        private void buttonSaelgBolig_Click(object sender, EventArgs e)
         {
             AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
             aib.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonOpdaterBolig_Click(object sender, EventArgs e)
         {
             UpdateBoligForm updateBolig = new UpdateBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
             updateBolig.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Refreshbutton_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = db.GetAllBolig();
+            DGVBolig.DataSource = db.GetAllBolig();
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
+        private void buttonNyBolig_Click(object sender, EventArgs e)
         {
             NewBoligForm newBoligForm = new NewBoligForm();
             newBoligForm.Show();
         }
+        
 
         private void Aktiv_checkbox_CheckedChanged(object sender, EventArgs e)
         {
@@ -166,11 +181,11 @@ namespace SemesterProjekt.Forms
             {
                 List<Bolig> Aktivbolig = db.GetAllBolig();
                 List<Bolig> TrueAktivBolig = Aktivbolig.Where(b => b.SalgsPris < 1).ToList();
-                dataGridView1.DataSource = TrueAktivBolig;
+                DGVBolig.DataSource = TrueAktivBolig;
             }
             else
             {
-                dataGridView1.DataSource = db.GetAllBolig();
+                DGVBolig.DataSource = db.GetAllBolig();
             }
         }
 
@@ -178,14 +193,16 @@ namespace SemesterProjekt.Forms
         {
             DbHandler dbHandler = new DbHandler();
             var AreyouSure = MessageBox.Show("Er du sikker på at du vil slette denne bolig permanent?", "", MessageBoxButtons.YesNo);
-      
+
             if (AreyouSure == DialogResult.Yes)
             {
                 dbHandler.HardDeleteSaelgerFromDB(BoligIid);
                 dbHandler.HardDeleteBoligFromDB(BoligIid);
                 MessageBox.Show("Boligen er nu solgt");
             }
-           
+
         }
+
+       
     }
 }
