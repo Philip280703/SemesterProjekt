@@ -406,6 +406,7 @@
             Controls.Add(panel1);
             Name = "EjendomsmæglerForm";
             Text = "EjendomsmæglerForm";
+            Load += EjendomsmæglerForm_Load;
             ScreenPnl.ResumeLayout(false);
             ScreenPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Dgv_Inaktive_Boliger).EndInit();

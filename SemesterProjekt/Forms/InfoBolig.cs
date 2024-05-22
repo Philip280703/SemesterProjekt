@@ -39,7 +39,6 @@ namespace SemesterProjekt.Forms
             aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
-            DGVBolig.ClearSelection();
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
@@ -57,6 +56,9 @@ namespace SemesterProjekt.Forms
             DGVBolig.DataSource = filter;
             int gns = AveragePrice();
             textBoxGns.Text = gns.ToString();
+
+            //Gør så Der ikke automatisk vælges 1 row i DGV
+            DGVBolig.ClearSelection();
         }
 
         private void comboBoxBoligType_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,6 +75,9 @@ namespace SemesterProjekt.Forms
             }
             int gns = AveragePrice();
             textBoxGns.Text = gns.ToString();
+
+            //Gør så Der ikke automatisk vælges 1 row i DGV
+            DGVBolig.ClearSelection();
         }
         private void comboBoxPostNr_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -90,6 +95,9 @@ namespace SemesterProjekt.Forms
             }
             int gns = AveragePrice();
             textBoxGns.Text = gns.ToString();
+
+            //Gør så Der ikke automatisk vælges 1 row i DGV
+            DGVBolig.ClearSelection();
         }
 
         private void comboBoxPris_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,6 +116,9 @@ namespace SemesterProjekt.Forms
             }
             int gns = AveragePrice();
             textBoxGns.Text = gns.ToString();
+
+            //Gør så Der ikke automatisk vælges 1 row i DGV
+            DGVBolig.ClearSelection();
         }
 
         private void dataGridViewBolig_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -117,17 +128,17 @@ namespace SemesterProjekt.Forms
             row = e.RowIndex;
             try
             {
-            DataGridViewRow data = DGVBolig.Rows[row];
-            
-            MæglerId = (int)data.Cells["MaeglerId"].Value;
-            Adresse = (string)data.Cells["Adresse"].Value;
-            BoligIid = (int)data.Cells["BoligId"].Value;
-            PostNr = (int)data.Cells["PostNr"].Value;
-            Udbudspris = (int)data.Cells["UdbudsPris"].Value;
-            Kvadratmeter = (int)data.Cells["Kvadratmeter"].Value;
-            BoligType = (string)data.Cells["BoligType"].Value;
-            Aktiv = (bool)data.Cells["Aktiv"].Value;
-            BoligId = (int)data.Cells["BoligId"].Value;
+                DataGridViewRow data = DGVBolig.Rows[row];
+
+                MæglerId = (int)data.Cells["MaeglerId"].Value;
+                Adresse = (string)data.Cells["Adresse"].Value;
+                BoligIid = (int)data.Cells["BoligId"].Value;
+                PostNr = (int)data.Cells["PostNr"].Value;
+                Udbudspris = (int)data.Cells["UdbudsPris"].Value;
+                Kvadratmeter = (int)data.Cells["Kvadratmeter"].Value;
+                BoligType = (string)data.Cells["BoligType"].Value;
+                Aktiv = (bool)data.Cells["Aktiv"].Value;
+                BoligId = (int)data.Cells["BoligId"].Value;
             }
             catch (Exception ex)
             {
@@ -147,7 +158,7 @@ namespace SemesterProjekt.Forms
             textBox4.Text = em.MEmail;
 
             // Henter info omkring Sælger som er tilkoblet Bolig
-            
+
         }
 
 
@@ -186,7 +197,7 @@ namespace SemesterProjekt.Forms
             NewBoligForm newBoligForm = new NewBoligForm();
             newBoligForm.Show();
         }
-        
+
 
         private void Aktiv_checkbox_CheckedChanged(object sender, EventArgs e)
         {
@@ -200,6 +211,8 @@ namespace SemesterProjekt.Forms
             {
                 DGVBolig.DataSource = db.GetAllBolig();
             }
+            //Gør så Der ikke automatisk vælges 1 row i DGV
+            DGVBolig.ClearSelection();
         }
 
         private void Sletbolig_button_Click(object sender, EventArgs e)
@@ -216,6 +229,10 @@ namespace SemesterProjekt.Forms
 
         }
 
-       
+        private void InfoBolig_Load(object sender, EventArgs e)
+        {
+            //Gør så Der ikke automatisk vælges 1 row i DGV når formen loades
+            DGVBolig.ClearSelection();
+        }
     }
 }

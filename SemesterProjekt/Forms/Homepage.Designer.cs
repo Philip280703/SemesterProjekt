@@ -41,7 +41,7 @@
             LogoPNL = new Panel();
             LogoLabel = new Label();
             HeaderPnl = new Panel();
-            label1 = new Label();
+            Lbl_Title = new Label();
             ScreenPnl = new Panel();
             NavPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -66,8 +66,9 @@
             NavPnl.Controls.Add(LogoPNL);
             NavPnl.Dock = DockStyle.Left;
             NavPnl.Location = new Point(0, 0);
+            NavPnl.Margin = new Padding(3, 4, 3, 4);
             NavPnl.Name = "NavPnl";
-            NavPnl.Size = new Size(200, 691);
+            NavPnl.Size = new Size(229, 921);
             NavPnl.TabIndex = 0;
             // 
             // ButtonM
@@ -79,9 +80,10 @@
             ButtonM.Font = new Font("Myanmar Text", 18F, FontStyle.Bold);
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
             ButtonM.ImageAlign = ContentAlignment.MiddleLeft;
-            ButtonM.Location = new Point(63, 265);
+            ButtonM.Location = new Point(72, 353);
+            ButtonM.Margin = new Padding(3, 4, 3, 4);
             ButtonM.Name = "ButtonM";
-            ButtonM.Size = new Size(134, 47);
+            ButtonM.Size = new Size(153, 63);
             ButtonM.TabIndex = 17;
             ButtonM.Text = "Mægler";
             ButtonM.UseVisualStyleBackColor = true;
@@ -96,9 +98,10 @@
             ButtonK.Font = new Font("Myanmar Text", 18F, FontStyle.Bold);
             ButtonK.ForeColor = Color.FromArgb(229, 159, 0);
             ButtonK.ImageAlign = ContentAlignment.MiddleLeft;
-            ButtonK.Location = new Point(63, 212);
+            ButtonK.Location = new Point(72, 283);
+            ButtonK.Margin = new Padding(3, 4, 3, 4);
             ButtonK.Name = "ButtonK";
-            ButtonK.Size = new Size(134, 47);
+            ButtonK.Size = new Size(153, 63);
             ButtonK.TabIndex = 16;
             ButtonK.Text = "Køber";
             ButtonK.UseVisualStyleBackColor = true;
@@ -113,9 +116,10 @@
             ButtonS.Font = new Font("Myanmar Text", 18F, FontStyle.Bold);
             ButtonS.ForeColor = Color.FromArgb(229, 159, 0);
             ButtonS.ImageAlign = ContentAlignment.MiddleLeft;
-            ButtonS.Location = new Point(63, 159);
+            ButtonS.Location = new Point(72, 212);
+            ButtonS.Margin = new Padding(3, 4, 3, 4);
             ButtonS.Name = "ButtonS";
-            ButtonS.Size = new Size(134, 47);
+            ButtonS.Size = new Size(153, 63);
             ButtonS.TabIndex = 15;
             ButtonS.Text = "Sælger";
             ButtonS.UseVisualStyleBackColor = true;
@@ -130,9 +134,10 @@
             ButtonB.Font = new Font("Myanmar Text", 18F, FontStyle.Bold);
             ButtonB.ForeColor = Color.FromArgb(229, 159, 0);
             ButtonB.ImageAlign = ContentAlignment.MiddleLeft;
-            ButtonB.Location = new Point(63, 106);
+            ButtonB.Location = new Point(72, 141);
+            ButtonB.Margin = new Padding(3, 4, 3, 4);
             ButtonB.Name = "ButtonB";
-            ButtonB.Size = new Size(134, 47);
+            ButtonB.Size = new Size(153, 63);
             ButtonB.TabIndex = 14;
             ButtonB.Text = "Bolig";
             ButtonB.UseVisualStyleBackColor = true;
@@ -142,9 +147,10 @@
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.ImageLocation = "";
-            pictureBox4.Location = new Point(5, 265);
+            pictureBox4.Location = new Point(6, 353);
+            pictureBox4.Margin = new Padding(3, 4, 3, 4);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(52, 47);
+            pictureBox4.Size = new Size(59, 63);
             pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox4.TabIndex = 8;
             pictureBox4.TabStop = false;
@@ -153,9 +159,10 @@
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.ImageLocation = "";
-            pictureBox3.Location = new Point(5, 212);
+            pictureBox3.Location = new Point(6, 283);
+            pictureBox3.Margin = new Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(52, 47);
+            pictureBox3.Size = new Size(59, 63);
             pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox3.TabIndex = 7;
             pictureBox3.TabStop = false;
@@ -164,9 +171,10 @@
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.ImageLocation = "";
-            pictureBox2.Location = new Point(5, 159);
+            pictureBox2.Location = new Point(6, 212);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(52, 47);
+            pictureBox2.Size = new Size(59, 63);
             pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
@@ -175,9 +183,10 @@
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.ImageLocation = "";
-            pictureBox1.Location = new Point(5, 106);
+            pictureBox1.Location = new Point(6, 141);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(52, 47);
+            pictureBox1.Size = new Size(59, 63);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -187,8 +196,9 @@
             LogoPNL.Controls.Add(LogoLabel);
             LogoPNL.Dock = DockStyle.Top;
             LogoPNL.Location = new Point(0, 0);
+            LogoPNL.Margin = new Padding(3, 4, 3, 4);
             LogoPNL.Name = "LogoPNL";
-            LogoPNL.Size = new Size(200, 100);
+            LogoPNL.Size = new Size(229, 133);
             LogoPNL.TabIndex = 0;
             // 
             // LogoLabel
@@ -199,8 +209,8 @@
             LogoLabel.ForeColor = Color.White;
             LogoLabel.Location = new Point(0, 0);
             LogoLabel.Name = "LogoLabel";
-            LogoLabel.Padding = new Padding(0, 10, 0, 0);
-            LogoLabel.Size = new Size(200, 100);
+            LogoLabel.Padding = new Padding(0, 13, 0, 0);
+            LogoLabel.Size = new Size(229, 133);
             LogoLabel.TabIndex = 0;
             LogoLabel.Text = "EDC";
             LogoLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -208,42 +218,44 @@
             // HeaderPnl
             // 
             HeaderPnl.BackColor = Color.FromArgb(229, 159, 0);
-            HeaderPnl.Controls.Add(label1);
+            HeaderPnl.Controls.Add(Lbl_Title);
             HeaderPnl.Dock = DockStyle.Top;
-            HeaderPnl.Location = new Point(200, 0);
+            HeaderPnl.Location = new Point(229, 0);
+            HeaderPnl.Margin = new Padding(3, 4, 3, 4);
             HeaderPnl.Name = "HeaderPnl";
-            HeaderPnl.Size = new Size(987, 100);
+            HeaderPnl.Size = new Size(1128, 133);
             HeaderPnl.TabIndex = 1;
             // 
-            // label1
+            // Lbl_Title
             // 
-            label1.AutoSize = true;
-            label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Myanmar Text", 21F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(0, 30);
-            label1.Name = "label1";
-            label1.Size = new Size(101, 50);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            Lbl_Title.AutoSize = true;
+            Lbl_Title.FlatStyle = FlatStyle.Flat;
+            Lbl_Title.Font = new Font("Myanmar Text", 21F, FontStyle.Bold);
+            Lbl_Title.ForeColor = Color.White;
+            Lbl_Title.Location = new Point(0, 40);
+            Lbl_Title.Name = "Lbl_Title";
+            Lbl_Title.Size = new Size(115, 62);
+            Lbl_Title.TabIndex = 0;
+            Lbl_Title.Text = "Hjem";
             // 
             // ScreenPnl
             // 
             ScreenPnl.Dock = DockStyle.Fill;
-            ScreenPnl.Location = new Point(200, 100);
+            ScreenPnl.Location = new Point(229, 133);
+            ScreenPnl.Margin = new Padding(3, 4, 3, 4);
             ScreenPnl.Name = "ScreenPnl";
-            ScreenPnl.Size = new Size(987, 591);
+            ScreenPnl.Size = new Size(1128, 788);
             ScreenPnl.TabIndex = 2;
             // 
             // Homepage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1187, 691);
+            ClientSize = new Size(1357, 921);
             Controls.Add(ScreenPnl);
             Controls.Add(HeaderPnl);
             Controls.Add(NavPnl);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "Homepage";
             Text = "Form1";
             WindowState = FormWindowState.Maximized;
@@ -263,7 +275,7 @@
         private Panel NavPnl;
         private Panel LogoPNL;
         private Panel HeaderPnl;
-        private Label label1;
+        private Label Lbl_Title;
         private Label LogoLabel;
         private PictureBox pictureBox4;
         private PictureBox pictureBox3;

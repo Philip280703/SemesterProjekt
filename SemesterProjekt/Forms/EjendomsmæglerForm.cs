@@ -133,5 +133,11 @@ namespace SemesterProjekt.Forms
             TxtBox_Sælger_Email.Text = sa.SEmail;
             TxtBox_Sælger_TlfNr.Text = "" + sa.STlfNr;
         }
+
+        private void EjendomsmæglerForm_Load(object sender, EventArgs e)
+        {
+            //Gør så Der ikke automatisk vælges 1 row i DGV 
+            Dgv_Mægler.ClearSelection();
+        }
     }
 }

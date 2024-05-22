@@ -51,50 +51,5 @@ namespace SemesterProjekt.Forms
             MessageBox.Show("Bolig er nu solgt!");
             this.Hide();
         }
-
-        private void txtbox_BoligId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_Adresse(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_PostNr_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_Udbudspris_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_Kvadratmeter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtboxKvmPris_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_BoligType_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_Aktiv_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtbox_maelgerId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

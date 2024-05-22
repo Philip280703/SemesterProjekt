@@ -33,6 +33,7 @@ namespace SemesterProjekt
             ButtonM.BackColor = Color.FromArgb(35, 31, 80);
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
             ef.Hide();
+            Lbl_Title.Text = "Bolig";
 
             //Åbner Form inde i panelet i form1// 
             bf.TopLevel = false;
@@ -57,7 +58,9 @@ namespace SemesterProjekt
 
             ButtonM.BackColor = Color.FromArgb(35, 31, 80);
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
+            ef.Hide();
             bf.Hide();
+            Lbl_Title.Text = "Sælger";
 
             //Åbner ny form
 
@@ -77,7 +80,9 @@ namespace SemesterProjekt
 
             ButtonM.BackColor = Color.FromArgb(35, 31, 80);
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
+            ef.Hide();
             bf.Hide();
+            Lbl_Title.Text = "Køber";
         }
 
         private void ButtonM_Click(object sender, EventArgs e)
@@ -95,6 +100,7 @@ namespace SemesterProjekt
             ButtonM.BackColor = Color.FromArgb(229, 159, 0);
             ButtonM.ForeColor = Color.FromArgb(35, 31, 80);
             bf.Hide();
+            Lbl_Title.Text = "Mægler";
 
             //Åbner ny form
             ef.TopLevel = false;

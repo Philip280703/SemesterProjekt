@@ -438,6 +438,7 @@
             Controls.Add(panel1);
             Name = "InfoBolig";
             Text = "Form2";
+            Load += InfoBolig_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ScreenPnl.ResumeLayout(false);
