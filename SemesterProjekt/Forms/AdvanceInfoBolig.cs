@@ -78,14 +78,24 @@ namespace SemesterProjekt.Forms
         private void SælgBolig_Click(object sender, EventArgs e)
         {
             DbHandler db = new DbHandler();
-            int boligiid = int.Parse(BoligIdTextBox.Text);
-            DateTime Salgsdatoen = Salgsdato.Value;
-            db.MarkBoligAsSold(new Models.Bolig { Aktiv = false, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text) }, boligiid);
-           
+            try
+            {
+                int boligiid = int.Parse(BoligIdTextBox.Text);
+                DateTime Salgsdatoen = Salgsdato.Value;
+                db.MarkBoligAsSold(new Models.Bolig { Aktiv = false, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text) }, boligiid);
 
-            db.UpdateKunde(new Models.Kunde { KBoligId = boligiid }, KId);
-            MessageBox.Show("Bolig er nu solgt!");
-            this.Hide();
+
+                db.UpdateKunde(new Models.Kunde { KBoligId = boligiid }, KId);
+                MessageBox.Show("Bolig er nu solgt!");
+                this.Hide();
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+           
         }
 
     }
