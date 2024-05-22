@@ -37,6 +37,8 @@ namespace SemesterProjekt.Forms
         {
             db = new DbHandler();
             row = e.RowIndex;
+            try
+            {
             DataGridViewRow data = Dgv_Mægler.Rows[row];
             MæglerId = (int)data.Cells["MId"].Value;
             MFname = (string)data.Cells["MFname"].Value;
@@ -45,6 +47,11 @@ namespace SemesterProjekt.Forms
             MEmail = (string)data.Cells["MEmail"].Value;
             MTlfNr = (int)data.Cells["MTlfNr"].Value;
             Afdeling = (int)data.Cells["Afdeling"].Value;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             List<Bolig> Boliger = db.GetAllBolig();
             Dgv_Boliger.DataSource = Boliger.Where(b => b.MaeglerId == MæglerId).ToList();
