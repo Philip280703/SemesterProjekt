@@ -18,9 +18,6 @@ namespace SemesterProjekt.Forms
     public partial class InfoBolig : Form
     {
         DbHandler db;
-        AdvanceInfoBolig aib;
-        Homepage hp;
-        InfoBolig ib;
         int BoligIid;
         string Adresse;
         int PostNr;
@@ -30,12 +27,16 @@ namespace SemesterProjekt.Forms
         bool Aktiv;
         int MæglerId;
         int row;
-        Panel scrnpnl;
+        int BoligId;
+
+
 
         public InfoBolig()
         {
             InitializeComponent();
             db = new DbHandler();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = db.GetAllBolig();
             aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
@@ -114,6 +115,9 @@ namespace SemesterProjekt.Forms
             // Henter info omkring ejendomsmægler som er koblet til bolig
             DbHandler db = new DbHandler();
             row = e.RowIndex;
+            try
+            {
+            DataGridViewRow data = dataGridView1.Rows[row];
             DataGridViewRow data = DGVBolig.Rows[row];
             MæglerId = (int)data.Cells["MaeglerId"].Value;
             Adresse = (string)data.Cells["Adresse"].Value;
@@ -123,18 +127,27 @@ namespace SemesterProjekt.Forms
             Kvadratmeter = (int)data.Cells["Kvadratmeter"].Value;
             BoligType = (string)data.Cells["BoligType"].Value;
             Aktiv = (bool)data.Cells["Aktiv"].Value;
+            BoligId = (int)data.Cells["BoligId"].Value;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
+            //Tilføjer informationer over i Sælger kassen
+            Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligId);
+            textBox7.Text = sa.SFname + " " + sa.SLname;
+            textBox6.Text = "" + sa.STlfNr;
+            textBox5.Text = sa.SEmail;
+
+            //Tilføjer information over i Mægler kassen
             EjendomsMaegler em = db.GetSingleEjendomsMaegler(MæglerId);
             textBox2.Text = em.MFname + " " + em.MLname;
             textBox3.Text = "" + em.MTlfNr;
             textBox4.Text = em.MEmail;
 
             // Henter info omkring Sælger som er tilkoblet Bolig
-            int BoligId = (int)data.Cells["BoligId"].Value;
-            Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligId);
-            textBox7.Text = sa.SFname + " " + sa.SLname;
-            textBox6.Text = "" + sa.STlfNr;
-            textBox5.Text = sa.SEmail;
+            
         }
 
 

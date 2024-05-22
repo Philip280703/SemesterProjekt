@@ -102,7 +102,7 @@
             button4.Name = "button4";
             button4.Size = new Size(318, 76);
             button4.TabIndex = 16;
-            button4.Text = "Ny Bolig";
+            button4.Text = "Opret Bolig";
             button4.UseVisualStyleBackColor = false;
             button4.Click += buttonNyBolig_Click;
             // 
