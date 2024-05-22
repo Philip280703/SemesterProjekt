@@ -28,209 +28,229 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BoligIdLabel = new Label();
-            AdresseLabel = new Label();
+            lbl_BoligId = new Label();
+            lbl_Adresse = new Label();
             BoligIdTextBox = new TextBox();
             AdresseTextbox = new TextBox();
             PostNrTextbox = new TextBox();
-            PostNrLabel = new Label();
+            lbl_PostNr = new Label();
             UdbudsprisTextbox = new TextBox();
-            label1 = new Label();
+            lbl_Udbudspris = new Label();
             KvadratmeterTextbox = new TextBox();
-            KvadratmeterLabel = new Label();
-            KvmPrisLabel = new Label();
+            lbl_kvadratmeter = new Label();
+            lbl_kvmPris = new Label();
             KvmPrisTextBox = new TextBox();
             BoligTypeTextbox = new TextBox();
-            BoligTypeLabel = new Label();
+            lbl_boligType = new Label();
             AktivTextbox = new TextBox();
-            AktivLabel = new Label();
+            lbl_aktiv = new Label();
             MaglerIdTextbox = new TextBox();
-            MæglerIdLabel = new Label();
-            panel1 = new Panel();
+            lbl_MæglerId = new Label();
+            panel_Sælg_Bolig = new Panel();
             SælgBolig = new Button();
             Salgspris = new TextBox();
-            SalgsPrisLbl = new Label();
-            SalgsDatoLbl = new Label();
+            lbl_SalgsPris = new Label();
+            lbl_SalgsDato = new Label();
             Salgsdato = new DateTimePicker();
-            SælgBoligLabel = new Label();
+            lbl_Sælg_Bolig = new Label();
             TilbageButton = new Button();
-            panel1.SuspendLayout();
+            panel_Sælg_Bolig.SuspendLayout();
             SuspendLayout();
             // 
-            // BoligIdLabel
+            // lbl_BoligId
             // 
-            BoligIdLabel.AutoSize = true;
-            BoligIdLabel.Location = new Point(48, 33);
-            BoligIdLabel.Name = "BoligIdLabel";
-            BoligIdLabel.Size = new Size(44, 15);
-            BoligIdLabel.TabIndex = 0;
-            BoligIdLabel.Text = "BoligId";
+            lbl_BoligId.AutoSize = true;
+            lbl_BoligId.Location = new Point(55, 44);
+            lbl_BoligId.Name = "lbl_BoligId";
+            lbl_BoligId.Size = new Size(57, 20);
+            lbl_BoligId.TabIndex = 0;
+            lbl_BoligId.Text = "BoligId";
             // 
-            // AdresseLabel
+            // lbl_Adresse
             // 
-            AdresseLabel.AutoSize = true;
-            AdresseLabel.Location = new Point(44, 62);
-            AdresseLabel.Name = "AdresseLabel";
-            AdresseLabel.Size = new Size(48, 15);
-            AdresseLabel.TabIndex = 1;
-            AdresseLabel.Text = "Adresse";
+            lbl_Adresse.AutoSize = true;
+            lbl_Adresse.Location = new Point(50, 83);
+            lbl_Adresse.Name = "lbl_Adresse";
+            lbl_Adresse.Size = new Size(61, 20);
+            lbl_Adresse.TabIndex = 1;
+            lbl_Adresse.Text = "Adresse";
             // 
             // BoligIdTextBox
             // 
-            BoligIdTextBox.Location = new Point(98, 30);
+            BoligIdTextBox.Location = new Point(112, 40);
+            BoligIdTextBox.Margin = new Padding(3, 4, 3, 4);
             BoligIdTextBox.Name = "BoligIdTextBox";
             BoligIdTextBox.ReadOnly = true;
-            BoligIdTextBox.Size = new Size(149, 23);
+            BoligIdTextBox.Size = new Size(170, 27);
             BoligIdTextBox.TabIndex = 3;
+            BoligIdTextBox.TextChanged += txtbox_BoligId_TextChanged;
             // 
             // AdresseTextbox
             // 
-            AdresseTextbox.Location = new Point(98, 59);
+            AdresseTextbox.Location = new Point(112, 79);
+            AdresseTextbox.Margin = new Padding(3, 4, 3, 4);
             AdresseTextbox.Name = "AdresseTextbox";
             AdresseTextbox.ReadOnly = true;
-            AdresseTextbox.Size = new Size(149, 23);
+            AdresseTextbox.Size = new Size(170, 27);
             AdresseTextbox.TabIndex = 4;
+            AdresseTextbox.TextChanged += txtbox_Adresse;
             // 
             // PostNrTextbox
             // 
-            PostNrTextbox.Location = new Point(98, 88);
+            PostNrTextbox.Location = new Point(112, 117);
+            PostNrTextbox.Margin = new Padding(3, 4, 3, 4);
             PostNrTextbox.Name = "PostNrTextbox";
             PostNrTextbox.ReadOnly = true;
-            PostNrTextbox.Size = new Size(149, 23);
+            PostNrTextbox.Size = new Size(170, 27);
             PostNrTextbox.TabIndex = 5;
+            PostNrTextbox.TextChanged += txtbox_PostNr_TextChanged;
             // 
-            // PostNrLabel
+            // lbl_PostNr
             // 
-            PostNrLabel.AutoSize = true;
-            PostNrLabel.Location = new Point(48, 91);
-            PostNrLabel.Name = "PostNrLabel";
-            PostNrLabel.Size = new Size(43, 15);
-            PostNrLabel.TabIndex = 6;
-            PostNrLabel.Text = "PostNr";
+            lbl_PostNr.AutoSize = true;
+            lbl_PostNr.Location = new Point(55, 121);
+            lbl_PostNr.Name = "lbl_PostNr";
+            lbl_PostNr.Size = new Size(52, 20);
+            lbl_PostNr.TabIndex = 6;
+            lbl_PostNr.Text = "PostNr";
             // 
             // UdbudsprisTextbox
             // 
-            UdbudsprisTextbox.Location = new Point(98, 117);
+            UdbudsprisTextbox.Location = new Point(112, 156);
+            UdbudsprisTextbox.Margin = new Padding(3, 4, 3, 4);
             UdbudsprisTextbox.Name = "UdbudsprisTextbox";
             UdbudsprisTextbox.ReadOnly = true;
-            UdbudsprisTextbox.Size = new Size(149, 23);
+            UdbudsprisTextbox.Size = new Size(170, 27);
             UdbudsprisTextbox.TabIndex = 7;
+            UdbudsprisTextbox.TextChanged += txtbox_Udbudspris_TextChanged;
             // 
-            // label1
+            // lbl_Udbudspris
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(24, 120);
-            label1.Name = "label1";
-            label1.Size = new Size(67, 15);
-            label1.TabIndex = 8;
-            label1.Text = "Udbudspris";
+            lbl_Udbudspris.AutoSize = true;
+            lbl_Udbudspris.Location = new Point(27, 160);
+            lbl_Udbudspris.Name = "lbl_Udbudspris";
+            lbl_Udbudspris.Size = new Size(84, 20);
+            lbl_Udbudspris.TabIndex = 8;
+            lbl_Udbudspris.Text = "Udbudspris";
             // 
             // KvadratmeterTextbox
             // 
-            KvadratmeterTextbox.Location = new Point(98, 146);
+            KvadratmeterTextbox.Location = new Point(112, 195);
+            KvadratmeterTextbox.Margin = new Padding(3, 4, 3, 4);
             KvadratmeterTextbox.Name = "KvadratmeterTextbox";
             KvadratmeterTextbox.ReadOnly = true;
-            KvadratmeterTextbox.Size = new Size(149, 23);
+            KvadratmeterTextbox.Size = new Size(170, 27);
             KvadratmeterTextbox.TabIndex = 9;
+            KvadratmeterTextbox.TextChanged += txtbox_Kvadratmeter_TextChanged;
             // 
-            // KvadratmeterLabel
+            // lbl_kvadratmeter
             // 
-            KvadratmeterLabel.AutoSize = true;
-            KvadratmeterLabel.Location = new Point(14, 149);
-            KvadratmeterLabel.Name = "KvadratmeterLabel";
-            KvadratmeterLabel.Size = new Size(78, 15);
-            KvadratmeterLabel.TabIndex = 10;
-            KvadratmeterLabel.Text = "Kvadratmeter";
+            lbl_kvadratmeter.AutoSize = true;
+            lbl_kvadratmeter.Location = new Point(16, 199);
+            lbl_kvadratmeter.Name = "lbl_kvadratmeter";
+            lbl_kvadratmeter.Size = new Size(98, 20);
+            lbl_kvadratmeter.TabIndex = 10;
+            lbl_kvadratmeter.Text = "Kvadratmeter";
             // 
-            // KvmPrisLabel
+            // lbl_kvmPris
             // 
-            KvmPrisLabel.AutoSize = true;
-            KvmPrisLabel.Location = new Point(274, 33);
-            KvmPrisLabel.Name = "KvmPrisLabel";
-            KvmPrisLabel.Size = new Size(50, 15);
-            KvmPrisLabel.TabIndex = 11;
-            KvmPrisLabel.Text = "Kvmpris";
+            lbl_kvmPris.AutoSize = true;
+            lbl_kvmPris.Location = new Point(313, 44);
+            lbl_kvmPris.Name = "lbl_kvmPris";
+            lbl_kvmPris.Size = new Size(61, 20);
+            lbl_kvmPris.TabIndex = 11;
+            lbl_kvmPris.Text = "Kvmpris";
             // 
             // KvmPrisTextBox
             // 
-            KvmPrisTextBox.Location = new Point(330, 30);
+            KvmPrisTextBox.Location = new Point(377, 40);
+            KvmPrisTextBox.Margin = new Padding(3, 4, 3, 4);
             KvmPrisTextBox.Name = "KvmPrisTextBox";
             KvmPrisTextBox.ReadOnly = true;
-            KvmPrisTextBox.Size = new Size(149, 23);
+            KvmPrisTextBox.Size = new Size(170, 27);
             KvmPrisTextBox.TabIndex = 12;
+            KvmPrisTextBox.TextChanged += txtboxKvmPris_TextChanged;
             // 
             // BoligTypeTextbox
             // 
-            BoligTypeTextbox.Location = new Point(330, 59);
+            BoligTypeTextbox.Location = new Point(377, 79);
+            BoligTypeTextbox.Margin = new Padding(3, 4, 3, 4);
             BoligTypeTextbox.Name = "BoligTypeTextbox";
             BoligTypeTextbox.ReadOnly = true;
-            BoligTypeTextbox.Size = new Size(149, 23);
+            BoligTypeTextbox.Size = new Size(170, 27);
             BoligTypeTextbox.TabIndex = 13;
+            BoligTypeTextbox.TextChanged += txt_BoligType_TextChanged;
             // 
-            // BoligTypeLabel
+            // lbl_boligType
             // 
-            BoligTypeLabel.AutoSize = true;
-            BoligTypeLabel.Location = new Point(266, 62);
-            BoligTypeLabel.Name = "BoligTypeLabel";
-            BoligTypeLabel.Size = new Size(58, 15);
-            BoligTypeLabel.TabIndex = 14;
-            BoligTypeLabel.Text = "BoligType";
+            lbl_boligType.AutoSize = true;
+            lbl_boligType.Location = new Point(304, 83);
+            lbl_boligType.Name = "lbl_boligType";
+            lbl_boligType.Size = new Size(75, 20);
+            lbl_boligType.TabIndex = 14;
+            lbl_boligType.Text = "BoligType";
             // 
             // AktivTextbox
             // 
-            AktivTextbox.Location = new Point(330, 88);
+            AktivTextbox.Location = new Point(377, 117);
+            AktivTextbox.Margin = new Padding(3, 4, 3, 4);
             AktivTextbox.Name = "AktivTextbox";
             AktivTextbox.ReadOnly = true;
-            AktivTextbox.Size = new Size(149, 23);
+            AktivTextbox.Size = new Size(170, 27);
             AktivTextbox.TabIndex = 15;
+            AktivTextbox.TextChanged += txtbox_Aktiv_TextChanged;
             // 
-            // AktivLabel
+            // lbl_aktiv
             // 
-            AktivLabel.AutoSize = true;
-            AktivLabel.Location = new Point(286, 91);
-            AktivLabel.Name = "AktivLabel";
-            AktivLabel.Size = new Size(34, 15);
-            AktivLabel.TabIndex = 17;
-            AktivLabel.Text = "Aktiv";
+            lbl_aktiv.AutoSize = true;
+            lbl_aktiv.Location = new Point(327, 121);
+            lbl_aktiv.Name = "lbl_aktiv";
+            lbl_aktiv.Size = new Size(42, 20);
+            lbl_aktiv.TabIndex = 17;
+            lbl_aktiv.Text = "Aktiv";
             // 
             // MaglerIdTextbox
             // 
-            MaglerIdTextbox.Location = new Point(330, 117);
+            MaglerIdTextbox.Location = new Point(377, 156);
+            MaglerIdTextbox.Margin = new Padding(3, 4, 3, 4);
             MaglerIdTextbox.Name = "MaglerIdTextbox";
             MaglerIdTextbox.ReadOnly = true;
-            MaglerIdTextbox.Size = new Size(149, 23);
+            MaglerIdTextbox.Size = new Size(170, 27);
             MaglerIdTextbox.TabIndex = 18;
+            MaglerIdTextbox.TextChanged += txtbox_maelgerId_TextChanged;
             // 
-            // MæglerIdLabel
+            // lbl_MæglerId
             // 
-            MæglerIdLabel.AutoSize = true;
-            MæglerIdLabel.Location = new Point(266, 120);
-            MæglerIdLabel.Name = "MæglerIdLabel";
-            MæglerIdLabel.Size = new Size(58, 15);
-            MæglerIdLabel.TabIndex = 19;
-            MæglerIdLabel.Text = "MæglerId";
+            lbl_MæglerId.AutoSize = true;
+            lbl_MæglerId.Location = new Point(304, 160);
+            lbl_MæglerId.Name = "lbl_MæglerId";
+            lbl_MæglerId.Size = new Size(73, 20);
+            lbl_MæglerId.TabIndex = 19;
+            lbl_MæglerId.Text = "MæglerId";
             // 
-            // panel1
+            // panel_Sælg_Bolig
             // 
-            panel1.BackColor = Color.WhiteSmoke;
-            panel1.Controls.Add(SælgBolig);
-            panel1.Controls.Add(Salgspris);
-            panel1.Controls.Add(SalgsPrisLbl);
-            panel1.Controls.Add(SalgsDatoLbl);
-            panel1.Controls.Add(Salgsdato);
-            panel1.Controls.Add(SælgBoligLabel);
-            panel1.Location = new Point(503, 6);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(300, 216);
-            panel1.TabIndex = 20;
+            panel_Sælg_Bolig.BackColor = Color.WhiteSmoke;
+            panel_Sælg_Bolig.Controls.Add(SælgBolig);
+            panel_Sælg_Bolig.Controls.Add(Salgspris);
+            panel_Sælg_Bolig.Controls.Add(lbl_SalgsPris);
+            panel_Sælg_Bolig.Controls.Add(lbl_SalgsDato);
+            panel_Sælg_Bolig.Controls.Add(Salgsdato);
+            panel_Sælg_Bolig.Controls.Add(lbl_Sælg_Bolig);
+            panel_Sælg_Bolig.Location = new Point(575, 8);
+            panel_Sælg_Bolig.Margin = new Padding(3, 4, 3, 4);
+            panel_Sælg_Bolig.Name = "panel_Sælg_Bolig";
+            panel_Sælg_Bolig.Size = new Size(343, 288);
+            panel_Sælg_Bolig.TabIndex = 20;
             // 
             // SælgBolig
             // 
             SælgBolig.Dock = DockStyle.Bottom;
             SælgBolig.FlatStyle = FlatStyle.Flat;
-            SælgBolig.Location = new Point(0, 182);
+            SælgBolig.Location = new Point(0, 243);
+            SælgBolig.Margin = new Padding(3, 4, 3, 4);
             SælgBolig.Name = "SælgBolig";
-            SælgBolig.Size = new Size(300, 34);
+            SælgBolig.Size = new Size(343, 45);
             SælgBolig.TabIndex = 5;
             SælgBolig.Text = "Sælg Bolig";
             SælgBolig.UseVisualStyleBackColor = true;
@@ -238,120 +258,124 @@
             // 
             // Salgspris
             // 
-            Salgspris.Location = new Point(16, 137);
+            Salgspris.Location = new Point(18, 183);
+            Salgspris.Margin = new Padding(3, 4, 3, 4);
             Salgspris.Name = "Salgspris";
-            Salgspris.Size = new Size(267, 23);
+            Salgspris.Size = new Size(305, 27);
             Salgspris.TabIndex = 4;
             // 
-            // SalgsPrisLbl
+            // lbl_SalgsPris
             // 
-            SalgsPrisLbl.Location = new Point(0, 105);
-            SalgsPrisLbl.Name = "SalgsPrisLbl";
-            SalgsPrisLbl.Size = new Size(297, 29);
-            SalgsPrisLbl.TabIndex = 3;
-            SalgsPrisLbl.Text = "Salgspris";
-            SalgsPrisLbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_SalgsPris.Location = new Point(0, 140);
+            lbl_SalgsPris.Name = "lbl_SalgsPris";
+            lbl_SalgsPris.Size = new Size(339, 39);
+            lbl_SalgsPris.TabIndex = 3;
+            lbl_SalgsPris.Text = "Salgspris";
+            lbl_SalgsPris.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // SalgsDatoLbl
+            // lbl_SalgsDato
             // 
-            SalgsDatoLbl.Location = new Point(0, 47);
-            SalgsDatoLbl.Name = "SalgsDatoLbl";
-            SalgsDatoLbl.Size = new Size(297, 29);
-            SalgsDatoLbl.TabIndex = 2;
-            SalgsDatoLbl.Text = "Salgsdato";
-            SalgsDatoLbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_SalgsDato.Location = new Point(0, 63);
+            lbl_SalgsDato.Name = "lbl_SalgsDato";
+            lbl_SalgsDato.Size = new Size(339, 39);
+            lbl_SalgsDato.TabIndex = 2;
+            lbl_SalgsDato.Text = "Salgsdato";
+            lbl_SalgsDato.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Salgsdato
             // 
-            Salgsdato.Location = new Point(16, 79);
+            Salgsdato.Location = new Point(18, 105);
+            Salgsdato.Margin = new Padding(3, 4, 3, 4);
             Salgsdato.MaxDate = new DateTime(2025, 12, 31, 0, 0, 0, 0);
             Salgsdato.MinDate = new DateTime(1850, 1, 1, 0, 0, 0, 0);
             Salgsdato.Name = "Salgsdato";
-            Salgsdato.Size = new Size(267, 23);
+            Salgsdato.Size = new Size(305, 27);
             Salgsdato.TabIndex = 1;
             // 
-            // SælgBoligLabel
+            // lbl_Sælg_Bolig
             // 
-            SælgBoligLabel.BackColor = Color.Gainsboro;
-            SælgBoligLabel.Dock = DockStyle.Top;
-            SælgBoligLabel.Location = new Point(0, 0);
-            SælgBoligLabel.Name = "SælgBoligLabel";
-            SælgBoligLabel.Size = new Size(300, 23);
-            SælgBoligLabel.TabIndex = 0;
-            SælgBoligLabel.Text = "Sælg Bolig";
-            SælgBoligLabel.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_Sælg_Bolig.BackColor = Color.Gainsboro;
+            lbl_Sælg_Bolig.Dock = DockStyle.Top;
+            lbl_Sælg_Bolig.Location = new Point(0, 0);
+            lbl_Sælg_Bolig.Name = "lbl_Sælg_Bolig";
+            lbl_Sælg_Bolig.Size = new Size(343, 31);
+            lbl_Sælg_Bolig.TabIndex = 0;
+            lbl_Sælg_Bolig.Text = "Sælg Bolig";
+            lbl_Sælg_Bolig.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // TilbageButton
             // 
-            TilbageButton.Location = new Point(10, 211);
+            TilbageButton.Location = new Point(11, 281);
+            TilbageButton.Margin = new Padding(3, 4, 3, 4);
             TilbageButton.Name = "TilbageButton";
-            TilbageButton.Size = new Size(75, 23);
+            TilbageButton.Size = new Size(86, 31);
             TilbageButton.TabIndex = 21;
             TilbageButton.Text = "Tilbage";
             TilbageButton.UseVisualStyleBackColor = true;
-            TilbageButton.Click += TilbageButton_Click;
+            TilbageButton.Click += btn_Tilbage_Click;
             // 
             // AdvanceInfoBolig
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(815, 244);
+            ClientSize = new Size(931, 325);
             Controls.Add(TilbageButton);
-            Controls.Add(panel1);
-            Controls.Add(MæglerIdLabel);
+            Controls.Add(panel_Sælg_Bolig);
+            Controls.Add(lbl_MæglerId);
             Controls.Add(MaglerIdTextbox);
-            Controls.Add(AktivLabel);
+            Controls.Add(lbl_aktiv);
             Controls.Add(AktivTextbox);
-            Controls.Add(BoligTypeLabel);
+            Controls.Add(lbl_boligType);
             Controls.Add(BoligTypeTextbox);
             Controls.Add(KvmPrisTextBox);
-            Controls.Add(KvmPrisLabel);
-            Controls.Add(KvadratmeterLabel);
+            Controls.Add(lbl_kvmPris);
+            Controls.Add(lbl_kvadratmeter);
             Controls.Add(KvadratmeterTextbox);
-            Controls.Add(label1);
+            Controls.Add(lbl_Udbudspris);
             Controls.Add(UdbudsprisTextbox);
-            Controls.Add(PostNrLabel);
+            Controls.Add(lbl_PostNr);
             Controls.Add(PostNrTextbox);
             Controls.Add(AdresseTextbox);
             Controls.Add(BoligIdTextBox);
-            Controls.Add(AdresseLabel);
-            Controls.Add(BoligIdLabel);
+            Controls.Add(lbl_Adresse);
+            Controls.Add(lbl_BoligId);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AdvanceInfoBolig";
             Text = "Form3";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panel_Sælg_Bolig.ResumeLayout(false);
+            panel_Sælg_Bolig.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label BoligIdLabel;
-        private Label AdresseLabel;
+        private Label lbl_BoligId;
+        private Label lbl_Adresse;
         private TextBox BoligIdTextBox;
         private TextBox AdresseTextbox;
         private TextBox PostNrTextbox;
-        private Label PostNrLabel;
+        private Label lbl_PostNr;
         private TextBox UdbudsprisTextbox;
-        private Label label1;
+        private Label lbl_Udbudspris;
         private TextBox KvadratmeterTextbox;
-        private Label KvadratmeterLabel;
-        private Label KvmPrisLabel;
+        private Label lbl_kvadratmeter;
+        private Label lbl_kvmPris;
         private TextBox KvmPrisTextBox;
         private TextBox BoligTypeTextbox;
-        private Label BoligTypeLabel;
+        private Label lbl_boligType;
         private TextBox AktivTextbox;
-        private Label AktivLabel;
+        private Label lbl_aktiv;
         private TextBox MaglerIdTextbox;
-        private Label MæglerIdLabel;
-        private Panel panel1;
-        private Label SælgBoligLabel;
+        private Label lbl_MæglerId;
+        private Panel panel_Sælg_Bolig;
+        private Label lbl_Sælg_Bolig;
         private Button TilbageButton;
-        private Label SalgsDatoLbl;
+        private Label lbl_SalgsDato;
         private DateTimePicker Salgsdato;
         private Button SælgBolig;
         private TextBox Salgspris;
-        private Label SalgsPrisLbl;
+        private Label lbl_SalgsPris;
     }
 }

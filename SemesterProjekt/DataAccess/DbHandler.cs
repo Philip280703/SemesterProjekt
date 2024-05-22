@@ -15,7 +15,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultP"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultB"].ToString();
         }
 
 

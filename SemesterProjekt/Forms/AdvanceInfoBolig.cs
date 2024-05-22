@@ -37,7 +37,7 @@ namespace SemesterProjekt.Forms
         }
 
 
-        private void TilbageButton_Click(object sender, EventArgs e)
+        private void btn_Tilbage_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
@@ -49,11 +49,56 @@ namespace SemesterProjekt.Forms
             int boligiid = int.Parse(BoligIdTextBox.Text);
             DateTime Salgsdatoen = Salgsdato.Value;
             bool aktiv = false;
-            db.MarkBoligAsSold( new Models.Bolig { Aktiv = aktiv, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text)  }, boligiid);
+            db.MarkBoligAsSold(new Models.Bolig { Aktiv = aktiv, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text) }, boligiid);
             MessageBox.Show("Bolig er nu solgt!");
             InfoBolig ib = new InfoBolig();
             Homepage hp = new Homepage();
             this.Hide();
+        }
+
+        private void txtbox_BoligId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbox_Adresse(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbox_PostNr_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbox_Udbudspris_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbox_Kvadratmeter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtboxKvmPris_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_BoligType_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbox_Aktiv_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbox_maelgerId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
