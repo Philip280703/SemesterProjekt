@@ -47,6 +47,7 @@
             label2 = new Label();
             label1 = new Label();
             ScreenPnl = new Panel();
+            Aktiv_checkbox = new CheckBox();
             Refreshbutton = new Button();
             comboBox3 = new ComboBox();
             comboBox2 = new ComboBox();
@@ -98,7 +99,7 @@
             button4.Name = "button4";
             button4.Size = new Size(318, 76);
             button4.TabIndex = 16;
-            button4.Text = "Ny Bolig";
+            button4.Text = "Opret Bolig";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click_1;
             // 
@@ -294,6 +295,7 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(Aktiv_checkbox);
             ScreenPnl.Controls.Add(Refreshbutton);
             ScreenPnl.Controls.Add(comboBox3);
             ScreenPnl.Controls.Add(comboBox2);
@@ -306,6 +308,17 @@
             ScreenPnl.Name = "ScreenPnl";
             ScreenPnl.Size = new Size(1029, 891);
             ScreenPnl.TabIndex = 2;
+            // 
+            // Aktiv_checkbox
+            // 
+            Aktiv_checkbox.AutoSize = true;
+            Aktiv_checkbox.Location = new Point(800, 88);
+            Aktiv_checkbox.Name = "Aktiv_checkbox";
+            Aktiv_checkbox.Size = new Size(64, 24);
+            Aktiv_checkbox.TabIndex = 6;
+            Aktiv_checkbox.Text = "Aktiv";
+            Aktiv_checkbox.UseVisualStyleBackColor = true;
+            Aktiv_checkbox.CheckedChanged += Aktiv_checkbox_CheckedChanged;
             // 
             // Refreshbutton
             // 
@@ -427,5 +440,6 @@
         private Button button3;
         private Button Refreshbutton;
         private Button button4;
+        private CheckBox Aktiv_checkbox;
     }
 }

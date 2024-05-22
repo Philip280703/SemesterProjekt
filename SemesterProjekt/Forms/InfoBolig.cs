@@ -146,7 +146,7 @@ namespace SemesterProjekt.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Refreshbutton_Click(object sender, EventArgs e)
@@ -158,6 +158,20 @@ namespace SemesterProjekt.Forms
         {
             NewBoligForm newBoligForm = new NewBoligForm();
             newBoligForm.Show();
+        }
+
+        private void Aktiv_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Aktiv_checkbox.Checked)
+            {
+                List<Bolig> Aktivbolig = db.GetAllBolig();
+                List<Bolig> TrueAktivBolig = Aktivbolig.Where(b => b.SalgsPris < 1).ToList();
+                dataGridView1.DataSource = TrueAktivBolig;
+            }
+            else
+            {
+                dataGridView1.DataSource = db.GetAllBolig();
+            }
         }
     }
 }
