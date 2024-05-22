@@ -83,7 +83,6 @@
             BoligIdTextBox.ReadOnly = true;
             BoligIdTextBox.Size = new Size(170, 27);
             BoligIdTextBox.TabIndex = 3;
-            BoligIdTextBox.TextChanged += txtbox_BoligId_TextChanged;
             // 
             // AdresseTextbox
             // 
@@ -93,7 +92,6 @@
             AdresseTextbox.ReadOnly = true;
             AdresseTextbox.Size = new Size(170, 27);
             AdresseTextbox.TabIndex = 4;
-            AdresseTextbox.TextChanged += txtbox_Adresse;
             // 
             // PostNrTextbox
             // 
@@ -103,7 +101,6 @@
             PostNrTextbox.ReadOnly = true;
             PostNrTextbox.Size = new Size(170, 27);
             PostNrTextbox.TabIndex = 5;
-            PostNrTextbox.TextChanged += txtbox_PostNr_TextChanged;
             // 
             // lbl_PostNr
             // 
@@ -122,7 +119,6 @@
             UdbudsprisTextbox.ReadOnly = true;
             UdbudsprisTextbox.Size = new Size(170, 27);
             UdbudsprisTextbox.TabIndex = 7;
-            UdbudsprisTextbox.TextChanged += txtbox_Udbudspris_TextChanged;
             // 
             // lbl_Udbudspris
             // 
@@ -141,7 +137,6 @@
             KvadratmeterTextbox.ReadOnly = true;
             KvadratmeterTextbox.Size = new Size(170, 27);
             KvadratmeterTextbox.TabIndex = 9;
-            KvadratmeterTextbox.TextChanged += txtbox_Kvadratmeter_TextChanged;
             // 
             // lbl_kvadratmeter
             // 
@@ -169,7 +164,6 @@
             KvmPrisTextBox.ReadOnly = true;
             KvmPrisTextBox.Size = new Size(170, 27);
             KvmPrisTextBox.TabIndex = 12;
-            KvmPrisTextBox.TextChanged += txtboxKvmPris_TextChanged;
             // 
             // BoligTypeTextbox
             // 
@@ -179,7 +173,6 @@
             BoligTypeTextbox.ReadOnly = true;
             BoligTypeTextbox.Size = new Size(170, 27);
             BoligTypeTextbox.TabIndex = 13;
-            BoligTypeTextbox.TextChanged += txt_BoligType_TextChanged;
             // 
             // lbl_boligType
             // 
@@ -198,7 +191,6 @@
             AktivTextbox.ReadOnly = true;
             AktivTextbox.Size = new Size(170, 27);
             AktivTextbox.TabIndex = 15;
-            AktivTextbox.TextChanged += txtbox_Aktiv_TextChanged;
             // 
             // lbl_aktiv
             // 
@@ -217,7 +209,6 @@
             MaglerIdTextbox.ReadOnly = true;
             MaglerIdTextbox.Size = new Size(170, 27);
             MaglerIdTextbox.TabIndex = 18;
-            MaglerIdTextbox.TextChanged += txtbox_maelgerId_TextChanged;
             // 
             // lbl_MæglerId
             // 

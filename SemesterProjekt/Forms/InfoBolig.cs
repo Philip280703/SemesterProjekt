@@ -39,6 +39,7 @@ namespace SemesterProjekt.Forms
             aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
+            DGVBolig.ClearSelection();
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0

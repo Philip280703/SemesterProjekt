@@ -45,7 +45,6 @@ namespace SemesterProjekt.Forms
             InitializeComponent();
             db = new DbHandler();
             Dgv_Mægler.DataSource = db.GetAllEjendomsMaegler();
-            Dgv_Mægler.ClearSelection();
         }
 
         private void Dgv_Mægler_CellClick(object sender, DataGridViewCellEventArgs e)
