@@ -45,14 +45,10 @@ namespace SemesterProjekt.Forms
         private void SælgBolig_Click(object sender, EventArgs e)
         {
             DbHandler db = new DbHandler();
-            AdvanceInfoBolig aib = new AdvanceInfoBolig();
             int boligiid = int.Parse(BoligIdTextBox.Text);
             DateTime Salgsdatoen = Salgsdato.Value;
-            bool aktiv = false;
-            db.MarkBoligAsSold( new Models.Bolig { Aktiv = aktiv, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text)  }, boligiid);
+            db.MarkBoligAsSold( new Models.Bolig { Aktiv = false, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text)  }, boligiid);
             MessageBox.Show("Bolig er nu solgt!");
-            InfoBolig ib = new InfoBolig();
-            Homepage hp = new Homepage();
             this.Hide();
         }
     }

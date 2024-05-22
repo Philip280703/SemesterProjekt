@@ -53,6 +53,7 @@
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
+            Aktiv_checkbox = new CheckBox();
             panel1.SuspendLayout();
             ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -294,6 +295,7 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(Aktiv_checkbox);
             ScreenPnl.Controls.Add(Refreshbutton);
             ScreenPnl.Controls.Add(comboBox3);
             ScreenPnl.Controls.Add(comboBox2);
@@ -381,6 +383,17 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
             // 
+            // Aktiv_checkbox
+            // 
+            Aktiv_checkbox.AutoSize = true;
+            Aktiv_checkbox.Location = new Point(800, 88);
+            Aktiv_checkbox.Name = "Aktiv_checkbox";
+            Aktiv_checkbox.Size = new Size(64, 24);
+            Aktiv_checkbox.TabIndex = 6;
+            Aktiv_checkbox.Text = "Aktiv";
+            Aktiv_checkbox.UseVisualStyleBackColor = true;
+            Aktiv_checkbox.CheckedChanged += Aktiv_checkbox_CheckedChanged;
+            // 
             // InfoBolig
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -427,5 +440,6 @@
         private Button button3;
         private Button Refreshbutton;
         private Button button4;
+        private CheckBox Aktiv_checkbox;
     }
 }
