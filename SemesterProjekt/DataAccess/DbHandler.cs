@@ -1224,9 +1224,11 @@ namespace SemesterProjekt.DataAccess
         {
             // create list, ready for input
             List<Bolig> BoligList = new List<Bolig>();
-
+            int day = DateTime.Now.Day;
+            int month = DateTime.Now.Month;
+            int year = DateTime.Now.Year;
             // The file is saved to this path. that means that you have to have a folder on your C: disk that is called "csv"
-            string path = "C:\\csv\\EDC-BoligerTilSalg.csv";
+            string path = "C:\\csv\\EDC-BoligerTilSalg" + "-" + day + "-" + month + "-" + year + ".csv" ;
 
             // sql selection of the given table
             string command = "Select * from Bolig where aktiv = 1";
@@ -1304,8 +1306,12 @@ namespace SemesterProjekt.DataAccess
             // create list, ready for input
             List<BoligMaeglerSaelger> List = new List<BoligMaeglerSaelger>();
 
+            int day = DateTime.Now.Day;
+            int month = DateTime.Now.Month;
+            int year = DateTime.Now.Year;
+
             // The path for where the file is stored, it overides each time you run it. Need to have a foulder called "csv" on your C: drive
-            string path = "C:\\csv\\EDC-OverviewList.csv";
+            string path = "C:\\csv\\EDC-OverviewList" + "-" + day + "-" + month + "-" + year  + ".csv";
 
             // sql selection of the given table
             string command = "Select * from Bolig, Ejendomsmaegler, Saelger where MaeglerId = MId and BoligId = SBoligId and PostNr = (@PostNr)";

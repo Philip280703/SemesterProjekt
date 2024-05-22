@@ -94,8 +94,8 @@ namespace SemesterProjekt.Forms
                 // DGVBolig.DataSource = filter.Where(b => b.PostNr >= num1 && b.PostNr <= num2).ToList();
 
                 List<Bolig> filter = db.GetAllBolig();
-              
-               DGVBolig.DataSource = filter.Where(b => b.PostNr == int.Parse(comboBoxPostNr.Text)).ToList();
+
+                DGVBolig.DataSource = filter.Where(b => b.PostNr == int.Parse(comboBoxPostNr.Text)).ToList();
             }
             int gns = AveragePrice();
             textBoxGns.Text = gns.ToString();
@@ -190,7 +190,7 @@ namespace SemesterProjekt.Forms
             {
 
             }
-           
+
         }
 
         private void buttonOpdaterBolig_Click(object sender, EventArgs e)
@@ -202,7 +202,7 @@ namespace SemesterProjekt.Forms
                 updateBolig.Show();
             }
             catch (Exception ex) { }
-           
+
         }
 
         private void Refreshbutton_Click(object sender, EventArgs e)
@@ -252,5 +252,43 @@ namespace SemesterProjekt.Forms
             //Gør så Der ikke automatisk vælges 1 row i DGV når formen loades
             DGVBolig.ClearSelection();
         }
+
+        private void btn_ExportToCSV_Click(object sender, EventArgs e)
+        {
+            var ExporttoCsv = MessageBox.Show("vil du eksportere alle boliger til en CSV fil?", "Export to csv", MessageBoxButtons.YesNo);
+            if (ExporttoCsv == DialogResult.Yes)
+            {
+                try
+                {
+                    db.GetCSVAllBoligActive();
+                    MessageBox.Show("Liste af alle aktive boliger er nu exporteret til din computer under mappen csv");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Not able to Export", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var ExportThistoCsv = MessageBox.Show("vil du eksportere alle boliger med dette postnummer til en CSV fil?", "Export to csv", MessageBoxButtons.YesNo);
+            if (ExportThistoCsv == DialogResult.Yes)
+            {
+                try
+                {
+                    db.GetCSVEverything(int.Parse(comboBoxPostNr.Text));
+                    MessageBox.Show("Listen er nu eksporteret til din mappe 'csv' ");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Not able to Export", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+
     }
 }

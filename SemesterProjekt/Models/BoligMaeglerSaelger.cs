@@ -203,7 +203,7 @@ namespace SemesterProjekt.Models
             }
             set 
             { 
-                if(value.Length < 2 || value.Length < 25)
+                if(value.Length < 2 || value.Length > 25)
                 {
                     throw new ArgumentException("Lastname is out of range");
                 }
@@ -299,7 +299,7 @@ namespace SemesterProjekt.Models
             }
             set
             {
-                if (value.Length < 2 || value.Length < 25)
+                if (value.Length < 2 || value.Length > 25)
                 {
                     throw new ArgumentException("Lastname is out of range");
                 }

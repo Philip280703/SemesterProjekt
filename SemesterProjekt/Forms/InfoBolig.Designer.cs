@@ -47,6 +47,8 @@
             label2 = new Label();
             label1 = new Label();
             ScreenPnl = new Panel();
+            button5 = new Button();
+            btn_ExportToCSV = new Button();
             lblGnsKvm = new Label();
             textBoxGns = new TextBox();
             Sletbolig_button = new Button();
@@ -298,6 +300,8 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(button5);
+            ScreenPnl.Controls.Add(btn_ExportToCSV);
             ScreenPnl.Controls.Add(lblGnsKvm);
             ScreenPnl.Controls.Add(textBoxGns);
             ScreenPnl.Controls.Add(Sletbolig_button);
@@ -314,6 +318,30 @@
             ScreenPnl.Name = "ScreenPnl";
             ScreenPnl.Size = new Size(1029, 891);
             ScreenPnl.TabIndex = 2;
+            // 
+            // button5
+            // 
+            button5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button5.Location = new Point(706, 11);
+            button5.Margin = new Padding(3, 4, 3, 4);
+            button5.Name = "button5";
+            button5.Size = new Size(122, 31);
+            button5.TabIndex = 21;
+            button5.Text = "Exp. postnr CSV";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // btn_ExportToCSV
+            // 
+            btn_ExportToCSV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_ExportToCSV.Location = new Point(834, 12);
+            btn_ExportToCSV.Margin = new Padding(3, 4, 3, 4);
+            btn_ExportToCSV.Name = "btn_ExportToCSV";
+            btn_ExportToCSV.Size = new Size(86, 31);
+            btn_ExportToCSV.TabIndex = 20;
+            btn_ExportToCSV.Text = "Exp. CSV";
+            btn_ExportToCSV.UseVisualStyleBackColor = true;
+            btn_ExportToCSV.Click += btn_ExportToCSV_Click;
             // 
             // lblGnsKvm
             // 
@@ -336,7 +364,7 @@
             // 
             // Sletbolig_button
             // 
-            Sletbolig_button.Location = new Point(14, 826);
+            Sletbolig_button.Location = new Point(14, 815);
             Sletbolig_button.Name = "Sletbolig_button";
             Sletbolig_button.Size = new Size(99, 34);
             Sletbolig_button.TabIndex = 17;
@@ -480,5 +508,7 @@
         private Button Sletbolig_button;
         private TextBox textBoxGns;
         private Label lblGnsKvm;
+        private Button btn_ExportToCSV;
+        private Button button5;
     }
 }
