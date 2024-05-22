@@ -15,7 +15,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultMR"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultP"].ToString();
         }
 
 
@@ -659,17 +659,17 @@ namespace SemesterProjekt.DataAccess
 
 
         // delete Sælger
-        internal bool HardDeleteSaelgerFromDB(int SId)
+        internal bool HardDeleteSaelgerFromDB(int SBoligId)
         {
 
             // sql selection of the given table
-            string command = "Delete from Saelger where SId = (@SId)";
+            string command = "Delete from Saelger where SBoligId = (@SBoligId)";
             // using sqlconnection
             using SqlConnection conn = new SqlConnection(ConnectionString);
             // save connection in variable - to handle commands
             SqlCommand cmd = new SqlCommand(command, conn);
 
-            cmd.Parameters.AddWithValue("@SId", SId);
+            cmd.Parameters.AddWithValue("@SBoligId", SBoligId);
             int rows = 0;
             try
             {

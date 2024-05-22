@@ -173,5 +173,19 @@ namespace SemesterProjekt.Forms
                 dataGridView1.DataSource = db.GetAllBolig();
             }
         }
+
+        private void Sletbolig_button_Click(object sender, EventArgs e)
+        {
+            DbHandler dbHandler = new DbHandler();
+            var AreyouSure = MessageBox.Show("Er du sikker på at du vil slette denne bolig permanent?", "", MessageBoxButtons.YesNo);
+      
+            if (AreyouSure == DialogResult.Yes)
+            {
+                dbHandler.HardDeleteSaelgerFromDB(BoligIid);
+                dbHandler.HardDeleteBoligFromDB(BoligIid);
+                MessageBox.Show("Boligen er nu solgt");
+            }
+           
+        }
     }
 }

@@ -47,6 +47,7 @@
             label2 = new Label();
             label1 = new Label();
             ScreenPnl = new Panel();
+            Sletbolig_button = new Button();
             Aktiv_checkbox = new CheckBox();
             Refreshbutton = new Button();
             comboBox3 = new ComboBox();
@@ -140,7 +141,7 @@
             // textBox5
             // 
             textBox5.Anchor = AnchorStyles.Top;
-            textBox5.Location = new Point(9, 502);
+            textBox5.Location = new Point(9, 515);
             textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
@@ -153,7 +154,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(9, 473);
+            label6.Location = new Point(9, 486);
             label6.Name = "label6";
             label6.Size = new Size(54, 23);
             label6.TabIndex = 12;
@@ -162,7 +163,7 @@
             // textBox6
             // 
             textBox6.Anchor = AnchorStyles.Top;
-            textBox6.Location = new Point(9, 438);
+            textBox6.Location = new Point(9, 451);
             textBox6.Margin = new Padding(3, 4, 3, 4);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
@@ -175,7 +176,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(9, 409);
+            label7.Location = new Point(9, 422);
             label7.Name = "label7";
             label7.Size = new Size(57, 23);
             label7.TabIndex = 10;
@@ -184,7 +185,7 @@
             // textBox7
             // 
             textBox7.Anchor = AnchorStyles.Top;
-            textBox7.Location = new Point(9, 374);
+            textBox7.Location = new Point(9, 387);
             textBox7.Margin = new Padding(3, 4, 3, 4);
             textBox7.Name = "textBox7";
             textBox7.ReadOnly = true;
@@ -197,7 +198,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(9, 345);
+            label8.Location = new Point(9, 358);
             label8.Name = "label8";
             label8.Size = new Size(51, 23);
             label8.TabIndex = 8;
@@ -208,7 +209,7 @@
             label5.Anchor = AnchorStyles.Top;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(0, 280);
+            label5.Location = new Point(0, 303);
             label5.Name = "label5";
             label5.Size = new Size(318, 89);
             label5.TabIndex = 7;
@@ -218,7 +219,7 @@
             // textBox4
             // 
             textBox4.Anchor = AnchorStyles.Top;
-            textBox4.Location = new Point(7, 213);
+            textBox4.Location = new Point(9, 255);
             textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
@@ -231,7 +232,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(7, 183);
+            label4.Location = new Point(9, 225);
             label4.Name = "label4";
             label4.Size = new Size(54, 23);
             label4.TabIndex = 5;
@@ -240,7 +241,7 @@
             // textBox3
             // 
             textBox3.Anchor = AnchorStyles.Top;
-            textBox3.Location = new Point(7, 149);
+            textBox3.Location = new Point(9, 191);
             textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
@@ -253,7 +254,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(7, 119);
+            label3.Location = new Point(9, 161);
             label3.Name = "label3";
             label3.Size = new Size(57, 23);
             label3.TabIndex = 3;
@@ -262,7 +263,7 @@
             // textBox2
             // 
             textBox2.Anchor = AnchorStyles.Top;
-            textBox2.Location = new Point(7, 85);
+            textBox2.Location = new Point(9, 127);
             textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
@@ -275,7 +276,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(7, 55);
+            label2.Location = new Point(9, 97);
             label2.Name = "label2";
             label2.Size = new Size(51, 23);
             label2.TabIndex = 1;
@@ -286,7 +287,7 @@
             label1.Anchor = AnchorStyles.Top;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(0, 0);
+            label1.Location = new Point(2, 42);
             label1.Name = "label1";
             label1.Size = new Size(318, 89);
             label1.TabIndex = 0;
@@ -295,6 +296,7 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(Sletbolig_button);
             ScreenPnl.Controls.Add(Aktiv_checkbox);
             ScreenPnl.Controls.Add(Refreshbutton);
             ScreenPnl.Controls.Add(comboBox3);
@@ -309,10 +311,20 @@
             ScreenPnl.Size = new Size(1029, 891);
             ScreenPnl.TabIndex = 2;
             // 
+            // Sletbolig_button
+            // 
+            Sletbolig_button.Location = new Point(14, 833);
+            Sletbolig_button.Name = "Sletbolig_button";
+            Sletbolig_button.Size = new Size(99, 34);
+            Sletbolig_button.TabIndex = 17;
+            Sletbolig_button.Text = "Slet bolig";
+            Sletbolig_button.UseVisualStyleBackColor = true;
+            Sletbolig_button.Click += Sletbolig_button_Click;
+            // 
             // Aktiv_checkbox
             // 
             Aktiv_checkbox.AutoSize = true;
-            Aktiv_checkbox.Location = new Point(800, 88);
+            Aktiv_checkbox.Location = new Point(800, 16);
             Aktiv_checkbox.Name = "Aktiv_checkbox";
             Aktiv_checkbox.Size = new Size(64, 24);
             Aktiv_checkbox.TabIndex = 6;
@@ -323,7 +335,7 @@
             // Refreshbutton
             // 
             Refreshbutton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Refreshbutton.Location = new Point(936, 85);
+            Refreshbutton.Location = new Point(936, 13);
             Refreshbutton.Margin = new Padding(3, 4, 3, 4);
             Refreshbutton.Name = "Refreshbutton";
             Refreshbutton.Size = new Size(86, 31);
@@ -336,7 +348,7 @@
             // 
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "Pris", "0 - 999999", "1000000 - 1999999", "2000000 - 2999999", "3000000 - 3999999", "4000000 - 4999999" });
-            comboBox3.Location = new Point(677, 87);
+            comboBox3.Location = new Point(677, 15);
             comboBox3.Margin = new Padding(3, 4, 3, 4);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(108, 28);
@@ -348,7 +360,7 @@
             // 
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "PostNr", "1000 - 1999", "2000 - 2999", "3000 - 3999", "4000 - 4999", "5000 - 5999", "6000 - 6999", "7000 - 7999", "8000 - 8999", "9000 - 9999" });
-            comboBox2.Location = new Point(569, 87);
+            comboBox2.Location = new Point(569, 15);
             comboBox2.Margin = new Padding(3, 4, 3, 4);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(100, 28);
@@ -360,7 +372,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "BoligType", "Villa", "Lejlighed", "Rækkehus", "Andelsbolig" });
-            comboBox1.Location = new Point(446, 87);
+            comboBox1.Location = new Point(446, 15);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(116, 28);
@@ -370,7 +382,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(14, 87);
+            textBox1.Location = new Point(14, 15);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Adresse";
@@ -384,7 +396,7 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = SystemColors.Control;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 125);
+            dataGridView1.Location = new Point(14, 55);
             dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -441,5 +453,6 @@
         private Button Refreshbutton;
         private Button button4;
         private CheckBox Aktiv_checkbox;
+        private Button Sletbolig_button;
     }
 }
