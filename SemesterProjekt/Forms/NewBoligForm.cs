@@ -25,8 +25,7 @@ namespace SemesterProjekt.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            InfoBolig ib = new InfoBolig();
-            ib.Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
