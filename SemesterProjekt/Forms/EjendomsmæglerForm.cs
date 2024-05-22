@@ -104,6 +104,11 @@ namespace SemesterProjekt.Forms
             TxtBox_Sælger_Navn.Text = sa.SFname + " " + sa.SLname;
             TxtBox_Sælger_Email.Text = sa.SEmail;
             TxtBox_Sælger_TlfNr.Text = "" + sa.STlfNr;
+
+            TxtBox_Køber_TlfNr.Text = "";
+            TxtBox_Køber_Navn.Text = "";
+            TxtBox_Køber_Email.Text = "";
+            
         }
 
         private void Dgv_Inaktive_Boliger_CellClick(object sender, DataGridViewCellEventArgs e)
