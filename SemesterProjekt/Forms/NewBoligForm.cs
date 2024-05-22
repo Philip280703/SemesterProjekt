@@ -52,7 +52,7 @@ namespace SemesterProjekt.Forms
             {
                 throw new Exception("Postnummer not validated propperly");
             }
-
+            
             int udbudspris;
             if (myValidator.ValidatePriceOfHouse(int.Parse(UdbudsprisTextbox.Text)))
             {

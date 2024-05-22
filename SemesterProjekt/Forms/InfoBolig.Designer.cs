@@ -47,13 +47,13 @@
             label2 = new Label();
             label1 = new Label();
             ScreenPnl = new Panel();
+            Aktiv_checkbox = new CheckBox();
             Refreshbutton = new Button();
             comboBox3 = new ComboBox();
             comboBox2 = new ComboBox();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
-            Aktiv_checkbox = new CheckBox();
             panel1.SuspendLayout();
             ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -140,7 +140,7 @@
             // textBox5
             // 
             textBox5.Anchor = AnchorStyles.Top;
-            textBox5.Location = new Point(7, 568);
+            textBox5.Location = new Point(9, 502);
             textBox5.Margin = new Padding(3, 4, 3, 4);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
@@ -153,7 +153,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(7, 539);
+            label6.Location = new Point(9, 473);
             label6.Name = "label6";
             label6.Size = new Size(54, 23);
             label6.TabIndex = 12;
@@ -162,7 +162,7 @@
             // textBox6
             // 
             textBox6.Anchor = AnchorStyles.Top;
-            textBox6.Location = new Point(7, 504);
+            textBox6.Location = new Point(9, 438);
             textBox6.Margin = new Padding(3, 4, 3, 4);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
@@ -175,7 +175,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(7, 475);
+            label7.Location = new Point(9, 409);
             label7.Name = "label7";
             label7.Size = new Size(57, 23);
             label7.TabIndex = 10;
@@ -184,7 +184,7 @@
             // textBox7
             // 
             textBox7.Anchor = AnchorStyles.Top;
-            textBox7.Location = new Point(7, 440);
+            textBox7.Location = new Point(9, 374);
             textBox7.Margin = new Padding(3, 4, 3, 4);
             textBox7.Name = "textBox7";
             textBox7.ReadOnly = true;
@@ -197,7 +197,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(7, 411);
+            label8.Location = new Point(9, 345);
             label8.Name = "label8";
             label8.Size = new Size(51, 23);
             label8.TabIndex = 8;
@@ -208,7 +208,7 @@
             label5.Anchor = AnchorStyles.Top;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(0, 303);
+            label5.Location = new Point(0, 280);
             label5.Name = "label5";
             label5.Size = new Size(318, 89);
             label5.TabIndex = 7;
@@ -218,7 +218,7 @@
             // textBox4
             // 
             textBox4.Anchor = AnchorStyles.Top;
-            textBox4.Location = new Point(7, 247);
+            textBox4.Location = new Point(7, 213);
             textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
@@ -231,7 +231,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(7, 217);
+            label4.Location = new Point(7, 183);
             label4.Name = "label4";
             label4.Size = new Size(54, 23);
             label4.TabIndex = 5;
@@ -240,7 +240,7 @@
             // textBox3
             // 
             textBox3.Anchor = AnchorStyles.Top;
-            textBox3.Location = new Point(7, 183);
+            textBox3.Location = new Point(7, 149);
             textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
@@ -253,7 +253,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(7, 153);
+            label3.Location = new Point(7, 119);
             label3.Name = "label3";
             label3.Size = new Size(57, 23);
             label3.TabIndex = 3;
@@ -262,7 +262,7 @@
             // textBox2
             // 
             textBox2.Anchor = AnchorStyles.Top;
-            textBox2.Location = new Point(7, 119);
+            textBox2.Location = new Point(7, 85);
             textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
@@ -275,7 +275,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(7, 89);
+            label2.Location = new Point(7, 55);
             label2.Name = "label2";
             label2.Size = new Size(51, 23);
             label2.TabIndex = 1;
@@ -308,6 +308,17 @@
             ScreenPnl.Name = "ScreenPnl";
             ScreenPnl.Size = new Size(1029, 891);
             ScreenPnl.TabIndex = 2;
+            // 
+            // Aktiv_checkbox
+            // 
+            Aktiv_checkbox.AutoSize = true;
+            Aktiv_checkbox.Location = new Point(800, 88);
+            Aktiv_checkbox.Name = "Aktiv_checkbox";
+            Aktiv_checkbox.Size = new Size(64, 24);
+            Aktiv_checkbox.TabIndex = 6;
+            Aktiv_checkbox.Text = "Aktiv";
+            Aktiv_checkbox.UseVisualStyleBackColor = true;
+            Aktiv_checkbox.CheckedChanged += Aktiv_checkbox_CheckedChanged;
             // 
             // Refreshbutton
             // 
@@ -382,17 +393,6 @@
             dataGridView1.Size = new Size(1008, 749);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-            // 
-            // Aktiv_checkbox
-            // 
-            Aktiv_checkbox.AutoSize = true;
-            Aktiv_checkbox.Location = new Point(800, 88);
-            Aktiv_checkbox.Name = "Aktiv_checkbox";
-            Aktiv_checkbox.Size = new Size(64, 24);
-            Aktiv_checkbox.TabIndex = 6;
-            Aktiv_checkbox.Text = "Aktiv";
-            Aktiv_checkbox.UseVisualStyleBackColor = true;
-            Aktiv_checkbox.CheckedChanged += Aktiv_checkbox_CheckedChanged;
             // 
             // InfoBolig
             // 
