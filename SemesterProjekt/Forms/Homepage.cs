@@ -8,10 +8,13 @@ namespace SemesterProjekt
     public partial class Homepage : Form
     {
         InfoBolig bf;
-        AdvanceInfoBolig aib;
+        EjendomsmæglerForm ef;
+
         public Homepage()
         {
             InitializeComponent();
+            bf = new InfoBolig();
+            ef = new EjendomsmæglerForm();
         }
 
         private void ButtonB_Click(object sender, EventArgs e)
@@ -29,9 +32,9 @@ namespace SemesterProjekt
 
             ButtonM.BackColor = Color.FromArgb(35, 31, 80);
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
+            ef.Hide();
 
             //Åbner Form inde i panelet i form1// 
-            bf = new InfoBolig();
             bf.TopLevel = false;
             bf.FormBorderStyle = FormBorderStyle.None;
             bf.Dock = DockStyle.Fill;
@@ -55,6 +58,9 @@ namespace SemesterProjekt
             ButtonM.BackColor = Color.FromArgb(35, 31, 80);
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
             bf.Hide();
+
+            //Åbner ny form
+
         }
 
         private void ButtonK_Click(object sender, EventArgs e)
@@ -89,6 +95,13 @@ namespace SemesterProjekt
             ButtonM.BackColor = Color.FromArgb(229, 159, 0);
             ButtonM.ForeColor = Color.FromArgb(35, 31, 80);
             bf.Hide();
+
+            //Åbner ny form
+            ef.TopLevel = false;
+            ef.FormBorderStyle = FormBorderStyle.None;
+            ef.Dock = DockStyle.Fill;
+            this.ScreenPnl.Controls.Add(ef);
+            ef.Show();
         }
     }
 }

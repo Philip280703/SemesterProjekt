@@ -47,13 +47,13 @@
             label2 = new Label();
             label1 = new Label();
             ScreenPnl = new Panel();
+            Aktiv_checkbox = new CheckBox();
             Refreshbutton = new Button();
             comboBox3 = new ComboBox();
             comboBox2 = new ComboBox();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
-            Aktiv_checkbox = new CheckBox();
             panel1.SuspendLayout();
             ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -99,7 +99,7 @@
             button4.Name = "button4";
             button4.Size = new Size(318, 76);
             button4.TabIndex = 16;
-            button4.Text = "Ny Bolig";
+            button4.Text = "Opret Bolig";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click_1;
             // 
@@ -309,6 +309,17 @@
             ScreenPnl.Size = new Size(1029, 891);
             ScreenPnl.TabIndex = 2;
             // 
+            // Aktiv_checkbox
+            // 
+            Aktiv_checkbox.AutoSize = true;
+            Aktiv_checkbox.Location = new Point(800, 88);
+            Aktiv_checkbox.Name = "Aktiv_checkbox";
+            Aktiv_checkbox.Size = new Size(64, 24);
+            Aktiv_checkbox.TabIndex = 6;
+            Aktiv_checkbox.Text = "Aktiv";
+            Aktiv_checkbox.UseVisualStyleBackColor = true;
+            Aktiv_checkbox.CheckedChanged += Aktiv_checkbox_CheckedChanged;
+            // 
             // Refreshbutton
             // 
             Refreshbutton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -382,17 +393,6 @@
             dataGridView1.Size = new Size(1008, 749);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellMouseClick += dataGridView1_CellMouseClick;
-            // 
-            // Aktiv_checkbox
-            // 
-            Aktiv_checkbox.AutoSize = true;
-            Aktiv_checkbox.Location = new Point(800, 88);
-            Aktiv_checkbox.Name = "Aktiv_checkbox";
-            Aktiv_checkbox.Size = new Size(64, 24);
-            Aktiv_checkbox.TabIndex = 6;
-            Aktiv_checkbox.Text = "Aktiv";
-            Aktiv_checkbox.UseVisualStyleBackColor = true;
-            Aktiv_checkbox.CheckedChanged += Aktiv_checkbox_CheckedChanged;
             // 
             // InfoBolig
             // 
