@@ -75,7 +75,7 @@ namespace SemesterProjekt.Forms
 
             string boligtype = comboBox2.Text;
 
-            int maeglerid = int.Parse(MaglerIdTextbox.Text);
+            int maeglerid = int.Parse(comboBox3.Text);
 
             string fornavn;
             if (myValidator.ValidateFirstname(textBox1.Text))

@@ -30,7 +30,6 @@
         {
             button1 = new Button();
             MæglerIdLabel = new Label();
-            MaglerIdTextbox = new TextBox();
             BoligTypeLabel = new Label();
             KvadratmeterLabel = new Label();
             KvadratmeterTextbox = new TextBox();
@@ -40,6 +39,8 @@
             AdresseTextbox = new TextBox();
             AdresseLabel = new Label();
             groupBox1 = new GroupBox();
+            comboBox3 = new ComboBox();
+            comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
             groupBox2 = new GroupBox();
             label4 = new Label();
@@ -52,7 +53,6 @@
             textBox2 = new TextBox();
             button2 = new Button();
             label6 = new Label();
-            comboBox1 = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -75,14 +75,6 @@
             MæglerIdLabel.Size = new Size(73, 20);
             MæglerIdLabel.TabIndex = 58;
             MæglerIdLabel.Text = "MæglerId";
-            // 
-            // MaglerIdTextbox
-            // 
-            MaglerIdTextbox.Location = new Point(117, 221);
-            MaglerIdTextbox.Margin = new Padding(3, 4, 3, 4);
-            MaglerIdTextbox.Name = "MaglerIdTextbox";
-            MaglerIdTextbox.Size = new Size(170, 27);
-            MaglerIdTextbox.TabIndex = 57;
             // 
             // BoligTypeLabel
             // 
@@ -155,12 +147,12 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(comboBox3);
             groupBox1.Controls.Add(comboBox1);
             groupBox1.Controls.Add(comboBox2);
             groupBox1.Controls.Add(KvadratmeterTextbox);
             groupBox1.Controls.Add(MæglerIdLabel);
             groupBox1.Controls.Add(AdresseLabel);
-            groupBox1.Controls.Add(MaglerIdTextbox);
             groupBox1.Controls.Add(BoligTypeLabel);
             groupBox1.Controls.Add(AdresseTextbox);
             groupBox1.Controls.Add(KvadratmeterLabel);
@@ -173,6 +165,24 @@
             groupBox1.TabIndex = 60;
             groupBox1.TabStop = false;
             groupBox1.Text = "Bolig informationer";
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "100", "101", "102" });
+            comboBox3.Location = new Point(117, 222);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(169, 28);
+            comboBox3.TabIndex = 64;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "8000", "9000" });
+            comboBox1.Location = new Point(117, 74);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(169, 28);
+            comboBox1.TabIndex = 63;
             // 
             // comboBox2
             // 
@@ -289,15 +299,6 @@
             label6.TabIndex = 63;
             label6.Text = "Ny bolig til salg";
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "8000", "9000" });
-            comboBox1.Location = new Point(117, 74);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(169, 28);
-            comboBox1.TabIndex = 63;
-            // 
             // NewBoligForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -323,7 +324,6 @@
 
         private Button button1;
         private Label MæglerIdLabel;
-        private TextBox MaglerIdTextbox;
         private Label BoligTypeLabel;
         private Label KvadratmeterLabel;
         private TextBox KvadratmeterTextbox;
@@ -346,5 +346,6 @@
         private Button button2;
         private Label label6;
         private ComboBox comboBox1;
+        private ComboBox comboBox3;
     }
 }
