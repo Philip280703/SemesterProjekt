@@ -52,7 +52,7 @@ namespace SemesterProjekt.Forms
 
         private void txtSearchbar_TextChanged(object sender, EventArgs e)
         {
-            List<Bolig> filter = db.Searchbar(txtSearchbar.Text);
+            List<Bolig> filter = db.SearchbarBolig(txtSearchbar.Text);
             DGVBolig.DataSource = filter;
             int gns = AveragePrice();
             textBoxGns.Text = gns.ToString();
