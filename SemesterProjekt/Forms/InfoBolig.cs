@@ -88,10 +88,6 @@ namespace SemesterProjekt.Forms
             }
             else
             {
-                // Philip - har ændret comboboxen med postnumre til at ikke længere være en range, men specefikke postnr ------------------------
-                // int num1 = int.Parse(combobox.Split("-")[0]);
-                // int num2 = int.Parse(combobox.Split("-")[1]);
-                // DGVBolig.DataSource = filter.Where(b => b.PostNr >= num1 && b.PostNr <= num2).ToList();
 
                 List<Bolig> filter = db.GetAllBolig();
 
