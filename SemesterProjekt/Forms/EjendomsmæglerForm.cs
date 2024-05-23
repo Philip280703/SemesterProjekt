@@ -159,7 +159,7 @@ namespace SemesterProjekt.Forms
         private void Btn_Update_Click(object sender, EventArgs e)
         {
             OpdaterMaeglerForm opdaterMaegler = new OpdaterMaeglerForm( MaeglerId, MFname, MLname, MEmail, MTlfNr, Afdeling);
-
+            opdaterMaegler.Show();
         }
     }
 }
