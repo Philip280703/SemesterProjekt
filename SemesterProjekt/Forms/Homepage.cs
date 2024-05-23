@@ -10,6 +10,7 @@ namespace SemesterProjekt
         InfoBolig bf;
         EjendomsmæglerForm ef;
         Sælgerform sf;
+        KundeForm kf;
 
         public Homepage()
         {
@@ -17,6 +18,7 @@ namespace SemesterProjekt
             bf = new InfoBolig();
             ef = new EjendomsmæglerForm();
             sf = new Sælgerform();
+            kf = new KundeForm();
         }
 
         private void ButtonB_Click(object sender, EventArgs e)
@@ -36,6 +38,7 @@ namespace SemesterProjekt
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
             ef.Hide();
             sf.Hide();
+            kf.Hide();
             Lbl_Title.Text = "Bolig";
 
             //Åbner Form inde i panelet i form1// 
@@ -63,6 +66,7 @@ namespace SemesterProjekt
             ButtonM.ForeColor = Color.FromArgb(229, 159, 0);
             ef.Hide();
             bf.Hide();
+            kf.Hide();
             Lbl_Title.Text = "Sælger";
 
             //Åbner ny form
@@ -91,6 +95,13 @@ namespace SemesterProjekt
             bf.Hide();
             sf.Hide();
             Lbl_Title.Text = "Køber";
+
+            //Åbner ny form
+            kf.TopLevel = false;
+            kf.FormBorderStyle = FormBorderStyle.None;
+            kf.Dock = DockStyle.Fill;
+            this.ScreenPnl.Controls.Add(kf);
+            kf.Show();
         }
 
         private void ButtonM_Click(object sender, EventArgs e)
@@ -109,6 +120,7 @@ namespace SemesterProjekt
             ButtonM.ForeColor = Color.FromArgb(35, 31, 80);
             bf.Hide();
             sf.Hide();
+            kf.Hide();
             Lbl_Title.Text = "Mægler";
 
             //Åbner ny form
