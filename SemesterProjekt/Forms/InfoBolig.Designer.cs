@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button4 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            textBox5 = new TextBox();
-            label6 = new Label();
-            textBox6 = new TextBox();
-            label7 = new Label();
-            textBox7 = new TextBox();
-            label8 = new Label();
-            label5 = new Label();
-            textBox4 = new TextBox();
-            label4 = new Label();
-            textBox3 = new TextBox();
-            label3 = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            label1 = new Label();
+            Btn_OpretBolig = new Button();
+            Btn_OpdaterUdbudspris = new Button();
+            Btn_SaelgBolig = new Button();
+            Txtbox_SaelgerEmail = new TextBox();
+            Lbl_SaeglerEmail = new Label();
+            Txtbox_SælgerTlfnr = new TextBox();
+            Lbl_SaeglerTlfnr = new Label();
+            Txtbox_SaelgerNavn = new TextBox();
+            Lbl_SaeglerNavn = new Label();
+            Lbl_Saelger = new Label();
+            Txtbox_MaeglerEmail = new TextBox();
+            Lbl_MeaglerEmail = new Label();
+            Txtbox_MaeglerTlf = new TextBox();
+            Lbl_TlfNr = new Label();
+            textbox_MaeglerNavn = new TextBox();
+            Lbl_MaeglerNavn = new Label();
+            Lbl_Maegler = new Label();
             ScreenPnl = new Panel();
             button5 = new Button();
             btn_ExportToCSV = new Button();
             lblGnsKvm = new Label();
             textBoxGns = new TextBox();
-            Sletbolig_button = new Button();
+            Btn_SletBolig = new Button();
             Aktiv_checkbox = new CheckBox();
             Refreshbutton = new Button();
             comboBoxPris = new ComboBox();
@@ -67,23 +67,23 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(textBox5);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(textBox6);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(textBox7);
-            panel1.Controls.Add(label8);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(textBox4);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(textBox3);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(Btn_OpretBolig);
+            panel1.Controls.Add(Btn_OpdaterUdbudspris);
+            panel1.Controls.Add(Btn_SaelgBolig);
+            panel1.Controls.Add(Txtbox_SaelgerEmail);
+            panel1.Controls.Add(Lbl_SaeglerEmail);
+            panel1.Controls.Add(Txtbox_SælgerTlfnr);
+            panel1.Controls.Add(Lbl_SaeglerTlfnr);
+            panel1.Controls.Add(Txtbox_SaelgerNavn);
+            panel1.Controls.Add(Lbl_SaeglerNavn);
+            panel1.Controls.Add(Lbl_Saelger);
+            panel1.Controls.Add(Txtbox_MaeglerEmail);
+            panel1.Controls.Add(Lbl_MeaglerEmail);
+            panel1.Controls.Add(Txtbox_MaeglerTlf);
+            panel1.Controls.Add(Lbl_TlfNr);
+            panel1.Controls.Add(textbox_MaeglerNavn);
+            panel1.Controls.Add(Lbl_MaeglerNavn);
+            panel1.Controls.Add(Lbl_Maegler);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(1029, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
@@ -91,212 +91,212 @@
             panel1.Size = new Size(318, 891);
             panel1.TabIndex = 1;
             // 
-            // button4
+            // Btn_OpretBolig
             // 
-            button4.BackColor = SystemColors.ControlDark;
-            button4.Dock = DockStyle.Bottom;
-            button4.FlatAppearance.BorderSize = 2;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(0, 663);
-            button4.Margin = new Padding(3, 5, 3, 5);
-            button4.Name = "button4";
-            button4.Size = new Size(318, 76);
-            button4.TabIndex = 16;
-            button4.Text = "Opret Bolig";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += buttonNyBolig_Click;
+            Btn_OpretBolig.BackColor = SystemColors.ControlDark;
+            Btn_OpretBolig.Dock = DockStyle.Bottom;
+            Btn_OpretBolig.FlatAppearance.BorderSize = 2;
+            Btn_OpretBolig.FlatStyle = FlatStyle.Flat;
+            Btn_OpretBolig.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Btn_OpretBolig.ForeColor = Color.White;
+            Btn_OpretBolig.Location = new Point(0, 663);
+            Btn_OpretBolig.Margin = new Padding(3, 5, 3, 5);
+            Btn_OpretBolig.Name = "Btn_OpretBolig";
+            Btn_OpretBolig.Size = new Size(318, 76);
+            Btn_OpretBolig.TabIndex = 16;
+            Btn_OpretBolig.Text = "Opret Bolig";
+            Btn_OpretBolig.UseVisualStyleBackColor = false;
+            Btn_OpretBolig.Click += buttonNyBolig_Click;
             // 
-            // button2
+            // Btn_OpdaterUdbudspris
             // 
-            button2.BackColor = SystemColors.ControlDark;
-            button2.Dock = DockStyle.Bottom;
-            button2.FlatAppearance.BorderSize = 2;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(0, 739);
-            button2.Margin = new Padding(3, 5, 3, 5);
-            button2.Name = "button2";
-            button2.Size = new Size(318, 76);
-            button2.TabIndex = 15;
-            button2.Text = "Opdater Udbudspris";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += buttonOpdaterBolig_Click;
+            Btn_OpdaterUdbudspris.BackColor = SystemColors.ControlDark;
+            Btn_OpdaterUdbudspris.Dock = DockStyle.Bottom;
+            Btn_OpdaterUdbudspris.FlatAppearance.BorderSize = 2;
+            Btn_OpdaterUdbudspris.FlatStyle = FlatStyle.Flat;
+            Btn_OpdaterUdbudspris.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Btn_OpdaterUdbudspris.ForeColor = Color.White;
+            Btn_OpdaterUdbudspris.Location = new Point(0, 739);
+            Btn_OpdaterUdbudspris.Margin = new Padding(3, 5, 3, 5);
+            Btn_OpdaterUdbudspris.Name = "Btn_OpdaterUdbudspris";
+            Btn_OpdaterUdbudspris.Size = new Size(318, 76);
+            Btn_OpdaterUdbudspris.TabIndex = 15;
+            Btn_OpdaterUdbudspris.Text = "Opdater Udbudspris";
+            Btn_OpdaterUdbudspris.UseVisualStyleBackColor = false;
+            Btn_OpdaterUdbudspris.Click += buttonOpdaterBolig_Click;
             // 
-            // button1
+            // Btn_SaelgBolig
             // 
-            button1.BackColor = SystemColors.ControlDark;
-            button1.Dock = DockStyle.Bottom;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(0, 815);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(318, 76);
-            button1.TabIndex = 14;
-            button1.Text = "Sælg Bolig";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += buttonSaelgBolig_Click;
+            Btn_SaelgBolig.BackColor = SystemColors.ControlDark;
+            Btn_SaelgBolig.Dock = DockStyle.Bottom;
+            Btn_SaelgBolig.FlatAppearance.BorderSize = 2;
+            Btn_SaelgBolig.FlatStyle = FlatStyle.Flat;
+            Btn_SaelgBolig.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Btn_SaelgBolig.ForeColor = Color.White;
+            Btn_SaelgBolig.Location = new Point(0, 815);
+            Btn_SaelgBolig.Margin = new Padding(3, 4, 3, 4);
+            Btn_SaelgBolig.Name = "Btn_SaelgBolig";
+            Btn_SaelgBolig.Size = new Size(318, 76);
+            Btn_SaelgBolig.TabIndex = 14;
+            Btn_SaelgBolig.Text = "Sælg Bolig";
+            Btn_SaelgBolig.UseVisualStyleBackColor = false;
+            Btn_SaelgBolig.Click += buttonSaelgBolig_Click;
             // 
-            // textBox5
+            // Txtbox_SaelgerEmail
             // 
-            textBox5.Anchor = AnchorStyles.Top;
-            textBox5.Location = new Point(9, 515);
-            textBox5.Margin = new Padding(3, 4, 3, 4);
-            textBox5.Name = "textBox5";
-            textBox5.ReadOnly = true;
-            textBox5.Size = new Size(297, 27);
-            textBox5.TabIndex = 13;
+            Txtbox_SaelgerEmail.Anchor = AnchorStyles.Top;
+            Txtbox_SaelgerEmail.Location = new Point(9, 515);
+            Txtbox_SaelgerEmail.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_SaelgerEmail.Name = "Txtbox_SaelgerEmail";
+            Txtbox_SaelgerEmail.ReadOnly = true;
+            Txtbox_SaelgerEmail.Size = new Size(297, 27);
+            Txtbox_SaelgerEmail.TabIndex = 13;
             // 
-            // label6
+            // Lbl_SaeglerEmail
             // 
-            label6.Anchor = AnchorStyles.Top;
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(9, 486);
-            label6.Name = "label6";
-            label6.Size = new Size(54, 23);
-            label6.TabIndex = 12;
-            label6.Text = "Email";
+            Lbl_SaeglerEmail.Anchor = AnchorStyles.Top;
+            Lbl_SaeglerEmail.AutoSize = true;
+            Lbl_SaeglerEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_SaeglerEmail.ForeColor = Color.White;
+            Lbl_SaeglerEmail.Location = new Point(9, 486);
+            Lbl_SaeglerEmail.Name = "Lbl_SaeglerEmail";
+            Lbl_SaeglerEmail.Size = new Size(54, 23);
+            Lbl_SaeglerEmail.TabIndex = 12;
+            Lbl_SaeglerEmail.Text = "Email";
             // 
-            // textBox6
+            // Txtbox_SælgerTlfnr
             // 
-            textBox6.Anchor = AnchorStyles.Top;
-            textBox6.Location = new Point(9, 451);
-            textBox6.Margin = new Padding(3, 4, 3, 4);
-            textBox6.Name = "textBox6";
-            textBox6.ReadOnly = true;
-            textBox6.Size = new Size(297, 27);
-            textBox6.TabIndex = 11;
+            Txtbox_SælgerTlfnr.Anchor = AnchorStyles.Top;
+            Txtbox_SælgerTlfnr.Location = new Point(9, 451);
+            Txtbox_SælgerTlfnr.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_SælgerTlfnr.Name = "Txtbox_SælgerTlfnr";
+            Txtbox_SælgerTlfnr.ReadOnly = true;
+            Txtbox_SælgerTlfnr.Size = new Size(297, 27);
+            Txtbox_SælgerTlfnr.TabIndex = 11;
             // 
-            // label7
+            // Lbl_SaeglerTlfnr
             // 
-            label7.Anchor = AnchorStyles.Top;
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(9, 422);
-            label7.Name = "label7";
-            label7.Size = new Size(57, 23);
-            label7.TabIndex = 10;
-            label7.Text = "Tlf Nr";
+            Lbl_SaeglerTlfnr.Anchor = AnchorStyles.Top;
+            Lbl_SaeglerTlfnr.AutoSize = true;
+            Lbl_SaeglerTlfnr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_SaeglerTlfnr.ForeColor = Color.White;
+            Lbl_SaeglerTlfnr.Location = new Point(9, 422);
+            Lbl_SaeglerTlfnr.Name = "Lbl_SaeglerTlfnr";
+            Lbl_SaeglerTlfnr.Size = new Size(57, 23);
+            Lbl_SaeglerTlfnr.TabIndex = 10;
+            Lbl_SaeglerTlfnr.Text = "Tlf Nr";
             // 
-            // textBox7
+            // Txtbox_SaelgerNavn
             // 
-            textBox7.Anchor = AnchorStyles.Top;
-            textBox7.Location = new Point(9, 387);
-            textBox7.Margin = new Padding(3, 4, 3, 4);
-            textBox7.Name = "textBox7";
-            textBox7.ReadOnly = true;
-            textBox7.Size = new Size(297, 27);
-            textBox7.TabIndex = 9;
+            Txtbox_SaelgerNavn.Anchor = AnchorStyles.Top;
+            Txtbox_SaelgerNavn.Location = new Point(9, 387);
+            Txtbox_SaelgerNavn.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_SaelgerNavn.Name = "Txtbox_SaelgerNavn";
+            Txtbox_SaelgerNavn.ReadOnly = true;
+            Txtbox_SaelgerNavn.Size = new Size(297, 27);
+            Txtbox_SaelgerNavn.TabIndex = 9;
             // 
-            // label8
+            // Lbl_SaeglerNavn
             // 
-            label8.Anchor = AnchorStyles.Top;
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(9, 358);
-            label8.Name = "label8";
-            label8.Size = new Size(51, 23);
-            label8.TabIndex = 8;
-            label8.Text = "Navn";
+            Lbl_SaeglerNavn.Anchor = AnchorStyles.Top;
+            Lbl_SaeglerNavn.AutoSize = true;
+            Lbl_SaeglerNavn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_SaeglerNavn.ForeColor = Color.White;
+            Lbl_SaeglerNavn.Location = new Point(9, 358);
+            Lbl_SaeglerNavn.Name = "Lbl_SaeglerNavn";
+            Lbl_SaeglerNavn.Size = new Size(51, 23);
+            Lbl_SaeglerNavn.TabIndex = 8;
+            Lbl_SaeglerNavn.Text = "Navn";
             // 
-            // label5
+            // Lbl_Saelger
             // 
-            label5.Anchor = AnchorStyles.Top;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(0, 303);
-            label5.Name = "label5";
-            label5.Size = new Size(318, 89);
-            label5.TabIndex = 7;
-            label5.Text = "Sælger";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            Lbl_Saelger.Anchor = AnchorStyles.Top;
+            Lbl_Saelger.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Lbl_Saelger.ForeColor = Color.White;
+            Lbl_Saelger.Location = new Point(0, 303);
+            Lbl_Saelger.Name = "Lbl_Saelger";
+            Lbl_Saelger.Size = new Size(318, 89);
+            Lbl_Saelger.TabIndex = 7;
+            Lbl_Saelger.Text = "Sælger";
+            Lbl_Saelger.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // textBox4
+            // Txtbox_MaeglerEmail
             // 
-            textBox4.Anchor = AnchorStyles.Top;
-            textBox4.Location = new Point(9, 255);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(297, 27);
-            textBox4.TabIndex = 6;
+            Txtbox_MaeglerEmail.Anchor = AnchorStyles.Top;
+            Txtbox_MaeglerEmail.Location = new Point(9, 255);
+            Txtbox_MaeglerEmail.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_MaeglerEmail.Name = "Txtbox_MaeglerEmail";
+            Txtbox_MaeglerEmail.ReadOnly = true;
+            Txtbox_MaeglerEmail.Size = new Size(297, 27);
+            Txtbox_MaeglerEmail.TabIndex = 6;
             // 
-            // label4
+            // Lbl_MeaglerEmail
             // 
-            label4.Anchor = AnchorStyles.Top;
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(9, 225);
-            label4.Name = "label4";
-            label4.Size = new Size(54, 23);
-            label4.TabIndex = 5;
-            label4.Text = "Email";
+            Lbl_MeaglerEmail.Anchor = AnchorStyles.Top;
+            Lbl_MeaglerEmail.AutoSize = true;
+            Lbl_MeaglerEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_MeaglerEmail.ForeColor = Color.White;
+            Lbl_MeaglerEmail.Location = new Point(9, 225);
+            Lbl_MeaglerEmail.Name = "Lbl_MeaglerEmail";
+            Lbl_MeaglerEmail.Size = new Size(54, 23);
+            Lbl_MeaglerEmail.TabIndex = 5;
+            Lbl_MeaglerEmail.Text = "Email";
             // 
-            // textBox3
+            // Txtbox_MaeglerTlf
             // 
-            textBox3.Anchor = AnchorStyles.Top;
-            textBox3.Location = new Point(9, 191);
-            textBox3.Margin = new Padding(3, 4, 3, 4);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(297, 27);
-            textBox3.TabIndex = 4;
+            Txtbox_MaeglerTlf.Anchor = AnchorStyles.Top;
+            Txtbox_MaeglerTlf.Location = new Point(9, 191);
+            Txtbox_MaeglerTlf.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_MaeglerTlf.Name = "Txtbox_MaeglerTlf";
+            Txtbox_MaeglerTlf.ReadOnly = true;
+            Txtbox_MaeglerTlf.Size = new Size(297, 27);
+            Txtbox_MaeglerTlf.TabIndex = 4;
             // 
-            // label3
+            // Lbl_TlfNr
             // 
-            label3.Anchor = AnchorStyles.Top;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(9, 161);
-            label3.Name = "label3";
-            label3.Size = new Size(57, 23);
-            label3.TabIndex = 3;
-            label3.Text = "Tlf Nr";
+            Lbl_TlfNr.Anchor = AnchorStyles.Top;
+            Lbl_TlfNr.AutoSize = true;
+            Lbl_TlfNr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_TlfNr.ForeColor = Color.White;
+            Lbl_TlfNr.Location = new Point(9, 161);
+            Lbl_TlfNr.Name = "Lbl_TlfNr";
+            Lbl_TlfNr.Size = new Size(57, 23);
+            Lbl_TlfNr.TabIndex = 3;
+            Lbl_TlfNr.Text = "Tlf Nr";
             // 
-            // textBox2
+            // textbox_MaeglerNavn
             // 
-            textBox2.Anchor = AnchorStyles.Top;
-            textBox2.Location = new Point(9, 127);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(297, 27);
-            textBox2.TabIndex = 2;
+            textbox_MaeglerNavn.Anchor = AnchorStyles.Top;
+            textbox_MaeglerNavn.Location = new Point(9, 127);
+            textbox_MaeglerNavn.Margin = new Padding(3, 4, 3, 4);
+            textbox_MaeglerNavn.Name = "textbox_MaeglerNavn";
+            textbox_MaeglerNavn.ReadOnly = true;
+            textbox_MaeglerNavn.Size = new Size(297, 27);
+            textbox_MaeglerNavn.TabIndex = 2;
             // 
-            // label2
+            // Lbl_MaeglerNavn
             // 
-            label2.Anchor = AnchorStyles.Top;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(9, 97);
-            label2.Name = "label2";
-            label2.Size = new Size(51, 23);
-            label2.TabIndex = 1;
-            label2.Text = "Navn";
+            Lbl_MaeglerNavn.Anchor = AnchorStyles.Top;
+            Lbl_MaeglerNavn.AutoSize = true;
+            Lbl_MaeglerNavn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_MaeglerNavn.ForeColor = Color.White;
+            Lbl_MaeglerNavn.Location = new Point(9, 97);
+            Lbl_MaeglerNavn.Name = "Lbl_MaeglerNavn";
+            Lbl_MaeglerNavn.Size = new Size(51, 23);
+            Lbl_MaeglerNavn.TabIndex = 1;
+            Lbl_MaeglerNavn.Text = "Navn";
             // 
-            // label1
+            // Lbl_Maegler
             // 
-            label1.Anchor = AnchorStyles.Top;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(2, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(318, 89);
-            label1.TabIndex = 0;
-            label1.Text = "Mægler";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            Lbl_Maegler.Anchor = AnchorStyles.Top;
+            Lbl_Maegler.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Lbl_Maegler.ForeColor = Color.White;
+            Lbl_Maegler.Location = new Point(2, 42);
+            Lbl_Maegler.Name = "Lbl_Maegler";
+            Lbl_Maegler.Size = new Size(318, 89);
+            Lbl_Maegler.TabIndex = 0;
+            Lbl_Maegler.Text = "Mægler";
+            Lbl_Maegler.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // ScreenPnl
             // 
@@ -304,7 +304,7 @@
             ScreenPnl.Controls.Add(btn_ExportToCSV);
             ScreenPnl.Controls.Add(lblGnsKvm);
             ScreenPnl.Controls.Add(textBoxGns);
-            ScreenPnl.Controls.Add(Sletbolig_button);
+            ScreenPnl.Controls.Add(Btn_SletBolig);
             ScreenPnl.Controls.Add(Aktiv_checkbox);
             ScreenPnl.Controls.Add(Refreshbutton);
             ScreenPnl.Controls.Add(comboBoxPris);
@@ -362,15 +362,15 @@
             textBoxGns.Size = new Size(178, 38);
             textBoxGns.TabIndex = 18;
             // 
-            // Sletbolig_button
+            // Btn_SletBolig
             // 
-            Sletbolig_button.Location = new Point(14, 815);
-            Sletbolig_button.Name = "Sletbolig_button";
-            Sletbolig_button.Size = new Size(99, 34);
-            Sletbolig_button.TabIndex = 17;
-            Sletbolig_button.Text = "Slet bolig";
-            Sletbolig_button.UseVisualStyleBackColor = true;
-            Sletbolig_button.Click += Sletbolig_button_Click;
+            Btn_SletBolig.Location = new Point(14, 815);
+            Btn_SletBolig.Name = "Btn_SletBolig";
+            Btn_SletBolig.Size = new Size(99, 34);
+            Btn_SletBolig.TabIndex = 17;
+            Btn_SletBolig.Text = "Slet bolig";
+            Btn_SletBolig.UseVisualStyleBackColor = true;
+            Btn_SletBolig.Click += Sletbolig_button_Click;
             // 
             // Aktiv_checkbox
             // 
@@ -485,27 +485,27 @@
         private ComboBox comboBoxPostNr;
         private TrackBar trackBar1;
         private ComboBox comboBoxPris;
-        private Label label3;
-        private TextBox textBox2;
-        private Label label2;
-        private Label label4;
-        private TextBox textBox3;
-        private Label label5;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Label label6;
-        private TextBox textBox6;
-        private Label label7;
-        private TextBox textBox7;
-        private Label label8;
-        private Label label1;
-        private Button button1;
-        private Button button2;
+        private Label Lbl_TlfNr;
+        private TextBox textbox_MaeglerNavn;
+        private Label Lbl_MaeglerNavn;
+        private Label Lbl_MeaglerEmail;
+        private TextBox Txtbox_MaeglerTlf;
+        private Label Lbl_Saelger;
+        private TextBox Txtbox_MaeglerEmail;
+        private TextBox Txtbox_SaelgerEmail;
+        private Label Lbl_SaeglerEmail;
+        private TextBox Txtbox_SælgerTlfnr;
+        private Label Lbl_SaeglerTlfnr;
+        private TextBox Txtbox_SaelgerNavn;
+        private Label Lbl_SaeglerNavn;
+        private Label Lbl_Maegler;
+        private Button Btn_SaelgBolig;
+        private Button Btn_OpdaterUdbudspris;
         private Button button3;
         private Button Refreshbutton;
-        private Button button4;
+        private Button Btn_OpretBolig;
         private CheckBox Aktiv_checkbox;
-        private Button Sletbolig_button;
+        private Button Btn_SletBolig;
         private TextBox textBoxGns;
         private Label lblGnsKvm;
         private Button btn_ExportToCSV;
