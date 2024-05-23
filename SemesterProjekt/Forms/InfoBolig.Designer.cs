@@ -386,7 +386,7 @@
             // Refreshbutton
             // 
             Refreshbutton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Refreshbutton.Location = new Point(936, 13);
+            Refreshbutton.Location = new Point(936, 11);
             Refreshbutton.Margin = new Padding(3, 4, 3, 4);
             Refreshbutton.Name = "Refreshbutton";
             Refreshbutton.Size = new Size(86, 31);
