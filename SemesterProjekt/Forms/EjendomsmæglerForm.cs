@@ -138,7 +138,7 @@ namespace SemesterProjekt.Forms
             TxtBox_Sælger_Email.Text = sa.SEmail;
             TxtBox_Sælger_TlfNr.Text = "" + sa.STlfNr;
 
-            KundeForm ku = db.GetSingleKundeBasedOfBoligId(BoligIid);
+            Kunde ku = db.GetSingleKundeBasedOfBoligId(BoligIid);
             TxtBox_Køber_Email.Text = ku.KEmail;
             TxtBox_Køber_Navn.Text = ku.KFname + " " + ku.KLname;
             TxtBox_Køber_TlfNr.Text = "" + ku.KTlfNr;
