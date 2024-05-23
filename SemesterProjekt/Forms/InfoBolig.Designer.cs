@@ -325,10 +325,10 @@
             // 
             comboxSortering.FormattingEnabled = true;
             comboxSortering.Items.AddRange(new object[] { "Sortering", "Adresse (alfabetisk)", "Udbudspris (lav - høj)", "Udbudspris (høj - lav)", "Kvm (lav - høj)", "Kvm (høj - lav)", "Kvadratmeterpris (lav - høj)", "Kvadratmeterpris (høj - lav)", "Salgspris (lav - høj)", "Salgspris (høj - lav)" });
-            comboxSortering.Location = new Point(870, 15);
+            comboxSortering.Location = new Point(820, 15);
             comboxSortering.Margin = new Padding(3, 4, 3, 4);
             comboxSortering.Name = "comboxSortering";
-            comboxSortering.Size = new Size(108, 28);
+            comboxSortering.Size = new Size(141, 28);
             comboxSortering.TabIndex = 22;
             comboxSortering.Text = "Sortering";
             comboxSortering.SelectedIndexChanged += comboxSortering_SelectedIndexChanged;
@@ -389,7 +389,7 @@
             // Aktiv_checkbox
             // 
             Aktiv_checkbox.AutoSize = true;
-            Aktiv_checkbox.Location = new Point(800, 16);
+            Aktiv_checkbox.Location = new Point(740, 17);
             Aktiv_checkbox.Name = "Aktiv_checkbox";
             Aktiv_checkbox.Size = new Size(64, 24);
             Aktiv_checkbox.TabIndex = 6;
@@ -413,7 +413,7 @@
             // 
             comboBoxPris.FormattingEnabled = true;
             comboBoxPris.Items.AddRange(new object[] { "Pris", "0 - 999999", "1000000 - 1999999", "2000000 - 2999999", "3000000 - 3999999", "4000000 - 4999999" });
-            comboBoxPris.Location = new Point(677, 15);
+            comboBoxPris.Location = new Point(616, 15);
             comboBoxPris.Margin = new Padding(3, 4, 3, 4);
             comboBoxPris.Name = "comboBoxPris";
             comboBoxPris.Size = new Size(108, 28);
@@ -425,7 +425,7 @@
             // 
             comboBoxPostNr.FormattingEnabled = true;
             comboBoxPostNr.Items.AddRange(new object[] { "PostNr", "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "7400", "8000", "9000" });
-            comboBoxPostNr.Location = new Point(569, 15);
+            comboBoxPostNr.Location = new Point(510, 13);
             comboBoxPostNr.Margin = new Padding(3, 4, 3, 4);
             comboBoxPostNr.Name = "comboBoxPostNr";
             comboBoxPostNr.Size = new Size(100, 28);
@@ -437,7 +437,7 @@
             // 
             ComboBoxBoligtype.FormattingEnabled = true;
             ComboBoxBoligtype.Items.AddRange(new object[] { "BoligType", "Villa", "Lejlighed", "Rækkehus", "Andelsbolig" });
-            ComboBoxBoligtype.Location = new Point(446, 15);
+            ComboBoxBoligtype.Location = new Point(388, 14);
             ComboBoxBoligtype.Margin = new Padding(3, 4, 3, 4);
             ComboBoxBoligtype.Name = "ComboBoxBoligtype";
             ComboBoxBoligtype.Size = new Size(116, 28);
@@ -451,7 +451,7 @@
             txtSearchbar.Margin = new Padding(3, 4, 3, 4);
             txtSearchbar.Name = "txtSearchbar";
             txtSearchbar.PlaceholderText = "Adresse";
-            txtSearchbar.Size = new Size(425, 27);
+            txtSearchbar.Size = new Size(368, 27);
             txtSearchbar.TabIndex = 1;
             txtSearchbar.TextChanged += txtSearchbar_TextChanged;
             // 

@@ -138,10 +138,10 @@ namespace SemesterProjekt.Forms
             else if (combox == "Salgspris (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.SalgsPris).ToList(); }
             else if (combox == "Salgspris (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.SalgsPris).ToList(); }
 
-            //int gns = AveragePrice();
-            //textBoxGns.Text = gns.ToString();
+            int gns = AveragePrice();
+            textBoxGns.Text = gns.ToString();
 
-            //DGVBolig.ClearSelection();
+            DGVBolig.ClearSelection();
         }
 
         private void dataGridViewBolig_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
