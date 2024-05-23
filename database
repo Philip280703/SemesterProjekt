@@ -1,0 +1,140 @@
+-- Indsæt database i MS SQL database server
+-- Først kør create table på alle de 4, derefter indsættes values en af gangen.
+
+Create table Bolig
+( 
+BoligId int identity (1, 1) not null,
+Adresse varchar (50) not null,
+PostNr int not null, 
+UdbudsPris int not null,
+Kvadratmeter int not null,
+BoligType varchar (20),
+Aktiv bit,
+Salgspris int,
+SalgsDato date,
+MaeglerId int not null,
+
+Primary key (BoligId),
+);
+
+
+Create table EjendomsMaegler
+(MId int identity (100, 1),
+MFname varchar (20),
+MLname varchar (20),
+MAktiv bit,
+MEmail varchar (30),
+MTlfNr int,
+Afdeling int,
+
+Primary key (MId)
+);
+
+create table Saelger
+(SId int identity (1000, 1),
+SFname varchar (20),
+SLname varchar (20),
+SBoligId int,
+SEmail varchar (30),
+STlfNr int,
+Primary key (SId),
+foreign key (SBoligId) references Bolig(BoligId)
+);
+
+create table Kunde
+(KId int identity (1000, 1),
+KFname varchar (20),
+KLname varchar (20),
+KBoligId int,
+KEmail varchar (30),
+KTlfNr int,
+primary key (KId)
+);
+
+alter table Bolig
+add constraint Maegler_MId foreign key (MaeglerId) references Ejendomsmægler(MId);
+
+
+Insert into Bolig
+values
+('Solvej 3', 7080, 2000000, 83, 'Villa', 1, 0, '2000-01-01', 100),
+('Hovedgaden 12', 8000, 1500000, 75, 'Lejlighed', 1, 0, '2000-01-01', 101),
+('Strandvejen 45', 9000, 4000000, 150, 'Villa', 1, 0, '2000-01-01', 100),
+('Skovvej 10', 6000, 1800000, 90, 'Rækkehus', 1, 0, '2000-01-01', 102),
+('Bakkedraget 7', 5000, 2500000, 110, 'Villa', 1, 0, '2000-01-01', 101),
+('Engvej 15', 4000, 2200000, 100, 'Lejlighed', 1, 0, '2000-01-01', 100),
+('Birkevej 20', 3000, 3200000, 130, 'Villa', 1, 0, '2000-01-01', 102),
+('Skolegade 5', 2000, 1700000, 80, 'Rækkehus', 1, 0, '2000-01-01', 101),
+('Møllevej 8', 1000, 2800000, 120, 'Villa', 1, 0, '2000-01-01', 102),
+('Havnegade 3', 7200, 1900000, 95, 'Lejlighed', 1, 0, '2000-01-01', 101),
+('Fyrretræet 12', 7100, 3500000, 140, 'Villa', 1, 0, '2000-01-01', 100),
+('Østergade 25', 7000, 2100000, 105, 'Lejlighed', 1, 0, '2000-01-01', 101),
+('Banevej 9', 6000, 4000000, 160, 'Villa', 1, 0, '2000-01-01', 100),
+('Vandværksvej 14', 5000, 1800000, 85, 'Rækkehus', 1, 0, '2000-01-01', 102),
+('Skellet 17', 4000, 2400000, 110, 'Lejlighed', 1, 0, '2000-01-01', 101),
+('Lærkevej 22', 3000, 3000000, 125, 'Villa', 1, 0, '2000-01-01', 100),
+('Kirkestræde 11', 2000, 2000000, 100, 'Lejlighed', 1, 0, '2000-01-01', 101),
+('Plantagevej 6', 1000, 2600000, 115, 'Rækkehus', 1, 0, '2000-01-01', 100),
+('Plantagevej 24', 1000, 600000, 115, 'Andelsbolig', 1, 0, '2000-01-01', 102),
+('Pottevej 6', 7000, 400000, 100, 'Andelsbolig', 1, 0, '2000-01-01', 100),
+('Vindingvej 69', 7100, 500000, 100, 'Andelsbolig', 1, 0, '2000-01-01', 102),
+('Møllebakken 19', 7100, 2200000, 105, 'Lejlighed', 1, 0, '2000-01-01', 101);
+
+-- Insert into table skal alle køres i kronologisk rækkefølge og en af gangen, grundet identity!
+
+insert into EjendomsMaegler
+values 
+	('Jens', 'Jensen', 1, 'Jens@EDC.dk', 11223344, 1),
+	('Hans', 'Hansen', 1, 'Hans@EDC.dk', 22334455, 2),
+	('Bente', 'Holm', 1, 'Bente@EDC.dk', 66556655, 3);
+
+
+insert into Saelger
+values
+    ('Jane', 'Doe', 24, 'jane@example.com', '23456789'),
+    ('Alice', 'Smith', 23, 'alice@example.com', '34567890'),
+    ('Bob', 'Johnson', 3, 'bob@example.com', '45678901'),
+    ('Emma', 'Williams', 4, 'emma@example.com', '56789012'),
+    ('Michael', 'Brown', 5, 'michael@example.com', '67890123'),
+    ('Jennifer', 'Jones', 6, 'jennifer@example.com', '78901234'),
+    ('William', 'Davis', 7, 'william@example.com', '89012345'),
+    ('Emily', 'Miller', 8, 'emily@example.com', '90123456'),
+    ('James', 'Wilson', 9, 'james@example.com', '12345678'),
+    ('Olivia', 'Moore', 10, 'olivia@example.com', '98765432'),
+    ('Alexander', 'Taylor', 11, 'alexander@example.com', '87654321'),
+    ('Sophia', 'Anderson', 12, 'sophia@example.com', '76543210'),
+    ('Daniel', 'Thomas', 13, 'daniel@example.com', '65432109'),
+    ('Ava', 'Jackson', 14, 'ava@example.com', '54321098'),
+    ('Matthew', 'White', 15, 'matthew@example.com', '43210987'),
+    ('Mia', 'Harris', 16, 'mia@example.com', '32109876'),
+    ('David', 'Martin', 17, 'david@example.com', '21098765'),
+    ('Charlotte', 'Thompson', 18, 'charlotte@example.com', '10987654'),
+    ('Michael', 'Thompson', 19, 'Michael@example.com', '10907654'),
+    ('Hanne', 'Jensen', 20, 'Hanne@example.com', '17654523'),
+    ('John', 'Doe', 21, 'john@example.com', '12345678'),
+    ('Andreas', 'Holm', 22, 'Andreas@example.com', '10107654');
+
+insert into Kunde
+values 
+    ('Liam', 'Wilson', 0, 'liam@example.com', '98765432'),
+    ('Olivia', 'Johnson', 0, 'olivia@example.com', '87654321'),
+    ('Noah', 'Williams', 0, 'noah@example.com', '76543210'),
+    ('Emma', 'Brown', 0, 'emma@example.com', '65432109'),
+    ('Sophia', 'Jones', 0, 'sophia@example.com', '54321098'),
+    ('Liam', 'Garcia', 0, 'liam@example.com', '43210987'),
+    ('Ava', 'Martinez', 0, 'ava@example.com', '32109876'),
+    ('Ethan', 'Robinson', 0, 'ethan@example.com', '21098765'),
+    ('Isabella', 'Clark', 0, 'isabella@example.com', '10987654'),
+    ('Mason', 'Rodriguez', 0, 'mason@example.com', '19876543'),
+    ('Sophia', 'Lee', 0, 'sophia@example.com', '98765432'),
+    ('Logan', 'Walker', 0, 'logan@example.com', '87654321'),
+    ('Olivia', 'Perez', 0, 'olivia@example.com', '76543210'),
+    ('Lucas', 'Hall', 0, 'lucas@example.com', '65432109'),
+    ('Emma', 'Lopez', 0, 'emma@example.com', '54321098'),
+    ('Liam', 'Moore', 0, 'liam@example.com', '43210987'),
+    ('Ava', 'Young', 0, 'ava@example.com', '32109876'),
+    ('Oliver', 'Scott', 0, 'oliver@example.com', '21098765'),
+    ('Isabella', 'Adams', 0, 'isabella@example.com', '10987654'),
+    ('Lucas', 'Nelson', 0, 'lucas@example.com', '99876543'),
+    ('Mia', 'Green', 0, 'mia@example.com', '98765432'),
+    ('William', 'Wood', 0, 'william@example.com', '87654321');
