@@ -47,6 +47,7 @@
             Lbl_MaeglerNavn = new Label();
             Lbl_Maegler = new Label();
             ScreenPnl = new Panel();
+            comboxSortering = new ComboBox();
             button5 = new Button();
             btn_ExportToCSV = new Button();
             lblGnsKvm = new Label();
@@ -300,6 +301,7 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(comboxSortering);
             ScreenPnl.Controls.Add(button5);
             ScreenPnl.Controls.Add(btn_ExportToCSV);
             ScreenPnl.Controls.Add(lblGnsKvm);
@@ -318,6 +320,18 @@
             ScreenPnl.Name = "ScreenPnl";
             ScreenPnl.Size = new Size(1029, 891);
             ScreenPnl.TabIndex = 2;
+            // 
+            // comboxSortering
+            // 
+            comboxSortering.FormattingEnabled = true;
+            comboxSortering.Items.AddRange(new object[] { "Sortering", "Adresse (alfabetisk)", "Udbudspris (lav - høj)", "Udbudspris (høj - lav)", "Kvm (lav - høj)", "Kvm (høj - lav)", "Kvadratmeterpris (lav - høj)", "Kvadratmeterpris (høj - lav)", "Salgspris (lav - høj)", "Salgspris (høj - lav)" });
+            comboxSortering.Location = new Point(870, 15);
+            comboxSortering.Margin = new Padding(3, 4, 3, 4);
+            comboxSortering.Name = "comboxSortering";
+            comboxSortering.Size = new Size(108, 28);
+            comboxSortering.TabIndex = 22;
+            comboxSortering.Text = "Sortering";
+            comboxSortering.SelectedIndexChanged += comboxSortering_SelectedIndexChanged;
             // 
             // button5
             // 
@@ -510,5 +524,6 @@
         private Label lblGnsKvm;
         private Button btn_ExportToCSV;
         private Button button5;
+        private ComboBox comboxSortering;
     }
 }

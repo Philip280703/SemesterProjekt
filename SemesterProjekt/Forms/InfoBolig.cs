@@ -121,6 +121,29 @@ namespace SemesterProjekt.Forms
             DGVBolig.ClearSelection();
         }
 
+        private void comboxSortering_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string combox = comboxSortering.Text;
+            if (combox == "Sortering") 
+            {
+                DGVBolig.DataSource = db.GetAllBolig();
+            }
+            else if (combox == "Adresse (alfabetisk)") {  List<Bolig> BoligSotering = db.GetAllBolig(); DGVBolig.DataSource = BoligSotering.OrderBy(b => b.Adresse).ToList(); }
+            else if (combox == "Udbudspris (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.UdbudsPris).ToList(); }
+            else if (combox == "Udbudspris (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.UdbudsPris).ToList(); }
+            else if (combox == "Kvm (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.Kvadratmeter).ToList(); }
+            else if (combox == "Kvm (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.Kvadratmeter).ToList(); }
+            else if (combox == "Kvadratmeterpris (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.KvmPris).ToList(); }
+            else if (combox == "Kvadratmeterpris (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.KvmPris).ToList(); }
+            else if (combox == "Salgspris (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.SalgsPris).ToList(); }
+            else if (combox == "Salgspris (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.SalgsPris).ToList(); }
+
+            //int gns = AveragePrice();
+            //textBoxGns.Text = gns.ToString();
+
+            //DGVBolig.ClearSelection();
+        }
+
         private void dataGridViewBolig_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // Henter info omkring ejendomsmægler som er koblet til bolig
@@ -284,7 +307,6 @@ namespace SemesterProjekt.Forms
             }
         }
 
-
-
+        
     }
 }
