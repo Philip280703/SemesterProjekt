@@ -1,6 +1,6 @@
 ﻿namespace SemesterProjekt.Forms
 {
-    partial class Kunde
+    partial class KundeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,12 +32,13 @@
             Btn_Update = new Button();
             Btn_Delete = new Button();
             Btn_Sorter_Solgt = new Button();
-            DGV_Saelger_Bolig = new DataGridView();
+            DGV_Kunde_Bolig = new DataGridView();
             TxtSearch = new TextBox();
-            DGVSælger = new DataGridView();
+            DGVKunde = new DataGridView();
             panel1 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)DGV_Saelger_Bolig).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DGVSælger).BeginInit();
+            Btn_Refresh = new Button();
+            ((System.ComponentModel.ISupportInitialize)DGV_Kunde_Bolig).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DGVKunde).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -98,18 +99,18 @@
             Btn_Sorter_Solgt.Text = "Solgt";
             Btn_Sorter_Solgt.UseVisualStyleBackColor = true;
             // 
-            // DGV_Saelger_Bolig
+            // DGV_Kunde_Bolig
             // 
-            DGV_Saelger_Bolig.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            DGV_Saelger_Bolig.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGV_Saelger_Bolig.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV_Saelger_Bolig.Location = new Point(4, 504);
-            DGV_Saelger_Bolig.Name = "DGV_Saelger_Bolig";
-            DGV_Saelger_Bolig.ReadOnly = true;
-            DGV_Saelger_Bolig.RowHeadersWidth = 51;
-            DGV_Saelger_Bolig.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV_Saelger_Bolig.Size = new Size(960, 384);
-            DGV_Saelger_Bolig.TabIndex = 10;
+            DGV_Kunde_Bolig.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DGV_Kunde_Bolig.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_Kunde_Bolig.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV_Kunde_Bolig.Location = new Point(4, 504);
+            DGV_Kunde_Bolig.Name = "DGV_Kunde_Bolig";
+            DGV_Kunde_Bolig.ReadOnly = true;
+            DGV_Kunde_Bolig.RowHeadersWidth = 51;
+            DGV_Kunde_Bolig.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGV_Kunde_Bolig.Size = new Size(960, 384);
+            DGV_Kunde_Bolig.TabIndex = 10;
             // 
             // TxtSearch
             // 
@@ -119,20 +120,20 @@
             TxtSearch.Size = new Size(528, 27);
             TxtSearch.TabIndex = 9;
             // 
-            // DGVSælger
+            // DGVKunde
             // 
-            DGVSælger.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            DGVSælger.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGVSælger.BackgroundColor = SystemColors.Control;
-            DGVSælger.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVSælger.Location = new Point(4, 40);
-            DGVSælger.Margin = new Padding(3, 4, 3, 4);
-            DGVSælger.Name = "DGVSælger";
-            DGVSælger.ReadOnly = true;
-            DGVSælger.RowHeadersWidth = 51;
-            DGVSælger.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGVSælger.Size = new Size(961, 400);
-            DGVSælger.TabIndex = 7;
+            DGVKunde.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DGVKunde.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVKunde.BackgroundColor = SystemColors.Control;
+            DGVKunde.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVKunde.Location = new Point(4, 40);
+            DGVKunde.Margin = new Padding(3, 4, 3, 4);
+            DGVKunde.Name = "DGVKunde";
+            DGVKunde.ReadOnly = true;
+            DGVKunde.RowHeadersWidth = 51;
+            DGVKunde.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGVKunde.Size = new Size(961, 400);
+            DGVKunde.TabIndex = 7;
             // 
             // panel1
             // 
@@ -147,20 +148,31 @@
             panel1.Size = new Size(318, 891);
             panel1.TabIndex = 8;
             // 
+            // Btn_Refresh
+            // 
+            Btn_Refresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Btn_Refresh.Location = new Point(870, 8);
+            Btn_Refresh.Name = "Btn_Refresh";
+            Btn_Refresh.Size = new Size(94, 29);
+            Btn_Refresh.TabIndex = 17;
+            Btn_Refresh.Text = "Refresh";
+            Btn_Refresh.UseVisualStyleBackColor = true;
+            // 
             // Kunde
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1295, 891);
+            Controls.Add(Btn_Refresh);
             Controls.Add(Btn_Sorter_Solgt);
-            Controls.Add(DGV_Saelger_Bolig);
+            Controls.Add(DGV_Kunde_Bolig);
             Controls.Add(TxtSearch);
-            Controls.Add(DGVSælger);
+            Controls.Add(DGVKunde);
             Controls.Add(panel1);
             Name = "Kunde";
             Text = "Kunde";
-            ((System.ComponentModel.ISupportInitialize)DGV_Saelger_Bolig).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DGVSælger).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DGV_Kunde_Bolig).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DGVKunde).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -172,9 +184,10 @@
         private Button Btn_Update;
         private Button Btn_Delete;
         private Button Btn_Sorter_Solgt;
-        private DataGridView DGV_Saelger_Bolig;
+        private DataGridView DGV_Kunde_Bolig;
         private TextBox TxtSearch;
-        private DataGridView DGVSælger;
+        private DataGridView DGVKunde;
         private Panel panel1;
+        private Button Btn_Refresh;
     }
 }
