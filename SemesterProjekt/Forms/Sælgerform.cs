@@ -75,5 +75,30 @@ namespace SemesterProjekt.Forms
             List<Bolig> BoligSolgt = db.GetAllBolig();
             DGV_Saelger_Bolig.DataSource = BoligSolgt.Where(b => b.SalgsPris > 1 && b.BoligId == SBoligId).ToList();
         }
+
+        private void Btn_Update_Click(object sender, EventArgs e)
+        {
+            OpdaterSælger os = new OpdaterSælger(SId, SFname + " " + SLname, SBoligId, SEmail, STlfNr);
+            os.Show();
+        }
+
+        private void Btn_Refresh_Click(object sender, EventArgs e)
+        {
+            DGVSælger.DataSource = db.GetAllSaelger();
+            DGVSælger.ClearSelection();
+        }
+
+        private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Er du sikker på du gerne vil slette Sælgeren. Den tilknyttede bolig vil også blive slettet", "Advarsel", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                db.HardDeleteSaelgerFromDB(SBoligId);
+                db.HardDeleteBoligFromDB(SBoligId);
+            }
+            else
+            {
+            }
+        }
     }
 }

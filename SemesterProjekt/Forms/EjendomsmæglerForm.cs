@@ -20,7 +20,7 @@ namespace SemesterProjekt.Forms
 
         //Variabler der kan/skal gemmes (Mægler)
         int row;
-        int MæglerId;
+        int MaeglerId;
         string MFname;
         string MLname;
         bool MAktiv;
@@ -55,7 +55,7 @@ namespace SemesterProjekt.Forms
             try
             {
                 DataGridViewRow data = Dgv_Mægler.Rows[row];
-                MæglerId = (int)data.Cells["MId"].Value;
+                MaeglerId = (int)data.Cells["MId"].Value;
                 MFname = (string)data.Cells["MFname"].Value;
                 MLname = (string)data.Cells["MLname"].Value;
                 MAktiv = (bool)data.Cells["MAktiv"].Value;
@@ -70,11 +70,11 @@ namespace SemesterProjekt.Forms
 
             //Viser alle aktive boliger i Aktiv DGV
             List<Bolig> Boliger = db.GetAllBolig();
-            Dgv_Aktive_Boliger.DataSource = Boliger.Where(b => b.MaeglerId == MæglerId && b.SalgsPris < 1).ToList();
+            Dgv_Aktive_Boliger.DataSource = Boliger.Where(b => b.MaeglerId == MaeglerId && b.SalgsPris < 1).ToList();
             Dgv_Aktive_Boliger.ClearSelection();
 
             //Viser alle inaktive boliger i inaktiv DGV
-            Dgv_Inaktive_Boliger.DataSource = Boliger.Where(b => b.MaeglerId == MæglerId && b.SalgsPris > 1).ToList();
+            Dgv_Inaktive_Boliger.DataSource = Boliger.Where(b => b.MaeglerId == MaeglerId && b.SalgsPris > 1).ToList();
             Dgv_Inaktive_Boliger.ClearSelection();
         }
 
@@ -86,7 +86,7 @@ namespace SemesterProjekt.Forms
             try
             {
                 DataGridViewRow Data = Dgv_Aktive_Boliger.Rows[row];
-                MæglerId = (int)Data.Cells["MaeglerId"].Value;
+                MaeglerId = (int)Data.Cells["MaeglerId"].Value;
                 Adresse = (string)Data.Cells["Adresse"].Value;
                 BoligIid = (int)Data.Cells["BoligId"].Value;
                 PostNr = (int)Data.Cells["PostNr"].Value;
@@ -108,7 +108,7 @@ namespace SemesterProjekt.Forms
             TxtBox_Køber_TlfNr.Text = "";
             TxtBox_Køber_Navn.Text = "";
             TxtBox_Køber_Email.Text = "";
-            
+
         }
 
         private void Dgv_Inaktive_Boliger_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -119,7 +119,7 @@ namespace SemesterProjekt.Forms
             try
             {
                 DataGridViewRow Data = Dgv_Inaktive_Boliger.Rows[row];
-                MæglerId = (int)Data.Cells["MaeglerId"].Value;
+                MaeglerId = (int)Data.Cells["MaeglerId"].Value;
                 Adresse = (string)Data.Cells["Adresse"].Value;
                 BoligIid = (int)Data.Cells["BoligId"].Value;
                 PostNr = (int)Data.Cells["PostNr"].Value;
@@ -148,6 +148,49 @@ namespace SemesterProjekt.Forms
         {
             //Gør så Der ikke automatisk vælges 1 row i DGV 
             Dgv_Mægler.ClearSelection();
+        }
+
+        private void Btn_Create_Click(object sender, EventArgs e)
+        {
+            NewMaeglerform newMaeglerform = new NewMaeglerform();
+            newMaeglerform.Show();
+        }
+
+        private void Btn_Update_Click(object sender, EventArgs e)
+        {
+            OpdaterMaeglerForm opdaterMaegler = new OpdaterMaeglerForm(MaeglerId, MFname, MLname, MEmail, MTlfNr, Afdeling);
+            opdaterMaegler.Show();
+        }
+
+        private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+            var updater = MessageBox.Show("Ejendomsmægler inaktiv", "Vil du gøre denne Ejendomsmægler inaktiv", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (updater == DialogResult.Yes)
+            {
+                db.UpdateEjendomsMaeglerAktivitet(new EjendomsMaegler { MAktiv = false }, MaeglerId);
+            }
+            if (updater == DialogResult.No)
+            {
+                db.UpdateEjendomsMaeglerAktivitet(new EjendomsMaegler { MAktiv = true }, MaeglerId);
+            }
+            MessageBox.Show("Ejendomsmægler aktivitet er nu opdateret");
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            Dgv_Mægler.DataSource = db.GetAllEjendomsMaegler();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+         
+            var AreyouSure = MessageBox.Show("Er du sikker på at du vil slette denne Ejendomsmægler permanent?", "", MessageBoxButtons.YesNo);
+
+            if (AreyouSure == DialogResult.Yes)
+            {
+                db.HardDeleteEjendomsMaeglerFromDB(MaeglerId);             
+                MessageBox.Show("Boligen er nu solgt");
+            }
         }
     }
 }
