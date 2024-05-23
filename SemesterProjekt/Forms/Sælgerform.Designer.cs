@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Btn_Create = new Button();
             Btn_Update = new Button();
             Btn_Delete = new Button();
             DGVSælger = new DataGridView();
@@ -36,26 +35,11 @@
             TxtSearch = new TextBox();
             DGV_Saelger_Bolig = new DataGridView();
             Btn_Sorter_Solgt = new Button();
+            Btn_Refresh = new Button();
             ((System.ComponentModel.ISupportInitialize)DGVSælger).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Saelger_Bolig).BeginInit();
             SuspendLayout();
-            // 
-            // Btn_Create
-            // 
-            Btn_Create.BackColor = SystemColors.ControlDark;
-            Btn_Create.Dock = DockStyle.Bottom;
-            Btn_Create.FlatAppearance.BorderSize = 2;
-            Btn_Create.FlatStyle = FlatStyle.Flat;
-            Btn_Create.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            Btn_Create.ForeColor = Color.White;
-            Btn_Create.Location = new Point(0, 663);
-            Btn_Create.Margin = new Padding(3, 5, 3, 5);
-            Btn_Create.Name = "Btn_Create";
-            Btn_Create.Size = new Size(318, 76);
-            Btn_Create.TabIndex = 16;
-            Btn_Create.Text = "Opret Sælger";
-            Btn_Create.UseVisualStyleBackColor = false;
             // 
             // Btn_Update
             // 
@@ -72,6 +56,7 @@
             Btn_Update.TabIndex = 15;
             Btn_Update.Text = "Opdater Sælger";
             Btn_Update.UseVisualStyleBackColor = false;
+            Btn_Update.Click += Btn_Update_Click;
             // 
             // Btn_Delete
             // 
@@ -86,8 +71,9 @@
             Btn_Delete.Name = "Btn_Delete";
             Btn_Delete.Size = new Size(318, 76);
             Btn_Delete.TabIndex = 14;
-            Btn_Delete.Text = "Sælg Sælger";
+            Btn_Delete.Text = "Slet Sælger";
             Btn_Delete.UseVisualStyleBackColor = false;
+            Btn_Delete.Click += Btn_Delete_Click;
             // 
             // DGVSælger
             // 
@@ -108,7 +94,6 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
-            panel1.Controls.Add(Btn_Create);
             panel1.Controls.Add(Btn_Update);
             panel1.Controls.Add(Btn_Delete);
             panel1.Dock = DockStyle.Right;
@@ -150,11 +135,23 @@
             Btn_Sorter_Solgt.UseVisualStyleBackColor = true;
             Btn_Sorter_Solgt.Click += Btn_Sorter_Solgt_Click;
             // 
+            // Btn_Refresh
+            // 
+            Btn_Refresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Btn_Refresh.Location = new Point(872, 8);
+            Btn_Refresh.Name = "Btn_Refresh";
+            Btn_Refresh.Size = new Size(94, 29);
+            Btn_Refresh.TabIndex = 7;
+            Btn_Refresh.Text = "Refresh";
+            Btn_Refresh.UseVisualStyleBackColor = true;
+            Btn_Refresh.Click += Btn_Refresh_Click;
+            // 
             // Sælgerform
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1295, 891);
+            Controls.Add(Btn_Refresh);
             Controls.Add(Btn_Sorter_Solgt);
             Controls.Add(DGV_Saelger_Bolig);
             Controls.Add(TxtSearch);
@@ -171,8 +168,6 @@
         }
 
         #endregion
-
-        private Button Btn_Create;
         private Button Btn_Update;
         private Button Btn_Delete;
         private DataGridView DGVSælger;
@@ -180,5 +175,6 @@
         private TextBox TxtSearch;
         private DataGridView DGV_Saelger_Bolig;
         private Button Btn_Sorter_Solgt;
+        private Button Btn_Refresh;
     }
 }
