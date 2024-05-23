@@ -54,6 +54,7 @@
             Lbl_Køber = new Label();
             panel1 = new Panel();
             TxtBox_Køber_Navn = new TextBox();
+            buttonRefresh = new Button();
             ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Dgv_Inaktive_Boliger).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Dgv_Mægler).BeginInit();
@@ -67,14 +68,14 @@
             Btn_Create.Dock = DockStyle.Bottom;
             Btn_Create.FlatAppearance.BorderSize = 2;
             Btn_Create.FlatStyle = FlatStyle.Flat;
-            Btn_Create.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Btn_Create.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             Btn_Create.ForeColor = Color.White;
             Btn_Create.Location = new Point(0, 663);
             Btn_Create.Margin = new Padding(3, 5, 3, 5);
             Btn_Create.Name = "Btn_Create";
             Btn_Create.Size = new Size(318, 76);
             Btn_Create.TabIndex = 16;
-            Btn_Create.Text = "Opret Mægler";
+            Btn_Create.Text = "Opret Ejendomsmægler";
             Btn_Create.UseVisualStyleBackColor = false;
             Btn_Create.Click += Btn_Create_Click;
             // 
@@ -84,14 +85,14 @@
             Btn_Update.Dock = DockStyle.Bottom;
             Btn_Update.FlatAppearance.BorderSize = 2;
             Btn_Update.FlatStyle = FlatStyle.Flat;
-            Btn_Update.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Btn_Update.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             Btn_Update.ForeColor = Color.White;
             Btn_Update.Location = new Point(0, 739);
             Btn_Update.Margin = new Padding(3, 5, 3, 5);
             Btn_Update.Name = "Btn_Update";
             Btn_Update.Size = new Size(318, 76);
             Btn_Update.TabIndex = 15;
-            Btn_Update.Text = "Opdater Mægler";
+            Btn_Update.Text = "Opdater Ejendomsmægler afd.";
             Btn_Update.UseVisualStyleBackColor = false;
             Btn_Update.Click += Btn_Update_Click;
             // 
@@ -101,15 +102,16 @@
             Btn_Delete.Dock = DockStyle.Bottom;
             Btn_Delete.FlatAppearance.BorderSize = 2;
             Btn_Delete.FlatStyle = FlatStyle.Flat;
-            Btn_Delete.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Btn_Delete.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             Btn_Delete.ForeColor = Color.White;
             Btn_Delete.Location = new Point(0, 815);
             Btn_Delete.Margin = new Padding(3, 4, 3, 4);
             Btn_Delete.Name = "Btn_Delete";
             Btn_Delete.Size = new Size(318, 76);
             Btn_Delete.TabIndex = 14;
-            Btn_Delete.Text = "Slet Mægler";
+            Btn_Delete.Text = "Ejendomsmægler aktivitet";
             Btn_Delete.UseVisualStyleBackColor = false;
+            Btn_Delete.Click += Btn_Delete_Click;
             // 
             // TxtBox_Sælger_Email
             // 
@@ -202,6 +204,7 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(buttonRefresh);
             ScreenPnl.Controls.Add(Lbl_Tilknyttede_Boliger_Inaktive);
             ScreenPnl.Controls.Add(Lbl_Mæglere_Tilknyttede_Aktive);
             ScreenPnl.Controls.Add(Lbl_Dgv_Mægler);
@@ -398,6 +401,18 @@
             TxtBox_Køber_Navn.Size = new Size(297, 27);
             TxtBox_Køber_Navn.TabIndex = 2;
             // 
+            // buttonRefresh
+            // 
+            buttonRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonRefresh.Location = new Point(878, 4);
+            buttonRefresh.Margin = new Padding(3, 4, 3, 4);
+            buttonRefresh.Name = "buttonRefresh";
+            buttonRefresh.Size = new Size(86, 31);
+            buttonRefresh.TabIndex = 11;
+            buttonRefresh.Text = "Refresh";
+            buttonRefresh.UseVisualStyleBackColor = true;
+            buttonRefresh.Click += buttonRefresh_Click;
+            // 
             // EjendomsmæglerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -446,5 +461,6 @@
         private Label Lbl_Mæglere_Tilknyttede_Aktive;
         private Label Lbl_Dgv_Mægler;
         private DataGridView Dgv_Inaktive_Boliger;
+        private Button buttonRefresh;
     }
 }

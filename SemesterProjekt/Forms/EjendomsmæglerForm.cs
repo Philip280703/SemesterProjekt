@@ -158,8 +158,27 @@ namespace SemesterProjekt.Forms
 
         private void Btn_Update_Click(object sender, EventArgs e)
         {
-            OpdaterMaeglerForm opdaterMaegler = new OpdaterMaeglerForm( MaeglerId, MFname, MLname, MEmail, MTlfNr, Afdeling);
+            OpdaterMaeglerForm opdaterMaegler = new OpdaterMaeglerForm(MaeglerId, MFname, MLname, MEmail, MTlfNr, Afdeling);
             opdaterMaegler.Show();
+        }
+
+        private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+            var updater = MessageBox.Show("Ejendomsmægler inaktiv", "Vil du gøre denne Ejendomsmægler inaktiv", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (updater == DialogResult.Yes)
+            {
+                db.UpdateEjendomsMaeglerAktivitet(new EjendomsMaegler { MAktiv = false }, MaeglerId);
+            }
+            if (updater == DialogResult.No)
+            {
+                db.UpdateEjendomsMaeglerAktivitet(new EjendomsMaegler { MAktiv = true }, MaeglerId);
+            }
+            MessageBox.Show("Ejendomsmægler aktivitet er nu opdateret");
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            Dgv_Mægler.DataSource = db.GetAllEjendomsMaegler();
         }
     }
 }

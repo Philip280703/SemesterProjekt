@@ -948,6 +948,48 @@ namespace SemesterProjekt.DataAccess
             }
         }
 
+        // Update EjendomsmæglerInAktiv 
+        internal bool UpdateEjendomsMaeglerAktivitet(EjendomsMaegler ejendomsMaegler, int MId)
+        {
+
+            // sql selection of the given table
+            string command = "UPDATE EjendomsMaegler SET MAktiv = (@MAktiv) WHERE MId = (@MId)";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@MId", MId);
+            cmd.Parameters.AddWithValue("@MAktiv", ejendomsMaegler.MAktiv);
+
+
+
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
 
         // delete Ejendomsmægler
         internal bool HardDeleteEjendomsMaeglerFromDB(int MId)
