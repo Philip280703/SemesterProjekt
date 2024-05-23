@@ -52,7 +52,7 @@ namespace SemesterProjekt.Forms
 
         private void txtSearchbar_TextChanged(object sender, EventArgs e)
         {
-            List<Bolig> filter = db.Searchbar(txtSearchbar.Text);
+            List<Bolig> filter = db.SearchbarBolig(txtSearchbar.Text);
             DGVBolig.DataSource = filter;
             int gns = AveragePrice();
             textBoxGns.Text = gns.ToString();
@@ -151,15 +151,15 @@ namespace SemesterProjekt.Forms
 
             //Tilføjer informationer over i Sælger kassen
             Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligId);
-            textBox7.Text = sa.SFname + " " + sa.SLname;
-            textBox6.Text = "" + sa.STlfNr;
-            textBox5.Text = sa.SEmail;
+            Txtbox_SaelgerNavn.Text = sa.SFname + " " + sa.SLname;
+            Txtbox_SælgerTlfnr.Text = "" + sa.STlfNr;
+            Txtbox_SaelgerEmail.Text = sa.SEmail;
 
             //Tilføjer information over i Mægler kassen
             EjendomsMaegler em = db.GetSingleEjendomsMaegler(MæglerId);
-            textBox2.Text = em.MFname + " " + em.MLname;
-            textBox3.Text = "" + em.MTlfNr;
-            textBox4.Text = em.MEmail;
+            textbox_MaeglerNavn.Text = em.MFname + " " + em.MLname;
+            Txtbox_MaeglerTlf.Text = "" + em.MTlfNr;
+            Txtbox_MaeglerEmail.Text = em.MEmail;
 
             // Henter info omkring Sælger som er tilkoblet Bolig
 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System.Xml.Linq;
 
 namespace SemesterProjekt.DataAccess
 {
@@ -15,7 +17,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultP"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultMR"].ToString();
         }
 
 
@@ -139,7 +141,7 @@ namespace SemesterProjekt.DataAccess
             return BoligList;
         }
 
-        internal List<Bolig> Searchbar(string txt)
+        internal List<Bolig> SearchbarBolig(string txt)
         {
             // create list, ready for input
             List<Bolig> BoligList = new List<Bolig>();
@@ -476,6 +478,59 @@ namespace SemesterProjekt.DataAccess
 
             // sql selection of the given table
             string command = "Select * from Saelger";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                // save connection in variable - to handle commands
+                SqlCommand cmd = new SqlCommand(command, conn);
+
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    int SId = (int)reader["SId"];
+                    string SFname = (string)reader["SFname"];
+                    string SLname = (string)reader["SLname"];
+                    int SBoligId = (int)reader["SBoligId"];
+                    string SEmail = (string)reader["SEmail"];
+                    int STlfNr = (int)reader["STlfNr"];
+
+                    Saelger saelger = new Saelger
+                    {
+                        SId = SId,
+                        SFname = SFname,
+                        SLname = SLname,
+                        SBoligId = SBoligId,
+                        SEmail = SEmail,
+                        STlfNr = STlfNr
+                    };
+                    SaelgerList.Add(saelger);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return SaelgerList;
+        }
+
+        //Searchbar til Sælger
+        internal List<Saelger> SearchbarSælger(string txt)
+        {
+            // create list, ready for input
+            List<Saelger> SaelgerList = new List<Saelger>();
+
+            // sql selection of the given table
+            string command = $"Select* from Saelger where SFname like '%{txt}%'";
             // using sqlconnection
             using SqlConnection conn = new SqlConnection(ConnectionString);
 
