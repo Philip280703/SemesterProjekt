@@ -76,6 +76,7 @@
             Btn_Create.TabIndex = 16;
             Btn_Create.Text = "Opret Mægler";
             Btn_Create.UseVisualStyleBackColor = false;
+            Btn_Create.Click += Btn_Create_Click;
             // 
             // Btn_Update
             // 
@@ -92,6 +93,7 @@
             Btn_Update.TabIndex = 15;
             Btn_Update.Text = "Opdater Mægler";
             Btn_Update.UseVisualStyleBackColor = false;
+            Btn_Update.Click += Btn_Update_Click;
             // 
             // Btn_Delete
             // 

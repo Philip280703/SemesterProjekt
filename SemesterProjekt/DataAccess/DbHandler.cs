@@ -703,25 +703,24 @@ namespace SemesterProjekt.DataAccess
         // -------------------- Ejendomsmæglere ---------------------------------------------------
 
         // Create new ejendomsmægler
-        internal bool CreateMaegler(Saelger Saelger)
+        internal bool CreateMaegler(EjendomsMaegler ejendomsMaegler)
         {
-            int NextMId = FindMaxMId();
-            string NextMIdString = NextMId.ToString();
+        
 
-            string Command = "Insert Saelger (MId, MFname, MLname, MAktiv, MEmail, MTlfNr, Afdeling)" +
-                " values (@MId, @MFname, @MLname, @MAktiv, @MEmail, @MTlfNr, @Afdeling)";
+            string Command = "Insert Ejendomsmaegler (MFname, MLname, MAktiv, MEmail, MTlfNr, Afdeling)" +
+                " values (@MFname, @MLname, @MAktiv, @MEmail, @MTlfNr, @Afdeling)";
 
             using SqlConnection conn = new SqlConnection(ConnectionString);
 
             SqlCommand cmd = new SqlCommand(Command, conn);
 
-            cmd.Parameters.AddWithValue("@MId", NextMIdString);
-            cmd.Parameters.AddWithValue("@MFname", "MFname");
-            cmd.Parameters.AddWithValue("@MLname", "MLname");
-            cmd.Parameters.AddWithValue("@MAktiv", "MAktiv");
-            cmd.Parameters.AddWithValue("@MEmail", "MEmail");
-            cmd.Parameters.AddWithValue("@MTlfNr", "MTlfNr");
-            cmd.Parameters.AddWithValue("@Afdeling", "Afdeling");
+           
+            cmd.Parameters.AddWithValue("@MFname", ejendomsMaegler.MFname);
+            cmd.Parameters.AddWithValue("@MLname", ejendomsMaegler.MLname);
+            cmd.Parameters.AddWithValue("@MAktiv", ejendomsMaegler.MAktiv);
+            cmd.Parameters.AddWithValue("@MEmail", ejendomsMaegler.MEmail);
+            cmd.Parameters.AddWithValue("@MTlfNr", ejendomsMaegler.MTlfNr);
+            cmd.Parameters.AddWithValue("@Afdeling", ejendomsMaegler.Afdeling);
 
             int Rows = 0;
             try
