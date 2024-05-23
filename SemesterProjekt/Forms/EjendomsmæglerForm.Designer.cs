@@ -40,6 +40,7 @@
             Lbl_Sælger = new Label();
             Refreshbutton = new Button();
             ScreenPnl = new Panel();
+            buttonRefresh = new Button();
             Lbl_Tilknyttede_Boliger_Inaktive = new Label();
             Lbl_Mæglere_Tilknyttede_Aktive = new Label();
             Lbl_Dgv_Mægler = new Label();
@@ -54,7 +55,7 @@
             Lbl_Køber = new Label();
             panel1 = new Panel();
             TxtBox_Køber_Navn = new TextBox();
-            buttonRefresh = new Button();
+            buttonDelete = new Button();
             ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Dgv_Inaktive_Boliger).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Dgv_Mægler).BeginInit();
@@ -204,6 +205,7 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(buttonDelete);
             ScreenPnl.Controls.Add(buttonRefresh);
             ScreenPnl.Controls.Add(Lbl_Tilknyttede_Boliger_Inaktive);
             ScreenPnl.Controls.Add(Lbl_Mæglere_Tilknyttede_Aktive);
@@ -218,6 +220,18 @@
             ScreenPnl.Name = "ScreenPnl";
             ScreenPnl.Size = new Size(977, 891);
             ScreenPnl.TabIndex = 4;
+            // 
+            // buttonRefresh
+            // 
+            buttonRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonRefresh.Location = new Point(878, 4);
+            buttonRefresh.Margin = new Padding(3, 4, 3, 4);
+            buttonRefresh.Name = "buttonRefresh";
+            buttonRefresh.Size = new Size(86, 31);
+            buttonRefresh.TabIndex = 11;
+            buttonRefresh.Text = "Refresh";
+            buttonRefresh.UseVisualStyleBackColor = true;
+            buttonRefresh.Click += buttonRefresh_Click;
             // 
             // Lbl_Tilknyttede_Boliger_Inaktive
             // 
@@ -240,7 +254,7 @@
             // Lbl_Dgv_Mægler
             // 
             Lbl_Dgv_Mægler.AutoSize = true;
-            Lbl_Dgv_Mægler.Location = new Point(16, 8);
+            Lbl_Dgv_Mægler.Location = new Point(16, 15);
             Lbl_Dgv_Mægler.Name = "Lbl_Dgv_Mægler";
             Lbl_Dgv_Mægler.Size = new Size(133, 20);
             Lbl_Dgv_Mægler.TabIndex = 8;
@@ -258,7 +272,7 @@
             Dgv_Inaktive_Boliger.ReadOnly = true;
             Dgv_Inaktive_Boliger.RowHeadersWidth = 51;
             Dgv_Inaktive_Boliger.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            Dgv_Inaktive_Boliger.Size = new Size(948, 312);
+            Dgv_Inaktive_Boliger.Size = new Size(948, 283);
             Dgv_Inaktive_Boliger.TabIndex = 7;
             Dgv_Inaktive_Boliger.CellClick += Dgv_Inaktive_Boliger_CellClick;
             // 
@@ -271,7 +285,7 @@
             Dgv_Mægler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Dgv_Mægler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Dgv_Mægler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Dgv_Mægler.Location = new Point(16, 32);
+            Dgv_Mægler.Location = new Point(16, 42);
             Dgv_Mægler.Name = "Dgv_Mægler";
             Dgv_Mægler.ReadOnly = true;
             Dgv_Mægler.RowHeadersWidth = 51;
@@ -401,17 +415,17 @@
             TxtBox_Køber_Navn.Size = new Size(297, 27);
             TxtBox_Køber_Navn.TabIndex = 2;
             // 
-            // buttonRefresh
+            // buttonDelete
             // 
-            buttonRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonRefresh.Location = new Point(878, 4);
-            buttonRefresh.Margin = new Padding(3, 4, 3, 4);
-            buttonRefresh.Name = "buttonRefresh";
-            buttonRefresh.Size = new Size(86, 31);
-            buttonRefresh.TabIndex = 11;
-            buttonRefresh.Text = "Refresh";
-            buttonRefresh.UseVisualStyleBackColor = true;
-            buttonRefresh.Click += buttonRefresh_Click;
+            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDelete.Location = new Point(16, 856);
+            buttonDelete.Margin = new Padding(3, 4, 3, 4);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(187, 31);
+            buttonDelete.TabIndex = 12;
+            buttonDelete.Text = "Delete ejendomsmægler";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // EjendomsmæglerForm
             // 
@@ -462,5 +476,6 @@
         private Label Lbl_Dgv_Mægler;
         private DataGridView Dgv_Inaktive_Boliger;
         private Button buttonRefresh;
+        private Button buttonDelete;
     }
 }
