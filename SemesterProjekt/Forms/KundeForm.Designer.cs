@@ -36,6 +36,20 @@
             TxtSearch = new TextBox();
             DGVKunde = new DataGridView();
             panel1 = new Panel();
+            Txtbox_SaelgerEmail = new TextBox();
+            Txtbox_MaeglerEmail = new TextBox();
+            Lbl_MeaglerEmail = new Label();
+            Lbl_SaeglerEmail = new Label();
+            Txtbox_MaeglerTlf = new TextBox();
+            Lbl_TlfNr = new Label();
+            Txtbox_SælgerTlfnr = new TextBox();
+            textbox_MaeglerNavn = new TextBox();
+            Lbl_MaeglerNavn = new Label();
+            Lbl_SaeglerTlfnr = new Label();
+            Lbl_Maegler = new Label();
+            Txtbox_SaelgerNavn = new TextBox();
+            Lbl_SaeglerNavn = new Label();
+            Lbl_Saelger = new Label();
             Btn_Refresh = new Button();
             ((System.ComponentModel.ISupportInitialize)DGV_Kunde_Bolig).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGVKunde).BeginInit();
@@ -57,6 +71,7 @@
             Btn_Create.TabIndex = 16;
             Btn_Create.Text = "Opret Køber";
             Btn_Create.UseVisualStyleBackColor = false;
+            Btn_Create.Click += Btn_Create_Click;
             // 
             // Btn_Update
             // 
@@ -111,6 +126,7 @@
             DGV_Kunde_Bolig.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_Kunde_Bolig.Size = new Size(960, 384);
             DGV_Kunde_Bolig.TabIndex = 10;
+            DGV_Kunde_Bolig.CellContentClick += DGV_Kunde_Bolig_CellContentClick;
             // 
             // TxtSearch
             // 
@@ -132,21 +148,193 @@
             DGVKunde.ReadOnly = true;
             DGVKunde.RowHeadersWidth = 51;
             DGVKunde.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGVKunde.Size = new Size(961, 400);
+            DGVKunde.Size = new Size(960, 400);
             DGVKunde.TabIndex = 7;
+            DGVKunde.CellClick += DGVKunde_CellClick;
+            DGVKunde.CellMouseClick += DGVKunde_CellMouseClick;
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(Txtbox_SaelgerEmail);
+            panel1.Controls.Add(Txtbox_MaeglerEmail);
+            panel1.Controls.Add(Lbl_MeaglerEmail);
+            panel1.Controls.Add(Lbl_SaeglerEmail);
+            panel1.Controls.Add(Txtbox_MaeglerTlf);
+            panel1.Controls.Add(Lbl_TlfNr);
+            panel1.Controls.Add(Txtbox_SælgerTlfnr);
+            panel1.Controls.Add(textbox_MaeglerNavn);
+            panel1.Controls.Add(Lbl_MaeglerNavn);
+            panel1.Controls.Add(Lbl_SaeglerTlfnr);
+            panel1.Controls.Add(Lbl_Maegler);
             panel1.Controls.Add(Btn_Create);
+            panel1.Controls.Add(Txtbox_SaelgerNavn);
             panel1.Controls.Add(Btn_Update);
             panel1.Controls.Add(Btn_Delete);
+            panel1.Controls.Add(Lbl_SaeglerNavn);
+            panel1.Controls.Add(Lbl_Saelger);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(977, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
             panel1.Size = new Size(318, 891);
             panel1.TabIndex = 8;
+            // 
+            // Txtbox_SaelgerEmail
+            // 
+            Txtbox_SaelgerEmail.Anchor = AnchorStyles.Top;
+            Txtbox_SaelgerEmail.Location = new Point(9, 271);
+            Txtbox_SaelgerEmail.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_SaelgerEmail.Name = "Txtbox_SaelgerEmail";
+            Txtbox_SaelgerEmail.ReadOnly = true;
+            Txtbox_SaelgerEmail.Size = new Size(297, 27);
+            Txtbox_SaelgerEmail.TabIndex = 30;
+            // 
+            // Txtbox_MaeglerEmail
+            // 
+            Txtbox_MaeglerEmail.Anchor = AnchorStyles.Top;
+            Txtbox_MaeglerEmail.Location = new Point(7, 554);
+            Txtbox_MaeglerEmail.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_MaeglerEmail.Name = "Txtbox_MaeglerEmail";
+            Txtbox_MaeglerEmail.ReadOnly = true;
+            Txtbox_MaeglerEmail.Size = new Size(297, 27);
+            Txtbox_MaeglerEmail.TabIndex = 23;
+            // 
+            // Lbl_MeaglerEmail
+            // 
+            Lbl_MeaglerEmail.Anchor = AnchorStyles.Top;
+            Lbl_MeaglerEmail.AutoSize = true;
+            Lbl_MeaglerEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_MeaglerEmail.ForeColor = Color.White;
+            Lbl_MeaglerEmail.Location = new Point(7, 524);
+            Lbl_MeaglerEmail.Name = "Lbl_MeaglerEmail";
+            Lbl_MeaglerEmail.Size = new Size(54, 23);
+            Lbl_MeaglerEmail.TabIndex = 22;
+            Lbl_MeaglerEmail.Text = "Email";
+            // 
+            // Lbl_SaeglerEmail
+            // 
+            Lbl_SaeglerEmail.Anchor = AnchorStyles.Top;
+            Lbl_SaeglerEmail.AutoSize = true;
+            Lbl_SaeglerEmail.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_SaeglerEmail.ForeColor = Color.White;
+            Lbl_SaeglerEmail.Location = new Point(9, 242);
+            Lbl_SaeglerEmail.Name = "Lbl_SaeglerEmail";
+            Lbl_SaeglerEmail.Size = new Size(54, 23);
+            Lbl_SaeglerEmail.TabIndex = 29;
+            Lbl_SaeglerEmail.Text = "Email";
+            // 
+            // Txtbox_MaeglerTlf
+            // 
+            Txtbox_MaeglerTlf.Anchor = AnchorStyles.Top;
+            Txtbox_MaeglerTlf.Location = new Point(7, 490);
+            Txtbox_MaeglerTlf.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_MaeglerTlf.Name = "Txtbox_MaeglerTlf";
+            Txtbox_MaeglerTlf.ReadOnly = true;
+            Txtbox_MaeglerTlf.Size = new Size(297, 27);
+            Txtbox_MaeglerTlf.TabIndex = 21;
+            // 
+            // Lbl_TlfNr
+            // 
+            Lbl_TlfNr.Anchor = AnchorStyles.Top;
+            Lbl_TlfNr.AutoSize = true;
+            Lbl_TlfNr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_TlfNr.ForeColor = Color.White;
+            Lbl_TlfNr.Location = new Point(7, 460);
+            Lbl_TlfNr.Name = "Lbl_TlfNr";
+            Lbl_TlfNr.Size = new Size(57, 23);
+            Lbl_TlfNr.TabIndex = 20;
+            Lbl_TlfNr.Text = "Tlf Nr";
+            // 
+            // Txtbox_SælgerTlfnr
+            // 
+            Txtbox_SælgerTlfnr.Anchor = AnchorStyles.Top;
+            Txtbox_SælgerTlfnr.Location = new Point(9, 207);
+            Txtbox_SælgerTlfnr.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_SælgerTlfnr.Name = "Txtbox_SælgerTlfnr";
+            Txtbox_SælgerTlfnr.ReadOnly = true;
+            Txtbox_SælgerTlfnr.Size = new Size(297, 27);
+            Txtbox_SælgerTlfnr.TabIndex = 28;
+            // 
+            // textbox_MaeglerNavn
+            // 
+            textbox_MaeglerNavn.Anchor = AnchorStyles.Top;
+            textbox_MaeglerNavn.Location = new Point(7, 426);
+            textbox_MaeglerNavn.Margin = new Padding(3, 4, 3, 4);
+            textbox_MaeglerNavn.Name = "textbox_MaeglerNavn";
+            textbox_MaeglerNavn.ReadOnly = true;
+            textbox_MaeglerNavn.Size = new Size(297, 27);
+            textbox_MaeglerNavn.TabIndex = 19;
+            // 
+            // Lbl_MaeglerNavn
+            // 
+            Lbl_MaeglerNavn.Anchor = AnchorStyles.Top;
+            Lbl_MaeglerNavn.AutoSize = true;
+            Lbl_MaeglerNavn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_MaeglerNavn.ForeColor = Color.White;
+            Lbl_MaeglerNavn.Location = new Point(7, 396);
+            Lbl_MaeglerNavn.Name = "Lbl_MaeglerNavn";
+            Lbl_MaeglerNavn.Size = new Size(51, 23);
+            Lbl_MaeglerNavn.TabIndex = 18;
+            Lbl_MaeglerNavn.Text = "Navn";
+            // 
+            // Lbl_SaeglerTlfnr
+            // 
+            Lbl_SaeglerTlfnr.Anchor = AnchorStyles.Top;
+            Lbl_SaeglerTlfnr.AutoSize = true;
+            Lbl_SaeglerTlfnr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_SaeglerTlfnr.ForeColor = Color.White;
+            Lbl_SaeglerTlfnr.Location = new Point(9, 178);
+            Lbl_SaeglerTlfnr.Name = "Lbl_SaeglerTlfnr";
+            Lbl_SaeglerTlfnr.Size = new Size(57, 23);
+            Lbl_SaeglerTlfnr.TabIndex = 27;
+            Lbl_SaeglerTlfnr.Text = "Tlf Nr";
+            // 
+            // Lbl_Maegler
+            // 
+            Lbl_Maegler.Anchor = AnchorStyles.Top;
+            Lbl_Maegler.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Lbl_Maegler.ForeColor = Color.White;
+            Lbl_Maegler.Location = new Point(0, 325);
+            Lbl_Maegler.Name = "Lbl_Maegler";
+            Lbl_Maegler.Size = new Size(318, 89);
+            Lbl_Maegler.TabIndex = 17;
+            Lbl_Maegler.Text = "Ejendomsmægler";
+            Lbl_Maegler.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Txtbox_SaelgerNavn
+            // 
+            Txtbox_SaelgerNavn.Anchor = AnchorStyles.Top;
+            Txtbox_SaelgerNavn.Location = new Point(9, 143);
+            Txtbox_SaelgerNavn.Margin = new Padding(3, 4, 3, 4);
+            Txtbox_SaelgerNavn.Name = "Txtbox_SaelgerNavn";
+            Txtbox_SaelgerNavn.ReadOnly = true;
+            Txtbox_SaelgerNavn.Size = new Size(297, 27);
+            Txtbox_SaelgerNavn.TabIndex = 26;
+            // 
+            // Lbl_SaeglerNavn
+            // 
+            Lbl_SaeglerNavn.Anchor = AnchorStyles.Top;
+            Lbl_SaeglerNavn.AutoSize = true;
+            Lbl_SaeglerNavn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            Lbl_SaeglerNavn.ForeColor = Color.White;
+            Lbl_SaeglerNavn.Location = new Point(9, 114);
+            Lbl_SaeglerNavn.Name = "Lbl_SaeglerNavn";
+            Lbl_SaeglerNavn.Size = new Size(51, 23);
+            Lbl_SaeglerNavn.TabIndex = 25;
+            Lbl_SaeglerNavn.Text = "Navn";
+            // 
+            // Lbl_Saelger
+            // 
+            Lbl_Saelger.Anchor = AnchorStyles.Top;
+            Lbl_Saelger.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            Lbl_Saelger.ForeColor = Color.White;
+            Lbl_Saelger.Location = new Point(0, 59);
+            Lbl_Saelger.Name = "Lbl_Saelger";
+            Lbl_Saelger.Size = new Size(318, 89);
+            Lbl_Saelger.TabIndex = 24;
+            Lbl_Saelger.Text = "Sælger";
+            Lbl_Saelger.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Btn_Refresh
             // 
@@ -158,7 +346,7 @@
             Btn_Refresh.Text = "Refresh";
             Btn_Refresh.UseVisualStyleBackColor = true;
             // 
-            // Kunde
+            // KundeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -169,11 +357,12 @@
             Controls.Add(TxtSearch);
             Controls.Add(DGVKunde);
             Controls.Add(panel1);
-            Name = "Kunde";
+            Name = "KundeForm";
             Text = "Kunde";
             ((System.ComponentModel.ISupportInitialize)DGV_Kunde_Bolig).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGVKunde).EndInit();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,5 +378,19 @@
         private DataGridView DGVKunde;
         private Panel panel1;
         private Button Btn_Refresh;
+        private TextBox Txtbox_MaeglerEmail;
+        private Label Lbl_MeaglerEmail;
+        private TextBox Txtbox_MaeglerTlf;
+        private Label Lbl_TlfNr;
+        private TextBox textbox_MaeglerNavn;
+        private Label Lbl_MaeglerNavn;
+        private Label Lbl_Maegler;
+        private TextBox Txtbox_SaelgerEmail;
+        private Label Lbl_SaeglerEmail;
+        private TextBox Txtbox_SælgerTlfnr;
+        private Label Lbl_SaeglerTlfnr;
+        private TextBox Txtbox_SaelgerNavn;
+        private Label Lbl_SaeglerNavn;
+        private Label Lbl_Saelger;
     }
 }

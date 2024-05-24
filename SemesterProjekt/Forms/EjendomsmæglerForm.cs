@@ -183,12 +183,12 @@ namespace SemesterProjekt.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-         
+
             var AreyouSure = MessageBox.Show("Er du sikker på at du vil slette denne Ejendomsmægler permanent?", "", MessageBoxButtons.YesNo);
 
             if (AreyouSure == DialogResult.Yes)
             {
-                db.HardDeleteEjendomsMaeglerFromDB(MaeglerId);             
+                db.HardDeleteEjendomsMaeglerFromDB(MaeglerId);
                 MessageBox.Show("Boligen er nu solgt");
             }
         }

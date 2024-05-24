@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using SemesterProjekt.DataAccess;
 using SemesterProjekt.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SemesterProjekt.Forms
 {
-    
+
     public partial class KundeForm : Form
     {
         DbHandler db;
@@ -24,12 +27,127 @@ namespace SemesterProjekt.Forms
         string KLname;
         int KBoligId;
         string KEmail;
-        int STlfNr;
+        int KTlfNr;
+
+        // Gemmer alle værdier fra bolig til dvg
+        int BoligIid;
+        string Adresse;
+        int PostNr;
+        int Udbudspris;
+        int Kvadratmeter;
+        string BoligType;
+        bool Aktiv;
+        int MæglerId;
+        int BoligId;
+
+
         public KundeForm()
         {
             db = new DbHandler();
             InitializeComponent();
             DGVKunde.DataSource = db.GetAllKunder();
+        }
+
+        private void DGVKunde_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            db = new DbHandler();
+            row = e.RowIndex;
+
+            try
+            {
+                DataGridViewRow data = DGVKunde.Rows[row];
+                KId = (int)data.Cells["KId"].Value;
+                KFname = (string)data.Cells["KFname"].Value;
+                KLname = (string)data.Cells["KLname"].Value;
+                KBoligId = (int)data.Cells["KBoligId"].Value;
+                KEmail = (string)data.Cells["KEmail"].Value;
+                KTlfNr = (int)data.Cells["KTlfNr"].Value;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            List<Bolig> boliger = db.GetAllBolig();
+            this.
+
+            DGV_Kunde_Bolig.DataSource = boliger.Where(b => b.BoligId == KBoligId).ToList();
+            this.DGV_Kunde_Bolig.Columns["Udbudspris"].DefaultCellStyle.Format = "C0";
+            this.DGV_Kunde_Bolig.Columns["Salgspris"].DefaultCellStyle.Format = "C0";
+
+
+        }
+
+
+
+
+
+        private void DGVKunde_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //Henter info omkring kunde som er koblet til bolig
+            DbHandler db = new DbHandler();
+            row = e.RowIndex;
+            try
+            {
+                DataGridViewRow data = DGVKunde.Rows[row];
+                KId = (int)data.Cells["KId"].Value;
+                KFname = (string)data.Cells["KFname"].Value;
+                KLname = (string)data.Cells["KLname"].Value;
+                KBoligId = (int)data.Cells["KBoligId"].Value;
+                KEmail = (string)data.Cells["KEmail"].Value;
+                KTlfNr = (int)data.Cells["KTlfNr"].Value;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+       
+        }
+
+        private void Btn_Create_Click(object sender, EventArgs e)
+        {
+            Newkunde nk = new Newkunde();
+            nk.Show();
+        }
+
+        private void DGV_Kunde_Bolig_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Henter info omkring ejendomsmægler som er koblet til bolig
+            DbHandler db = new DbHandler();
+            row = e.RowIndex;
+            try
+            {
+                DataGridViewRow data = DGV_Kunde_Bolig.Rows[row];
+
+                MæglerId = (int)data.Cells["MaeglerId"].Value;
+                Adresse = (string)data.Cells["Adresse"].Value;
+                BoligIid = (int)data.Cells["BoligId"].Value;
+                PostNr = (int)data.Cells["PostNr"].Value;
+                Udbudspris = (int)data.Cells["UdbudsPris"].Value;
+                Kvadratmeter = (int)data.Cells["Kvadratmeter"].Value;
+                BoligType = (string)data.Cells["BoligType"].Value;
+                Aktiv = (bool)data.Cells["Aktiv"].Value;
+                BoligId = (int)data.Cells["BoligId"].Value;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            //Tilføjer informationer over i Sælger kassen
+            Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligId);
+            Txtbox_SaelgerNavn.Text = sa.SFname + " " + sa.SLname;
+            Txtbox_SælgerTlfnr.Text = "" + sa.STlfNr;
+            Txtbox_SaelgerEmail.Text = sa.SEmail;
+
+            //Tilføjer information over i Mægler kassen
+            EjendomsMaegler em = db.GetSingleEjendomsMaegler(MæglerId);
+            textbox_MaeglerNavn.Text = em.MFname + " " + em.MLname;
+            Txtbox_MaeglerTlf.Text = "" + em.MTlfNr;
+            Txtbox_MaeglerEmail.Text = em.MEmail;
+
         }
     }
 }
