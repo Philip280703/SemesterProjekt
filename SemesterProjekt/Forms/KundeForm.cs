@@ -102,8 +102,18 @@ namespace SemesterProjekt.Forms
             {
                 Console.WriteLine(ex.Message);
             }
+            if (KBoligId < 1)
+            {
+                
+                textbox_MaeglerNavn.Text = " ";
+                Txtbox_MaeglerTlf.Text = "";
+                Txtbox_MaeglerEmail.Text = "";
 
-       
+                Txtbox_SaelgerNavn.Text = "";
+                Txtbox_SælgerTlfnr.Text = "";
+                Txtbox_SaelgerEmail.Text = "";
+            }
+            
         }
 
         private void Btn_Create_Click(object sender, EventArgs e)
@@ -136,18 +146,33 @@ namespace SemesterProjekt.Forms
                 Console.WriteLine(ex.Message);
             }
 
+            if (KBoligId < 1)
+            {
+
+                textbox_MaeglerNavn.Text = " ";
+                Txtbox_MaeglerTlf.Text = "";
+                Txtbox_MaeglerEmail.Text = "";
+
+                Txtbox_SaelgerNavn.Text = "";
+                Txtbox_SælgerTlfnr.Text = "";
+                Txtbox_SaelgerEmail.Text = "";
+            }
+            else
+            {
+
             //Tilføjer informationer over i Sælger kassen
             Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligId);
-            Txtbox_SaelgerNavn.Text = sa.SFname + " " + sa.SLname;
-            Txtbox_SælgerTlfnr.Text = "" + sa.STlfNr;
-            Txtbox_SaelgerEmail.Text = sa.SEmail;
+                Txtbox_SaelgerNavn.Text = sa.SFname + " " + sa.SLname;
+                Txtbox_SælgerTlfnr.Text = "" + sa.STlfNr;
+                Txtbox_SaelgerEmail.Text = sa.SEmail;
 
-            //Tilføjer information over i Mægler kassen
-            EjendomsMaegler em = db.GetSingleEjendomsMaegler(MæglerId);
-            textbox_MaeglerNavn.Text = em.MFname + " " + em.MLname;
-            Txtbox_MaeglerTlf.Text = "" + em.MTlfNr;
-            Txtbox_MaeglerEmail.Text = em.MEmail;
-
+                //Tilføjer information over i Mægler kassen
+                EjendomsMaegler em = db.GetSingleEjendomsMaegler(MæglerId);
+                textbox_MaeglerNavn.Text = em.MFname + " " + em.MLname;
+                Txtbox_MaeglerTlf.Text = "" + em.MTlfNr;
+                Txtbox_MaeglerEmail.Text = em.MEmail;
+            }
+            
         }
     }
 }
