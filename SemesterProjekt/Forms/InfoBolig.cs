@@ -42,9 +42,9 @@ namespace SemesterProjekt.Forms
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
-            this.DGVBolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "N0";
-            this.DGVBolig.Columns["SalgsPris"].DefaultCellStyle.Format = "N0";
-            this.DGVBolig.Columns["KvmPris"].DefaultCellStyle.Format = "N0";
+            this.DGVBolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
+            this.DGVBolig.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
+            this.DGVBolig.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
 
             int gns = AveragePrice();
             textBoxGns.Text = $"{gns:C0}";

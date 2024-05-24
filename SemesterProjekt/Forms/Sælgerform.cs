@@ -58,6 +58,7 @@ namespace SemesterProjekt.Forms
                 SBoligId = (int)data.Cells["SBoligId"].Value;
                 SEmail = (string)data.Cells["SEmail"].Value;
                 STlfNr = (int)data.Cells["STlfNr"].Value;
+                
             }
             catch (Exception ex)
             {
@@ -67,6 +68,9 @@ namespace SemesterProjekt.Forms
             //Filtrere så boligens id matcher med det boligid som er koblet på sælgeren
             List<Bolig> Boliger = db.GetAllBolig();
             DGV_Saelger_Bolig.DataSource = Boliger.Where(b => b.BoligId == SBoligId).ToList();
+            this.DGV_Saelger_Bolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
+            this.DGV_Saelger_Bolig.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
+            this.DGV_Saelger_Bolig.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
             DGV_Saelger_Bolig.ClearSelection();
         }
 
