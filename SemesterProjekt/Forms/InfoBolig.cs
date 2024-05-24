@@ -42,12 +42,12 @@ namespace SemesterProjekt.Forms
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
-            this.DGVBolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "N0";
-            this.DGVBolig.Columns["SalgsPris"].DefaultCellStyle.Format = "N0";
-            this.DGVBolig.Columns["KvmPris"].DefaultCellStyle.Format = "N0";
+            this.DGVBolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
+            this.DGVBolig.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
+            this.DGVBolig.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
 
             int gns = AveragePrice();
-            textBoxGns.Text = gns.ToString();
+            textBoxGns.Text = $"{gns:C0}";
         }
 
         private void txtSearchbar_TextChanged(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace SemesterProjekt.Forms
             List<Bolig> filter = db.SearchbarBolig(txtSearchbar.Text);
             DGVBolig.DataSource = filter;
             int gns = AveragePrice();
-            textBoxGns.Text = gns.ToString();
+            textBoxGns.Text = $"{gns:C0}";
 
             //Gør så Der ikke automatisk vælges 1 row i DGV
             DGVBolig.ClearSelection();
@@ -74,7 +74,7 @@ namespace SemesterProjekt.Forms
                 DGVBolig.DataSource = filter.Where(b => b.BoligType == combobox).ToList();
             }
             int gns = AveragePrice();
-            textBoxGns.Text = gns.ToString();
+            textBoxGns.Text = $"{gns:C0}";
 
             //Gør så Der ikke automatisk vælges 1 row i DGV
             DGVBolig.ClearSelection();
@@ -94,7 +94,7 @@ namespace SemesterProjekt.Forms
                 DGVBolig.DataSource = filter.Where(b => b.PostNr == int.Parse(comboBoxPostNr.Text)).ToList();
             }
             int gns = AveragePrice();
-            textBoxGns.Text = gns.ToString();
+            textBoxGns.Text = $"{gns:C0}";
 
             //Gør så Der ikke automatisk vælges 1 row i DGV
             DGVBolig.ClearSelection();
@@ -115,7 +115,7 @@ namespace SemesterProjekt.Forms
                 DGVBolig.DataSource = filter.Where(b => b.UdbudsPris >= num1 && b.UdbudsPris <= num2).ToList();
             }
             int gns = AveragePrice();
-            textBoxGns.Text = gns.ToString();
+            textBoxGns.Text = $"{gns:C0}";
 
             //Gør så Der ikke automatisk vælges 1 row i DGV
             DGVBolig.ClearSelection();
@@ -139,7 +139,7 @@ namespace SemesterProjekt.Forms
             else if (combox == "Salgspris (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.SalgsPris).ToList(); }
 
             int gns = AveragePrice();
-            textBoxGns.Text = gns.ToString();
+            textBoxGns.Text = $"{gns:C0}";
 
             DGVBolig.ClearSelection();
         }

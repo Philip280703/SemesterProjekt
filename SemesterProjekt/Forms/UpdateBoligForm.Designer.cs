@@ -46,7 +46,7 @@
             BoligIdTextBox = new TextBox();
             AdresseLabel = new Label();
             BoligIdLabel = new Label();
-            textBox1 = new TextBox();
+            textboxNypris = new TextBox();
             label2 = new Label();
             button1 = new Button();
             button2 = new Button();
@@ -214,12 +214,12 @@
             BoligIdLabel.TabIndex = 20;
             BoligIdLabel.Text = "BoligId";
             // 
-            // textBox1
+            // textboxNypris
             // 
-            textBox1.Location = new Point(642, 123);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(240, 27);
-            textBox1.TabIndex = 38;
+            textboxNypris.Location = new Point(642, 123);
+            textboxNypris.Name = "textboxNypris";
+            textboxNypris.Size = new Size(240, 27);
+            textboxNypris.TabIndex = 38;
             // 
             // label2
             // 
@@ -259,7 +259,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(textboxNypris);
             Controls.Add(MæglerIdLabel);
             Controls.Add(MaglerIdTextbox);
             Controls.Add(AktivLabel);
@@ -304,7 +304,7 @@
         private TextBox BoligIdTextBox;
         private Label AdresseLabel;
         private Label BoligIdLabel;
-        private TextBox textBox1;
+        private TextBox textboxNypris;
         private Label label2;
         private Button button1;
         private Button button2;

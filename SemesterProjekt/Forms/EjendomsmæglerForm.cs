@@ -45,6 +45,7 @@ namespace SemesterProjekt.Forms
             InitializeComponent();
             db = new DbHandler();
             Dgv_Mægler.DataSource = db.GetAllEjendomsMaegler();
+            
         }
 
         private void Dgv_Mægler_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -94,6 +95,9 @@ namespace SemesterProjekt.Forms
                 Kvadratmeter = (int)Data.Cells["Kvadratmeter"].Value;
                 BoligType = (string)Data.Cells["BoligType"].Value;
                 Aktiv = (bool)Data.Cells["Aktiv"].Value;
+                this.Dgv_Aktive_Boliger.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
+                this.Dgv_Aktive_Boliger.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
+                this.Dgv_Aktive_Boliger.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
             }
             catch (Exception ex)
             {
@@ -127,6 +131,9 @@ namespace SemesterProjekt.Forms
                 Kvadratmeter = (int)Data.Cells["Kvadratmeter"].Value;
                 BoligType = (string)Data.Cells["BoligType"].Value;
                 Aktiv = (bool)Data.Cells["Aktiv"].Value;
+                this.Dgv_Aktive_Boliger.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
+                this.Dgv_Aktive_Boliger.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
+                this.Dgv_Aktive_Boliger.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
             }
             catch (Exception ex)
             {

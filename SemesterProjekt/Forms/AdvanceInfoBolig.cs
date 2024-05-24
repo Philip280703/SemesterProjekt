@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,13 +32,13 @@ namespace SemesterProjekt.Forms
             BoligIdTextBox.Text = "" + BoligId;
             AdresseTextbox.Text = Adresse;
             PostNrTextbox.Text = "" + PostNr;
-            UdbudsprisTextbox.Text = "" + Udbudspris;
+            UdbudsprisTextbox.Text = $"{Udbudspris:C0}";
             KvadratmeterTextbox.Text = "" + Kvadratmeter;
 
             try
             {
                 double kvmpris = Udbudspris / Kvadratmeter;
-                KvmPrisTextBox.Text = "" + kvmpris;
+                KvmPrisTextBox.Text = $"{kvmpris:C0}";
             }
             catch (Exception ex)
             {
