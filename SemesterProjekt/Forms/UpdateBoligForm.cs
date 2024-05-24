@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,12 +21,12 @@ namespace SemesterProjekt.Forms
             BoligIdTextBox.Text = "" + BoligId;
             AdresseTextbox.Text = Adresse;
             PostNrTextbox.Text = "" + PostNr;
-            UdbudsprisTextbox.Text = "" + Udbudspris;
+            UdbudsprisTextbox.Text = $"{Udbudspris:C0}";
             KvadratmeterTextbox.Text = "" + Kvadratmeter;
             try
             {
                 double kvmpris = Udbudspris / Kvadratmeter;
-                KvmPrisTextBox.Text = "" + kvmpris;
+                KvmPrisTextBox.Text = $"{kvmpris:C0}";
             }
             catch (Exception ex)
             {
@@ -36,6 +37,7 @@ namespace SemesterProjekt.Forms
             BoligTypeTextbox.Text = BoligType;
             AktivTextbox.Text = "" + aktiv;
             MaglerIdTextbox.Text = "" + MæglerId;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace SemesterProjekt.Forms
         {
             DbHandler db = new DbHandler();
             int boligiid = int.Parse(BoligIdTextBox.Text);
-            int nyudbudspris = int.Parse(textBox1.Text);
+            int nyudbudspris = int.Parse(textboxNypris.Text);
             db.UpdateBolig(new Bolig { UdbudsPris = nyudbudspris }, boligiid);
             MessageBox.Show("Boligens Udbudspris er opdateret");
             this.Hide();
