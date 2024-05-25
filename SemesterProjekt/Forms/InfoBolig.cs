@@ -320,7 +320,7 @@ namespace SemesterProjekt.Forms
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void buttonExportThisPostnr_Click(object sender, EventArgs e)
         {
             var ExportThistoCsv = MessageBox.Show("vil du eksportere alle boliger med dette postnummer til en CSV fil?", "Export to csv", MessageBoxButtons.YesNo);
             if (ExportThistoCsv == DialogResult.Yes)
