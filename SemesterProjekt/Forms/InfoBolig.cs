@@ -229,7 +229,21 @@ namespace SemesterProjekt.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error in calculation of average price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    DGVBolig.DataSource = db.GetAllBolig();
+                    txtSearchbar.Text = "";
+                    ComboBoxBoligtype.Text = "BoligType";
+                    comboBoxPostNr.Text = "PostNr";
+                    comboBoxPris.Text = "Pris";
+                    Aktiv_checkbox.Checked = false;
+                    comboxSortering.Text = "Sortering";
+                }
+                catch 
+                {
+                    MessageBox.Show("Error in calculation of average price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+               
             }
             return gns;
             
