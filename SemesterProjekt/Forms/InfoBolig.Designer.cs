@@ -48,7 +48,7 @@
             Lbl_Maegler = new Label();
             ScreenPnl = new Panel();
             comboxSortering = new ComboBox();
-            button5 = new Button();
+            buttonExportThisPostNr = new Button();
             btn_ExportToCSV = new Button();
             lblGnsKvm = new Label();
             textBoxGns = new TextBox();
@@ -302,7 +302,7 @@
             // ScreenPnl
             // 
             ScreenPnl.Controls.Add(comboxSortering);
-            ScreenPnl.Controls.Add(button5);
+            ScreenPnl.Controls.Add(buttonExportThisPostNr);
             ScreenPnl.Controls.Add(btn_ExportToCSV);
             ScreenPnl.Controls.Add(lblGnsKvm);
             ScreenPnl.Controls.Add(textBoxGns);
@@ -333,17 +333,17 @@
             comboxSortering.Text = "Sortering";
             comboxSortering.SelectedIndexChanged += comboxSortering_SelectedIndexChanged;
             // 
-            // button5
+            // buttonExportThisPostNr
             // 
-            button5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button5.Location = new Point(706, 11);
-            button5.Margin = new Padding(3, 4, 3, 4);
-            button5.Name = "button5";
-            button5.Size = new Size(122, 31);
-            button5.TabIndex = 21;
-            button5.Text = "Exp. postnr CSV";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            buttonExportThisPostNr.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonExportThisPostNr.Location = new Point(706, 11);
+            buttonExportThisPostNr.Margin = new Padding(3, 4, 3, 4);
+            buttonExportThisPostNr.Name = "buttonExportThisPostNr";
+            buttonExportThisPostNr.Size = new Size(122, 31);
+            buttonExportThisPostNr.TabIndex = 21;
+            buttonExportThisPostNr.Text = "Exp. postnr CSV";
+            buttonExportThisPostNr.UseVisualStyleBackColor = true;
+            buttonExportThisPostNr.Click += buttonExportThisPostnr_Click;
             // 
             // btn_ExportToCSV
             // 
@@ -523,7 +523,7 @@
         private TextBox textBoxGns;
         private Label lblGnsKvm;
         private Button btn_ExportToCSV;
-        private Button button5;
+        private Button buttonExportThisPostNr;
         private ComboBox comboxSortering;
     }
 }
