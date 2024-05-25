@@ -29,7 +29,7 @@ namespace SemesterProjekt.Forms
         int MæglerId;
         int row;
         int BoligId;
-        int gns = 0;
+    
 
 
 
@@ -223,27 +223,14 @@ namespace SemesterProjekt.Forms
                 sum += Convert.ToInt32(DGVBolig.Rows[i].Cells[5].Value);
             }
             int countRow = DGVBolig.Rows.Count;
+            int gns = 0;
             try
             {
-                int gns = sum / countRow;
+                gns = sum / countRow;
             }
             catch (Exception ex)
-            {
-                try
-                {
-                    DGVBolig.DataSource = db.GetAllBolig();
-                    txtSearchbar.Text = "";
-                    ComboBoxBoligtype.Text = "BoligType";
-                    comboBoxPostNr.Text = "PostNr";
-                    comboBoxPris.Text = "Pris";
-                    Aktiv_checkbox.Checked = false;
-                    comboxSortering.Text = "Sortering";
-                }
-                catch 
-                {
-                    MessageBox.Show("Error in calculation of average price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-               
+            {   
+                MessageBox.Show("Error in calculation of average price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return gns;
             
