@@ -10,17 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace SemesterProjekt.Forms
 {
     public partial class Newkunde : Form
     {
-        //Gemmer alle værdier i Kunde modellen
-        int KId;
-        string KFname;
-        string KLname;
-        int KBoligId;
-        string KEmail;
-        int KTlfNr;
+        ////Gemmer alle værdier i Kunde modellen
+        //int KId;
+        //string KFname;
+        //string KLname;
+        //int KBoligId;
+        //string KEmail;
+        //int KTlfNr;
 
         public Newkunde()
         {
@@ -82,8 +83,12 @@ namespace SemesterProjekt.Forms
             db.CreateKunde(new Kunde { KFname = fornavn, KLname = efternavn, KEmail = email, KTlfNr = tlf });
             MessageBox.Show("Ny kunde er oprettet");
             this.Hide();
+
+            KundeForm Update = new KundeForm();
+            Update.UpdateKundeData();
+
         }
 
-      
+     
     }
 }

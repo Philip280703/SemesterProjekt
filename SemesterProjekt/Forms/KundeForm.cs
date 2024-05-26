@@ -5,6 +5,7 @@ using System.Data;
 using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -172,7 +173,14 @@ namespace SemesterProjekt.Forms
                 Txtbox_MaeglerTlf.Text = "" + em.MTlfNr;
                 Txtbox_MaeglerEmail.Text = em.MEmail;
             }
-            
+
+                                   
+        }
+
+        public void UpdateKundeData()
+        {
+            DGVKunde.Refresh();
+            DGVKunde.Update();
         }
     }
 }
