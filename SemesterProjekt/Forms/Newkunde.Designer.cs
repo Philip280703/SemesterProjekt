@@ -45,22 +45,23 @@
             // buttonVidere
             // 
             buttonVidere.BackColor = SystemColors.ControlLight;
-            buttonVidere.Location = new Point(243, 328);
+            buttonVidere.Location = new Point(281, 328);
             buttonVidere.Name = "buttonVidere";
             buttonVidere.Size = new Size(161, 67);
             buttonVidere.TabIndex = 67;
-            buttonVidere.Text = "Videre";
+            buttonVidere.Text = "Opret ny kunde";
             buttonVidere.UseVisualStyleBackColor = false;
             buttonVidere.Click += buttonVidere_Click;
             // 
             // buttonBack
             // 
-            buttonBack.Location = new Point(37, 372);
+            buttonBack.Location = new Point(36, 358);
             buttonBack.Name = "buttonBack";
             buttonBack.Size = new Size(75, 37);
             buttonBack.TabIndex = 66;
             buttonBack.Text = "Tilbage";
             buttonBack.UseVisualStyleBackColor = true;
+            buttonBack.Click += buttonBack_Click;
             // 
             // groupBox2
             // 
