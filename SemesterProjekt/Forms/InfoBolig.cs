@@ -29,7 +29,7 @@ namespace SemesterProjekt.Forms
         int MæglerId;
         int row;
         int BoligId;
-    
+
 
 
 
@@ -78,6 +78,11 @@ namespace SemesterProjekt.Forms
         {
             BoligSorting();
         }
+        private void checkBoxSolgt_CheckedChanged(object sender, EventArgs e)
+        {
+            BoligSorting();
+        }
+
 
 
 
@@ -124,6 +129,12 @@ namespace SemesterProjekt.Forms
                 if (Aktiv_checkbox.Checked)
                 {
                     boligListe = boligListe.Where(b => b.Aktiv == true).ToList();
+                }
+
+                // Solgt checkbox ændret
+                if (checkBoxSolgt.Checked)
+                {
+                    boligListe = boligListe.Where(b => b.Aktiv == false).ToList();
                 }
 
                 // sorteringsdropdown menu ændring
@@ -229,12 +240,12 @@ namespace SemesterProjekt.Forms
                 gns = sum / countRow;
             }
             catch (Exception ex)
-            {   
+            {
                 MessageBox.Show("Error in calculation of average price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return gns;
-            
-            
+
+
 
         }
         private void buttonSaelgBolig_Click(object sender, EventArgs e)
@@ -281,7 +292,7 @@ namespace SemesterProjekt.Forms
         }
 
 
-     
+
         private void Sletbolig_button_Click(object sender, EventArgs e)
         {
             DbHandler dbHandler = new DbHandler();
