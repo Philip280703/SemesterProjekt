@@ -142,7 +142,7 @@ namespace SemesterProjekt.Forms
                 {
                     switch (comboxSortering.Text)
                     {
-                        case "Adresse alfabetisk": boligListe = boligListe.OrderBy(b => b.Adresse).ToList(); break;
+                        case "Adresse (alfabetisk)": boligListe = boligListe.OrderBy(b => b.Adresse).ToList(); break;
 
                         case "Udbudspris (lav - høj)": boligListe = boligListe.OrderBy(b => b.UdbudsPris).ToList(); break;
 
