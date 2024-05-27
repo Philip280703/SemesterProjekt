@@ -47,8 +47,9 @@
             Lbl_MaeglerNavn = new Label();
             Lbl_Maegler = new Label();
             ScreenPnl = new Panel();
+            checkBoxSolgt = new CheckBox();
             comboxSortering = new ComboBox();
-            button5 = new Button();
+            buttonExportThisPostNr = new Button();
             btn_ExportToCSV = new Button();
             lblGnsKvm = new Label();
             textBoxGns = new TextBox();
@@ -86,10 +87,10 @@
             panel1.Controls.Add(Lbl_MaeglerNavn);
             panel1.Controls.Add(Lbl_Maegler);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(1029, 0);
+            panel1.Location = new Point(950, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(318, 891);
+            panel1.Size = new Size(318, 658);
             panel1.TabIndex = 1;
             // 
             // Btn_OpretBolig
@@ -100,7 +101,7 @@
             Btn_OpretBolig.FlatStyle = FlatStyle.Flat;
             Btn_OpretBolig.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             Btn_OpretBolig.ForeColor = Color.White;
-            Btn_OpretBolig.Location = new Point(0, 663);
+            Btn_OpretBolig.Location = new Point(0, 430);
             Btn_OpretBolig.Margin = new Padding(3, 5, 3, 5);
             Btn_OpretBolig.Name = "Btn_OpretBolig";
             Btn_OpretBolig.Size = new Size(318, 76);
@@ -117,7 +118,7 @@
             Btn_OpdaterUdbudspris.FlatStyle = FlatStyle.Flat;
             Btn_OpdaterUdbudspris.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             Btn_OpdaterUdbudspris.ForeColor = Color.White;
-            Btn_OpdaterUdbudspris.Location = new Point(0, 739);
+            Btn_OpdaterUdbudspris.Location = new Point(0, 506);
             Btn_OpdaterUdbudspris.Margin = new Padding(3, 5, 3, 5);
             Btn_OpdaterUdbudspris.Name = "Btn_OpdaterUdbudspris";
             Btn_OpdaterUdbudspris.Size = new Size(318, 76);
@@ -134,7 +135,7 @@
             Btn_SaelgBolig.FlatStyle = FlatStyle.Flat;
             Btn_SaelgBolig.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             Btn_SaelgBolig.ForeColor = Color.White;
-            Btn_SaelgBolig.Location = new Point(0, 815);
+            Btn_SaelgBolig.Location = new Point(0, 582);
             Btn_SaelgBolig.Margin = new Padding(3, 4, 3, 4);
             Btn_SaelgBolig.Name = "Btn_SaelgBolig";
             Btn_SaelgBolig.Size = new Size(318, 76);
@@ -301,8 +302,9 @@
             // 
             // ScreenPnl
             // 
+            ScreenPnl.Controls.Add(checkBoxSolgt);
             ScreenPnl.Controls.Add(comboxSortering);
-            ScreenPnl.Controls.Add(button5);
+            ScreenPnl.Controls.Add(buttonExportThisPostNr);
             ScreenPnl.Controls.Add(btn_ExportToCSV);
             ScreenPnl.Controls.Add(lblGnsKvm);
             ScreenPnl.Controls.Add(textBoxGns);
@@ -318,8 +320,19 @@
             ScreenPnl.Location = new Point(0, 0);
             ScreenPnl.Margin = new Padding(3, 4, 3, 4);
             ScreenPnl.Name = "ScreenPnl";
-            ScreenPnl.Size = new Size(1029, 891);
+            ScreenPnl.Size = new Size(950, 658);
             ScreenPnl.TabIndex = 2;
+            // 
+            // checkBoxSolgt
+            // 
+            checkBoxSolgt.AutoSize = true;
+            checkBoxSolgt.Location = new Point(744, 19);
+            checkBoxSolgt.Name = "checkBoxSolgt";
+            checkBoxSolgt.Size = new Size(66, 24);
+            checkBoxSolgt.TabIndex = 23;
+            checkBoxSolgt.Text = "Solgt";
+            checkBoxSolgt.UseVisualStyleBackColor = true;
+            checkBoxSolgt.CheckedChanged += checkBoxSolgt_CheckedChanged;
             // 
             // comboxSortering
             // 
@@ -333,22 +346,22 @@
             comboxSortering.Text = "Sortering";
             comboxSortering.SelectedIndexChanged += comboxSortering_SelectedIndexChanged;
             // 
-            // button5
+            // buttonExportThisPostNr
             // 
-            button5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button5.Location = new Point(706, 11);
-            button5.Margin = new Padding(3, 4, 3, 4);
-            button5.Name = "button5";
-            button5.Size = new Size(122, 31);
-            button5.TabIndex = 21;
-            button5.Text = "Exp. postnr CSV";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            buttonExportThisPostNr.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonExportThisPostNr.Location = new Point(627, 12);
+            buttonExportThisPostNr.Margin = new Padding(3, 4, 3, 4);
+            buttonExportThisPostNr.Name = "buttonExportThisPostNr";
+            buttonExportThisPostNr.Size = new Size(122, 31);
+            buttonExportThisPostNr.TabIndex = 21;
+            buttonExportThisPostNr.Text = "Exp. postnr CSV";
+            buttonExportThisPostNr.UseVisualStyleBackColor = true;
+            buttonExportThisPostNr.Click += buttonExportThisPostnr_Click;
             // 
             // btn_ExportToCSV
             // 
             btn_ExportToCSV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_ExportToCSV.Location = new Point(834, 12);
+            btn_ExportToCSV.Location = new Point(755, 12);
             btn_ExportToCSV.Margin = new Padding(3, 4, 3, 4);
             btn_ExportToCSV.Name = "btn_ExportToCSV";
             btn_ExportToCSV.Size = new Size(86, 31);
@@ -389,7 +402,7 @@
             // Aktiv_checkbox
             // 
             Aktiv_checkbox.AutoSize = true;
-            Aktiv_checkbox.Location = new Point(740, 17);
+            Aktiv_checkbox.Location = new Point(675, 19);
             Aktiv_checkbox.Name = "Aktiv_checkbox";
             Aktiv_checkbox.Size = new Size(64, 24);
             Aktiv_checkbox.TabIndex = 6;
@@ -400,7 +413,7 @@
             // Refreshbutton
             // 
             Refreshbutton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Refreshbutton.Location = new Point(936, 11);
+            Refreshbutton.Location = new Point(857, 11);
             Refreshbutton.Margin = new Padding(3, 4, 3, 4);
             Refreshbutton.Name = "Refreshbutton";
             Refreshbutton.Size = new Size(86, 31);
@@ -413,7 +426,7 @@
             // 
             comboBoxPris.FormattingEnabled = true;
             comboBoxPris.Items.AddRange(new object[] { "Pris", "0 - 999999", "1000000 - 1999999", "2000000 - 2999999", "3000000 - 3999999", "4000000 - 4999999" });
-            comboBoxPris.Location = new Point(616, 15);
+            comboBoxPris.Location = new Point(561, 15);
             comboBoxPris.Margin = new Padding(3, 4, 3, 4);
             comboBoxPris.Name = "comboBoxPris";
             comboBoxPris.Size = new Size(108, 28);
@@ -425,7 +438,7 @@
             // 
             comboBoxPostNr.FormattingEnabled = true;
             comboBoxPostNr.Items.AddRange(new object[] { "PostNr", "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "7400", "8000", "9000" });
-            comboBoxPostNr.Location = new Point(510, 13);
+            comboBoxPostNr.Location = new Point(456, 14);
             comboBoxPostNr.Margin = new Padding(3, 4, 3, 4);
             comboBoxPostNr.Name = "comboBoxPostNr";
             comboBoxPostNr.Size = new Size(100, 28);
@@ -437,7 +450,7 @@
             // 
             ComboBoxBoligtype.FormattingEnabled = true;
             ComboBoxBoligtype.Items.AddRange(new object[] { "BoligType", "Villa", "Lejlighed", "Rækkehus", "Andelsbolig" });
-            ComboBoxBoligtype.Location = new Point(388, 14);
+            ComboBoxBoligtype.Location = new Point(334, 14);
             ComboBoxBoligtype.Margin = new Padding(3, 4, 3, 4);
             ComboBoxBoligtype.Name = "ComboBoxBoligtype";
             ComboBoxBoligtype.Size = new Size(116, 28);
@@ -447,11 +460,11 @@
             // 
             // txtSearchbar
             // 
-            txtSearchbar.Location = new Point(14, 15);
+            txtSearchbar.Location = new Point(15, 15);
             txtSearchbar.Margin = new Padding(3, 4, 3, 4);
             txtSearchbar.Name = "txtSearchbar";
             txtSearchbar.PlaceholderText = "Adresse";
-            txtSearchbar.Size = new Size(368, 27);
+            txtSearchbar.Size = new Size(305, 27);
             txtSearchbar.TabIndex = 1;
             txtSearchbar.TextChanged += txtSearchbar_TextChanged;
             // 
@@ -467,7 +480,7 @@
             DGVBolig.ReadOnly = true;
             DGVBolig.RowHeadersWidth = 51;
             DGVBolig.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGVBolig.Size = new Size(1008, 749);
+            DGVBolig.Size = new Size(929, 516);
             DGVBolig.TabIndex = 0;
             DGVBolig.CellMouseClick += dataGridViewBolig_CellMouseClick;
             // 
@@ -475,7 +488,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1347, 891);
+            ClientSize = new Size(1268, 658);
             Controls.Add(ScreenPnl);
             Controls.Add(panel1);
             Name = "InfoBolig";
@@ -523,7 +536,8 @@
         private TextBox textBoxGns;
         private Label lblGnsKvm;
         private Button btn_ExportToCSV;
-        private Button button5;
+        private Button buttonExportThisPostNr;
         private ComboBox comboxSortering;
+        private CheckBox checkBoxSolgt;
     }
 }
