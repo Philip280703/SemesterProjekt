@@ -15,13 +15,6 @@ namespace SemesterProjekt.Forms
 {
     public partial class Newkunde : Form
     {
-        ////Gemmer alle værdier i Kunde modellen
-        //int KId;
-        //string KFname;
-        //string KLname;
-        //int KBoligId;
-        //string KEmail;
-        //int KTlfNr;
 
         public Newkunde()
         {
