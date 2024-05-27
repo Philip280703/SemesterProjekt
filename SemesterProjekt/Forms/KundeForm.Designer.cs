@@ -31,7 +31,6 @@
             Btn_Create = new Button();
             Btn_Update = new Button();
             Btn_Delete = new Button();
-            Btn_Sorter_Solgt = new Button();
             DGV_Kunde_Bolig = new DataGridView();
             TxtSearch = new TextBox();
             DGVKunde = new DataGridView();
@@ -51,6 +50,7 @@
             Lbl_SaeglerNavn = new Label();
             Lbl_Saelger = new Label();
             Btn_Refresh = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)DGV_Kunde_Bolig).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGVKunde).BeginInit();
             panel1.SuspendLayout();
@@ -106,15 +106,6 @@
             Btn_Delete.Text = "Slet Køber";
             Btn_Delete.UseVisualStyleBackColor = false;
             Btn_Delete.Click += Btn_Delete_Click;
-            // 
-            // Btn_Sorter_Solgt
-            // 
-            Btn_Sorter_Solgt.Location = new Point(4, 472);
-            Btn_Sorter_Solgt.Name = "Btn_Sorter_Solgt";
-            Btn_Sorter_Solgt.Size = new Size(94, 29);
-            Btn_Sorter_Solgt.TabIndex = 11;
-            Btn_Sorter_Solgt.Text = "Solgt";
-            Btn_Sorter_Solgt.UseVisualStyleBackColor = true;
             // 
             // DGV_Kunde_Bolig
             // 
@@ -350,13 +341,22 @@
             Btn_Refresh.UseVisualStyleBackColor = true;
             Btn_Refresh.Click += Btn_Refresh_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(1, 477);
+            label1.Name = "label1";
+            label1.Size = new Size(109, 20);
+            label1.TabIndex = 18;
+            label1.Text = "Tilknyttet bolig";
+            // 
             // KundeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1295, 891);
+            Controls.Add(label1);
             Controls.Add(Btn_Refresh);
-            Controls.Add(Btn_Sorter_Solgt);
             Controls.Add(DGV_Kunde_Bolig);
             Controls.Add(TxtSearch);
             Controls.Add(DGVKunde);
@@ -376,7 +376,6 @@
         private Button Btn_Create;
         private Button Btn_Update;
         private Button Btn_Delete;
-        private Button Btn_Sorter_Solgt;
         private DataGridView DGV_Kunde_Bolig;
         private TextBox TxtSearch;
         private DataGridView DGVKunde;
@@ -396,5 +395,6 @@
         private TextBox Txtbox_SaelgerNavn;
         private Label Lbl_SaeglerNavn;
         private Label Lbl_Saelger;
+        private Label label1;
     }
 }
