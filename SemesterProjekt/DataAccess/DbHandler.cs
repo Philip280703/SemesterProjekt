@@ -1289,7 +1289,7 @@ namespace SemesterProjekt.DataAccess
 
 
 
-        // --------------------------- MaxId -------------------------------------
+        // --------------------------- Extra -------------------------------------
 
         // find max id, function for Create method
         internal int FindMaxBoligId()
