@@ -47,8 +47,7 @@ namespace SemesterProjekt.Forms
         private void DGVSælger_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             row = e.RowIndex;
-            db = new DbHandler();
-
+           
             try
             {
                 DataGridViewRow data = DGVSælger.Rows[row];

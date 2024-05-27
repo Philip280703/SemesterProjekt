@@ -190,7 +190,6 @@ namespace SemesterProjekt.Forms
         private void dataGridViewBolig_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // Henter info omkring ejendomsmægler som er koblet til bolig
-            DbHandler db = new DbHandler();
             row = e.RowIndex;
             try
             {
@@ -301,13 +300,12 @@ namespace SemesterProjekt.Forms
 
         private void Sletbolig_button_Click(object sender, EventArgs e)
         {
-            DbHandler dbHandler = new DbHandler();
             var AreyouSure = MessageBox.Show("Er du sikker på at du vil slette denne bolig permanent?", "", MessageBoxButtons.YesNo);
 
             if (AreyouSure == DialogResult.Yes)
             {
-                dbHandler.HardDeleteSaelgerFromDB(BoligIid);
-                dbHandler.HardDeleteBoligFromDB(BoligIid);
+                db.HardDeleteSaelgerFromDB(BoligIid);
+                db.HardDeleteBoligFromDB(BoligIid);
                 MessageBox.Show("Boligen er nu solgt");
             }
 

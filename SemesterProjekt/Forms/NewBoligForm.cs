@@ -16,12 +16,13 @@ namespace SemesterProjekt.Forms
 {
     public partial class NewBoligForm : Form
     {
-        DbHandler dbHandler;
+        DbHandler db;
+        MyValidator validator;
         public NewBoligForm(List<int> MIdList)
         {
             InitializeComponent();
             comboBox3.DataSource = MIdList;
-
+            db = new DbHandler();
 
         }
 
@@ -33,10 +34,9 @@ namespace SemesterProjekt.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MyValidator myValidator = new MyValidator();
-            DbHandler db = new DbHandler();
+         
             string Adresse;
-            if (myValidator.ValidateAdDress(AdresseTextbox.Text))
+            if (validator.ValidateAdDress(AdresseTextbox.Text))
             {
                 Adresse = AdresseTextbox.Text;
             }
@@ -46,7 +46,7 @@ namespace SemesterProjekt.Forms
             }
 
             int postNr;
-            if (myValidator.ValidateZipcode(int.Parse(comboBox1.Text)))
+            if (validator.ValidateZipcode(int.Parse(comboBox1.Text)))
             {
                 postNr = int.Parse(comboBox1.Text);
             }
@@ -56,7 +56,7 @@ namespace SemesterProjekt.Forms
             }
 
             int udbudspris;
-            if (myValidator.ValidatePriceOfHouse(int.Parse(UdbudsprisTextbox.Text)))
+            if (validator.ValidatePriceOfHouse(int.Parse(UdbudsprisTextbox.Text)))
             {
                 udbudspris = int.Parse(UdbudsprisTextbox.Text);
             }
@@ -66,7 +66,7 @@ namespace SemesterProjekt.Forms
             }
 
             int kvadratmeter;
-            if (myValidator.ValidateSquareMeter(int.Parse(KvadratmeterTextbox.Text)))
+            if (validator.ValidateSquareMeter(int.Parse(KvadratmeterTextbox.Text)))
             {
                 kvadratmeter = int.Parse(KvadratmeterTextbox.Text);
             }
@@ -76,7 +76,7 @@ namespace SemesterProjekt.Forms
             }
 
             string boligtype;
-            if (myValidator.ValidateHouseType(comboBox2.Text))
+            if (validator.ValidateHouseType(comboBox2.Text))
             {
                 boligtype = comboBox2.Text;
             }
@@ -90,7 +90,7 @@ namespace SemesterProjekt.Forms
            
 
             string fornavn;
-            if (myValidator.ValidateFirstname(textBox1.Text))
+            if (validator.ValidateFirstname(textBox1.Text))
             {   
                 fornavn = textBox1.Text;
             }
@@ -100,19 +100,19 @@ namespace SemesterProjekt.Forms
             }
 
             string efternavn;
-            if (myValidator.ValidateLastname(textBox2.Text))
+            if (validator.ValidateLastname(textBox2.Text))
             {
                 efternavn = textBox2.Text;
             }
             else { throw new Exception("Lastname not valid"); }
 
             string email;
-            if (myValidator.ValidateEmail(textBox3.Text))
+            if (validator.ValidateEmail(textBox3.Text))
             { email = textBox3.Text; }
             else { throw new Exception("Email not valid"); }
 
             int tlfnr;
-            if(myValidator.ValidatePhonenumber(int.Parse(textBox4.Text)))
+            if(validator.ValidatePhonenumber(int.Parse(textBox4.Text)))
             {
                 tlfnr = int.Parse(textBox4.Text);
             }

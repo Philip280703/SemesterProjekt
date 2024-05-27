@@ -51,7 +51,6 @@ namespace SemesterProjekt.Forms
 
         private void DGVKunde_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            db = new DbHandler();
             row = e.RowIndex;
 
             try
@@ -81,12 +80,9 @@ namespace SemesterProjekt.Forms
 
 
 
-
-
         private void DGVKunde_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Henter info omkring kunde som er koblet til bolig
-            DbHandler db = new DbHandler();
             row = e.RowIndex;
             try
             {
@@ -126,7 +122,7 @@ namespace SemesterProjekt.Forms
         private void DGV_Kunde_Bolig_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Henter info omkring ejendomsmægler som er koblet til bolig
-            DbHandler db = new DbHandler();
+           
             row = e.RowIndex;
             try
             {

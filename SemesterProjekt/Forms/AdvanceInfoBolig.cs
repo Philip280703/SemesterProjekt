@@ -15,9 +15,8 @@ namespace SemesterProjekt.Forms
 {
     public partial class AdvanceInfoBolig : Form
     {
-        InfoBolig ib;
-        Panel panel;
         DbHandler db;
+        MyValidator validator;
         int row;
         int KId;
 
@@ -79,14 +78,13 @@ namespace SemesterProjekt.Forms
         }
         private void SælgBolig_Click(object sender, EventArgs e)
         {
-            DbHandler db = new DbHandler();
-            MyValidator myValidator = new MyValidator();
+    
             DateTime salgsdatoen;
             try
             {
                 int boligiid = int.Parse(BoligIdTextBox.Text);
                 
-                if (myValidator.ValidateSalesDate(Salgsdato.Value))
+                if (validator.ValidateSalesDate(Salgsdato.Value))
                 {
                      salgsdatoen = Salgsdato.Value;
                 }

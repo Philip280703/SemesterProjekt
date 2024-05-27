@@ -50,7 +50,6 @@ namespace SemesterProjekt.Forms
 
         private void Dgv_Mægler_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            db = new DbHandler();
             row = e.RowIndex;
 
             try
@@ -81,7 +80,6 @@ namespace SemesterProjekt.Forms
 
         private void Dgv_Aktive_Boliger_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            db = new DbHandler();
             row = e.RowIndex;
 
             try
@@ -117,7 +115,6 @@ namespace SemesterProjekt.Forms
 
         private void Dgv_Inaktive_Boliger_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            db = new DbHandler();
             row = e.RowIndex;
 
             try
