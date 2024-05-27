@@ -282,6 +282,7 @@ namespace SemesterProjekt.Forms
             comboBoxPostNr.Text = "PostNr";
             comboBoxPris.Text = "Pris";
             Aktiv_checkbox.Checked = false;
+            checkBoxSolgt.Checked = false;
             comboxSortering.Text = "Sortering";
         }
 
