@@ -195,6 +195,7 @@ namespace SemesterProjekt.Forms
             if (result == DialogResult.Yes)
             {
                 db.HardDeleteKundeFromDB(KId);
+                MessageBox.Show("Køberen er slettet");
             }
             else
             {
@@ -204,7 +205,38 @@ namespace SemesterProjekt.Forms
         private void Btn_Refresh_Click(object sender, EventArgs e)
         {
             DGVKunde.DataSource = db.GetAllKunder();
-            DGVKunde.ClearSelection();  
+            DGVKunde.ClearSelection();
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            KundeSortering();
+        }
+
+        private void KundeSortering()
+        {
+            try
+
+            {
+                List<Kunde> kundelist = db.GetAllKunder();
+                // Søgbar ændring
+
+                if (!string.IsNullOrEmpty(TxtSearch.Text))
+                {
+                    kundelist = kundelist.Where(k => k.KFname.Contains(TxtSearch.Text)).ToList();
+                }
+
+                DGVKunde.DataSource = kundelist;
+                DGVKunde.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+             MessageBox.Show($"Error: {ex.Message}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
         }
     }
+
+    
 }
