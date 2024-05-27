@@ -204,7 +204,15 @@ namespace SemesterProjekt.Forms
         private void Btn_Refresh_Click(object sender, EventArgs e)
         {
             DGVKunde.DataSource = db.GetAllKunder();
-            DGVKunde.ClearSelection();  
+            DGVKunde.ClearSelection();
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            List<Kunde> Kundelist = db.GetAllKunder();
+            List<Kunde> Searchbarkundelist = new List<Kunde>();
+            Searchbarkundelist = Kundelist.Where(k => k.KFname.Contains(TxtSearch.Text)).ToList();
+            DGVKunde.DataSource = Searchbarkundelist;
         }
     }
 }
