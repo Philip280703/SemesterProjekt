@@ -88,6 +88,7 @@
             Btn_Update.TabIndex = 15;
             Btn_Update.Text = "Opdater Køber";
             Btn_Update.UseVisualStyleBackColor = false;
+            Btn_Update.Click += Btn_Update_Click;
             // 
             // Btn_Delete
             // 
@@ -104,6 +105,7 @@
             Btn_Delete.TabIndex = 14;
             Btn_Delete.Text = "Slet Køber";
             Btn_Delete.UseVisualStyleBackColor = false;
+            Btn_Delete.Click += Btn_Delete_Click;
             // 
             // Btn_Sorter_Solgt
             // 
@@ -345,6 +347,7 @@
             Btn_Refresh.TabIndex = 17;
             Btn_Refresh.Text = "Refresh";
             Btn_Refresh.UseVisualStyleBackColor = true;
+            Btn_Refresh.Click += Btn_Refresh_Click;
             // 
             // KundeForm
             // 

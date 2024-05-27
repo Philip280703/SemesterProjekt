@@ -35,7 +35,7 @@ namespace SemesterProjekt.Forms
             forrigetlfnr = int.Parse(Txt_SælgerTlfNr.Text);
 
             //Validere om inputtet er den korrekte længde, som er 8 i danmark
-            if (Txt_NytTlfNr.Text.Length < 7 || Txt_NytTlfNr.Text.Length > 9 )
+            if (Txt_NytTlfNr.Text.Length < 7 || Txt_NytTlfNr.Text.Length > 9)
             {
                 MessageBox.Show("Invalid Input", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_NytTlfNr.Text = "";

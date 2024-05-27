@@ -1036,22 +1036,21 @@ namespace SemesterProjekt.DataAccess
         // Create new Kunde
         internal bool CreateKunde(Kunde kunde)
         {
-            int NextKId = FindMaxKId();
-            string NextKIdString = NextKId.ToString();
 
-            string Command = "Insert Saelger (KId, KFname, KLname, KBoligId, KEmail, KTlfNr)" +
-                " values (@KId, @KFname, @KLname, @KBoligId, @KEmail, @KTlfNr)";
+
+            string Command = @"INSERT Kunde (KFname, KLname, KBoligId, KEmail, KTlfNr)" +
+                " VALUES (@KFname, @KLname, @KBoligId, @KEmail, @KTlfNr)";
 
             using SqlConnection conn = new SqlConnection(ConnectionString);
 
             SqlCommand cmd = new SqlCommand(Command, conn);
 
-            cmd.Parameters.AddWithValue("@KId", NextKIdString);
-            cmd.Parameters.AddWithValue("@KFname", "KFname");
-            cmd.Parameters.AddWithValue("@KLname", "KLname");
-            cmd.Parameters.AddWithValue("@KBoligId", "KBoligId");
-            cmd.Parameters.AddWithValue("@KEmail", "KEmail");
-            cmd.Parameters.AddWithValue("@KTlfNr", "KTlfNr");
+            //cmd.Parameters.AddWithValue("@KId", NextKIdString);
+            cmd.Parameters.AddWithValue("@KFname", kunde.KFname);
+            cmd.Parameters.AddWithValue("@KLname", kunde.KLname);
+            cmd.Parameters.AddWithValue("@KBoligId", kunde.KBoligId);
+            cmd.Parameters.AddWithValue("@KEmail", kunde.KEmail);
+            cmd.Parameters.AddWithValue("@KTlfNr", kunde.KTlfNr);
 
             int Rows = 0;
             try
