@@ -19,6 +19,19 @@ namespace SemesterProjekt
             ef = new EjendomsmæglerForm();
             sf = new Sælgerform();
             kf = new KundeForm();
+
+
+            // Farve skifter på knapper//
+            ButtonB.BackColor = Color.FromArgb(229, 159, 0);
+            ButtonB.ForeColor = Color.FromArgb(35, 31, 80);
+            Lbl_Title.Text = "Bolig";
+
+            //Åbner Form inde i panelet i form1// 
+            bf.TopLevel = false;
+            bf.FormBorderStyle = FormBorderStyle.None;
+            bf.Dock = DockStyle.Fill;
+            this.ScreenPnl.Controls.Add(bf);
+            bf.Show();
         }
 
         private void ButtonB_Click(object sender, EventArgs e)

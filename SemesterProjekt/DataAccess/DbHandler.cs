@@ -17,7 +17,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultA"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultMR"].ToString();
         }
 
 
@@ -1230,14 +1230,14 @@ namespace SemesterProjekt.DataAccess
         {
 
             // sql selection of the given table
-            string command = "UPDATE Kunde SET KBoligId = @KBoligId WHERE KId = @KId";
+            string command = "UPDATE Kunde SET KTlfNr = @KTlfNr WHERE KId = @KId";
             // using sqlconnection
             using SqlConnection conn = new SqlConnection(ConnectionString);
             // save connection in variable - to handle commands
             SqlCommand cmd = new SqlCommand(command, conn);
 
             cmd.Parameters.AddWithValue("@KId", KId);
-            cmd.Parameters.AddWithValue("@KBoligId", kunde.KBoligId);
+            cmd.Parameters.AddWithValue("@KTlfNr", kunde.KTlfNr);
 
 
 

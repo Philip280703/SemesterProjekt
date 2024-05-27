@@ -185,7 +185,7 @@ namespace SemesterProjekt.Forms
 
         private void Btn_Update_Click(object sender, EventArgs e)
         {
-            OpdaterKundeform kf = new OpdaterKundeform(KFname, KLname, KEmail, KTlfNr);
+            OpdaterKundeform kf = new OpdaterKundeform(KFname, KLname, KEmail, KTlfNr, KId);
             kf.Show();
         }
 
