@@ -17,7 +17,7 @@ namespace SemesterProjekt.DataAccess
         string ConnectionString;
         public DbHandler() 
         { 
-            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultMR"].ToString();
+            ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["defaultP"].ToString();
         }
 
 
@@ -26,8 +26,6 @@ namespace SemesterProjekt.DataAccess
         // Create new Bolig
         internal bool CreateBolig(Bolig bolig)
         {
-            //int NextBoligId = FindMaxBoligId();
-            //string NextBoligIdString = NextBoligId.ToString();
 
             string Command = "Insert Bolig ( Adresse, PostNr, UdbudsPris, Kvadratmeter, BoligType, Aktiv, SalgsPris, SalgsDato, MaeglerId)" +
                 " values ( @Adresse, @PostNr, @UdbudsPris, @Kvadratmeter, @BoligType, @Aktiv, @SalgsPris, @SalgsDato, @MaeglerId)";
@@ -39,7 +37,6 @@ namespace SemesterProjekt.DataAccess
             int salgspris = 0;
             DateTime dateTime = new DateTime(2000, 01, 01);
 
-          //  cmd.Parameters.AddWithValue("@BoligId", NextBoligIdString);
             cmd.Parameters.AddWithValue("@Adresse", bolig.Adresse);
             cmd.Parameters.AddWithValue("@PostNr", bolig.PostNr);
             cmd.Parameters.AddWithValue("@UdbudsPris", bolig.UdbudsPris);
@@ -141,156 +138,7 @@ namespace SemesterProjekt.DataAccess
             return BoligList;
         }
 
-        internal List<Bolig> SearchbarBolig(string txt)
-        {
-            // create list, ready for input
-            List<Bolig> BoligList = new List<Bolig>();
-
-            // sql selection of the given table
-            string command = $"Select * from Bolig where Adresse Like '%{txt}%'";
-            // using sqlconnection
-            using SqlConnection conn = new SqlConnection(ConnectionString);
-
-            try
-            {
-                // opening the connection to the sql table in mssql
-                conn.Open();
-                // save connection in variable - to handle commands
-                SqlCommand cmd = new SqlCommand(command, conn);
-
-                using SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-
-                    int BoligId = (int)reader["BoligId"];
-                    string Adresse = (string)reader["Adresse"];
-                    int PostNr = (int)reader["PostNr"];
-                    int UdbudsPris = (int)reader["Udbudspris"];
-                    int Kvadratmeter = (int)reader["Kvadratmeter"];
-
-                    string BoligType = (string)reader["BoligType"];
-                    bool Aktiv = (bool)reader["Aktiv"];
-                    int SalgsPris = (int)reader["SalgsPris"];
-                    DateTime SalgsDato = (DateTime)reader["SalgsDato"];
-                    int MaeglerId = (int)reader["MaeglerId"];
-
-                    // Calculate squaremeterprice. If the listing is active then calc by UdbudsPris, else calc by Salgspris
-                    int KvmPris;
-                    if (Aktiv == true)
-                    {
-                        int activeCalc = UdbudsPris / Kvadratmeter;
-                        KvmPris = activeCalc;
-                    }
-                    else
-                    {
-                        int soldCalc = SalgsPris / Kvadratmeter;
-                        KvmPris = soldCalc;
-                    }
-
-                    Bolig bolig = new Bolig
-                    {
-                        BoligId = BoligId,
-                        Adresse = Adresse,
-                        PostNr = PostNr,
-                        UdbudsPris = UdbudsPris,
-                        Kvadratmeter = Kvadratmeter,
-                        KvmPris = KvmPris,
-                        BoligType = BoligType,
-                        Aktiv = Aktiv,
-                        SalgsPris = SalgsPris,
-                        SalgsDato = SalgsDato,
-                        MaeglerId = MaeglerId
-                    };
-                    BoligList.Add(bolig);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return BoligList;
-        }
-
-
-
-        // Read/Get one Bolig
-        internal Bolig GetSingleBolig(int BoligId)
-        {
-            Bolig SingleBolig = new Bolig();
-            // sql selection of the given table
-            string command = "Select * from Bolig where BoligId = @BoligId";
-            // using sqlconnection
-            using SqlConnection conn = new SqlConnection(ConnectionString);
-            // save connection in variable - to handle commands
-            SqlCommand cmd = new SqlCommand(command, conn);
-
-            cmd.Parameters.AddWithValue("@Boligid", BoligId);
-            try
-            {
-                // opening the connection to the sql table in mssql
-                conn.Open();
-                using SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    int boligId = BoligId;
-                    string Adresse = (string)reader["Adresse"];
-                    int PostNr = (int)reader["PostNr"];
-                    int UdbudsPris = (int)reader["Udbudspris"];
-                    int Kvadratmeter = (int)reader["Kvadratmeter"];
-
-                    string BoligType = (string)reader["BoligType"];
-                    bool Aktiv = (bool)reader["Aktiv"];
-                    int SalgsPris = (int)reader["SalgsPris"];
-                    DateTime SalgsDato = (DateTime)reader["SalgsDato"];
-                    int MaeglerId = (int)reader["MaeglerId"];
-
-                    // Calculate squaremeterprice. If the listing is active then calc by UdbudsPris, else calc by Salgspris
-                    int KvmPris;
-                    if (Aktiv == true)
-                    {
-                        int activeCalc = UdbudsPris / Kvadratmeter;
-                        KvmPris = activeCalc;
-                    }
-                    else
-                    {
-                        int soldCalc = SalgsPris / Kvadratmeter;
-                        KvmPris = soldCalc;
-                    }
-                    SingleBolig = new Bolig {
-                        BoligId = boligId,
-                        Adresse = Adresse,
-                        PostNr = PostNr,
-                        UdbudsPris = UdbudsPris,
-                        Kvadratmeter = Kvadratmeter,
-                        KvmPris = KvmPris,
-                        BoligType = BoligType,
-                        Aktiv = Aktiv,
-                        SalgsPris = SalgsPris,
-                        SalgsDato = SalgsDato,
-                        MaeglerId = MaeglerId
-                    };
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-
-            return SingleBolig;
-        }
-
-
+ 
 
         // Update Bolig
         internal bool UpdateBolig(Bolig bolig, int BoligId)
@@ -523,6 +371,8 @@ namespace SemesterProjekt.DataAccess
             return SaelgerList;
         }
 
+
+
         //Searchbar til Sælger
         internal List<Saelger> SearchbarSælger(string txt)
         {
@@ -578,50 +428,7 @@ namespace SemesterProjekt.DataAccess
 
 
 
-        // Read/Get one Sælger
-        internal Saelger GetSingleSaelger(int SId)
-        {
-            Saelger SingleSaelger = new Saelger();
-            // sql selection of the given table
-            string command = "Select * from Saelger where SId = @SId";
-            // using sqlconnection
-            using SqlConnection conn = new SqlConnection(ConnectionString);
-            // save connection in variable - to handle commands
-            SqlCommand cmd = new SqlCommand(command, conn);
-
-            cmd.Parameters.AddWithValue("@Sid", SId);
-            try
-            {
-                // opening the connection to the sql table in mssql
-                conn.Open();
-                using SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    SingleSaelger = new Saelger
-                        {
-                        SId = (int)reader["SId"],
-                        SFname = (string)reader["SFname"],
-                        SLname = (string)reader["SLname"],
-                        SBoligId = (int)reader["SBoligId"],
-                        SEmail = (string)reader["SEmail"],
-                        STlfNr = (int)reader["STlfNr"] };
-                
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-
-            return SingleSaelger;
-        }
-
+       
         // Henter sælger baseret på bolig id
         internal Saelger GetSingleSaelgerBasedOfBoligId(int SBoligId)
         {
@@ -948,6 +755,7 @@ namespace SemesterProjekt.DataAccess
             }
         }
 
+
         // Update EjendomsmæglerInAktiv 
         internal bool UpdateEjendomsMaeglerAktivitet(EjendomsMaegler ejendomsMaegler, int MId)
         {
@@ -1045,7 +853,6 @@ namespace SemesterProjekt.DataAccess
 
             SqlCommand cmd = new SqlCommand(Command, conn);
 
-            //cmd.Parameters.AddWithValue("@KId", NextKIdString);
             cmd.Parameters.AddWithValue("@KFname", kunde.KFname);
             cmd.Parameters.AddWithValue("@KLname", kunde.KLname);
             cmd.Parameters.AddWithValue("@KBoligId", kunde.KBoligId);
@@ -1133,51 +940,6 @@ namespace SemesterProjekt.DataAccess
         }
 
 
-
-        // Read/Get one Kunde
-        internal Kunde GetSingleKunde(int KId)
-        {
-            Kunde SingleKunde = new Kunde();
-            // sql selection of the given table
-            string command = "Select * from Kunde where KId = @KId";
-            // using sqlconnection
-            using SqlConnection conn = new SqlConnection(ConnectionString);
-            // save connection in variable - to handle commands
-            SqlCommand cmd = new SqlCommand(command, conn);
-
-            cmd.Parameters.AddWithValue("@Kid", KId);
-            try
-            {
-                // opening the connection to the sql table in mssql
-                conn.Open();
-                using SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    SingleKunde = new Kunde
-                    {
-                        KId = (int)reader["KId"],
-                        KFname = (string)reader["KFname"],
-                        KLname = (string)reader["KLname"],
-                        KBoligId = (int)reader["KBoligId"],
-                        KEmail = (string)reader["KEmail"],
-                        KTlfNr = (int)reader["KTlfNr"]
-                    };
-
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-
-            return SingleKunde;
-        }
 
         // Read/Get one Kunde baseret på bolig idet som kobles til 
         internal Kunde GetSingleKundeBasedOfBoligId(int KBoligId)
@@ -1306,8 +1068,6 @@ namespace SemesterProjekt.DataAccess
                 return true;
             }
         }
-
-
 
 
 
@@ -1529,9 +1289,6 @@ namespace SemesterProjekt.DataAccess
 
 
 
-
-
-
         // --------------------------- MaxId -------------------------------------
 
         // find max id, function for Create method
@@ -1567,100 +1324,5 @@ namespace SemesterProjekt.DataAccess
             return MaxBoligId;
         }
 
-        internal int FindMaxSId()
-        {
-            Saelger saelger = new Saelger();
-            string command = "Select max(SId) as id from Saelger";
-            using SqlConnection connection = new SqlConnection(ConnectionString);
-
-            SqlCommand cmd = new SqlCommand(command, connection);
-
-            try
-            {
-                connection.Open();
-                using SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    saelger = new Saelger { SId = reader.GetInt32("id") };
-                    saelger.SId = reader.GetInt32("id") + 1;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            int MaxSId = saelger.SId;
-
-            return MaxSId;
-        }
-
-        internal int FindMaxMId()
-        {
-            EjendomsMaegler ejendomsmaegler = new EjendomsMaegler();
-            string command = "Select max(MId) as id from EjendomsMaegler";
-            using SqlConnection connection = new SqlConnection(ConnectionString);
-
-            SqlCommand cmd = new SqlCommand(command, connection);
-
-            try
-            {
-                connection.Open();
-                using SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    ejendomsmaegler = new EjendomsMaegler { MId = reader.GetInt32("id") };
-                    ejendomsmaegler.MId = reader.GetInt32("id") + 1;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            int MaxMId = ejendomsmaegler.MId;
-
-            return MaxMId;
-        }
-
-        internal int FindMaxKId()
-        {
-            Kunde kunde = new Kunde();
-            string command = "Select max(KId) as id from Kunde";
-            using SqlConnection connection = new SqlConnection(ConnectionString);
-
-            SqlCommand cmd = new SqlCommand(command, connection);
-
-            try
-            {
-                connection.Open();
-                using SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    kunde = new Kunde { KId = reader.GetInt32("id") };
-                    kunde.KId = reader.GetInt32("id") + 1;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-            int MaxKId = kunde.KId;
-
-            return MaxKId;
-        }  
     }
 }
