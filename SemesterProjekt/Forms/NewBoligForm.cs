@@ -72,7 +72,15 @@ namespace SemesterProjekt.Forms
                 throw new Exception("Kvadratmeter is false");
             }
 
-            string boligtype = comboBox2.Text;
+            string boligtype;
+            if (myValidator.ValidateHouseType(comboBox2.Text))
+            {
+                boligtype = comboBox2.Text;
+            }
+            else
+            {
+                throw new Exception("Housetype not valid");
+            }
 
             int maeglerid = int.Parse(comboBox3.Text);
 

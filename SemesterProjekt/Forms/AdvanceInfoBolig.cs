@@ -1,4 +1,5 @@
 ﻿using SemesterProjekt.DataAccess;
+using SemesterProjekt.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,11 +80,22 @@ namespace SemesterProjekt.Forms
         private void SælgBolig_Click(object sender, EventArgs e)
         {
             DbHandler db = new DbHandler();
+            MyValidator myValidator = new MyValidator();
+            DateTime salgsdatoen;
             try
             {
                 int boligiid = int.Parse(BoligIdTextBox.Text);
-                DateTime Salgsdatoen = Salgsdato.Value;
-                db.MarkBoligAsSold(new Models.Bolig { Aktiv = false, SalgsDato = Salgsdatoen, SalgsPris = int.Parse(Salgspris.Text) }, boligiid);
+                
+                if (myValidator.ValidateSalesDate(Salgsdato.Value))
+                {
+                     salgsdatoen = Salgsdato.Value;
+                }
+                else
+                {
+                    throw new Exception("Date Not valid");
+                }
+
+                db.MarkBoligAsSold(new Models.Bolig { Aktiv = false, SalgsDato = salgsdatoen, SalgsPris = int.Parse(Salgspris.Text) }, boligiid);
 
 
                 db.UpdateKunde(new Models.Kunde { KBoligId = boligiid }, KId);
