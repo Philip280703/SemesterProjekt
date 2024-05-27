@@ -105,7 +105,7 @@ namespace SemesterProjekt.Forms
             }
             if (KBoligId < 1)
             {
-                
+
                 textbox_MaeglerNavn.Text = " ";
                 Txtbox_MaeglerTlf.Text = "";
                 Txtbox_MaeglerEmail.Text = "";
@@ -114,7 +114,7 @@ namespace SemesterProjekt.Forms
                 Txtbox_SælgerTlfnr.Text = "";
                 Txtbox_SaelgerEmail.Text = "";
             }
-            
+
         }
 
         private void Btn_Create_Click(object sender, EventArgs e)
@@ -161,8 +161,8 @@ namespace SemesterProjekt.Forms
             else
             {
 
-            //Tilføjer informationer over i Sælger kassen
-            Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligId);
+                //Tilføjer informationer over i Sælger kassen
+                Saelger sa = db.GetSingleSaelgerBasedOfBoligId(BoligId);
                 Txtbox_SaelgerNavn.Text = sa.SFname + " " + sa.SLname;
                 Txtbox_SælgerTlfnr.Text = "" + sa.STlfNr;
                 Txtbox_SaelgerEmail.Text = sa.SEmail;
@@ -174,13 +174,37 @@ namespace SemesterProjekt.Forms
                 Txtbox_MaeglerEmail.Text = em.MEmail;
             }
 
-                                   
+
         }
 
         public void UpdateKundeData()
         {
             DGVKunde.Refresh();
             DGVKunde.Update();
+        }
+
+        private void Btn_Update_Click(object sender, EventArgs e)
+        {
+            OpdaterKundeform kf = new OpdaterKundeform(KFname, KLname, KEmail, KTlfNr);
+            kf.Show();
+        }
+
+        private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Er du sikker på du gerne vil slette Køberen", "Advarsel", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                db.HardDeleteKundeFromDB(KId);
+            }
+            else
+            {
+            }
+        }
+
+        private void Btn_Refresh_Click(object sender, EventArgs e)
+        {
+            DGVKunde.DataSource = db.GetAllKunder();
+            DGVKunde.ClearSelection();  
         }
     }
 }

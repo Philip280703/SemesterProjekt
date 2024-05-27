@@ -15,7 +15,7 @@ namespace SemesterProjekt.Forms
 {
     public partial class Newkunde : Form
     {
-
+        
         public Newkunde()
         {
             InitializeComponent();

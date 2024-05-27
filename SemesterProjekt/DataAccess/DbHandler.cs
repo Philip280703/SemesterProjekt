@@ -1036,11 +1036,7 @@ namespace SemesterProjekt.DataAccess
         // Create new Kunde
         internal bool CreateKunde(Kunde kunde)
         {
-            //int NextKId = FindMaxKId();
-            //string NextKIdString = NextKId.ToString();
 
-            //string Command = @"INSERT Kunde (KId, KFname, KLname, KBoligId, KEmail, KTlfNr)" +
-            //    " VALUES (@KId, @KFname, @KLname, @KBoligId, @KEmail, @KTlfNr)";
 
             string Command = @"INSERT Kunde (KFname, KLname, KBoligId, KEmail, KTlfNr)" +
                 " VALUES (@KFname, @KLname, @KBoligId, @KEmail, @KTlfNr)";

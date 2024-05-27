@@ -31,6 +31,8 @@
             buttonVidere = new Button();
             buttonBack = new Button();
             groupBox2 = new GroupBox();
+            label1 = new Label();
+            textBoxId = new TextBox();
             textBoxAfdeling = new TextBox();
             lbl_Afdeling = new Label();
             label4 = new Label();
@@ -43,8 +45,6 @@
             textBoxEfternavn = new TextBox();
             comboBoxNyAfdeling = new ComboBox();
             labelNyAfdeling = new Label();
-            label1 = new Label();
-            textBoxId = new TextBox();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -90,6 +90,24 @@
             groupBox2.TabIndex = 65;
             groupBox2.TabStop = false;
             groupBox2.Text = "Ejendomsmægler";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(59, 34);
+            label1.Name = "label1";
+            label1.Size = new Size(24, 20);
+            label1.TabIndex = 73;
+            label1.Text = "ID";
+            // 
+            // textBoxId
+            // 
+            textBoxId.Location = new Point(94, 31);
+            textBoxId.Margin = new Padding(3, 4, 3, 4);
+            textBoxId.Name = "textBoxId";
+            textBoxId.ReadOnly = true;
+            textBoxId.Size = new Size(170, 27);
+            textBoxId.TabIndex = 74;
             // 
             // textBoxAfdeling
             // 
@@ -198,24 +216,6 @@
             labelNyAfdeling.Size = new Size(88, 20);
             labelNyAfdeling.TabIndex = 73;
             labelNyAfdeling.Text = "Ny Afdeling";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(59, 34);
-            label1.Name = "label1";
-            label1.Size = new Size(24, 20);
-            label1.TabIndex = 73;
-            label1.Text = "ID";
-            // 
-            // textBoxId
-            // 
-            textBoxId.Location = new Point(94, 31);
-            textBoxId.Margin = new Padding(3, 4, 3, 4);
-            textBoxId.Name = "textBoxId";
-            textBoxId.ReadOnly = true;
-            textBoxId.Size = new Size(170, 27);
-            textBoxId.TabIndex = 74;
             // 
             // OpdaterMaeglerForm
             // 
