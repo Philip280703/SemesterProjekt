@@ -134,7 +134,7 @@ namespace SemesterProjekt.Forms
                 // Solgt checkbox ændret
                 if (checkBoxSolgt.Checked)
                 {
-                    boligListe = boligListe.Where(b => b.Aktiv == false).ToList();
+                    boligListe = boligListe.Where(b => b.Aktiv == false && b.SalgsPris > 0).ToList();
                 }
 
                 // sorteringsdropdown menu ændring
