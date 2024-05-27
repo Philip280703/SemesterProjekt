@@ -12,6 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SemesterProjekt.Forms
 {
@@ -40,6 +41,8 @@ namespace SemesterProjekt.Forms
             aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
+            
+            
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
@@ -288,7 +291,9 @@ namespace SemesterProjekt.Forms
 
         private void buttonNyBolig_Click(object sender, EventArgs e)
         {
-            NewBoligForm newBoligForm = new NewBoligForm();
+            List<int> MIdList = db.MaeglerIDInDB();
+           
+            NewBoligForm newBoligForm = new NewBoligForm(MIdList);
             newBoligForm.Show();
         }
 

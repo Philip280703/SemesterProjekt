@@ -1324,5 +1324,45 @@ namespace SemesterProjekt.DataAccess
             return MaxBoligId;
         }
 
+
+        // mid fra db til ny bolig
+        internal List<int> MaeglerIDInDB()
+        {
+            // create list, ready for input
+            List<int> MIdList = new List<int>();
+
+            // sql selection of the given table
+            string command = "Select distinct(Mid) from Ejendomsmaegler";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            
+            try
+            {
+                // opening the connection to the sql table in mssql
+                conn.Open();
+                // save connection in variable - to handle commands
+                SqlCommand cmd = new SqlCommand(command, conn);
+
+         
+                using SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int MID = (int)reader.GetInt32("Mid");
+                    
+                    MIdList.Add(MID);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return MIdList;
+        }
+
     }
 }

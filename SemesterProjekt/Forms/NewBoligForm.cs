@@ -16,10 +16,13 @@ namespace SemesterProjekt.Forms
 {
     public partial class NewBoligForm : Form
     {
-        
-        public NewBoligForm()
+        DbHandler dbHandler;
+        public NewBoligForm(List<int> MIdList)
         {
             InitializeComponent();
+            comboBox3.DataSource = MIdList;
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,13 +48,13 @@ namespace SemesterProjekt.Forms
             int postNr;
             if (myValidator.ValidateZipcode(int.Parse(comboBox1.Text)))
             {
-                postNr = int.Parse( comboBox1.Text);
+                postNr = int.Parse(comboBox1.Text);
             }
             else
             {
                 throw new Exception("Postnummer not validated propperly");
             }
-            
+
             int udbudspris;
             if (myValidator.ValidatePriceOfHouse(int.Parse(UdbudsprisTextbox.Text)))
             {
@@ -83,6 +86,8 @@ namespace SemesterProjekt.Forms
             }
 
             int maeglerid = int.Parse(comboBox3.Text);
+           
+           
 
             string fornavn;
             if (myValidator.ValidateFirstname(textBox1.Text))
