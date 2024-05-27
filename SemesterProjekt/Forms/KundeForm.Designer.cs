@@ -137,6 +137,7 @@
             TxtSearch.PlaceholderText = "Navn...";
             TxtSearch.Size = new Size(528, 27);
             TxtSearch.TabIndex = 9;
+            TxtSearch.TextChanged += TxtSearch_TextChanged;
             // 
             // DGVKunde
             // 
