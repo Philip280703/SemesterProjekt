@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace SemesterProjekt.Forms
 {
-    public partial class Newkunde : Form
+    public partial class NewkundeForm : Form
     {
         
-        public Newkunde()
+        public NewkundeForm()
         {
             InitializeComponent();
         }

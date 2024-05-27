@@ -264,7 +264,7 @@ namespace SemesterProjekt.Forms
 
         private void buttonOpdaterBolig_Click(object sender, EventArgs e)
         {
-            UpdateBoligForm updateBolig = new UpdateBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
+            OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
 
             try
             {

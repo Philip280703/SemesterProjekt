@@ -1,6 +1,6 @@
 ﻿namespace SemesterProjekt.Forms
 {
-    partial class OpdaterSælger
+    partial class OpdaterSælgerForm
     {
         /// <summary>
         /// Required designer variable.

@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace SemesterProjekt.Forms
 {
-    public partial class OpdaterSælger : Form
+    public partial class OpdaterSælgerForm : Form
     {
         int tlfnr;
         int forrigetlfnr;
 
-        public OpdaterSælger(int sælgerId, string SælgerNavn, int BoligId, string SælgerEmail, int SælgerTlfNr)
+        public OpdaterSælgerForm(int sælgerId, string SælgerNavn, int BoligId, string SælgerEmail, int SælgerTlfNr)
         {
             InitializeComponent();
             Txt_BoligId.Text = "" + BoligId;
