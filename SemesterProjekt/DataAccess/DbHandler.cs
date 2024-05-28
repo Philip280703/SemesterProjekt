@@ -987,7 +987,7 @@ namespace SemesterProjekt.DataAccess
         }
 
 
-        // Update Kunde ved salg 
+        // Update Kundetlf ved salg 
         internal bool UpdateKunde(Kunde kunde, int KId)
         {
 
@@ -1000,6 +1000,48 @@ namespace SemesterProjekt.DataAccess
 
             cmd.Parameters.AddWithValue("@KId", KId);
             cmd.Parameters.AddWithValue("@KTlfNr", kunde.KTlfNr);
+
+
+
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        // Update Kunde ved salg 
+        internal bool UpdateKundeVedSalg(Kunde kunde, int KId)
+        {
+
+            // sql selection of the given table
+            string command = "UPDATE Kunde SET KBoligId = @KBoligId WHERE KId = @KId";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@KId", KId);
+            cmd.Parameters.AddWithValue("@KBoligId", kunde.KBoligId);
 
 
 
