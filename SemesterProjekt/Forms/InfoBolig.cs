@@ -12,6 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SemesterProjekt.Forms
@@ -256,27 +257,43 @@ namespace SemesterProjekt.Forms
         }
         private void buttonSaelgBolig_Click(object sender, EventArgs e)
         {
-            AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-            try
+            if (Aktiv == true)
             {
-                aib.Show();
-            }
-            catch (Exception ex)
-            {
+                AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
+                try
+                {
+                    aib.Show();
+                }
+                catch (Exception ex)
+                {
 
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Boligen er solgt i forvejen","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void buttonOpdaterBolig_Click(object sender, EventArgs e)
         {
-            OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-
-            try
+            if (row == 1)
             {
-                updateBolig.Show();
+                OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
+
+                try
+                {
+                    updateBolig.Show();
+                }
+                catch (Exception ex) { }
+
             }
-            catch (Exception ex) { }
+            else
+            {
+                MessageBox.Show("Ingen bolig er valgt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 

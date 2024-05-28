@@ -1141,6 +1141,7 @@ namespace SemesterProjekt.DataAccess
             // this is a list that is printed in a file that is seperated by ; and exported to csv, so that the ouput has its own field in an file in excel
             using (StreamWriter writer = new StreamWriter(path))
             {
+                BoligList = BoligList.OrderBy(b => b.PostNr).ToList();
                 writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;MaeglerId");
 
                 foreach (Bolig bolig in BoligList)
