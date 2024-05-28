@@ -286,6 +286,13 @@ namespace SemesterProjekt.Forms
             Aktiv_checkbox.Checked = false;
             checkBoxSolgt.Checked = false;
             comboxSortering.Text = "Sortering";
+            Txtbox_SaelgerNavn.Text = "";
+            Txtbox_SælgerTlfnr.Text = "";
+            Txtbox_SaelgerEmail.Text = "";
+            textbox_MaeglerNavn.Text = "";
+            Txtbox_MaeglerTlf.Text = "";
+            Txtbox_MaeglerEmail.Text = "";
+            
         }
 
         private void buttonNyBolig_Click(object sender, EventArgs e)
