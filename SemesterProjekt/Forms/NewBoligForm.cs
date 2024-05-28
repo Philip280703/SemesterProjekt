@@ -21,7 +21,7 @@ namespace SemesterProjekt.Forms
         public NewBoligForm(List<int> MIdList)
         {
             InitializeComponent();
-            comboBox3.DataSource = MIdList;
+            comboBoxMidList.DataSource = MIdList;
             db = new DbHandler();
 
         }
@@ -46,9 +46,9 @@ namespace SemesterProjekt.Forms
             }
 
             int postNr;
-            if (validator.ValidateZipcode(int.Parse(comboBox1.Text)))
+            if (validator.ValidateZipcode(int.Parse(comboBoxPostNr.Text)))
             {
-                postNr = int.Parse(comboBox1.Text);
+                postNr = int.Parse(comboBoxPostNr.Text);
             }
             else
             {
@@ -76,23 +76,23 @@ namespace SemesterProjekt.Forms
             }
 
             string boligtype;
-            if (validator.ValidateHouseType(comboBox2.Text))
+            if (validator.ValidateHouseType(comboBoxBoligType.Text))
             {
-                boligtype = comboBox2.Text;
+                boligtype = comboBoxBoligType.Text;
             }
             else
             {
                 throw new Exception("Housetype not valid");
             }
 
-            int maeglerid = int.Parse(comboBox3.Text);
+            int maeglerid = int.Parse(comboBoxMidList.Text);
            
            
 
             string fornavn;
-            if (validator.ValidateFirstname(textBox1.Text))
+            if (validator.ValidateFirstname(textBoxFornavn.Text))
             {   
-                fornavn = textBox1.Text;
+                fornavn = textBoxFornavn.Text;
             }
             else
             {
@@ -100,21 +100,21 @@ namespace SemesterProjekt.Forms
             }
 
             string efternavn;
-            if (validator.ValidateLastname(textBox2.Text))
+            if (validator.ValidateLastname(textBoxEfternavn.Text))
             {
-                efternavn = textBox2.Text;
+                efternavn = textBoxEfternavn.Text;
             }
             else { throw new Exception("Lastname not valid"); }
 
             string email;
-            if (validator.ValidateEmail(textBox3.Text))
-            { email = textBox3.Text; }
+            if (validator.ValidateEmail(textBoxEmail.Text))
+            { email = textBoxEmail.Text; }
             else { throw new Exception("Email not valid"); }
 
             int tlfnr;
-            if(validator.ValidatePhonenumber(int.Parse(textBox4.Text)))
+            if(validator.ValidatePhonenumber(int.Parse(textBoxTlf.Text)))
             {
-                tlfnr = int.Parse(textBox4.Text);
+                tlfnr = int.Parse(textBoxTlf.Text);
             }
             else
             {
