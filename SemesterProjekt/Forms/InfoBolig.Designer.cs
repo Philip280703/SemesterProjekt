@@ -425,7 +425,7 @@
             // comboBoxPris
             // 
             comboBoxPris.FormattingEnabled = true;
-            comboBoxPris.Items.AddRange(new object[] { "Pris", "0 - 999999", "1000000 - 1999999", "2000000 - 2999999", "3000000 - 3999999", "4000000 - 4999999" });
+            comboBoxPris.Items.AddRange(new object[] { "Pris", "1 - 999999", "1000000 - 1999999", "2000000 - 2999999", "3000000 - 3999999", "4000000 - 4999999", "5000000 - 5999999", "6000000 - 6999999", "7000000 - 7999999", "8000000 - 8999999", "9000000 - 10000000" });
             comboBoxPris.Location = new Point(561, 15);
             comboBoxPris.Margin = new Padding(3, 4, 3, 4);
             comboBoxPris.Name = "comboBoxPris";

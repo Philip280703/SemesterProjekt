@@ -20,6 +20,8 @@ namespace SemesterProjekt.Forms
         public NewMaeglerform()
         {
             InitializeComponent();
+            db = new DbHandler();
+            validator = new MyValidator();
 
         }
 

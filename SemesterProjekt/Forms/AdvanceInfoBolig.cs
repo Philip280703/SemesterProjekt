@@ -78,7 +78,7 @@ namespace SemesterProjekt.Forms
         }
         private void SælgBolig_Click(object sender, EventArgs e)
         {
-    
+            validator = new MyValidator();
             DateTime salgsdatoen;
             try
             {
