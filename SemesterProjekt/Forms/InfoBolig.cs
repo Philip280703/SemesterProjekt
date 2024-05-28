@@ -173,9 +173,13 @@ namespace SemesterProjekt.Forms
                 }
 
                 DGVBolig.DataSource = boligListe;
+                if (boligListe.Count > 0)
+                {
+                    int gns = AveragePrice();
+                    textBoxGns.Text = $"{gns:C0}";
+                }
+                
 
-                int gns = AveragePrice();
-                textBoxGns.Text = $"{gns:C0}";
 
                 DGVBolig.ClearSelection();
             }
@@ -292,7 +296,7 @@ namespace SemesterProjekt.Forms
             textbox_MaeglerNavn.Text = "";
             Txtbox_MaeglerTlf.Text = "";
             Txtbox_MaeglerEmail.Text = "";
-            
+            DGVBolig.ClearSelection();
         }
 
         private void buttonNyBolig_Click(object sender, EventArgs e)
