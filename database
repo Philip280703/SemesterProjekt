@@ -91,8 +91,8 @@ values
 
 insert into Saelger
 values
-    ('Jane', 'Doe', 24, 'jane@example.com', '23456789'),
-    ('Alice', 'Smith', 23, 'alice@example.com', '34567890'),
+    ('Jane', 'Doe', 1, 'jane@example.com', '23456789'),
+    ('Alice', 'Smith', 2, 'alice@example.com', '34567890'),
     ('Bob', 'Johnson', 3, 'bob@example.com', '45678901'),
     ('Emma', 'Williams', 4, 'emma@example.com', '56789012'),
     ('Michael', 'Brown', 5, 'michael@example.com', '67890123'),
