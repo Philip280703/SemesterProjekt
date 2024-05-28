@@ -47,8 +47,7 @@ namespace SemesterProjekt.Forms
         private void DGVSælger_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             row = e.RowIndex;
-            db = new DbHandler();
-
+           
             try
             {
                 DataGridViewRow data = DGVSælger.Rows[row];
@@ -82,7 +81,7 @@ namespace SemesterProjekt.Forms
 
         private void Btn_Update_Click(object sender, EventArgs e)
         {
-            OpdaterSælger os = new OpdaterSælger(SId, SFname + " " + SLname, SBoligId, SEmail, STlfNr);
+            OpdaterSælgerForm os = new OpdaterSælgerForm(SId, SFname + " " + SLname, SBoligId, SEmail, STlfNr);
             os.Show();
         }
 

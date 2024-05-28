@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace SemesterProjekt.Forms
 {
-    public partial class UpdateBoligForm : Form
+    public partial class OpdaterBoligForm : Form
     {
-        public UpdateBoligForm(int MæglerId, string Adresse, int BoligId, int PostNr, int Udbudspris, int Kvadratmeter, string BoligType, bool aktiv)
+        public OpdaterBoligForm(int MæglerId, string Adresse, int BoligId, int PostNr, int Udbudspris, int Kvadratmeter, string BoligType, bool aktiv)
         {
             InitializeComponent();
             BoligIdTextBox.Text = "" + BoligId;

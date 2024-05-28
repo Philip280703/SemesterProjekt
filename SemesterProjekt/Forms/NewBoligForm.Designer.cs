@@ -39,18 +39,18 @@
             AdresseTextbox = new TextBox();
             AdresseLabel = new Label();
             groupBox1 = new GroupBox();
-            comboBox3 = new ComboBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
+            comboBoxMidList = new ComboBox();
+            comboBoxPostNr = new ComboBox();
+            comboBoxBoligType = new ComboBox();
             groupBox2 = new GroupBox();
             label4 = new Label();
             label5 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            textBoxEmail = new TextBox();
+            textBoxTlf = new TextBox();
             label2 = new Label();
-            textBox1 = new TextBox();
+            textBoxFornavn = new TextBox();
             label3 = new Label();
-            textBox2 = new TextBox();
+            textBoxEfternavn = new TextBox();
             button2 = new Button();
             label6 = new Label();
             groupBox1.SuspendLayout();
@@ -147,9 +147,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBox3);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(comboBox2);
+            groupBox1.Controls.Add(comboBoxMidList);
+            groupBox1.Controls.Add(comboBoxPostNr);
+            groupBox1.Controls.Add(comboBoxBoligType);
             groupBox1.Controls.Add(KvadratmeterTextbox);
             groupBox1.Controls.Add(MæglerIdLabel);
             groupBox1.Controls.Add(AdresseLabel);
@@ -168,41 +168,41 @@
             // 
             // comboBox3
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "100", "101", "102" });
-            comboBox3.Location = new Point(117, 222);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(169, 28);
-            comboBox3.TabIndex = 64;
+            comboBoxMidList.FormattingEnabled = true;
+            comboBoxMidList.Items.AddRange(new object[] { "100", "101", "102" });
+            comboBoxMidList.Location = new Point(117, 222);
+            comboBoxMidList.Name = "comboBox3";
+            comboBoxMidList.Size = new Size(169, 28);
+            comboBoxMidList.TabIndex = 64;
             // 
             // comboBox1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "8000", "9000" });
-            comboBox1.Location = new Point(117, 74);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(169, 28);
-            comboBox1.TabIndex = 63;
+            comboBoxPostNr.FormattingEnabled = true;
+            comboBoxPostNr.Items.AddRange(new object[] { "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "8000", "9000" });
+            comboBoxPostNr.Location = new Point(117, 74);
+            comboBoxPostNr.Name = "comboBox1";
+            comboBoxPostNr.Size = new Size(169, 28);
+            comboBoxPostNr.TabIndex = 63;
             // 
             // comboBox2
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Villa", "Rækkehus", "Lejlighed", "Andelsbolig" });
-            comboBox2.Location = new Point(117, 187);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(169, 28);
-            comboBox2.TabIndex = 62;
+            comboBoxBoligType.FormattingEnabled = true;
+            comboBoxBoligType.Items.AddRange(new object[] { "Villa", "Rækkehus", "Lejlighed", "Andelsbolig" });
+            comboBoxBoligType.Location = new Point(117, 187);
+            comboBoxBoligType.Name = "comboBox2";
+            comboBoxBoligType.Size = new Size(169, 28);
+            comboBoxBoligType.TabIndex = 62;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(textBox3);
-            groupBox2.Controls.Add(textBox4);
+            groupBox2.Controls.Add(textBoxEmail);
+            groupBox2.Controls.Add(textBoxTlf);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(textBoxFornavn);
             groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(textBoxEfternavn);
             groupBox2.Location = new Point(451, 57);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(289, 223);
@@ -230,19 +230,19 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(90, 112);
-            textBox3.Margin = new Padding(3, 4, 3, 4);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(170, 27);
-            textBox3.TabIndex = 69;
+            textBoxEmail.Location = new Point(90, 112);
+            textBoxEmail.Margin = new Padding(3, 4, 3, 4);
+            textBoxEmail.Name = "textBox3";
+            textBoxEmail.Size = new Size(170, 27);
+            textBoxEmail.TabIndex = 69;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(90, 151);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(170, 27);
-            textBox4.TabIndex = 70;
+            textBoxTlf.Location = new Point(90, 151);
+            textBoxTlf.Margin = new Padding(3, 4, 3, 4);
+            textBoxTlf.Name = "textBox4";
+            textBoxTlf.Size = new Size(170, 27);
+            textBoxTlf.TabIndex = 70;
             // 
             // label2
             // 
@@ -255,11 +255,11 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(90, 35);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(170, 27);
-            textBox1.TabIndex = 65;
+            textBoxFornavn.Location = new Point(90, 35);
+            textBoxFornavn.Margin = new Padding(3, 4, 3, 4);
+            textBoxFornavn.Name = "textBox1";
+            textBoxFornavn.Size = new Size(170, 27);
+            textBoxFornavn.TabIndex = 65;
             // 
             // label3
             // 
@@ -272,11 +272,11 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(90, 74);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(170, 27);
-            textBox2.TabIndex = 66;
+            textBoxEfternavn.Location = new Point(90, 74);
+            textBoxEfternavn.Margin = new Padding(3, 4, 3, 4);
+            textBoxEfternavn.Name = "textBox2";
+            textBoxEfternavn.Size = new Size(170, 27);
+            textBoxEfternavn.TabIndex = 66;
             // 
             // button2
             // 
@@ -333,19 +333,19 @@
         private TextBox AdresseTextbox;
         private Label AdresseLabel;
         private GroupBox groupBox1;
-        private ComboBox comboBox2;
+        private ComboBox comboBoxBoligType;
         private GroupBox groupBox2;
         private Label label4;
         private Label label5;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox textBoxEmail;
+        private TextBox textBoxTlf;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox textBoxFornavn;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox textBoxEfternavn;
         private Button button2;
         private Label label6;
-        private ComboBox comboBox1;
-        private ComboBox comboBox3;
+        private ComboBox comboBoxPostNr;
+        private ComboBox comboBoxMidList;
     }
 }

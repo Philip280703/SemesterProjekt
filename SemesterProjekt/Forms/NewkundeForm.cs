@@ -6,21 +6,22 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace SemesterProjekt.Forms
 {
-    public partial class NewMaeglerform : Form
+    public partial class NewkundeForm : Form
     {
         DbHandler db;
         MyValidator validator;
-        public NewMaeglerform()
+        public NewkundeForm()
         {
             InitializeComponent();
-
+            db = new DbHandler();
+            validator = new MyValidator();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -28,15 +29,17 @@ namespace SemesterProjekt.Forms
             this.Hide();
         }
 
+
         private void buttonVidere_Click(object sender, EventArgs e)
         {
-          
+           
+
             string fornavn;
             if (validator.ValidateFirstname(textBoxFornavn.Text))
             {
                 fornavn = textBoxFornavn.Text;
             }
-            else 
+            else
             {
                 throw new Exception("Firstname not validated");
             }
@@ -46,32 +49,41 @@ namespace SemesterProjekt.Forms
             {
                 efternavn = textBoxEfternavn.Text;
             }
-            else { throw new Exception("Lastname not valid"); }
+            else
+            {
+                throw new Exception("Lastname not validated");
+            }
 
             string email;
             if (validator.ValidateEmail(textBoxEmail.Text))
             {
                 email = textBoxEmail.Text;
             }
-            else { throw new Exception("Email not valid"); }
+            else
+            {
+                throw new Exception("Email not validated");
+            }
 
             int tlf;
-            if (validator.ValidatePhonenumber(int.Parse( textBoxTlf.Text)))
+            if (validator.ValidatePhonenumber(int.Parse(textBoxTlf.Text)))
             {
-                tlf = int.Parse( textBoxTlf.Text);
+                tlf = int.Parse(textBoxTlf.Text);
             }
             else
             {
                 throw new Exception("Phonenumber not valid");
             }
 
-            int afdeling = int.Parse(comboBoxAfdeling.Text);
 
-
-            db.CreateMaegler(new EjendomsMaegler { MFname = fornavn, MLname = efternavn, MEmail = email, MTlfNr = tlf, Afdeling = afdeling, MAktiv = true });
-
-            MessageBox.Show("Nye ejendomsmæglerne er nu oprettet");
+            db.CreateKunde(new Kunde { KFname = fornavn, KLname = efternavn, KEmail = email, KTlfNr = tlf });
+            MessageBox.Show("Ny kunde er oprettet");
             this.Hide();
+
+            KundeForm Update = new KundeForm();
+            Update.UpdateKundeData();
+
         }
+
+     
     }
 }

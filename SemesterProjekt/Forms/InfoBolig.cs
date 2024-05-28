@@ -12,6 +12,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SemesterProjekt.Forms
 {
@@ -32,6 +34,7 @@ namespace SemesterProjekt.Forms
 
 
 
+
         public InfoBolig()
         {
             InitializeComponent();
@@ -39,6 +42,8 @@ namespace SemesterProjekt.Forms
             aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
+            
+            
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
@@ -52,102 +57,144 @@ namespace SemesterProjekt.Forms
 
         private void txtSearchbar_TextChanged(object sender, EventArgs e)
         {
-            List<Bolig> filter = db.SearchbarBolig(txtSearchbar.Text);
-            DGVBolig.DataSource = filter;
-            int gns = AveragePrice();
-            textBoxGns.Text = $"{gns:C0}";
-
-            //Gør så Der ikke automatisk vælges 1 row i DGV
-            DGVBolig.ClearSelection();
+            BoligSorting();
         }
 
         private void comboBoxBoligType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string combobox = ComboBoxBoligtype.Text;
-            if (combobox == "BoligType")
-            {
-                DGVBolig.DataSource = db.GetAllBolig();
-            }
-            else
-            {
-                List<Bolig> filter = db.GetAllBolig();
-                DGVBolig.DataSource = filter.Where(b => b.BoligType == combobox).ToList();
-            }
-            int gns = AveragePrice();
-            textBoxGns.Text = $"{gns:C0}";
-
-            //Gør så Der ikke automatisk vælges 1 row i DGV
-            DGVBolig.ClearSelection();
+            BoligSorting();
         }
         private void comboBoxPostNr_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string combobox = comboBoxPostNr.Text;
-            if (combobox == "PostNr")
-            {
-                DGVBolig.DataSource = db.GetAllBolig();
-            }
-            else
-            {
-
-                List<Bolig> filter = db.GetAllBolig();
-
-                DGVBolig.DataSource = filter.Where(b => b.PostNr == int.Parse(comboBoxPostNr.Text)).ToList();
-            }
-            int gns = AveragePrice();
-            textBoxGns.Text = $"{gns:C0}";
-
-            //Gør så Der ikke automatisk vælges 1 row i DGV
-            DGVBolig.ClearSelection();
+            BoligSorting();
         }
 
         private void comboBoxPris_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string combobox = comboBoxPris.Text;
-            if (combobox == "Pris")
-            {
-                DGVBolig.DataSource = db.GetAllBolig();
-            }
-            else
-            {
-                int num1 = int.Parse(combobox.Split("-")[0]);
-                int num2 = int.Parse(combobox.Split("-")[1]);
-                List<Bolig> filter = db.GetAllBolig();
-                DGVBolig.DataSource = filter.Where(b => b.UdbudsPris >= num1 && b.UdbudsPris <= num2).ToList();
-            }
-            int gns = AveragePrice();
-            textBoxGns.Text = $"{gns:C0}";
-
-            //Gør så Der ikke automatisk vælges 1 row i DGV
-            DGVBolig.ClearSelection();
+            BoligSorting();
         }
 
         private void comboxSortering_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string combox = comboxSortering.Text;
-            if (combox == "Sortering") 
-            {
-                DGVBolig.DataSource = db.GetAllBolig();
-            }
-            else if (combox == "Adresse (alfabetisk)") {  List<Bolig> BoligSotering = db.GetAllBolig(); DGVBolig.DataSource = BoligSotering.OrderBy(b => b.Adresse).ToList(); }
-            else if (combox == "Udbudspris (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.UdbudsPris).ToList(); }
-            else if (combox == "Udbudspris (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.UdbudsPris).ToList(); }
-            else if (combox == "Kvm (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.Kvadratmeter).ToList(); }
-            else if (combox == "Kvm (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.Kvadratmeter).ToList(); }
-            else if (combox == "Kvadratmeterpris (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.KvmPris).ToList(); }
-            else if (combox == "Kvadratmeterpris (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.KvmPris).ToList(); }
-            else if (combox == "Salgspris (lav - høj)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderBy(b => b.SalgsPris).ToList(); }
-            else if (combox == "Salgspris (høj - lav)") { List<Bolig> BoligSortering = db.GetAllBolig(); DGVBolig.DataSource = BoligSortering.OrderByDescending(b => b.SalgsPris).ToList(); }
-
-            int gns = AveragePrice();
-            textBoxGns.Text = $"{gns:C0}";
-
-            DGVBolig.ClearSelection();
+            BoligSorting();
         }
+        private void Aktiv_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            BoligSorting();
+        }
+        private void checkBoxSolgt_CheckedChanged(object sender, EventArgs e)
+        {
+            BoligSorting();
+        }
+
+
+
+
+        private void BoligSorting()
+        {
+            try
+            {
+                List<Bolig> boligListe = db.GetAllBolig();
+
+                // Søgbar ændring
+                if (!string.IsNullOrEmpty(txtSearchbar.Text))
+                {
+                    boligListe = boligListe.Where(b => b.Adresse.Contains(txtSearchbar.Text)).ToList();
+
+                }
+
+                // Boligtype ændring
+                if (ComboBoxBoligtype.Text != "BoligType" && !string.IsNullOrEmpty(ComboBoxBoligtype.Text))
+                {
+                    boligListe = boligListe.Where(b => b.BoligType == ComboBoxBoligtype.Text).ToList();
+                }
+
+                // postnummer ændring
+                if (comboBoxPostNr.Text != "PostNr" && int.TryParse(comboBoxPostNr.Text, out var postNr))
+                {
+                    boligListe = boligListe.Where(b => b.PostNr == postNr).ToList();
+                }
+
+                // pris ændring
+                if (comboBoxPris.Text != "Pris" && !string.IsNullOrEmpty(comboBoxPris.Text))
+                {
+                    var prisen = comboBoxPris.Text.Split("-");
+                    if (prisen.Length == 2 && int.TryParse(prisen[0], out int minimumPris) && int.TryParse(prisen[1], out int maximumPris))
+                    {
+                        boligListe = boligListe.Where(b => b.UdbudsPris >= minimumPris && b.UdbudsPris <= maximumPris).ToList();
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid price range format");
+                    }
+                }
+
+                // aktiv checkbox ændring
+                if (Aktiv_checkbox.Checked)
+                {
+                    boligListe = boligListe.Where(b => b.Aktiv == true).ToList();
+                }
+
+                // Solgt checkbox ændret
+                if (checkBoxSolgt.Checked)
+                {
+                    boligListe = boligListe.Where(b => b.Aktiv == false && b.SalgsPris > 0).ToList();
+                }
+
+                // sorteringsdropdown menu ændring
+                if (!string.IsNullOrEmpty(comboxSortering.Text) && comboxSortering.Text != "Sortering")
+                {
+                    switch (comboxSortering.Text)
+                    {
+                        case "Adresse (alfabetisk)": boligListe = boligListe.OrderBy(b => b.Adresse).ToList(); break;
+
+                        case "Udbudspris (lav - høj)": boligListe = boligListe.OrderBy(b => b.UdbudsPris).ToList(); break;
+
+                        case "Udbudspris (høj - lav)": boligListe = boligListe.OrderByDescending(b => b.UdbudsPris).ToList(); break;
+
+                        case "Kvm (lav - høj)": boligListe = boligListe.OrderBy(b => b.Kvadratmeter).ToList(); break;
+
+                        case "Kvm (høj - lav)": boligListe = boligListe.OrderByDescending(b => b.Kvadratmeter).ToList(); break;
+
+                        case "Kvadratmeterpris (lav - høj)": boligListe = boligListe.OrderBy(b => b.KvmPris).ToList(); break;
+
+                        case "Kvadratmeterpris (høj - lav)": boligListe = boligListe.OrderByDescending(b => b.KvmPris).ToList(); break;
+
+                        case "Salgspris (lav - høj)": boligListe = boligListe.OrderBy(b => b.SalgsPris).ToList(); break;
+
+                        case "Salgspris (høj - lav)": boligListe = boligListe.OrderByDescending(b => b.SalgsPris).ToList(); break;
+
+                        default: throw new ArgumentException("Invalid sorting option");
+                    }
+
+                }
+                if (boligListe.Count == 0)
+                {
+                    MessageBox.Show("Ingen bolig matcher søgningen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                DGVBolig.DataSource = boligListe;
+                if (boligListe.Count > 0)
+                {
+                    int gns = AveragePrice();
+                    textBoxGns.Text = $"{gns:C0}";
+                }
+                
+
+
+                DGVBolig.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
         private void dataGridViewBolig_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // Henter info omkring ejendomsmægler som er koblet til bolig
-            DbHandler db = new DbHandler();
             row = e.RowIndex;
             try
             {
@@ -194,73 +241,99 @@ namespace SemesterProjekt.Forms
                 sum += Convert.ToInt32(DGVBolig.Rows[i].Cells[5].Value);
             }
             int countRow = DGVBolig.Rows.Count;
-            int gns = sum / countRow;
+            int gns = 0;
+            try
+            {
+                gns = sum / countRow;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in calculation of average price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return gns;
+
+
 
         }
         private void buttonSaelgBolig_Click(object sender, EventArgs e)
         {
-            AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-            try
+            if (Aktiv == true)
             {
-                aib.Show();
-            }
-            catch (Exception ex)
-            {
+                AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
+                try
+                {
+                    aib.Show();
+                }
+                catch (Exception ex)
+                {
 
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Boligen er solgt i forvejen","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void buttonOpdaterBolig_Click(object sender, EventArgs e)
         {
-            UpdateBoligForm updateBolig = new UpdateBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-
-            try
+            if (row == 1)
             {
-                updateBolig.Show();
+                OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
+
+                try
+                {
+                    updateBolig.Show();
+                }
+                catch (Exception ex) { }
+
             }
-            catch (Exception ex) { }
+            else
+            {
+                MessageBox.Show("Ingen bolig er valgt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void Refreshbutton_Click(object sender, EventArgs e)
         {
             DGVBolig.DataSource = db.GetAllBolig();
+            txtSearchbar.Text = "";
+            ComboBoxBoligtype.Text = "BoligType";
+            comboBoxPostNr.Text = "PostNr";
+            comboBoxPris.Text = "Pris";
+            Aktiv_checkbox.Checked = false;
+            checkBoxSolgt.Checked = false;
+            comboxSortering.Text = "Sortering";
+            Txtbox_SaelgerNavn.Text = "";
+            Txtbox_SælgerTlfnr.Text = "";
+            Txtbox_SaelgerEmail.Text = "";
+            textbox_MaeglerNavn.Text = "";
+            Txtbox_MaeglerTlf.Text = "";
+            Txtbox_MaeglerEmail.Text = "";
+            DGVBolig.ClearSelection();
         }
 
         private void buttonNyBolig_Click(object sender, EventArgs e)
         {
-            NewBoligForm newBoligForm = new NewBoligForm();
+            List<int> MIdList = db.MaeglerIDInDB();
+           
+            NewBoligForm newBoligForm = new NewBoligForm(MIdList);
             newBoligForm.Show();
         }
 
 
-        private void Aktiv_checkbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Aktiv_checkbox.Checked)
-            {
-                List<Bolig> Aktivbolig = db.GetAllBolig();
-                List<Bolig> TrueAktivBolig = Aktivbolig.Where(b => b.SalgsPris < 1).ToList();
-                DGVBolig.DataSource = TrueAktivBolig;
-            }
-            else
-            {
-                DGVBolig.DataSource = db.GetAllBolig();
-            }
-            //Gør så Der ikke automatisk vælges 1 row i DGV
-            DGVBolig.ClearSelection();
-        }
 
         private void Sletbolig_button_Click(object sender, EventArgs e)
         {
-            DbHandler dbHandler = new DbHandler();
             var AreyouSure = MessageBox.Show("Er du sikker på at du vil slette denne bolig permanent?", "", MessageBoxButtons.YesNo);
 
             if (AreyouSure == DialogResult.Yes)
             {
-                dbHandler.HardDeleteSaelgerFromDB(BoligIid);
-                dbHandler.HardDeleteBoligFromDB(BoligIid);
+                db.HardDeleteSaelgerFromDB(BoligIid);
+                db.HardDeleteBoligFromDB(BoligIid);
                 MessageBox.Show("Boligen er nu solgt");
             }
 
@@ -290,7 +363,7 @@ namespace SemesterProjekt.Forms
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void buttonExportThisPostnr_Click(object sender, EventArgs e)
         {
             var ExportThistoCsv = MessageBox.Show("vil du eksportere alle boliger med dette postnummer til en CSV fil?", "Export to csv", MessageBoxButtons.YesNo);
             if (ExportThistoCsv == DialogResult.Yes)

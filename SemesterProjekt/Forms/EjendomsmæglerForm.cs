@@ -50,7 +50,6 @@ namespace SemesterProjekt.Forms
 
         private void Dgv_Mægler_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            db = new DbHandler();
             row = e.RowIndex;
 
             try
@@ -81,7 +80,6 @@ namespace SemesterProjekt.Forms
 
         private void Dgv_Aktive_Boliger_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            db = new DbHandler();
             row = e.RowIndex;
 
             try
@@ -117,7 +115,6 @@ namespace SemesterProjekt.Forms
 
         private void Dgv_Inaktive_Boliger_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            db = new DbHandler();
             row = e.RowIndex;
 
             try
@@ -190,12 +187,12 @@ namespace SemesterProjekt.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-         
+
             var AreyouSure = MessageBox.Show("Er du sikker på at du vil slette denne Ejendomsmægler permanent?", "", MessageBoxButtons.YesNo);
 
             if (AreyouSure == DialogResult.Yes)
             {
-                db.HardDeleteEjendomsMaeglerFromDB(MaeglerId);             
+                db.HardDeleteEjendomsMaeglerFromDB(MaeglerId);
                 MessageBox.Show("Boligen er nu solgt");
             }
         }

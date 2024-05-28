@@ -16,10 +16,14 @@ namespace SemesterProjekt.Forms
 {
     public partial class NewBoligForm : Form
     {
-        
-        public NewBoligForm()
+        DbHandler db;
+        MyValidator validator;
+        public NewBoligForm(List<int> MIdList)
         {
             InitializeComponent();
+            comboBoxMidList.DataSource = MIdList;
+            db = new DbHandler();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,10 +34,9 @@ namespace SemesterProjekt.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MyValidator myValidator = new MyValidator();
-            DbHandler db = new DbHandler();
+         
             string Adresse;
-            if (myValidator.ValidateAdDress(AdresseTextbox.Text))
+            if (validator.ValidateAdDress(AdresseTextbox.Text))
             {
                 Adresse = AdresseTextbox.Text;
             }
@@ -43,17 +46,17 @@ namespace SemesterProjekt.Forms
             }
 
             int postNr;
-            if (myValidator.ValidateZipcode(int.Parse(comboBox1.Text)))
+            if (validator.ValidateZipcode(int.Parse(comboBoxPostNr.Text)))
             {
-                postNr = int.Parse( comboBox1.Text);
+                postNr = int.Parse(comboBoxPostNr.Text);
             }
             else
             {
                 throw new Exception("Postnummer not validated propperly");
             }
-            
+
             int udbudspris;
-            if (myValidator.ValidatePriceOfHouse(int.Parse(UdbudsprisTextbox.Text)))
+            if (validator.ValidatePriceOfHouse(int.Parse(UdbudsprisTextbox.Text)))
             {
                 udbudspris = int.Parse(UdbudsprisTextbox.Text);
             }
@@ -63,7 +66,7 @@ namespace SemesterProjekt.Forms
             }
 
             int kvadratmeter;
-            if (myValidator.ValidateSquareMeter(int.Parse(KvadratmeterTextbox.Text)))
+            if (validator.ValidateSquareMeter(int.Parse(KvadratmeterTextbox.Text)))
             {
                 kvadratmeter = int.Parse(KvadratmeterTextbox.Text);
             }
@@ -72,14 +75,24 @@ namespace SemesterProjekt.Forms
                 throw new Exception("Kvadratmeter is false");
             }
 
-            string boligtype = comboBox2.Text;
+            string boligtype;
+            if (validator.ValidateHouseType(comboBoxBoligType.Text))
+            {
+                boligtype = comboBoxBoligType.Text;
+            }
+            else
+            {
+                throw new Exception("Housetype not valid");
+            }
 
-            int maeglerid = int.Parse(comboBox3.Text);
+            int maeglerid = int.Parse(comboBoxMidList.Text);
+           
+           
 
             string fornavn;
-            if (myValidator.ValidateFirstname(textBox1.Text))
+            if (validator.ValidateFirstname(textBoxFornavn.Text))
             {   
-                fornavn = textBox1.Text;
+                fornavn = textBoxFornavn.Text;
             }
             else
             {
@@ -87,21 +100,21 @@ namespace SemesterProjekt.Forms
             }
 
             string efternavn;
-            if (myValidator.ValidateLastname(textBox2.Text))
+            if (validator.ValidateLastname(textBoxEfternavn.Text))
             {
-                efternavn = textBox2.Text;
+                efternavn = textBoxEfternavn.Text;
             }
             else { throw new Exception("Lastname not valid"); }
 
             string email;
-            if (myValidator.ValidateEmail(textBox3.Text))
-            { email = textBox3.Text; }
+            if (validator.ValidateEmail(textBoxEmail.Text))
+            { email = textBoxEmail.Text; }
             else { throw new Exception("Email not valid"); }
 
             int tlfnr;
-            if(myValidator.ValidatePhonenumber(int.Parse(textBox4.Text)))
+            if(validator.ValidatePhonenumber(int.Parse(textBoxTlf.Text)))
             {
-                tlfnr = int.Parse(textBox4.Text);
+                tlfnr = int.Parse(textBoxTlf.Text);
             }
             else
             {

@@ -32,6 +32,7 @@
             Btn_Delete = new Button();
             DGVSælger = new DataGridView();
             panel1 = new Panel();
+            labelInfo = new Label();
             TxtSearch = new TextBox();
             DGV_Saelger_Bolig = new DataGridView();
             Btn_Sorter_Solgt = new Button();
@@ -94,6 +95,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(labelInfo);
             panel1.Controls.Add(Btn_Update);
             panel1.Controls.Add(Btn_Delete);
             panel1.Dock = DockStyle.Right;
@@ -102,6 +104,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(318, 891);
             panel1.TabIndex = 3;
+            // 
+            // labelInfo
+            // 
+            labelInfo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            labelInfo.AutoSize = true;
+            labelInfo.BorderStyle = BorderStyle.FixedSingle;
+            labelInfo.ForeColor = SystemColors.ControlLightLight;
+            labelInfo.Location = new Point(57, 649);
+            labelInfo.Name = "labelInfo";
+            labelInfo.Size = new Size(207, 62);
+            labelInfo.TabIndex = 16;
+            labelInfo.Text = "For at oprette en sælger,\r\nskal man oprette en ny bolig, \r\nsom sælger tilknyttes";
             // 
             // TxtSearch
             // 
@@ -162,6 +176,7 @@
             Load += Sælgerform_Load;
             ((System.ComponentModel.ISupportInitialize)DGVSælger).EndInit();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Saelger_Bolig).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -176,5 +191,6 @@
         private DataGridView DGV_Saelger_Bolig;
         private Button Btn_Sorter_Solgt;
         private Button Btn_Refresh;
+        private Label labelInfo;
     }
 }

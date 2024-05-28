@@ -40,6 +40,7 @@
             Lbl_Sælger = new Label();
             Refreshbutton = new Button();
             ScreenPnl = new Panel();
+            buttonDelete = new Button();
             buttonRefresh = new Button();
             Lbl_Tilknyttede_Boliger_Inaktive = new Label();
             Lbl_Mæglere_Tilknyttede_Aktive = new Label();
@@ -55,7 +56,6 @@
             Lbl_Køber = new Label();
             panel1 = new Panel();
             TxtBox_Køber_Navn = new TextBox();
-            buttonDelete = new Button();
             ScreenPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Dgv_Inaktive_Boliger).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Dgv_Mægler).BeginInit();
@@ -220,6 +220,18 @@
             ScreenPnl.Name = "ScreenPnl";
             ScreenPnl.Size = new Size(977, 891);
             ScreenPnl.TabIndex = 4;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDelete.Location = new Point(16, 856);
+            buttonDelete.Margin = new Padding(3, 4, 3, 4);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(187, 31);
+            buttonDelete.TabIndex = 12;
+            buttonDelete.Text = "Delete ejendomsmægler";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // buttonRefresh
             // 
@@ -414,18 +426,6 @@
             TxtBox_Køber_Navn.ReadOnly = true;
             TxtBox_Køber_Navn.Size = new Size(297, 27);
             TxtBox_Køber_Navn.TabIndex = 2;
-            // 
-            // buttonDelete
-            // 
-            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonDelete.Location = new Point(16, 856);
-            buttonDelete.Margin = new Padding(3, 4, 3, 4);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(187, 31);
-            buttonDelete.TabIndex = 12;
-            buttonDelete.Text = "Delete ejendomsmægler";
-            buttonDelete.UseVisualStyleBackColor = true;
-            buttonDelete.Click += buttonDelete_Click;
             // 
             // EjendomsmæglerForm
             // 

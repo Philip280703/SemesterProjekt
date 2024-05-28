@@ -105,17 +105,7 @@ namespace SemesterProjekt.Models
                 return true;
             }
         }
-        public bool ValidateSquarePrice (int SquarePrice)
-        {
-            if (SquarePrice < 1000 || SquarePrice > 250000)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        
         public bool ValidateHouseType( string HouseType)
         {
             if (HouseType == "Villa" || HouseType == "Rækkehus" || HouseType == "Andelsbolig" || HouseType == "Lejlighed")
