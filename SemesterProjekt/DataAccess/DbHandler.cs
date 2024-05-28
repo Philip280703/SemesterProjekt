@@ -1274,7 +1274,6 @@ namespace SemesterProjekt.DataAccess
             // this is a list that is printed in a file that is seperated by ; and exported to csv, so that the ouput has its own field in an file in excel
             using (StreamWriter writer = new StreamWriter(path))
             {
-                writer.WriteLine("Bolig;-;-;-;-;-;-;-;-;-;-;EjendomsMægler;-;-;-;-;-;-;Sælger;-;-;-;-;-;");
                 writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;SalgsPris;SalgsDato;MaeglerId;Mægler ID;Fornavn;Efternavn;Aktiv;Email;Tlf;Afdeling;ID;Fornavn;Efternavn;BoligId;Email;Tlf");
 
                 foreach (BoligMaeglerSaelger Item in List)
