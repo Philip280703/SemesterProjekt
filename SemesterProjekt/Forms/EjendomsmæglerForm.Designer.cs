@@ -223,7 +223,7 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonDelete.Location = new Point(16, 856);
             buttonDelete.Margin = new Padding(3, 4, 3, 4);
             buttonDelete.Name = "buttonDelete";

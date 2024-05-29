@@ -193,7 +193,7 @@ namespace SemesterProjekt.Forms
             if (AreyouSure == DialogResult.Yes)
             {
                 db.HardDeleteEjendomsMaeglerFromDB(MaeglerId);
-                MessageBox.Show("Ejendomsmægler er nu fjernet fra systemet");
+                MessageBox.Show("Boligen er nu solgt");
             }
         }
     }
