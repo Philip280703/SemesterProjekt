@@ -1029,6 +1029,7 @@ namespace SemesterProjekt.DataAccess
             }
         }
 
+
         // Update Kunde ved salg 
         internal bool UpdateKundeVedSalg(Kunde kunde, int KId)
         {
