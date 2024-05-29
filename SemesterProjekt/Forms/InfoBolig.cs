@@ -61,6 +61,9 @@ namespace SemesterProjekt.Forms
             this.DGVBolig.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
             this.DGVBolig.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
 
+            this.DGVBolig.RowsDefaultCellStyle.BackColor = Color.White;
+            this.DGVBolig.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+
             int gns = AveragePrice();
             textBoxGns.Text = $"{gns:C0}";
         }
