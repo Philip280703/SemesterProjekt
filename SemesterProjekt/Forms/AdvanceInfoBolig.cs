@@ -50,7 +50,8 @@ namespace SemesterProjekt.Forms
             AktivTextbox.Text = "" + aktiv;
             MaglerIdTextbox.Text = "" + MæglerId;
             db = new DbHandler();
-            DGVKunder.DataSource = db.GetAllKunder();
+            List<Kunde> KundeListe = db.GetAllKunder();
+            DGVKunder.DataSource = KundeListe.Where(k => k.KBoligId == 0).ToList();
 
             
         }
