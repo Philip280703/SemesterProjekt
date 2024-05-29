@@ -279,21 +279,30 @@ namespace SemesterProjekt.Forms
 
         private void buttonOpdaterBolig_Click(object sender, EventArgs e)
         {
-            if (row == 1)
+           
+            if (Aktiv == true)
             {
-                OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-
-                try
+                if (row > 0)
                 {
-                    updateBolig.Show();
-                }
-                catch (Exception ex) { }
+                    OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
 
+                    try
+                    {
+                        updateBolig.Show();
+                    }
+                    catch (Exception ex) { }
+
+                }
+                else
+                {
+                    MessageBox.Show("Ingen bolig er valgt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Ingen bolig er valgt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Boligen er ikke til salg", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
 
         }
 
