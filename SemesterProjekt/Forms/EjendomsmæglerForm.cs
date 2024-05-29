@@ -45,7 +45,15 @@ namespace SemesterProjekt.Forms
             InitializeComponent();
             db = new DbHandler();
             Dgv_Mægler.DataSource = db.GetAllEjendomsMaegler();
-            
+
+            // navngivning af kolonne header
+            Dgv_Mægler.Columns["MId"].HeaderText = "ID";
+            Dgv_Mægler.Columns["MFname"].HeaderText = "Fornavn";
+            Dgv_Mægler.Columns["MLname"].HeaderText = "Efternavn";
+            Dgv_Mægler.Columns["MAktiv"].HeaderText = "Aktiv";
+            Dgv_Mægler.Columns["MEmail"].HeaderText = "Email";
+            Dgv_Mægler.Columns["MTlfNr"].HeaderText = "Telefon nr.";
+
         }
 
         private void Dgv_Mægler_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -96,6 +104,17 @@ namespace SemesterProjekt.Forms
                 this.Dgv_Aktive_Boliger.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
                 this.Dgv_Aktive_Boliger.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
                 this.Dgv_Aktive_Boliger.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
+
+                // Navngivning af kolonne header
+                Dgv_Inaktive_Boliger.Columns["BoligId"].HeaderText = "Bolig ID";
+                Dgv_Inaktive_Boliger.Columns["PostNr"].HeaderText = "Post nr.";
+                Dgv_Inaktive_Boliger.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+                Dgv_Inaktive_Boliger.Columns["KvmPris"].HeaderText = "Kvm. pris";
+                Dgv_Inaktive_Boliger.Columns["BoligType"].HeaderText = "Boligtype";
+                Dgv_Inaktive_Boliger.Columns["SalgsPris"].HeaderText = "Salgspris";
+                Dgv_Inaktive_Boliger.Columns["SalgsDato"].HeaderText = "Salgsdato";
+                Dgv_Inaktive_Boliger.Columns["MaeglerId"].HeaderText = "Mægler ID";
+
             }
             catch (Exception ex)
             {
@@ -131,6 +150,17 @@ namespace SemesterProjekt.Forms
                 this.Dgv_Aktive_Boliger.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
                 this.Dgv_Aktive_Boliger.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
                 this.Dgv_Aktive_Boliger.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
+
+                // Navngivning af kolonne header
+                Dgv_Inaktive_Boliger.Columns["BoligId"].HeaderText = "Bolig ID";
+                Dgv_Inaktive_Boliger.Columns["PostNr"].HeaderText = "Post nr.";
+                Dgv_Inaktive_Boliger.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+                Dgv_Inaktive_Boliger.Columns["KvmPris"].HeaderText = "Kvm. pris";
+                Dgv_Inaktive_Boliger.Columns["BoligType"].HeaderText = "Boligtype";
+                Dgv_Inaktive_Boliger.Columns["SalgsPris"].HeaderText = "Salgspris";
+                Dgv_Inaktive_Boliger.Columns["SalgsDato"].HeaderText = "Salgsdato";
+                Dgv_Inaktive_Boliger.Columns["MaeglerId"].HeaderText = "Mægler ID";
+
             }
             catch (Exception ex)
             {

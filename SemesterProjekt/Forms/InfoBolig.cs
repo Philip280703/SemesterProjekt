@@ -42,8 +42,18 @@ namespace SemesterProjekt.Forms
             aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
-            
-            
+
+            // Navngivning af kolonne header
+            DGVBolig.Columns["BoligId"].HeaderText = "Bolig ID";
+            DGVBolig.Columns["PostNr"].HeaderText = "Post nr.";
+            DGVBolig.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+            DGVBolig.Columns["KvmPris"].HeaderText = "Kvm. pris";
+            DGVBolig.Columns["BoligType"].HeaderText = "Boligtype";
+            DGVBolig.Columns["SalgsPris"].HeaderText = "Salgspris";
+            DGVBolig.Columns["SalgsDato"].HeaderText = "Salgsdato";
+            DGVBolig.Columns["MaeglerId"].HeaderText = "Mægler ID";
+
+
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
