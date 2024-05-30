@@ -59,6 +59,16 @@ namespace SemesterProjekt.Forms
             this.Dgv_Mægler.RowsDefaultCellStyle.BackColor = Color.White;
             this.Dgv_Mægler.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
 
+
+            // Alternating rows farver, ændres dynamisk
+            this.Dgv_Aktive_Boliger.RowsDefaultCellStyle.BackColor = Color.White;
+            this.Dgv_Aktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+
+
+            // Alternating rows farver, ændres dynamisk
+            this.Dgv_Inaktive_Boliger.RowsDefaultCellStyle.BackColor = Color.White;
+            this.Dgv_Inaktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+
         }
 
         private void Dgv_Mægler_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -121,9 +131,6 @@ namespace SemesterProjekt.Forms
                 Dgv_Aktive_Boliger.Columns["MaeglerId"].HeaderText = "Mægler ID";
 
 
-                // Alternating rows farver, ændres dynamisk
-                this.Dgv_Aktive_Boliger.RowsDefaultCellStyle.BackColor = Color.White;
-                this.Dgv_Aktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
 
             }
             catch (Exception ex)
@@ -172,9 +179,6 @@ namespace SemesterProjekt.Forms
                 Dgv_Inaktive_Boliger.Columns["MaeglerId"].HeaderText = "Mægler ID";
 
 
-                // Alternating rows farver, ændres dynamisk
-                this.Dgv_Inaktive_Boliger.RowsDefaultCellStyle.BackColor = Color.White;
-                this.Dgv_Inaktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
 
             }
             catch (Exception ex)
