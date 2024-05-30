@@ -55,6 +55,10 @@ namespace SemesterProjekt.Forms
             DGVKunde.Columns["KBoligId"].HeaderText = "Bolig ID";
             DGVKunde.Columns["KEmail"].HeaderText = "Email";
             DGVKunde.Columns["KTlfNr"].HeaderText = "Telefon nr.";
+
+            // Alternating rows farver, ændres dynamisk
+            this.DGVKunde.RowsDefaultCellStyle.BackColor = Color.White;
+            this.DGVKunde.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
         }
 
         private void DGVKunde_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -39,6 +39,11 @@ namespace SemesterProjekt.Forms
             DGVSælger.Columns["SEmail"].HeaderText = "Email";
             DGVSælger.Columns["STlfNr"].HeaderText = "Telefon nr.";
 
+
+            // Alternating rows farver, ændres dynamisk
+            this.DGVSælger.RowsDefaultCellStyle.BackColor = Color.White;
+            this.DGVSælger.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+
         }
 
         private void Sælgerform_Load(object sender, EventArgs e)
