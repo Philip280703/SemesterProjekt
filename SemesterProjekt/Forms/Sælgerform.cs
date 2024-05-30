@@ -42,7 +42,7 @@ namespace SemesterProjekt.Forms
 
             // Alternating rows farver, ændres dynamisk
             this.DGVSælger.RowsDefaultCellStyle.BackColor = Color.White;
-            this.DGVSælger.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            this.DGVSælger.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
 
         }
 

@@ -63,7 +63,7 @@ namespace SemesterProjekt.Forms
 
             // Alternating rows farver, ændres dynamisk
             this.DGVBolig.RowsDefaultCellStyle.BackColor = Color.White;
-            this.DGVBolig.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            this.DGVBolig.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
 
             int gns = AveragePrice();
             textBoxGns.Text = $"{gns:C0}";

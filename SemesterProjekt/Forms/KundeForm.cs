@@ -58,7 +58,7 @@ namespace SemesterProjekt.Forms
 
             // Alternating rows farver, ændres dynamisk
             this.DGVKunde.RowsDefaultCellStyle.BackColor = Color.White;
-            this.DGVKunde.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            this.DGVKunde.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
         }
 
         private void DGVKunde_CellClick(object sender, DataGridViewCellEventArgs e)

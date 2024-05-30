@@ -57,17 +57,17 @@ namespace SemesterProjekt.Forms
 
             // Alternating rows farver, ændres dynamisk
             this.Dgv_Mægler.RowsDefaultCellStyle.BackColor = Color.White;
-            this.Dgv_Mægler.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            this.Dgv_Mægler.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
 
 
             // Alternating rows farver, ændres dynamisk
             this.Dgv_Aktive_Boliger.RowsDefaultCellStyle.BackColor = Color.White;
-            this.Dgv_Aktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            this.Dgv_Aktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
 
 
             // Alternating rows farver, ændres dynamisk
             this.Dgv_Inaktive_Boliger.RowsDefaultCellStyle.BackColor = Color.White;
-            this.Dgv_Inaktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            this.Dgv_Inaktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
 
         }
 
