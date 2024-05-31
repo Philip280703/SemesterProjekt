@@ -19,7 +19,7 @@ namespace SemesterProjekt.Forms
         DbHandler db;
 
         //Variabler der kan/skal gemmes (Mægler)
-        int row;
+        int row = -10;
         int MaeglerId;
         string MFname;
         string MLname;
@@ -74,6 +74,11 @@ namespace SemesterProjekt.Forms
         private void Dgv_Mægler_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             row = e.RowIndex;
+
+            if (row < 0)
+            {
+                Dgv_Mægler.ClearSelection();
+            }
 
             try
             {
@@ -211,8 +216,15 @@ namespace SemesterProjekt.Forms
 
         private void Btn_Update_Click(object sender, EventArgs e)
         {
+            if (row >= 0)
+            {
             OpdaterMaeglerForm opdaterMaegler = new OpdaterMaeglerForm(MaeglerId, MFname, MLname, MEmail, MTlfNr, Afdeling);
             opdaterMaegler.Show();
+            }
+            else
+            {
+                MessageBox.Show("Ingen mægler valgt", "Fejl", MessageBoxButtons.OK);
+            }
         }
 
         private void Btn_Delete_Click(object sender, EventArgs e)
