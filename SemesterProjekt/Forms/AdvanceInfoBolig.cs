@@ -15,9 +15,8 @@ namespace SemesterProjekt.Forms
 {
     public partial class AdvanceInfoBolig : Form
     {
-        InfoBolig ib;
-        Panel panel;
         DbHandler db;
+        MyValidator validator;
         int row;
         int KId;
 
@@ -51,7 +50,8 @@ namespace SemesterProjekt.Forms
             AktivTextbox.Text = "" + aktiv;
             MaglerIdTextbox.Text = "" + MæglerId;
             db = new DbHandler();
-            DGVKunder.DataSource = db.GetAllKunder();
+            List<Kunde> KundeListe = db.GetAllKunder();
+            DGVKunder.DataSource = KundeListe.Where(k => k.KBoligId == 0).ToList();
 
             
         }
@@ -79,14 +79,13 @@ namespace SemesterProjekt.Forms
         }
         private void SælgBolig_Click(object sender, EventArgs e)
         {
-            DbHandler db = new DbHandler();
-            MyValidator myValidator = new MyValidator();
+            validator = new MyValidator();
             DateTime salgsdatoen;
             try
             {
                 int boligiid = int.Parse(BoligIdTextBox.Text);
                 
-                if (myValidator.ValidateSalesDate(Salgsdato.Value))
+                if (validator.ValidateSalesDate(Salgsdato.Value))
                 {
                      salgsdatoen = Salgsdato.Value;
                 }
@@ -98,8 +97,8 @@ namespace SemesterProjekt.Forms
                 db.MarkBoligAsSold(new Models.Bolig { Aktiv = false, SalgsDato = salgsdatoen, SalgsPris = int.Parse(Salgspris.Text) }, boligiid);
 
 
-                db.UpdateKunde(new Models.Kunde { KBoligId = boligiid }, KId);
-                MessageBox.Show("Bolig er nu solgt!");
+                db.UpdateKundeVedSalg(new Models.Kunde { KBoligId = boligiid }, KId);
+                MessageBox.Show("Bolig er nu solgt!","Hurra!", MessageBoxButtons.OK, MessageBoxIcon.None);
                 this.Hide();
 
             }

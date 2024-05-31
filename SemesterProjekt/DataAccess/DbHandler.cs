@@ -987,7 +987,7 @@ namespace SemesterProjekt.DataAccess
         }
 
 
-        // Update Kunde ved salg 
+        // Update Kundetlf ved salg 
         internal bool UpdateKunde(Kunde kunde, int KId)
         {
 
@@ -1000,6 +1000,49 @@ namespace SemesterProjekt.DataAccess
 
             cmd.Parameters.AddWithValue("@KId", KId);
             cmd.Parameters.AddWithValue("@KTlfNr", kunde.KTlfNr);
+
+
+
+            int rows = 0;
+            try
+            {
+                conn.Open();
+                rows = cmd.ExecuteNonQuery();
+            }
+
+            catch (Exception lm)
+            {
+                Console.WriteLine(lm.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (rows == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        // Update Kunde ved salg 
+        internal bool UpdateKundeVedSalg(Kunde kunde, int KId)
+        {
+
+            // sql selection of the given table
+            string command = "UPDATE Kunde SET KBoligId = @KBoligId WHERE KId = @KId";
+            // using sqlconnection
+            using SqlConnection conn = new SqlConnection(ConnectionString);
+            // save connection in variable - to handle commands
+            SqlCommand cmd = new SqlCommand(command, conn);
+
+            cmd.Parameters.AddWithValue("@KId", KId);
+            cmd.Parameters.AddWithValue("@KBoligId", kunde.KBoligId);
 
 
 
@@ -1141,6 +1184,7 @@ namespace SemesterProjekt.DataAccess
             // this is a list that is printed in a file that is seperated by ; and exported to csv, so that the ouput has its own field in an file in excel
             using (StreamWriter writer = new StreamWriter(path))
             {
+                BoligList = BoligList.OrderBy(b => b.PostNr).ToList();
                 writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;MaeglerId");
 
                 foreach (Bolig bolig in BoligList)
@@ -1273,7 +1317,6 @@ namespace SemesterProjekt.DataAccess
             // this is a list that is printed in a file that is seperated by ; and exported to csv, so that the ouput has its own field in an file in excel
             using (StreamWriter writer = new StreamWriter(path))
             {
-                writer.WriteLine("Bolig;-;-;-;-;-;-;-;-;-;-;EjendomsMægler;-;-;-;-;-;-;Sælger;-;-;-;-;-;");
                 writer.WriteLine("BoligID;Adresse;PostNr;UdbudsPris;Kavdratmeter;KvmPris;BoligType;Aktiv;SalgsPris;SalgsDato;MaeglerId;Mægler ID;Fornavn;Efternavn;Aktiv;Email;Tlf;Afdeling;ID;Fornavn;Efternavn;BoligId;Email;Tlf");
 
                 foreach (BoligMaeglerSaelger Item in List)

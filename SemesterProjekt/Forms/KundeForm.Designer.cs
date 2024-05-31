@@ -51,6 +51,7 @@
             Lbl_Saelger = new Label();
             Btn_Refresh = new Button();
             label1 = new Label();
+            checkBoxSolgteBoliger = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)DGV_Kunde_Bolig).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGVKunde).BeginInit();
             panel1.SuspendLayout();
@@ -117,9 +118,9 @@
             DGV_Kunde_Bolig.ReadOnly = true;
             DGV_Kunde_Bolig.RowHeadersWidth = 51;
             DGV_Kunde_Bolig.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV_Kunde_Bolig.Size = new Size(960, 384);
+            DGV_Kunde_Bolig.Size = new Size(960, 92);
             DGV_Kunde_Bolig.TabIndex = 10;
-            DGV_Kunde_Bolig.CellContentClick += DGV_Kunde_Bolig_CellContentClick;
+            DGV_Kunde_Bolig.CellMouseClick += DGV_Kunde_Bolig_CellMouseClick;
             // 
             // TxtSearch
             // 
@@ -350,11 +351,23 @@
             label1.TabIndex = 18;
             label1.Text = "Tilknyttet bolig";
             // 
+            // checkBoxSolgteBoliger
+            // 
+            checkBoxSolgteBoliger.AutoSize = true;
+            checkBoxSolgteBoliger.Location = new Point(620, 8);
+            checkBoxSolgteBoliger.Name = "checkBoxSolgteBoliger";
+            checkBoxSolgteBoliger.Size = new Size(126, 24);
+            checkBoxSolgteBoliger.TabIndex = 19;
+            checkBoxSolgteBoliger.Text = "Solgte boliger";
+            checkBoxSolgteBoliger.UseVisualStyleBackColor = true;
+            checkBoxSolgteBoliger.CheckedChanged += checkBoxSolgteBoliger_CheckedChanged;
+            // 
             // KundeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1295, 891);
+            Controls.Add(checkBoxSolgteBoliger);
             Controls.Add(label1);
             Controls.Add(Btn_Refresh);
             Controls.Add(DGV_Kunde_Bolig);
@@ -396,5 +409,6 @@
         private Label Lbl_SaeglerNavn;
         private Label Lbl_Saelger;
         private Label label1;
+        private CheckBox checkBoxSolgteBoliger;
     }
 }

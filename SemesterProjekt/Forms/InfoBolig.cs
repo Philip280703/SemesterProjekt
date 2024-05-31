@@ -12,6 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SemesterProjekt.Forms
@@ -41,14 +42,28 @@ namespace SemesterProjekt.Forms
             aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
-            
-            
+
+            // Navngivning af kolonne header
+            DGVBolig.Columns["BoligId"].HeaderText = "Bolig ID";
+            DGVBolig.Columns["PostNr"].HeaderText = "Post nr.";
+            DGVBolig.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+            DGVBolig.Columns["KvmPris"].HeaderText = "Kvm. pris";
+            DGVBolig.Columns["BoligType"].HeaderText = "Boligtype";
+            DGVBolig.Columns["SalgsPris"].HeaderText = "Salgspris";
+            DGVBolig.Columns["SalgsDato"].HeaderText = "Salgsdato";
+            DGVBolig.Columns["MaeglerId"].HeaderText = "Mægler ID";
+
+
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
             this.DGVBolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
             this.DGVBolig.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
             this.DGVBolig.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
+
+            // Alternating rows farver, ændres dynamisk
+            this.DGVBolig.RowsDefaultCellStyle.BackColor = Color.White;
+            this.DGVBolig.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
 
             int gns = AveragePrice();
             textBoxGns.Text = $"{gns:C0}";
@@ -86,13 +101,12 @@ namespace SemesterProjekt.Forms
             BoligSorting();
         }
 
-
-
-
+        // Bolig Sorteringsmetode
         private void BoligSorting()
         {
             try
             {
+                // først laves en liste af alle boliger i databasen, som gemmes i variablen boligListe
                 List<Bolig> boligListe = db.GetAllBolig();
 
                 // Søgbar ændring
@@ -167,18 +181,25 @@ namespace SemesterProjekt.Forms
                     }
 
                 }
+
+                // Hvis ingen søgninger matcher med minimum en bolig, udskrives denne besked
                 if (boligListe.Count == 0)
                 {
                     MessageBox.Show("Ingen bolig matcher søgningen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+                // hvis der er mere end 0 boliger i listen kaldes metoden AveragePrice(), som gemmes i en variable og udskrives
                 DGVBolig.DataSource = boligListe;
-
-                int gns = AveragePrice();
-                textBoxGns.Text = $"{gns:C0}";
-
+                if (boligListe.Count > 0)
+                {
+                    int gns = AveragePrice();
+                    textBoxGns.Text = $"{gns:C0}";
+                }
+                
+                // Fjerner selection for at undgå bruger forvirring
                 DGVBolig.ClearSelection();
             }
+            // catch hvis noget går galt og udskriv til brugeren den givende fejl
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -190,7 +211,6 @@ namespace SemesterProjekt.Forms
         private void dataGridViewBolig_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // Henter info omkring ejendomsmægler som er koblet til bolig
-            DbHandler db = new DbHandler();
             row = e.RowIndex;
             try
             {
@@ -253,27 +273,52 @@ namespace SemesterProjekt.Forms
         }
         private void buttonSaelgBolig_Click(object sender, EventArgs e)
         {
-            AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-            try
+            if (Aktiv == true)
             {
-                aib.Show();
-            }
-            catch (Exception ex)
-            {
+                AdvanceInfoBolig aib = new AdvanceInfoBolig(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
+                try
+                {
+                    aib.Show();
+                }
+                catch (Exception ex)
+                {
 
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Boligen er solgt i forvejen","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void buttonOpdaterBolig_Click(object sender, EventArgs e)
         {
-            OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-
-            try
+           
+            if (Aktiv == true)
             {
-                updateBolig.Show();
+                if (row > 0)
+                {
+                    OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
+
+                    try
+                    {
+                        updateBolig.Show();
+                    }
+                    catch (Exception ex) { }
+
+                }
+                else
+                {
+                    MessageBox.Show("Ingen bolig er valgt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex) { }
+            else
+            {
+                MessageBox.Show("Boligen er ikke til salg", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
         }
 
@@ -287,6 +332,13 @@ namespace SemesterProjekt.Forms
             Aktiv_checkbox.Checked = false;
             checkBoxSolgt.Checked = false;
             comboxSortering.Text = "Sortering";
+            Txtbox_SaelgerNavn.Text = "";
+            Txtbox_SælgerTlfnr.Text = "";
+            Txtbox_SaelgerEmail.Text = "";
+            textbox_MaeglerNavn.Text = "";
+            Txtbox_MaeglerTlf.Text = "";
+            Txtbox_MaeglerEmail.Text = "";
+            DGVBolig.ClearSelection();
         }
 
         private void buttonNyBolig_Click(object sender, EventArgs e)
@@ -301,13 +353,12 @@ namespace SemesterProjekt.Forms
 
         private void Sletbolig_button_Click(object sender, EventArgs e)
         {
-            DbHandler dbHandler = new DbHandler();
             var AreyouSure = MessageBox.Show("Er du sikker på at du vil slette denne bolig permanent?", "", MessageBoxButtons.YesNo);
 
             if (AreyouSure == DialogResult.Yes)
             {
-                dbHandler.HardDeleteSaelgerFromDB(BoligIid);
-                dbHandler.HardDeleteBoligFromDB(BoligIid);
+                db.HardDeleteSaelgerFromDB(BoligIid);
+                db.HardDeleteBoligFromDB(BoligIid);
                 MessageBox.Show("Boligen er nu solgt");
             }
 

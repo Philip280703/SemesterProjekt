@@ -15,9 +15,14 @@ namespace SemesterProjekt.Forms
 {
     public partial class NewMaeglerform : Form
     {
+        DbHandler db;
+        MyValidator validator;
         public NewMaeglerform()
         {
             InitializeComponent();
+            db = new DbHandler();
+            validator = new MyValidator();
+
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -27,9 +32,7 @@ namespace SemesterProjekt.Forms
 
         private void buttonVidere_Click(object sender, EventArgs e)
         {
-            DbHandler db = new DbHandler();
-            MyValidator validator = new MyValidator();
-
+          
             string fornavn;
             if (validator.ValidateFirstname(textBoxFornavn.Text))
             {

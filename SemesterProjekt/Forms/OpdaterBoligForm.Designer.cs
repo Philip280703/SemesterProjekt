@@ -50,12 +50,14 @@
             label2 = new Label();
             button1 = new Button();
             button2 = new Button();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // MæglerIdLabel
             // 
             MæglerIdLabel.AutoSize = true;
-            MæglerIdLabel.Location = new Point(307, 169);
+            MæglerIdLabel.Location = new Point(300, 166);
             MæglerIdLabel.Name = "MæglerIdLabel";
             MæglerIdLabel.Size = new Size(73, 20);
             MæglerIdLabel.TabIndex = 37;
@@ -63,7 +65,7 @@
             // 
             // MaglerIdTextbox
             // 
-            MaglerIdTextbox.Location = new Point(380, 165);
+            MaglerIdTextbox.Location = new Point(373, 162);
             MaglerIdTextbox.Margin = new Padding(3, 4, 3, 4);
             MaglerIdTextbox.Name = "MaglerIdTextbox";
             MaglerIdTextbox.ReadOnly = true;
@@ -73,7 +75,7 @@
             // AktivLabel
             // 
             AktivLabel.AutoSize = true;
-            AktivLabel.Location = new Point(330, 130);
+            AktivLabel.Location = new Point(323, 127);
             AktivLabel.Name = "AktivLabel";
             AktivLabel.Size = new Size(42, 20);
             AktivLabel.TabIndex = 35;
@@ -81,7 +83,7 @@
             // 
             // AktivTextbox
             // 
-            AktivTextbox.Location = new Point(380, 126);
+            AktivTextbox.Location = new Point(373, 123);
             AktivTextbox.Margin = new Padding(3, 4, 3, 4);
             AktivTextbox.Name = "AktivTextbox";
             AktivTextbox.ReadOnly = true;
@@ -91,7 +93,7 @@
             // BoligTypeLabel
             // 
             BoligTypeLabel.AutoSize = true;
-            BoligTypeLabel.Location = new Point(307, 92);
+            BoligTypeLabel.Location = new Point(300, 89);
             BoligTypeLabel.Name = "BoligTypeLabel";
             BoligTypeLabel.Size = new Size(75, 20);
             BoligTypeLabel.TabIndex = 33;
@@ -99,7 +101,7 @@
             // 
             // BoligTypeTextbox
             // 
-            BoligTypeTextbox.Location = new Point(380, 88);
+            BoligTypeTextbox.Location = new Point(373, 85);
             BoligTypeTextbox.Margin = new Padding(3, 4, 3, 4);
             BoligTypeTextbox.Name = "BoligTypeTextbox";
             BoligTypeTextbox.ReadOnly = true;
@@ -108,7 +110,7 @@
             // 
             // KvmPrisTextBox
             // 
-            KvmPrisTextBox.Location = new Point(380, 49);
+            KvmPrisTextBox.Location = new Point(373, 46);
             KvmPrisTextBox.Margin = new Padding(3, 4, 3, 4);
             KvmPrisTextBox.Name = "KvmPrisTextBox";
             KvmPrisTextBox.ReadOnly = true;
@@ -118,7 +120,7 @@
             // KvmPrisLabel
             // 
             KvmPrisLabel.AutoSize = true;
-            KvmPrisLabel.Location = new Point(316, 53);
+            KvmPrisLabel.Location = new Point(309, 50);
             KvmPrisLabel.Name = "KvmPrisLabel";
             KvmPrisLabel.Size = new Size(61, 20);
             KvmPrisLabel.TabIndex = 30;
@@ -127,7 +129,7 @@
             // KvadratmeterLabel
             // 
             KvadratmeterLabel.AutoSize = true;
-            KvadratmeterLabel.Location = new Point(19, 208);
+            KvadratmeterLabel.Location = new Point(12, 205);
             KvadratmeterLabel.Name = "KvadratmeterLabel";
             KvadratmeterLabel.Size = new Size(98, 20);
             KvadratmeterLabel.TabIndex = 29;
@@ -135,7 +137,7 @@
             // 
             // KvadratmeterTextbox
             // 
-            KvadratmeterTextbox.Location = new Point(115, 204);
+            KvadratmeterTextbox.Location = new Point(108, 201);
             KvadratmeterTextbox.Margin = new Padding(3, 4, 3, 4);
             KvadratmeterTextbox.Name = "KvadratmeterTextbox";
             KvadratmeterTextbox.ReadOnly = true;
@@ -145,7 +147,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(30, 169);
+            label1.Location = new Point(23, 166);
             label1.Name = "label1";
             label1.Size = new Size(84, 20);
             label1.TabIndex = 27;
@@ -153,7 +155,7 @@
             // 
             // UdbudsprisTextbox
             // 
-            UdbudsprisTextbox.Location = new Point(115, 165);
+            UdbudsprisTextbox.Location = new Point(108, 162);
             UdbudsprisTextbox.Margin = new Padding(3, 4, 3, 4);
             UdbudsprisTextbox.Name = "UdbudsprisTextbox";
             UdbudsprisTextbox.ReadOnly = true;
@@ -163,7 +165,7 @@
             // PostNrLabel
             // 
             PostNrLabel.AutoSize = true;
-            PostNrLabel.Location = new Point(58, 130);
+            PostNrLabel.Location = new Point(51, 127);
             PostNrLabel.Name = "PostNrLabel";
             PostNrLabel.Size = new Size(52, 20);
             PostNrLabel.TabIndex = 25;
@@ -171,7 +173,7 @@
             // 
             // PostNrTextbox
             // 
-            PostNrTextbox.Location = new Point(115, 126);
+            PostNrTextbox.Location = new Point(108, 123);
             PostNrTextbox.Margin = new Padding(3, 4, 3, 4);
             PostNrTextbox.Name = "PostNrTextbox";
             PostNrTextbox.ReadOnly = true;
@@ -180,7 +182,7 @@
             // 
             // AdresseTextbox
             // 
-            AdresseTextbox.Location = new Point(115, 88);
+            AdresseTextbox.Location = new Point(108, 85);
             AdresseTextbox.Margin = new Padding(3, 4, 3, 4);
             AdresseTextbox.Name = "AdresseTextbox";
             AdresseTextbox.ReadOnly = true;
@@ -189,7 +191,7 @@
             // 
             // BoligIdTextBox
             // 
-            BoligIdTextBox.Location = new Point(115, 49);
+            BoligIdTextBox.Location = new Point(108, 46);
             BoligIdTextBox.Margin = new Padding(3, 4, 3, 4);
             BoligIdTextBox.Name = "BoligIdTextBox";
             BoligIdTextBox.ReadOnly = true;
@@ -199,7 +201,7 @@
             // AdresseLabel
             // 
             AdresseLabel.AutoSize = true;
-            AdresseLabel.Location = new Point(53, 92);
+            AdresseLabel.Location = new Point(46, 89);
             AdresseLabel.Name = "AdresseLabel";
             AdresseLabel.Size = new Size(61, 20);
             AdresseLabel.TabIndex = 21;
@@ -208,7 +210,7 @@
             // BoligIdLabel
             // 
             BoligIdLabel.AutoSize = true;
-            BoligIdLabel.Location = new Point(58, 53);
+            BoligIdLabel.Location = new Point(51, 50);
             BoligIdLabel.Name = "BoligIdLabel";
             BoligIdLabel.Size = new Size(57, 20);
             BoligIdLabel.TabIndex = 20;
@@ -216,15 +218,15 @@
             // 
             // textboxNypris
             // 
-            textboxNypris.Location = new Point(642, 123);
+            textboxNypris.Location = new Point(670, 132);
             textboxNypris.Name = "textboxNypris";
-            textboxNypris.Size = new Size(240, 27);
+            textboxNypris.Size = new Size(188, 27);
             textboxNypris.TabIndex = 38;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(642, 94);
+            label2.Location = new Point(670, 103);
             label2.Name = "label2";
             label2.Size = new Size(109, 20);
             label2.TabIndex = 39;
@@ -242,44 +244,56 @@
             // 
             // button2
             // 
-            button2.Location = new Point(670, 183);
+            button2.Location = new Point(684, 178);
             button2.Name = "button2";
             button2.Size = new Size(155, 71);
             button2.TabIndex = 41;
-            button2.Text = "Updater udbudspris";
+            button2.Text = "Opdater udbudspris";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // UpdateBoligForm
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(AktivTextbox);
+            groupBox1.Controls.Add(BoligIdLabel);
+            groupBox1.Controls.Add(AdresseLabel);
+            groupBox1.Controls.Add(BoligIdTextBox);
+            groupBox1.Controls.Add(AdresseTextbox);
+            groupBox1.Controls.Add(MæglerIdLabel);
+            groupBox1.Controls.Add(PostNrTextbox);
+            groupBox1.Controls.Add(MaglerIdTextbox);
+            groupBox1.Controls.Add(PostNrLabel);
+            groupBox1.Controls.Add(AktivLabel);
+            groupBox1.Controls.Add(UdbudsprisTextbox);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(BoligTypeLabel);
+            groupBox1.Controls.Add(KvadratmeterTextbox);
+            groupBox1.Controls.Add(BoligTypeTextbox);
+            groupBox1.Controls.Add(KvadratmeterLabel);
+            groupBox1.Controls.Add(KvmPrisTextBox);
+            groupBox1.Controls.Add(KvmPrisLabel);
+            groupBox1.Location = new Point(73, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(563, 252);
+            groupBox1.TabIndex = 42;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Bolig";
+            // 
+            // OpdaterBoligForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(906, 339);
+            Controls.Add(groupBox1);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(textboxNypris);
-            Controls.Add(MæglerIdLabel);
-            Controls.Add(MaglerIdTextbox);
-            Controls.Add(AktivLabel);
-            Controls.Add(AktivTextbox);
-            Controls.Add(BoligTypeLabel);
-            Controls.Add(BoligTypeTextbox);
-            Controls.Add(KvmPrisTextBox);
-            Controls.Add(KvmPrisLabel);
-            Controls.Add(KvadratmeterLabel);
-            Controls.Add(KvadratmeterTextbox);
-            Controls.Add(label1);
-            Controls.Add(UdbudsprisTextbox);
-            Controls.Add(PostNrLabel);
-            Controls.Add(PostNrTextbox);
-            Controls.Add(AdresseTextbox);
-            Controls.Add(BoligIdTextBox);
-            Controls.Add(AdresseLabel);
-            Controls.Add(BoligIdLabel);
-            Name = "UpdateBoligForm";
+            Name = "OpdaterBoligForm";
             Text = "UpdateBoligForm";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -308,5 +322,6 @@
         private Label label2;
         private Button button1;
         private Button button2;
+        private GroupBox groupBox1;
     }
 }
