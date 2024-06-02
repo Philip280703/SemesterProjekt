@@ -218,8 +218,8 @@ namespace SemesterProjekt.Forms
         {
             if (row >= 0)
             {
-            OpdaterMaeglerForm opdaterMaegler = new OpdaterMaeglerForm(MaeglerId, MFname, MLname, MEmail, MTlfNr, Afdeling);
-            opdaterMaegler.Show();
+                OpdaterMaeglerForm opdaterMaegler = new OpdaterMaeglerForm(MaeglerId, MFname, MLname, MEmail, MTlfNr, Afdeling);
+                opdaterMaegler.Show();
             }
             else
             {
@@ -229,16 +229,28 @@ namespace SemesterProjekt.Forms
 
         private void Btn_Delete_Click(object sender, EventArgs e)
         {
-            var updater = MessageBox.Show("Ejendomsmægler inaktiv", "Vil du gøre denne Ejendomsmægler inaktiv", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (updater == DialogResult.Yes)
+            if (row >= 0)
             {
-                db.UpdateEjendomsMaeglerAktivitet(new EjendomsMaegler { MAktiv = false }, MaeglerId);
+                var updater = MessageBox.Show("Ejendomsmægler inaktiv", "Vil du gøre denne Ejendomsmægler inaktiv", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (updater == DialogResult.Yes)
+                {
+                    db.UpdateEjendomsMaeglerAktivitet(new EjendomsMaegler { MAktiv = false }, MaeglerId);
+                    MessageBox.Show("Ejendomsmægler aktivitet er nu opdateret");
+                }
+                if (updater == DialogResult.No)
+                {
+                    db.UpdateEjendomsMaeglerAktivitet(new EjendomsMaegler { MAktiv = true }, MaeglerId);
+                    MessageBox.Show("Ejendomsmægler aktivitet er nu opdateret");
+                }
+                if (updater == DialogResult.Cancel)
+                {
+
+                }
             }
-            if (updater == DialogResult.No)
+            else
             {
-                db.UpdateEjendomsMaeglerAktivitet(new EjendomsMaegler { MAktiv = true }, MaeglerId);
+                MessageBox.Show("Ingen Ejendomsmægler valgt", "Fejl", MessageBoxButtons.OK);
             }
-            MessageBox.Show("Ejendomsmægler aktivitet er nu opdateret");
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
