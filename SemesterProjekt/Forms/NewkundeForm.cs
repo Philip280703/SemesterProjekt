@@ -33,7 +33,6 @@ namespace SemesterProjekt.Forms
         private void buttonVidere_Click(object sender, EventArgs e)
         {
            
-
             string fornavn;
             if (validator.ValidateFirstname(textBoxFornavn.Text))
             {

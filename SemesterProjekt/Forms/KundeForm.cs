@@ -47,6 +47,18 @@ namespace SemesterProjekt.Forms
             db = new DbHandler();
             InitializeComponent();
             DGVKunde.DataSource = db.GetAllKunder();
+
+            // Navngivning af kolonne header
+            DGVKunde.Columns["KId"].HeaderText = "ID";
+            DGVKunde.Columns["KFname"].HeaderText = "Fornavn";
+            DGVKunde.Columns["KLname"].HeaderText = "Efternavn";
+            DGVKunde.Columns["KBoligId"].HeaderText = "Bolig ID";
+            DGVKunde.Columns["KEmail"].HeaderText = "Email";
+            DGVKunde.Columns["KTlfNr"].HeaderText = "Telefon nr.";
+
+            // Alternating rows farver, ændres dynamisk
+            this.DGVKunde.RowsDefaultCellStyle.BackColor = Color.White;
+            this.DGVKunde.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
         }
 
         private void DGVKunde_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -75,6 +87,16 @@ namespace SemesterProjekt.Forms
             this.DGV_Kunde_Bolig.Columns["Udbudspris"].DefaultCellStyle.Format = "C0";
             this.DGV_Kunde_Bolig.Columns["Salgspris"].DefaultCellStyle.Format = "C0";
 
+            // Navngivning af kolonne header
+            DGV_Kunde_Bolig.Columns["BoligId"].HeaderText = "Bolig ID";
+            DGV_Kunde_Bolig.Columns["PostNr"].HeaderText = "Post nr.";
+            DGV_Kunde_Bolig.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+            DGV_Kunde_Bolig.Columns["KvmPris"].HeaderText = "Kvm. pris";
+            DGV_Kunde_Bolig.Columns["BoligType"].HeaderText = "Boligtype";
+            DGV_Kunde_Bolig.Columns["SalgsPris"].HeaderText = "Salgspris";
+            DGV_Kunde_Bolig.Columns["SalgsDato"].HeaderText = "Salgsdato";
+            DGV_Kunde_Bolig.Columns["MaeglerId"].HeaderText = "Mægler ID";
+
 
         }
 
@@ -93,6 +115,7 @@ namespace SemesterProjekt.Forms
                 KBoligId = (int)data.Cells["KBoligId"].Value;
                 KEmail = (string)data.Cells["KEmail"].Value;
                 KTlfNr = (int)data.Cells["KTlfNr"].Value;
+
 
             }
             catch (Exception ex)
@@ -119,10 +142,10 @@ namespace SemesterProjekt.Forms
             nk.Show();
         }
 
-        private void DGV_Kunde_Bolig_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DGV_Kunde_Bolig_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // Henter info omkring ejendomsmægler som er koblet til bolig
-           
+
             row = e.RowIndex;
             try
             {
@@ -170,7 +193,6 @@ namespace SemesterProjekt.Forms
                 Txtbox_MaeglerEmail.Text = em.MEmail;
             }
 
-
         }
 
         public void UpdateKundeData()
@@ -205,10 +227,28 @@ namespace SemesterProjekt.Forms
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
+            SortingList();
+        }
+
+        private void checkBoxSolgteBoliger_CheckedChanged(object sender, EventArgs e)
+        {
+            SortingList();
+        }
+
+        private void SortingList()
+        {
             List<Kunde> Kundelist = db.GetAllKunder();
-            List<Kunde> Searchbarkundelist = new List<Kunde>();
-            Searchbarkundelist = Kundelist.Where(k => k.KFname.Contains(TxtSearch.Text)).ToList();
-            DGVKunde.DataSource = Searchbarkundelist;
+           
+            if (!string.IsNullOrEmpty(TxtSearch.Text))
+            {
+                Kundelist = Kundelist.Where(k => k.KFname.Contains(TxtSearch.Text)).ToList();
+            }
+            if (checkBoxSolgteBoliger.Checked)
+            {
+                Kundelist = Kundelist.Where(k => k.KBoligId > 0).ToList();
+            }
+            
+            DGVKunde.DataSource = Kundelist;
         }
     }
 }

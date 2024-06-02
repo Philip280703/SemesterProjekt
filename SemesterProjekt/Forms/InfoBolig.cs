@@ -42,14 +42,28 @@ namespace SemesterProjekt.Forms
             aib = new AdvanceInfoBolig();
             DGVBolig.DataSource = null;
             DGVBolig.DataSource = db.GetAllBolig();
-            
-            
+
+            // Navngivning af kolonne header
+            DGVBolig.Columns["BoligId"].HeaderText = "Bolig ID";
+            DGVBolig.Columns["PostNr"].HeaderText = "Post nr.";
+            DGVBolig.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+            DGVBolig.Columns["KvmPris"].HeaderText = "Kvm. pris";
+            DGVBolig.Columns["BoligType"].HeaderText = "Boligtype";
+            DGVBolig.Columns["SalgsPris"].HeaderText = "Salgspris";
+            DGVBolig.Columns["SalgsDato"].HeaderText = "Salgsdato";
+            DGVBolig.Columns["MaeglerId"].HeaderText = "Mægler ID";
+
+
 
             // Formaterer de columns med de givende titler med formatet "N0"
             // som betyder Tusinde seperator uden tal til højre for 0
             this.DGVBolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
             this.DGVBolig.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
             this.DGVBolig.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
+
+            // Alternating rows farver, ændres dynamisk
+            this.DGVBolig.RowsDefaultCellStyle.BackColor = Color.White;
+            this.DGVBolig.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
 
             int gns = AveragePrice();
             textBoxGns.Text = $"{gns:C0}";
@@ -87,13 +101,12 @@ namespace SemesterProjekt.Forms
             BoligSorting();
         }
 
-
-
-
+        // Bolig Sorteringsmetode
         private void BoligSorting()
         {
             try
             {
+                // først laves en liste af alle boliger i databasen, som gemmes i variablen boligListe
                 List<Bolig> boligListe = db.GetAllBolig();
 
                 // Søgbar ændring
@@ -168,11 +181,14 @@ namespace SemesterProjekt.Forms
                     }
 
                 }
+
+                // Hvis ingen søgninger matcher med minimum en bolig, udskrives denne besked
                 if (boligListe.Count == 0)
                 {
                     MessageBox.Show("Ingen bolig matcher søgningen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+                // hvis der er mere end 0 boliger i listen kaldes metoden AveragePrice(), som gemmes i en variable og udskrives
                 DGVBolig.DataSource = boligListe;
                 if (boligListe.Count > 0)
                 {
@@ -180,10 +196,10 @@ namespace SemesterProjekt.Forms
                     textBoxGns.Text = $"{gns:C0}";
                 }
                 
-
-
+                // Fjerner selection for at undgå bruger forvirring
                 DGVBolig.ClearSelection();
             }
+            // catch hvis noget går galt og udskriv til brugeren den givende fejl
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -279,21 +295,30 @@ namespace SemesterProjekt.Forms
 
         private void buttonOpdaterBolig_Click(object sender, EventArgs e)
         {
-            if (row == 1)
+           
+            if (Aktiv == true)
             {
-                OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
-
-                try
+                if (row > 0)
                 {
-                    updateBolig.Show();
-                }
-                catch (Exception ex) { }
+                    OpdaterBoligForm updateBolig = new OpdaterBoligForm(MæglerId, Adresse, BoligIid, PostNr, Udbudspris, Kvadratmeter, BoligType, Aktiv);
 
+                    try
+                    {
+                        updateBolig.Show();
+                    }
+                    catch (Exception ex) { }
+
+                }
+                else
+                {
+                    MessageBox.Show("Ingen bolig er valgt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Ingen bolig er valgt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Boligen er ikke til salg", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
 
         }
 

@@ -136,7 +136,7 @@
             DGV_Saelger_Bolig.ReadOnly = true;
             DGV_Saelger_Bolig.RowHeadersWidth = 51;
             DGV_Saelger_Bolig.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV_Saelger_Bolig.Size = new Size(960, 384);
+            DGV_Saelger_Bolig.Size = new Size(960, 93);
             DGV_Saelger_Bolig.TabIndex = 5;
             // 
             // Btn_Sorter_Solgt

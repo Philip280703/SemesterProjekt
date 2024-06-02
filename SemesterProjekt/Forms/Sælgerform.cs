@@ -30,6 +30,20 @@ namespace SemesterProjekt.Forms
             db = new DbHandler();
             InitializeComponent();
             DGVSælger.DataSource = db.GetAllSaelger();
+
+            // navngivning af kolonne header
+            DGVSælger.Columns["SId"].HeaderText = "ID";
+            DGVSælger.Columns["SFname"].HeaderText = "Fornavn";
+            DGVSælger.Columns["SLname"].HeaderText = "Efternavn";
+            DGVSælger.Columns["SBoligId"].HeaderText = "Bolig ID";
+            DGVSælger.Columns["SEmail"].HeaderText = "Email";
+            DGVSælger.Columns["STlfNr"].HeaderText = "Telefon nr.";
+
+
+            // Alternating rows farver, ændres dynamisk
+            this.DGVSælger.RowsDefaultCellStyle.BackColor = Color.White;
+            this.DGVSælger.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
+
         }
 
         private void Sælgerform_Load(object sender, EventArgs e)
@@ -70,6 +84,15 @@ namespace SemesterProjekt.Forms
             this.DGV_Saelger_Bolig.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
             this.DGV_Saelger_Bolig.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
             this.DGV_Saelger_Bolig.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
+            // Navngivning af kolonne header
+            DGV_Saelger_Bolig.Columns["BoligId"].HeaderText = "Bolig ID";
+            DGV_Saelger_Bolig.Columns["PostNr"].HeaderText = "Post nr.";
+            DGV_Saelger_Bolig.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+            DGV_Saelger_Bolig.Columns["KvmPris"].HeaderText = "Kvm. pris";
+            DGV_Saelger_Bolig.Columns["BoligType"].HeaderText = "Boligtype";
+            DGV_Saelger_Bolig.Columns["SalgsPris"].HeaderText = "Salgspris";
+            DGV_Saelger_Bolig.Columns["SalgsDato"].HeaderText = "Salgsdato";
+            DGV_Saelger_Bolig.Columns["MaeglerId"].HeaderText = "Mægler ID";
             DGV_Saelger_Bolig.ClearSelection();
         }
 

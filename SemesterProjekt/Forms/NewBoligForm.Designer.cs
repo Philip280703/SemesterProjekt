@@ -166,30 +166,30 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Bolig informationer";
             // 
-            // comboBox3
+            // comboBoxMidList
             // 
             comboBoxMidList.FormattingEnabled = true;
             comboBoxMidList.Items.AddRange(new object[] { "100", "101", "102" });
             comboBoxMidList.Location = new Point(117, 222);
-            comboBoxMidList.Name = "comboBox3";
+            comboBoxMidList.Name = "comboBoxMidList";
             comboBoxMidList.Size = new Size(169, 28);
             comboBoxMidList.TabIndex = 64;
             // 
-            // comboBox1
+            // comboBoxPostNr
             // 
             comboBoxPostNr.FormattingEnabled = true;
-            comboBoxPostNr.Items.AddRange(new object[] { "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "8000", "9000" });
+            comboBoxPostNr.Items.AddRange(new object[] { "1000", "2000", "3000", "4000", "5000", "6000", "7000", "7080", "7100", "7200", "7400", "8000", "9000" });
             comboBoxPostNr.Location = new Point(117, 74);
-            comboBoxPostNr.Name = "comboBox1";
+            comboBoxPostNr.Name = "comboBoxPostNr";
             comboBoxPostNr.Size = new Size(169, 28);
             comboBoxPostNr.TabIndex = 63;
             // 
-            // comboBox2
+            // comboBoxBoligType
             // 
             comboBoxBoligType.FormattingEnabled = true;
             comboBoxBoligType.Items.AddRange(new object[] { "Villa", "Rækkehus", "Lejlighed", "Andelsbolig" });
             comboBoxBoligType.Location = new Point(117, 187);
-            comboBoxBoligType.Name = "comboBox2";
+            comboBoxBoligType.Name = "comboBoxBoligType";
             comboBoxBoligType.Size = new Size(169, 28);
             comboBoxBoligType.TabIndex = 62;
             // 
@@ -228,19 +228,19 @@
             label5.TabIndex = 68;
             label5.Text = "Tlf.";
             // 
-            // textBox3
+            // textBoxEmail
             // 
             textBoxEmail.Location = new Point(90, 112);
             textBoxEmail.Margin = new Padding(3, 4, 3, 4);
-            textBoxEmail.Name = "textBox3";
+            textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(170, 27);
             textBoxEmail.TabIndex = 69;
             // 
-            // textBox4
+            // textBoxTlf
             // 
             textBoxTlf.Location = new Point(90, 151);
             textBoxTlf.Margin = new Padding(3, 4, 3, 4);
-            textBoxTlf.Name = "textBox4";
+            textBoxTlf.Name = "textBoxTlf";
             textBoxTlf.Size = new Size(170, 27);
             textBoxTlf.TabIndex = 70;
             // 
@@ -253,11 +253,11 @@
             label2.TabIndex = 63;
             label2.Text = "Fornavn";
             // 
-            // textBox1
+            // textBoxFornavn
             // 
             textBoxFornavn.Location = new Point(90, 35);
             textBoxFornavn.Margin = new Padding(3, 4, 3, 4);
-            textBoxFornavn.Name = "textBox1";
+            textBoxFornavn.Name = "textBoxFornavn";
             textBoxFornavn.Size = new Size(170, 27);
             textBoxFornavn.TabIndex = 65;
             // 
@@ -270,11 +270,11 @@
             label3.TabIndex = 64;
             label3.Text = "Efternavn";
             // 
-            // textBox2
+            // textBoxEfternavn
             // 
             textBoxEfternavn.Location = new Point(90, 74);
             textBoxEfternavn.Margin = new Padding(3, 4, 3, 4);
-            textBoxEfternavn.Name = "textBox2";
+            textBoxEfternavn.Name = "textBoxEfternavn";
             textBoxEfternavn.Size = new Size(170, 27);
             textBoxEfternavn.TabIndex = 66;
             // 

@@ -19,7 +19,7 @@ namespace SemesterProjekt.Forms
         DbHandler db;
 
         //Variabler der kan/skal gemmes (Mægler)
-        int row;
+        int row = -10;
         int MaeglerId;
         string MFname;
         string MLname;
@@ -45,12 +45,40 @@ namespace SemesterProjekt.Forms
             InitializeComponent();
             db = new DbHandler();
             Dgv_Mægler.DataSource = db.GetAllEjendomsMaegler();
-            
+
+            // navngivning af kolonne header
+            Dgv_Mægler.Columns["MId"].HeaderText = "ID";
+            Dgv_Mægler.Columns["MFname"].HeaderText = "Fornavn";
+            Dgv_Mægler.Columns["MLname"].HeaderText = "Efternavn";
+            Dgv_Mægler.Columns["MAktiv"].HeaderText = "Aktiv";
+            Dgv_Mægler.Columns["MEmail"].HeaderText = "Email";
+            Dgv_Mægler.Columns["MTlfNr"].HeaderText = "Telefon nr.";
+
+
+            // Alternating rows farver, ændres dynamisk
+            this.Dgv_Mægler.RowsDefaultCellStyle.BackColor = Color.White;
+            this.Dgv_Mægler.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
+
+
+            // Alternating rows farver, ændres dynamisk
+            this.Dgv_Aktive_Boliger.RowsDefaultCellStyle.BackColor = Color.White;
+            this.Dgv_Aktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
+
+
+            // Alternating rows farver, ændres dynamisk
+            this.Dgv_Inaktive_Boliger.RowsDefaultCellStyle.BackColor = Color.White;
+            this.Dgv_Inaktive_Boliger.AlternatingRowsDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#e3e6e4");
+
         }
 
         private void Dgv_Mægler_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             row = e.RowIndex;
+
+            if (row < 0)
+            {
+                Dgv_Mægler.ClearSelection();
+            }
 
             try
             {
@@ -96,6 +124,19 @@ namespace SemesterProjekt.Forms
                 this.Dgv_Aktive_Boliger.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
                 this.Dgv_Aktive_Boliger.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
                 this.Dgv_Aktive_Boliger.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
+
+                // Navngivning af kolonne header
+                Dgv_Aktive_Boliger.Columns["BoligId"].HeaderText = "Bolig ID";
+                Dgv_Aktive_Boliger.Columns["PostNr"].HeaderText = "Post nr.";
+                Dgv_Aktive_Boliger.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+                Dgv_Aktive_Boliger.Columns["KvmPris"].HeaderText = "Kvm. pris";
+                Dgv_Aktive_Boliger.Columns["BoligType"].HeaderText = "Boligtype";
+                Dgv_Aktive_Boliger.Columns["SalgsPris"].HeaderText = "Salgspris";
+                Dgv_Aktive_Boliger.Columns["SalgsDato"].HeaderText = "Salgsdato";
+                Dgv_Aktive_Boliger.Columns["MaeglerId"].HeaderText = "Mægler ID";
+
+
+
             }
             catch (Exception ex)
             {
@@ -128,9 +169,22 @@ namespace SemesterProjekt.Forms
                 Kvadratmeter = (int)Data.Cells["Kvadratmeter"].Value;
                 BoligType = (string)Data.Cells["BoligType"].Value;
                 Aktiv = (bool)Data.Cells["Aktiv"].Value;
-                this.Dgv_Aktive_Boliger.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
-                this.Dgv_Aktive_Boliger.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
-                this.Dgv_Aktive_Boliger.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
+                this.Dgv_Inaktive_Boliger.Columns["UdbudsPris"].DefaultCellStyle.Format = "C0";
+                this.Dgv_Inaktive_Boliger.Columns["SalgsPris"].DefaultCellStyle.Format = "C0";
+                this.Dgv_Inaktive_Boliger.Columns["KvmPris"].DefaultCellStyle.Format = "C0";
+
+                // Navngivning af kolonne header
+                Dgv_Inaktive_Boliger.Columns["BoligId"].HeaderText = "Bolig ID";
+                Dgv_Inaktive_Boliger.Columns["PostNr"].HeaderText = "Post nr.";
+                Dgv_Inaktive_Boliger.Columns["UdbudsPris"].HeaderText = "Udbudspris";
+                Dgv_Inaktive_Boliger.Columns["KvmPris"].HeaderText = "Kvm. pris";
+                Dgv_Inaktive_Boliger.Columns["BoligType"].HeaderText = "Boligtype";
+                Dgv_Inaktive_Boliger.Columns["SalgsPris"].HeaderText = "Salgspris";
+                Dgv_Inaktive_Boliger.Columns["SalgsDato"].HeaderText = "Salgsdato";
+                Dgv_Inaktive_Boliger.Columns["MaeglerId"].HeaderText = "Mægler ID";
+
+
+
             }
             catch (Exception ex)
             {
@@ -162,8 +216,15 @@ namespace SemesterProjekt.Forms
 
         private void Btn_Update_Click(object sender, EventArgs e)
         {
+            if (row >= 0)
+            {
             OpdaterMaeglerForm opdaterMaegler = new OpdaterMaeglerForm(MaeglerId, MFname, MLname, MEmail, MTlfNr, Afdeling);
             opdaterMaegler.Show();
+            }
+            else
+            {
+                MessageBox.Show("Ingen mægler valgt", "Fejl", MessageBoxButtons.OK);
+            }
         }
 
         private void Btn_Delete_Click(object sender, EventArgs e)

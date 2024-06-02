@@ -50,7 +50,8 @@ namespace SemesterProjekt.Forms
             AktivTextbox.Text = "" + aktiv;
             MaglerIdTextbox.Text = "" + MæglerId;
             db = new DbHandler();
-            DGVKunder.DataSource = db.GetAllKunder();
+            List<Kunde> KundeListe = db.GetAllKunder();
+            DGVKunder.DataSource = KundeListe.Where(k => k.KBoligId == 0).ToList();
 
             
         }
@@ -78,7 +79,7 @@ namespace SemesterProjekt.Forms
         }
         private void SælgBolig_Click(object sender, EventArgs e)
         {
-    
+            validator = new MyValidator();
             DateTime salgsdatoen;
             try
             {
@@ -96,8 +97,8 @@ namespace SemesterProjekt.Forms
                 db.MarkBoligAsSold(new Models.Bolig { Aktiv = false, SalgsDato = salgsdatoen, SalgsPris = int.Parse(Salgspris.Text) }, boligiid);
 
 
-                db.UpdateKunde(new Models.Kunde { KBoligId = boligiid }, KId);
-                MessageBox.Show("Bolig er nu solgt!");
+                db.UpdateKundeVedSalg(new Models.Kunde { KBoligId = boligiid }, KId);
+                MessageBox.Show("Bolig er nu solgt!","Hurra!", MessageBoxButtons.OK, MessageBoxIcon.None);
                 this.Hide();
 
             }
