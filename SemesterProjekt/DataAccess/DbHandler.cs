@@ -55,7 +55,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex) 
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally 
             { 
@@ -128,7 +128,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -165,7 +165,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -252,7 +252,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -299,7 +299,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -361,7 +361,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -416,7 +416,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -463,7 +463,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw new ArgumentException(e.Message);
             }
             finally
             {
@@ -501,7 +501,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -541,7 +541,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -592,7 +592,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -655,7 +655,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -701,7 +701,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw new ArgumentException(e.Message);
             }
             finally
             {
@@ -738,7 +738,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -781,7 +781,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -820,7 +820,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -867,7 +867,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -929,7 +929,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -975,7 +975,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw new ArgumentException(e.Message);
             }
             finally
             {
@@ -1012,7 +1012,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -1055,7 +1055,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -1095,7 +1095,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception lm)
             {
-                Console.WriteLine(lm.Message);
+                throw new ArgumentException(lm.Message);
             }
             finally
             {
@@ -1174,7 +1174,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -1306,7 +1306,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -1356,7 +1356,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
@@ -1397,7 +1397,7 @@ namespace SemesterProjekt.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ArgumentException(ex.Message);
             }
             finally
             {
