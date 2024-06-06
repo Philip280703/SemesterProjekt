@@ -212,7 +212,7 @@ namespace SemesterProjekt.DataAccess
 
             catch (Exception ll)
             {
-                Console.WriteLine(ll.Message);
+                throw new ArgumentException(ll.Message);
             }
             finally
             {
